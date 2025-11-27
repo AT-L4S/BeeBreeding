@@ -1787,12 +1787,19 @@
                 const sourceX = source.x + sourceWidth / 2; // Right edge of source
                 const targetX = target.x - targetWidth / 2; // Left edge of target
 
-                // Create a smooth cubic bezier curve that connects to the straight edges
-                const controlOffset = Math.min(60, (targetX - sourceX) / 3);
-                const controlX1 = sourceX + controlOffset;
-                const controlX2 = targetX - controlOffset;
+                // Add straight segments before and after the curve for better visibility
+                const straightLength = 5; // Shorter straight segments
+                const sourceXStraight = sourceX + straightLength;
+                const targetXStraight = targetX - straightLength;
 
-                return `M${sourceX},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetX},${targetY}`;
+                // Create smoother control points for gradual transition
+                const controlOffset1 = straightLength + 20; // Gradual curve start
+                const controlOffset2 = straightLength + 20; // Gradual curve end
+                const controlX1 = sourceX + controlOffset1;
+                const controlX2 = targetX - controlOffset2;
+
+                // Create path: straight out -> smooth curve -> straight in
+                return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
             })
             .style("stroke", d => {
                 return availableColors[nodeColors[d.source] || 0];
