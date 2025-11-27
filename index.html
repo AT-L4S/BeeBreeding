@@ -67,12 +67,12 @@
         .link {
             fill: none;
             stroke-opacity: 0.8;
-            stroke-width: 2px;
+            stroke-width: 3px;
         }
 
         .link.highlighted {
             stroke-opacity: 1 !important;
-            stroke-width: 4px !important;
+            stroke-width: 5px !important;
         }
 
         .link.faded {
@@ -1420,7 +1420,7 @@
         // High-contrast distinct colors for intelligent assignment (original good contrast colors)
         const availableColors = [
             "#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4", "#42d4f4", "#f032e6", "#bfef45",
-            "#fabed4", "#469990", "#dcbeff", "#9a6324", "#fffac8", "#800000", "#aaffc3", "#808000", "#ffd8b1",
+            "#fabed4", "#469990", "#dcbeff", "#9a6324", "#800000", "#aaffc3", "#808000",
             "#000075", "#a9a9a9", "#000000"
         ];
 
@@ -1754,6 +1754,9 @@
             node.width = getTextWidth(node.id);
         });
 
+        // Group links by target to calculate input connection offsets
+        const linksByTarget = d3.group(links, d => d.target);
+
         // Create links in the link group (will be below nodes)
         const link = linkGroup.selectAll(".link")
             .data(links)
@@ -1765,7 +1768,24 @@
                 const midX = (source.x + target.x) / 2;
                 const sourceWidth = source.width || 120;
                 const targetWidth = target.width || 120;
-                return `M${source.x + sourceWidth/2},${source.y} Q${midX},${source.y} ${midX},${(source.y + target.y) / 2} Q${midX},${target.y} ${target.x - targetWidth/2},${target.y}`;
+
+                // Calculate vertical offset for multiple inputs to the same node
+                const targetLinks = linksByTarget.get(d.target);
+                const linkIndex = targetLinks.indexOf(d);
+                const numInputs = targetLinks.length;
+
+                // Spread inputs vertically when there are multiple parents
+                let targetYOffset = 0;
+                if (numInputs > 1) {
+                    const spacing = 10; // Reduced vertical spacing between input connections
+                    const totalHeight = (numInputs - 1) * spacing;
+                    targetYOffset = (linkIndex * spacing) - (totalHeight / 2);
+                }
+
+                const targetY = target.y + targetYOffset;
+
+                // Remove gap by connecting directly to the node edge
+                return `M${source.x + sourceWidth/2},${source.y} Q${midX},${source.y} ${midX},${(source.y + targetY) / 2} Q${midX},${targetY} ${target.x - targetWidth/2},${targetY}`;
             })
             .style("stroke", d => {
                 return availableColors[nodeColors[d.source] || 0];
