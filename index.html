@@ -1420,8 +1420,7 @@
         // High-contrast distinct colors for intelligent assignment (original good contrast colors)
         const availableColors = [
             "#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4", "#42d4f4", "#f032e6", "#bfef45",
-            "#fabed4", "#469990", "#dcbeff", "#9a6324", "#800000", "#808000",
-            "#000075", "#a9a9a9", "#000000"
+            "#fabed4", "#469990", "#dcbeff", "#9a6324", "#800000", "#808000", "#a9a9a9"
         ];
 
         // Function to assign colors intelligently based on relationships and proximity
@@ -1653,8 +1652,19 @@
 
         nodes.forEach(node => {
             const genNodes = generationGroups.get(node.generation);
-            const genIndex = genNodes.indexOf(node);
-            const genSize = genNodes.length;
+
+            // Sort nodes within each generation: leaf nodes (no children) go to bottom
+            const sortedGenNodes = genNodes.slice().sort((a, b) => {
+                const aIsLeaf = a.children.length === 0;
+                const bIsLeaf = b.children.length === 0;
+
+                if (aIsLeaf && !bIsLeaf) return 1; // a goes after b (bottom)
+                if (!aIsLeaf && bIsLeaf) return -1; // a goes before b (top)
+                return 0; // maintain relative order for same type
+            });
+
+            const genIndex = sortedGenNodes.indexOf(node);
+            const genSize = sortedGenNodes.length;
 
             node.x = node.generation * xSpacing;
             node.y = (genIndex - (genSize - 1) / 2) * ySpacing + 400;
@@ -1736,8 +1746,19 @@
         // Update positions with proper height calculation
         nodes.forEach(node => {
             const genNodes = generationGroups.get(node.generation);
-            const genIndex = genNodes.indexOf(node);
-            const genSize = genNodes.length;
+
+            // Sort nodes within each generation: leaf nodes (no children) go to bottom
+            const sortedGenNodes = genNodes.slice().sort((a, b) => {
+                const aIsLeaf = a.children.length === 0;
+                const bIsLeaf = b.children.length === 0;
+
+                if (aIsLeaf && !bIsLeaf) return 1; // a goes after b (bottom)
+                if (!aIsLeaf && bIsLeaf) return -1; // a goes before b (top)
+                return 0; // maintain relative order for same type
+            });
+
+            const genIndex = sortedGenNodes.indexOf(node);
+            const genSize = sortedGenNodes.length;
 
             node.x = node.generation * xSpacing;
             node.y = (genIndex - (genSize - 1) / 2) * ySpacing + height / 2;
@@ -1898,7 +1919,8 @@
             .attr("x", d => -d.width / 2) // Center the rectangle
             .attr("y", -15)
             .style("fill", d => {
-                return availableColors[nodeColors[d.id] || 0];
+                // Leaf nodes (no children) get black fill, others keep their assigned colors
+                return d.children.length === 0 ? "#000000" : availableColors[nodeColors[d.id] || 0];
             });
 
         // Add complete colored borders that match the rounded rectangle exactly
