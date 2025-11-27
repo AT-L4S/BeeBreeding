@@ -1420,7 +1420,7 @@
         // High-contrast distinct colors for intelligent assignment (original good contrast colors)
         const availableColors = [
             "#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4", "#42d4f4", "#f032e6", "#bfef45",
-            "#fabed4", "#469990", "#dcbeff", "#9a6324", "#800000", "#aaffc3", "#808000",
+            "#fabed4", "#469990", "#dcbeff", "#9a6324", "#800000", "#808000",
             "#000075", "#a9a9a9", "#000000"
         ];
 
@@ -1765,7 +1765,6 @@
             .attr("d", d => {
                 const source = nodeMap.get(d.source);
                 const target = nodeMap.get(d.target);
-                const midX = (source.x + target.x) / 2;
                 const sourceWidth = source.width || 120;
                 const targetWidth = target.width || 120;
 
@@ -1784,8 +1783,16 @@
 
                 const targetY = target.y + targetYOffset;
 
-                // Remove gap by connecting directly to the node edge
-                return `M${source.x + sourceWidth/2},${source.y} Q${midX},${source.y} ${midX},${(source.y + targetY) / 2} Q${midX},${targetY} ${target.x - targetWidth/2},${targetY}`;
+                // Connect to the straight sides of rounded rectangles to avoid round corners
+                const sourceX = source.x + sourceWidth / 2; // Right edge of source
+                const targetX = target.x - targetWidth / 2; // Left edge of target
+
+                // Create a smooth cubic bezier curve that connects to the straight edges
+                const controlOffset = Math.min(60, (targetX - sourceX) / 3);
+                const controlX1 = sourceX + controlOffset;
+                const controlX2 = targetX - controlOffset;
+
+                return `M${sourceX},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetX},${targetY}`;
             })
             .style("stroke", d => {
                 return availableColors[nodeColors[d.source] || 0];
