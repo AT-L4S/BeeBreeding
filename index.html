@@ -23,22 +23,22 @@
         }
 
         .node rect {
-            stroke: #fff;
-            stroke-width: 2px;
+            stroke: none;
+            stroke-width: 0px;
             rx: 20px;
             ry: 15px;
             filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
         }
 
         .node.highlighted rect {
-            stroke: #ff4444 !important;
-            stroke-width: 4px !important;
+            stroke: none !important;
+            stroke-width: 0px !important;
             filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.5));
         }
 
         .node.connected rect {
-            stroke: #44ff44 !important;
-            stroke-width: 3px !important;
+            stroke: none !important;
+            stroke-width: 0px !important;
             filter: drop-shadow(0 0 8px rgba(68, 255, 68, 0.5));
         }
 
@@ -1815,6 +1815,105 @@
                 return availableColors[nodeColors[d.id] || 0];
             });
 
+        // Add complete colored borders that match the rounded rectangle exactly
+        node.each(function(d) {
+            const nodeElement = d3.select(this);
+            const inputLinks = linksByTarget.get(d.id) || [];
+
+            const rx = 20; // Border radius from CSS
+            const ry = 15; // Border radius from CSS
+            const halfWidth = d.width / 2;
+
+            // Create the complete border path that matches the rectangle exactly
+            const borderPath = `M${-halfWidth + rx},-15
+                               L${halfWidth - rx},-15
+                               Q${halfWidth},-15 ${halfWidth},${-15 + ry}
+                               L${halfWidth},${15 - ry}
+                               Q${halfWidth},15 ${halfWidth - rx},15
+                               L${-halfWidth + rx},15
+                               Q${-halfWidth},15 ${-halfWidth},${15 - ry}
+                               L${-halfWidth},${-15 + ry}
+                               Q${-halfWidth},-15 ${-halfWidth + rx},-15 Z`;
+
+            // Add the border path element
+            const borderElement = nodeElement.append("path")
+                .attr("d", borderPath)
+                .attr("stroke-width", 5)
+                .attr("fill", "none")
+                .attr("class", "node-border");
+
+            // Set default border color - black for base bees, gray for others
+            const isBaseBee = inputLinks.length === 0;
+            borderElement.attr("stroke", isBaseBee ? "#000" : "#ddd");
+
+            if (inputLinks.length > 0) {
+                // Sort input links by their vertical offset
+                const sortedLinks = inputLinks.map((link, index) => {
+                    let targetYOffset = 0;
+                    if (inputLinks.length > 1) {
+                        const spacing = 10;
+                        const totalHeight = (inputLinks.length - 1) * spacing;
+                        targetYOffset = (index * spacing) - (totalHeight / 2);
+                    }
+                    return {
+                        link,
+                        offset: targetYOffset,
+                        index
+                    };
+                }).sort((a, b) => a.offset - b.offset);
+
+                if (inputLinks.length === 1) {
+                    // Single input - use that color for entire border
+                    const edgeColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    borderElement.attr("stroke", edgeColor);
+                } else {
+                    // Multiple inputs - remove the main border and create separate colored segments
+                    borderElement.remove(); // Remove the underlying border element
+
+                    const topColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    const bottomColor = availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link
+                        .source] || 0];
+
+                    // Top edge segment - complete top with both corners
+                    const topPath =
+                        `M${-halfWidth},${-15 + ry} Q${-halfWidth},-15 ${-halfWidth + rx},-15 L${halfWidth - rx},-15 Q${halfWidth},-15 ${halfWidth},${-15 + ry}`;
+                    nodeElement.append("path")
+                        .attr("d", topPath)
+                        .attr("stroke", topColor)
+                        .attr("stroke-width", 5)
+                        .attr("fill", "none")
+                        .attr("class", "node-border-segment");
+
+                    // Bottom edge segment
+                    const bottomPath =
+                        `M${halfWidth},${15 - ry} Q${halfWidth},15 ${halfWidth - rx},15 L${-halfWidth + rx},15 Q${-halfWidth},15 ${-halfWidth},${15 - ry}`;
+                    nodeElement.append("path")
+                        .attr("d", bottomPath)
+                        .attr("stroke", bottomColor)
+                        .attr("stroke-width", 5)
+                        .attr("fill", "none")
+                        .attr("class", "node-border-segment");
+
+                    // Left and right sides with default color
+                    const leftPath = `M${-halfWidth},${15 - ry} L${-halfWidth},${-15 + ry}`;
+                    nodeElement.append("path")
+                        .attr("d", leftPath)
+                        .attr("stroke", "#ddd")
+                        .attr("stroke-width", 5)
+                        .attr("fill", "none")
+                        .attr("class", "node-border-segment");
+
+                    const rightPath = `M${halfWidth},${-15 + ry} L${halfWidth},${15 - ry}`;
+                    nodeElement.append("path")
+                        .attr("d", rightPath)
+                        .attr("stroke", "#ddd")
+                        .attr("stroke-width", 5)
+                        .attr("fill", "none")
+                        .attr("class", "node-border-segment");
+                }
+            }
+        });
+
         // Add text labels
         node.append("text")
             .attr("dy", "0.35em")
@@ -1891,8 +1990,55 @@
             node.classed("highlighted connected faded", false);
             link.classed("highlighted faded", false);
 
+            // Reset ALL node borders to their default colors (including previously selected)
+            node.each(function(d) {
+                const nodeElement = d3.select(this);
+                const inputLinks = linksByTarget.get(d.id) || [];
+
+                if (inputLinks.length === 0) {
+                    // Base bee - should have black border
+                    nodeElement.selectAll(".node-border").attr("stroke", "#000");
+                } else if (inputLinks.length === 1) {
+                    // Single parent - use parent's color
+                    const edgeColor = availableColors[nodeColors[inputLinks[0].source] || 0];
+                    nodeElement.selectAll(".node-border, .node-border-segment").attr("stroke", edgeColor);
+                } else {
+                    // Multiple parents - restore segment colors
+                    const sortedLinks = inputLinks.map((link, index) => {
+                        let targetYOffset = 0;
+                        if (inputLinks.length > 1) {
+                            const spacing = 10;
+                            const totalHeight = (inputLinks.length - 1) * spacing;
+                            targetYOffset = (index * spacing) - (totalHeight / 2);
+                        }
+                        return {
+                            link,
+                            offset: targetYOffset,
+                            index
+                        };
+                    }).sort((a, b) => a.offset - b.offset);
+
+                    const topColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    const bottomColor = availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link
+                        .source] || 0];
+
+                    const segments = nodeElement.selectAll(".node-border-segment").nodes();
+                    if (segments.length >= 4) {
+                        d3.select(segments[0]).attr("stroke", topColor); // top
+                        d3.select(segments[1]).attr("stroke", bottomColor); // bottom
+                        d3.select(segments[2]).attr("stroke", "#ddd"); // left
+                        d3.select(segments[3]).attr("stroke", "#ddd"); // right
+                    }
+                }
+            });
+
             // Highlight selected node
             node.filter(d => d.id === selectedNode.id).classed("highlighted", true);
+
+            // Make selected node border red
+            node.filter(d => d.id === selectedNode.id)
+                .selectAll(".node-border, .node-border-segment")
+                .attr("stroke", "#ff4444");
 
             // Recursively collect ALL ancestors and descendants
             const allAncestors = getAllAncestors(selectedNode.id);
@@ -1937,6 +2083,49 @@
         function resetHighlight() {
             node.classed("highlighted connected faded", false);
             link.classed("highlighted faded", false);
+
+            // Reset all node borders to their default colors
+            node.each(function(d) {
+                const nodeElement = d3.select(this);
+                const inputLinks = linksByTarget.get(d.id) || [];
+
+                if (inputLinks.length === 0) {
+                    nodeElement.selectAll(".node-border").attr("stroke", "#000");
+                } else if (inputLinks.length === 1) {
+                    const edgeColor = availableColors[nodeColors[inputLinks[0].source] || 0];
+                    nodeElement.selectAll(".node-border, .node-border-segment").attr("stroke", edgeColor);
+                } else {
+                    // Multiple inputs - restore segment colors
+                    const sortedLinks = inputLinks.map((link, index) => {
+                        let targetYOffset = 0;
+                        if (inputLinks.length > 1) {
+                            const spacing = 10;
+                            const totalHeight = (inputLinks.length - 1) * spacing;
+                            targetYOffset = (index * spacing) - (totalHeight / 2);
+                        }
+                        return {
+                            link,
+                            offset: targetYOffset,
+                            index
+                        };
+                    }).sort((a, b) => a.offset - b.offset);
+
+                    const topColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    const bottomColor = availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link
+                        .source] || 0];
+
+                    const segments = nodeElement.selectAll(".node-border-segment").nodes();
+                    if (segments.length >= 4) {
+                        d3.select(segments[0]).attr("stroke", topColor); // top
+                        d3.select(segments[1]).attr("stroke", bottomColor); // bottom
+                        d3.select(segments[2]).attr("stroke", "#ddd"); // left
+                        d3.select(segments[3]).attr("stroke", "#ddd"); // right
+                    }
+
+                    nodeElement.selectAll(".node-border").attr("stroke", "#ddd");
+                }
+            });
+
             document.getElementById('infoPanel').style.display = 'none';
         }
 
