@@ -1757,9 +1757,101 @@
         // Group links by target to calculate input connection offsets
         const linksByTarget = d3.group(links, d => d.target);
 
+        // Calculate enhanced data for links including intersection priorities
+        const linksWithData = links.map(d => {
+            const source = nodeMap.get(d.source);
+            const target = nodeMap.get(d.target);
+
+            // Calculate vertical offset for multiple inputs to the same node
+            const targetLinks = linksByTarget.get(d.target);
+            const linkIndex = targetLinks.indexOf(d);
+            const numInputs = targetLinks.length;
+
+            let targetYOffset = 0;
+            if (numInputs > 1) {
+                const spacing = 10;
+                const totalHeight = (numInputs - 1) * spacing;
+                targetYOffset = (linkIndex * spacing) - (totalHeight / 2);
+            }
+
+            const targetY = target.y + targetYOffset;
+            const sourceX = source.x + (source.width || 120) / 2;
+            const targetX = target.x - (target.width || 120) / 2;
+
+            return {
+                ...d,
+                targetYOffset,
+                sourceX,
+                sourceY: source.y,
+                targetX,
+                targetY,
+                // Calculate distance from source (for intersection priority)
+                distanceFromSource: Math.abs(sourceX - target.x) + Math.abs(source.y - targetY)
+            };
+        });
+
+        // Function to find intersection point between two lines
+        function findIntersection(line1, line2) {
+            const {
+                sourceX: x1,
+                sourceY: y1,
+                targetX: x2,
+                targetY: y2
+            } = line1;
+            const {
+                sourceX: x3,
+                sourceY: y3,
+                targetX: x4,
+                targetY: y4
+            } = line2;
+
+            const denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+            if (Math.abs(denom) < 1e-10) return null; // Lines are parallel
+
+            const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
+            const u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;
+
+            if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
+                return {
+                    x: x1 + t * (x2 - x1),
+                    y: y1 + t * (y2 - y1)
+                };
+            }
+            return null;
+        }
+
+        // Sort links with collision-aware priority
+        linksWithData.sort((a, b) => {
+            const intersection = findIntersection(a, b);
+
+            if (intersection) {
+                // For each edge, calculate distance from intersection to both input and output connections
+                // Input connection = target point, Output connection = source point
+                const aDistToInput = Math.sqrt(Math.pow(intersection.x - a.targetX, 2) + Math.pow(intersection
+                    .y - a.targetY, 2));
+                const aDistToOutput = Math.sqrt(Math.pow(intersection.x - a.sourceX, 2) + Math.pow(intersection
+                    .y - a.sourceY, 2));
+                const aMinDist = Math.min(aDistToInput, aDistToOutput);
+
+                const bDistToInput = Math.sqrt(Math.pow(intersection.x - b.targetX, 2) + Math.pow(intersection
+                    .y - b.targetY, 2));
+                const bDistToOutput = Math.sqrt(Math.pow(intersection.x - b.sourceX, 2) + Math.pow(intersection
+                    .y - b.sourceY, 2));
+                const bMinDist = Math.min(bDistToInput, bDistToOutput);
+
+                // Edge with smaller minimum distance should be on top
+                return aMinDist - bMinDist;
+            }
+
+            // No intersection - use generation distance as fallback
+            const aGenDist = Math.abs(nodeMap.get(a.target).generation - nodeMap.get(a.source).generation);
+            const bGenDist = Math.abs(nodeMap.get(b.target).generation - nodeMap.get(b.source).generation);
+            return aGenDist - bGenDist;
+        });
+
         // Create links in the link group (will be below nodes)
         const link = linkGroup.selectAll(".link")
-            .data(links)
+            .data(linksWithData)
             .join("path")
             .attr("class", "link")
             .attr("d", d => {
@@ -1768,20 +1860,7 @@
                 const sourceWidth = source.width || 120;
                 const targetWidth = target.width || 120;
 
-                // Calculate vertical offset for multiple inputs to the same node
-                const targetLinks = linksByTarget.get(d.target);
-                const linkIndex = targetLinks.indexOf(d);
-                const numInputs = targetLinks.length;
-
-                // Spread inputs vertically when there are multiple parents
-                let targetYOffset = 0;
-                if (numInputs > 1) {
-                    const spacing = 10; // Reduced vertical spacing between input connections
-                    const totalHeight = (numInputs - 1) * spacing;
-                    targetYOffset = (linkIndex * spacing) - (totalHeight / 2);
-                }
-
-                const targetY = target.y + targetYOffset;
+                const targetY = target.y + d.targetYOffset;
 
                 // Connect to the straight sides of rounded rectangles to avoid round corners
                 const sourceX = source.x + sourceWidth / 2; // Right edge of source
