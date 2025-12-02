@@ -1895,33 +1895,46 @@
         const linksWithData = links.map(d => {
             const source = nodeMap.get(d.source);
             const target = nodeMap.get(d.target);
-
-            // Calculate vertical offset for multiple inputs to the same node
-            const targetLinks = linksByTarget.get(d.target);
-            const linkIndex = targetLinks.indexOf(d);
-            const numInputs = targetLinks.length;
-
-            let targetYOffset = 0;
-            if (numInputs > 1) {
-                const spacing = 20; // Increased spacing from 10 to 20
-                const totalHeight = (numInputs - 1) * spacing;
-                targetYOffset = (linkIndex * spacing) - (totalHeight / 2);
-            }
-
-            const targetY = target.y + targetYOffset;
             const sourceX = source.x + (source.width || 120) / 2;
             const targetX = target.x - (target.width || 120) / 2;
 
             return {
                 ...d,
-                targetYOffset,
                 sourceX,
                 sourceY: source.y,
                 targetX,
-                targetY,
-                // Calculate distance from source (for intersection priority)
-                distanceFromSource: Math.abs(sourceX - target.x) + Math.abs(source.y - targetY)
+                targetY: target.y, // Will be updated below with offset
+                targetYOffset: 0, // Will be calculated below
+                distanceFromSource: Math.abs(sourceX - target.x) + Math.abs(source.y - target.y)
             };
+        });
+
+        // Now calculate vertical offsets to minimize crossings
+        linksByTarget.forEach((targetLinks, targetId) => {
+            if (targetLinks.length > 1) {
+                // Sort parent links by their source Y position to minimize crossings
+                const sortedLinks = targetLinks
+                    .map(link => {
+                        const linkData = linksWithData.find(ld => ld.source === link.source && ld.target ===
+                            link.target);
+                        return {
+                            link,
+                            linkData,
+                            sourceY: linkData.sourceY
+                        };
+                    })
+                    .sort((a, b) => a.sourceY - b.sourceY);
+
+                // Assign vertical offsets based on sorted order
+                const spacing = 20;
+                const totalHeight = (sortedLinks.length - 1) * spacing;
+
+                sortedLinks.forEach((item, index) => {
+                    const targetYOffset = (index * spacing) - (totalHeight / 2);
+                    item.linkData.targetYOffset = targetYOffset;
+                    item.linkData.targetY = nodeMap.get(targetId).y + targetYOffset;
+                });
+            }
         });
 
         // Function to find intersection point between two lines
@@ -2211,6 +2224,9 @@
             node.classed("highlighted connected faded", false);
             link.classed("highlighted faded", false);
 
+            // Remove any existing outer selection borders
+            node.selectAll(".outer-selection-border").remove();
+
             // Reset ALL node borders to their default colors (including previously selected)
             node.each(function(d) {
                 const nodeElement = d3.select(this);
@@ -2256,10 +2272,38 @@
             // Highlight selected node
             node.filter(d => d.id === selectedNode.id).classed("highlighted", true);
 
-            // Make selected node border red
-            node.filter(d => d.id === selectedNode.id)
-                .selectAll(".node-border, .node-border-segment")
-                .attr("stroke", "#ff4444");
+            // Add red outline outside the existing colored borders
+            node.filter(d => d.id === selectedNode.id).each(function(d) {
+                const nodeElement = d3.select(this);
+                const halfWidth = d.width / 2;
+                const rx = 20; // Border radius from CSS
+                const ry = 15; // Border radius from CSS
+
+                // Create outer red border path with same proportions as inner border
+                const borderOffset = 4.5; // 4.5px larger for proper spacing
+                const outerHalfWidth = halfWidth + borderOffset;
+                const outerHeight = 15 + borderOffset; // Scale height proportionally
+                const outerRx = rx + (borderOffset * rx / halfWidth); // Scale corner radius proportionally
+                const outerRy = ry + (borderOffset * ry / 15); // Scale corner radius proportionally
+
+                const outerBorderPath =
+                    `M${-outerHalfWidth + outerRx},-${outerHeight}
+                                       L${outerHalfWidth - outerRx},-${outerHeight}
+                                       Q${outerHalfWidth},-${outerHeight} ${outerHalfWidth},${-outerHeight + outerRy}
+                                       L${outerHalfWidth},${outerHeight - outerRy}
+                                       Q${outerHalfWidth},${outerHeight} ${outerHalfWidth - outerRx},${outerHeight}
+                                       L${-outerHalfWidth + outerRx},${outerHeight}
+                                       Q${-outerHalfWidth},${outerHeight} ${-outerHalfWidth},${outerHeight - outerRy}
+                                       L${-outerHalfWidth},${-outerHeight + outerRy}
+                                       Q${-outerHalfWidth},-${outerHeight} ${-outerHalfWidth + outerRx},-${outerHeight} Z`;
+
+                nodeElement.append("path")
+                    .attr("d", outerBorderPath)
+                    .attr("stroke", "#ff4444")
+                    .attr("stroke-width", 6) // Increased from 3 to 6
+                    .attr("fill", "none")
+                    .attr("class", "outer-selection-border");
+            });
 
             // Recursively collect ALL ancestors and descendants
             const allAncestors = getAllAncestors(selectedNode.id);
@@ -2304,6 +2348,9 @@
         function resetHighlight() {
             node.classed("highlighted connected faded", false);
             link.classed("highlighted faded", false);
+
+            // Remove outer selection borders
+            node.selectAll(".outer-selection-border").remove();
 
             // Reset all node borders to their default colors
             node.each(function(d) {
