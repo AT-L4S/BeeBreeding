@@ -132,6 +132,7 @@
         <br>
         <button class="btn" onclick="resetHighlight()">Clear Selection</button>
         <button class="btn" onclick="fitView()">Fit to View</button>
+        <button class="btn" id="layoutToggle" onclick="toggleLeafLayout()">Switch to Column Layout</button>
     </div>
 
     <div class="info-panel" id="infoPanel">
@@ -150,6 +151,9 @@
     </div>
 
     <script>
+        // Global layout toggle state
+        let useColumnLayoutForLeaves = false;
+
         // Parse bee mutation data from the bees.txt content
         const rawMutations = {
             "Abandoned": {
@@ -1650,25 +1654,80 @@
         const xSpacing = 180;
         const ySpacing = 40;
 
-        nodes.forEach(node => {
-            const genNodes = generationGroups.get(node.generation);
+        // Function to position nodes based on layout mode
+        function positionNodes() {
+            if (useColumnLayoutForLeaves) {
+                // Column layout: place leaves in columns on the right side
+                const maxGeneration = Math.max(...nodes.map(n => n.generation));
+                const leafColumnStartX = (maxGeneration + 1) * xSpacing;
+                const leafsPerColumn = 15; // Adjust this for density
 
-            // Sort nodes within each generation: leaf nodes (no children) go to bottom
-            const sortedGenNodes = genNodes.slice().sort((a, b) => {
-                const aIsLeaf = a.children.length === 0;
-                const bIsLeaf = b.children.length === 0;
+                // Separate leaf and non-leaf nodes
+                const leafNodes = nodes.filter(n => n.children.length === 0);
+                const nonLeafNodes = nodes.filter(n => n.children.length > 0);
 
-                if (aIsLeaf && !bIsLeaf) return 1; // a goes after b (bottom)
-                if (!aIsLeaf && bIsLeaf) return -1; // a goes before b (top)
-                return 0; // maintain relative order for same type
-            });
+                // Position non-leaf nodes normally
+                const nonLeafGenerationGroups = d3.group(nonLeafNodes, d => d.generation);
+                nonLeafNodes.forEach(node => {
+                    const genNodes = nonLeafGenerationGroups.get(node.generation);
+                    const genIndex = genNodes.indexOf(node);
+                    const genSize = genNodes.length;
 
-            const genIndex = sortedGenNodes.indexOf(node);
-            const genSize = sortedGenNodes.length;
+                    node.x = node.generation * xSpacing;
+                    node.y = (genIndex - (genSize - 1) / 2) * ySpacing + 400;
+                });
 
-            node.x = node.generation * xSpacing;
-            node.y = (genIndex - (genSize - 1) / 2) * ySpacing + 400;
-        });
+                // Sort leaves by their original generation (leftmost first)
+                leafNodes.sort((a, b) => a.generation - b.generation);
+
+                // Position leaf nodes in columns
+                leafNodes.forEach((node, index) => {
+                    const columnIndex = Math.floor(index / leafsPerColumn);
+                    const rowIndex = index % leafsPerColumn;
+
+                    node.x = leafColumnStartX + (columnIndex * 150); // 150px between columns
+                    node.y = (rowIndex - (leafsPerColumn - 1) / 2) * ySpacing + 400;
+                });
+            } else {
+                // Original layout: split leaves above and below non-leaves
+                const generationGroups = d3.group(nodes, d => d.generation);
+
+                nodes.forEach(node => {
+                    const genNodes = generationGroups.get(node.generation);
+                    const leafNodes = genNodes.filter(n => n.children.length === 0);
+                    const nonLeafNodes = genNodes.filter(n => n.children.length > 0);
+
+                    let finalIndex;
+                    let finalSize;
+
+                    if (node.children.length === 0) {
+                        // This is a leaf node - split above and below
+                        const leafIndex = leafNodes.indexOf(node);
+                        const halfLeaves = Math.floor(leafNodes.length / 2);
+
+                        if (leafIndex < halfLeaves) {
+                            // Top half of leaves (above non-leaves)
+                            finalIndex = leafIndex;
+                        } else {
+                            // Bottom half of leaves (below non-leaves) - extra leaf goes below
+                            finalIndex = halfLeaves + nonLeafNodes.length + (leafIndex - halfLeaves);
+                        }
+                        finalSize = genNodes.length;
+                    } else {
+                        // This is a non-leaf node - goes in middle
+                        const nonLeafIndex = nonLeafNodes.indexOf(node);
+                        const halfLeaves = Math.floor(leafNodes.length / 2);
+                        finalIndex = halfLeaves + nonLeafIndex;
+                        finalSize = genNodes.length;
+                    }
+
+                    node.x = node.generation * xSpacing;
+                    node.y = (finalIndex - (finalSize - 1) / 2) * ySpacing + 400;
+                });
+            }
+        }
+
+        positionNodes();
 
         // Assign colors intelligently after positions are calculated
         const nodeColors = assignNodeColors(nodes, nodeMap);
@@ -1744,25 +1803,79 @@
         svg.call(zoom);
 
         // Update positions with proper height calculation
-        nodes.forEach(node => {
-            const genNodes = generationGroups.get(node.generation);
+        function updatePositions() {
+            if (useColumnLayoutForLeaves) {
+                // Column layout: place leaves in columns on the right side
+                const maxGeneration = Math.max(...nodes.map(n => n.generation));
+                const leafColumnStartX = (maxGeneration + 1) * xSpacing;
+                const leafsPerColumn = 15; // Adjust this for density
 
-            // Sort nodes within each generation: leaf nodes (no children) go to bottom
-            const sortedGenNodes = genNodes.slice().sort((a, b) => {
-                const aIsLeaf = a.children.length === 0;
-                const bIsLeaf = b.children.length === 0;
+                // Separate leaf and non-leaf nodes
+                const leafNodes = nodes.filter(n => n.children.length === 0);
+                const nonLeafNodes = nodes.filter(n => n.children.length > 0);
 
-                if (aIsLeaf && !bIsLeaf) return 1; // a goes after b (bottom)
-                if (!aIsLeaf && bIsLeaf) return -1; // a goes before b (top)
-                return 0; // maintain relative order for same type
-            });
+                // Position non-leaf nodes normally
+                const nonLeafGenerationGroups = d3.group(nonLeafNodes, d => d.generation);
+                nonLeafNodes.forEach(node => {
+                    const genNodes = nonLeafGenerationGroups.get(node.generation);
+                    const genIndex = genNodes.indexOf(node);
+                    const genSize = genNodes.length;
 
-            const genIndex = sortedGenNodes.indexOf(node);
-            const genSize = sortedGenNodes.length;
+                    node.x = node.generation * xSpacing;
+                    node.y = (genIndex - (genSize - 1) / 2) * ySpacing + height / 2;
+                });
 
-            node.x = node.generation * xSpacing;
-            node.y = (genIndex - (genSize - 1) / 2) * ySpacing + height / 2;
-        });
+                // Sort leaves by their original generation (leftmost first)
+                leafNodes.sort((a, b) => a.generation - b.generation);
+
+                // Position leaf nodes in columns
+                leafNodes.forEach((node, index) => {
+                    const columnIndex = Math.floor(index / leafsPerColumn);
+                    const rowIndex = index % leafsPerColumn;
+
+                    node.x = leafColumnStartX + (columnIndex * 150); // 150px between columns
+                    node.y = (rowIndex - (leafsPerColumn - 1) / 2) * ySpacing + height / 2;
+                });
+            } else {
+                // Original layout: split leaves above and below non-leaves
+                const generationGroups = d3.group(nodes, d => d.generation);
+
+                nodes.forEach(node => {
+                    const genNodes = generationGroups.get(node.generation);
+                    const leafNodes = genNodes.filter(n => n.children.length === 0);
+                    const nonLeafNodes = genNodes.filter(n => n.children.length > 0);
+
+                    let finalIndex;
+                    let finalSize;
+
+                    if (node.children.length === 0) {
+                        // This is a leaf node - split above and below
+                        const leafIndex = leafNodes.indexOf(node);
+                        const halfLeaves = Math.floor(leafNodes.length / 2);
+
+                        if (leafIndex < halfLeaves) {
+                            // Top half of leaves (above non-leaves)
+                            finalIndex = leafIndex;
+                        } else {
+                            // Bottom half of leaves (below non-leaves) - extra leaf goes below
+                            finalIndex = halfLeaves + nonLeafNodes.length + (leafIndex - halfLeaves);
+                        }
+                        finalSize = genNodes.length;
+                    } else {
+                        // This is a non-leaf node - goes in middle
+                        const nonLeafIndex = nonLeafNodes.indexOf(node);
+                        const halfLeaves = Math.floor(leafNodes.length / 2);
+                        finalIndex = halfLeaves + nonLeafIndex;
+                        finalSize = genNodes.length;
+                    }
+
+                    node.x = node.generation * xSpacing;
+                    node.y = (finalIndex - (finalSize - 1) / 2) * ySpacing + height / 2;
+                });
+            }
+        }
+
+        updatePositions();
 
         // Function to estimate text width (approximate) - updated for larger font and stroke
         function getTextWidth(text, fontSize = 14) {
@@ -1790,7 +1903,7 @@
 
             let targetYOffset = 0;
             if (numInputs > 1) {
-                const spacing = 10;
+                const spacing = 20; // Increased spacing from 10 to 20
                 const totalHeight = (numInputs - 1) * spacing;
                 targetYOffset = (linkIndex * spacing) - (totalHeight / 2);
             }
@@ -1883,12 +1996,12 @@
 
                 const targetY = target.y + d.targetYOffset;
 
-                // Connect to the straight sides of rounded rectangles to avoid round corners
+                // Connect to the straight sides of rounded rectangles, extending well into the node
                 const sourceX = source.x + sourceWidth / 2; // Right edge of source
-                const targetX = target.x - targetWidth / 2; // Left edge of target
+                const targetX = (target.x - targetWidth / 2) + 3; // Left edge of target
 
-                // Add straight segments before and after the curve for better visibility
-                const straightLength = 5; // Shorter straight segments
+                // Add straight segments that extend well into the node edges to eliminate gaps
+                const straightLength = 10; // Much longer straight segments into nodes
                 const sourceXStraight = sourceX + straightLength;
                 const targetXStraight = targetX - straightLength;
 
@@ -1898,7 +2011,7 @@
                 const controlX1 = sourceX + controlOffset1;
                 const controlX2 = targetX - controlOffset2;
 
-                // Create path: straight out -> smooth curve -> straight in
+                // Create path: straight into node -> smooth curve -> straight into node
                 return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
             })
             .style("stroke", d => {
@@ -2291,6 +2404,56 @@
 
         // Clear selection on background click
         svg.on("click", resetHighlight);
+
+        // Toggle function for leaf layout
+        function toggleLeafLayout() {
+            useColumnLayoutForLeaves = !useColumnLayoutForLeaves;
+
+            // Update button text
+            const button = document.getElementById('layoutToggle');
+            button.textContent = useColumnLayoutForLeaves ? 'Switch to Split Layout' : 'Switch to Column Layout';
+
+            // Update positions with transitions
+            updatePositions();
+
+            // Animate nodes
+            node.transition()
+                .duration(750)
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+
+            // Animate links
+            link.transition()
+                .duration(750)
+                .attr("d", d => {
+                    const source = nodeMap.get(d.source);
+                    const target = nodeMap.get(d.target);
+                    const sourceWidth = source.width || 120;
+                    const targetWidth = target.width || 120;
+
+                    const targetY = target.y + d.targetYOffset;
+
+                    // Connect to the straight sides of rounded rectangles, extending well into the node
+                    const sourceX = source.x + sourceWidth / 2; // Right edge of source
+                    const targetX = target.x - targetWidth / 2; // Left edge of target
+
+                    // Add straight segments that extend well into the node edges to eliminate gaps
+                    const straightLength = 15; // Much longer straight segments into nodes
+                    const sourceXStraight = sourceX + straightLength;
+                    const targetXStraight = targetX - straightLength;
+
+                    // Create smoother control points for gradual transition
+                    const controlOffset1 = straightLength + 20; // Gradual curve start
+                    const controlOffset2 = straightLength + 20; // Gradual curve end
+                    const controlX1 = sourceX + controlOffset1;
+                    const controlX2 = targetX - controlOffset2;
+
+                    // Create path: straight into node -> smooth curve -> straight into node
+                    return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+                });
+
+            // Fit view after transition
+            setTimeout(() => fitView(), 800);
+        }
 
         // Initial fit
         fitView();
