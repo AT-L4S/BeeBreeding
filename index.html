@@ -2081,20 +2081,32 @@
             borderElement.attr("stroke", isBaseBee ? "#000" : "#ddd");
 
             if (inputLinks.length > 0) {
-                // Sort input links by their vertical offset
-                const sortedLinks = inputLinks.map((link, index) => {
-                    let targetYOffset = 0;
-                    if (inputLinks.length > 1) {
-                        const spacing = 10;
-                        const totalHeight = (inputLinks.length - 1) * spacing;
-                        targetYOffset = (index * spacing) - (totalHeight / 2);
-                    }
-                    return {
-                        link,
-                        offset: targetYOffset,
-                        index
-                    };
-                }).sort((a, b) => a.offset - b.offset);
+                // Sort input links using the same logic as edge crossing minimization
+                const sortedLinks = inputLinks
+                    .map(link => {
+                        const linkData = linksWithData.find(ld => ld.source === link.source && ld.target ===
+                            link.target);
+                        return {
+                            link,
+                            linkData,
+                            sourceY: linkData ? linkData.sourceY : 0
+                        };
+                    })
+                    .sort((a, b) => a.sourceY - b
+                        .sourceY) // Sort by source Y position like crossing minimization
+                    .map((item, index) => {
+                        let targetYOffset = 0;
+                        if (inputLinks.length > 1) {
+                            const spacing = 20; // Use same 20px spacing as other functions
+                            const totalHeight = (inputLinks.length - 1) * spacing;
+                            targetYOffset = (index * spacing) - (totalHeight / 2);
+                        }
+                        return {
+                            link: item.link,
+                            offset: targetYOffset,
+                            index
+                        };
+                    });
 
                 if (inputLinks.length === 1) {
                     // Single input - use that color for entire border
@@ -2104,9 +2116,21 @@
                     // Multiple inputs - remove the main border and create separate colored segments
                     borderElement.remove(); // Remove the underlying border element
 
-                    const topColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
-                    const bottomColor = availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link
-                        .source] || 0];
+                    // Find the colors based on actual spatial position (top/bottom)
+                    const topLinks = sortedLinks.filter(item => item.offset <
+                        0); // Negative offset = above center
+                    const bottomLinks = sortedLinks.filter(item => item.offset >=
+                        0); // Positive/zero offset = below center
+
+                    // Get colors for top and bottom edges based on spatial position
+                    const topColor = topLinks.length > 0 ?
+                        availableColors[nodeColors[topLinks[topLinks.length - 1].link.source] || 0] :
+                        // Bottommost of top links
+                        availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    const bottomColor = bottomLinks.length > 0 ?
+                        availableColors[nodeColors[bottomLinks[0].link.source] || 0] :
+                        // Topmost of bottom links
+                        availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link.source] || 0];
 
                     // Top edge segment - complete top with both corners
                     const topPath =
@@ -2240,24 +2264,48 @@
                     const edgeColor = availableColors[nodeColors[inputLinks[0].source] || 0];
                     nodeElement.selectAll(".node-border, .node-border-segment").attr("stroke", edgeColor);
                 } else {
-                    // Multiple parents - restore segment colors
-                    const sortedLinks = inputLinks.map((link, index) => {
-                        let targetYOffset = 0;
-                        if (inputLinks.length > 1) {
-                            const spacing = 10;
-                            const totalHeight = (inputLinks.length - 1) * spacing;
-                            targetYOffset = (index * spacing) - (totalHeight / 2);
-                        }
-                        return {
-                            link,
-                            offset: targetYOffset,
-                            index
-                        };
-                    }).sort((a, b) => a.offset - b.offset);
+                    // Multiple parents - restore segment colors using same logic as edge crossing minimization
+                    const sortedLinks = inputLinks
+                        .map(link => {
+                            const linkData = linksWithData.find(ld => ld.source === link.source && ld
+                                .target === link.target);
+                            return {
+                                link,
+                                linkData,
+                                sourceY: linkData ? linkData.sourceY : 0
+                            };
+                        })
+                        .sort((a, b) => a.sourceY - b
+                            .sourceY) // Sort by source Y position like crossing minimization
+                        .map((item, index) => {
+                            let targetYOffset = 0;
+                            if (inputLinks.length > 1) {
+                                const spacing = 20; // Use same 20px spacing as other functions
+                                const totalHeight = (inputLinks.length - 1) * spacing;
+                                targetYOffset = (index * spacing) - (totalHeight / 2);
+                            }
+                            return {
+                                link: item.link,
+                                offset: targetYOffset,
+                                index
+                            };
+                        });
 
-                    const topColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
-                    const bottomColor = availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link
-                        .source] || 0];
+                    // Find the colors based on actual spatial position (top/bottom)
+                    const topLinks = sortedLinks.filter(item => item.offset <
+                        0); // Negative offset = above center
+                    const bottomLinks = sortedLinks.filter(item => item.offset >=
+                        0); // Positive/zero offset = below center
+
+                    // Get colors for top and bottom edges based on spatial position
+                    const topColor = topLinks.length > 0 ?
+                        availableColors[nodeColors[topLinks[topLinks.length - 1].link.source] || 0] :
+                        // Bottommost of top links
+                        availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    const bottomColor = bottomLinks.length > 0 ?
+                        availableColors[nodeColors[bottomLinks[0].link.source] || 0] :
+                        // Topmost of bottom links
+                        availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link.source] || 0];
 
                     const segments = nodeElement.selectAll(".node-border-segment").nodes();
                     if (segments.length >= 4) {
@@ -2363,24 +2411,48 @@
                     const edgeColor = availableColors[nodeColors[inputLinks[0].source] || 0];
                     nodeElement.selectAll(".node-border, .node-border-segment").attr("stroke", edgeColor);
                 } else {
-                    // Multiple inputs - restore segment colors
-                    const sortedLinks = inputLinks.map((link, index) => {
-                        let targetYOffset = 0;
-                        if (inputLinks.length > 1) {
-                            const spacing = 10;
-                            const totalHeight = (inputLinks.length - 1) * spacing;
-                            targetYOffset = (index * spacing) - (totalHeight / 2);
-                        }
-                        return {
-                            link,
-                            offset: targetYOffset,
-                            index
-                        };
-                    }).sort((a, b) => a.offset - b.offset);
+                    // Multiple inputs - restore segment colors using same logic as edge crossing minimization
+                    const sortedLinks = inputLinks
+                        .map(link => {
+                            const linkData = linksWithData.find(ld => ld.source === link.source && ld
+                                .target === link.target);
+                            return {
+                                link,
+                                linkData,
+                                sourceY: linkData ? linkData.sourceY : 0
+                            };
+                        })
+                        .sort((a, b) => a.sourceY - b
+                            .sourceY) // Sort by source Y position like crossing minimization
+                        .map((item, index) => {
+                            let targetYOffset = 0;
+                            if (inputLinks.length > 1) {
+                                const spacing = 20; // Use same 20px spacing as other functions
+                                const totalHeight = (inputLinks.length - 1) * spacing;
+                                targetYOffset = (index * spacing) - (totalHeight / 2);
+                            }
+                            return {
+                                link: item.link,
+                                offset: targetYOffset,
+                                index
+                            };
+                        });
 
-                    const topColor = availableColors[nodeColors[sortedLinks[0].link.source] || 0];
-                    const bottomColor = availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link
-                        .source] || 0];
+                    // Find the colors based on actual spatial position (top/bottom)
+                    const topLinks = sortedLinks.filter(item => item.offset <
+                        0); // Negative offset = above center
+                    const bottomLinks = sortedLinks.filter(item => item.offset >=
+                        0); // Positive/zero offset = below center
+
+                    // Get colors for top and bottom edges based on spatial position
+                    const topColor = topLinks.length > 0 ?
+                        availableColors[nodeColors[topLinks[topLinks.length - 1].link.source] || 0] :
+                        // Bottommost of top links
+                        availableColors[nodeColors[sortedLinks[0].link.source] || 0];
+                    const bottomColor = bottomLinks.length > 0 ?
+                        availableColors[nodeColors[bottomLinks[0].link.source] || 0] :
+                        // Topmost of bottom links
+                        availableColors[nodeColors[sortedLinks[sortedLinks.length - 1].link.source] || 0];
 
                     const segments = nodeElement.selectAll(".node-border-segment").nodes();
                     if (segments.length >= 4) {
@@ -2481,7 +2553,7 @@
 
                     // Connect to the straight sides of rounded rectangles, extending well into the node
                     const sourceX = source.x + sourceWidth / 2; // Right edge of source
-                    const targetX = target.x - targetWidth / 2; // Left edge of target
+                    const targetX = (target.x - targetWidth / 2) + 3; // Left edge of target
 
                     // Add straight segments that extend well into the node edges to eliminate gaps
                     const straightLength = 15; // Much longer straight segments into nodes
