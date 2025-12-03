@@ -105,3 +105,19 @@ beebreeding/
 ├── index.html                 # Main HTML entry point
 └── README.md                  # Project documentation
 ```
+
+---
+
+## Icon Organization
+
+Bee and item images are organized using a convention-based system with mod-specific folders:
+
+- **Bee Images**: Located in `assets/bees/{mod_name}/{bee_name}.png`
+
+  - Example: `assets/bees/forestry/common.png`
+  - Example: `assets/bees/extrabees/industrious.png`
+
+- **Item Images**: Located in `assets/items/{mod_name}/{item_name}.png`
+
+  - Example: `assets/items/forestry/honey_comb.png`
+  - Example: `assets/items/extrabees/royal_jelly.png`
