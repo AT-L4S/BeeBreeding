@@ -46,8 +46,9 @@ beebreeding/
 ├── data/                      # Data files (can be updated independently)
 │   ├── bees.json              # Main bee data with product info
 │   │   # {
-│   │   #   "Special": {
-│   │   #     "mod": "Forestry",
+│   │   #   "BeesAddon:Special": {
+│   │   #     "mod": "BeesAddon",
+│   │   #     "name": "Special",
 │   │   #     "idealTemperature": "cold",
 │   │   #     "idealHumidity": "dry"
 │   │   #     "temperatureTolerance": "none",
@@ -68,30 +69,26 @@ beebreeding/
 │   │   # }
 │   │
 │   ├── breeding_pairs.json    # Breeding combinations with probabilities
-│   │   # {
-│   │   #   "pairs": [
-│   │   #     {
-│   │   #       "parents": ["Common", "Forest"],
-│   │   #       "children": [
-│   │   #         {"species": "Meadows", "probability": 0.15},
-│   │   #         {"species": "Tropical", "probability": 0.20}
-│   │   #       ],
-│   │   #     }
-│   │   #   ]
-│   │   # }
+│   │   # [
+│   │   #   {
+│   │   #     "parents": ["Common", "Forest"],
+│   │   #     "children": [
+│   │   #       {"species": "Meadows", "probability": 0.15},
+│   │   #       {"species": "Tropical", "probability": 0.20}
+│   │   #     ],
+│   │   #   }
+│   │   # ]
 │   │
 │   └── combs.json             # Comb processing information
-│       # {
-│       #   "combs": [
-│       #     {
-│       #       "name": "forestry:honeyComb",
-│       #       "processing": [
-│       #         {"product": "forestry:honeyDrop", "percentage": 0.8},
-│       #         {"product": "forestry:beeswax", "percentage": 0.2}
-│       #       ]
-│       #     }
-│       #   ]
-│       # }
+│       # [
+│       #   {
+│       #     "name": "forestry:honeyComb",
+│       #     "processing": [
+│       #       {"product": "forestry:honeyDrop", "percentage": 0.8},
+│       #       {"product": "forestry:beeswax", "percentage": 0.2}
+│       #     ]
+│       #   }
+│       # ]
 │
 ├── assets/
 │   ├── css/
