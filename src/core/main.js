@@ -748,10 +748,39 @@ export class BeeBreedingApp {
         return (origA?.y || a.y) - (origB?.y || b.y);
       });
 
+      // Add alternating vertical stagger between generations for clarity
+      const staggerAmount = 30;
+      const generationOffset =
+        genIndex % 2 === 0
+          ? -staggerAmount * Math.floor(genIndex / 2)
+          : staggerAmount * Math.ceil(genIndex / 2);
+
+      // Check if the selected node is in this generation
+      const selectedNodeIndex = genNodes.findIndex(
+        (n) => n.id === selectedNode.id
+      );
+
       // Position nodes vertically, maintaining their relative order
       genNodes.forEach((node, i) => {
         node.x = xPos;
-        node.y = (i - (genNodes.length - 1) / 2) * config.ySpacing + 400;
+
+        if (node.id === selectedNode.id) {
+          // Selected node is always centered at Y=400
+          node.y = 400;
+        } else {
+          // Other nodes use normal spacing with stagger offset
+          let baseY = 400 + generationOffset;
+
+          // If selected node is in this generation, adjust positions around it
+          if (selectedNodeIndex !== -1) {
+            // Position relative to selected node
+            const offsetFromSelected = i - selectedNodeIndex;
+            node.y = 400 + offsetFromSelected * config.ySpacing;
+          } else {
+            // Normal positioning with stagger
+            node.y = (i - (genNodes.length - 1) / 2) * config.ySpacing + baseY;
+          }
+        }
       });
     });
   }
