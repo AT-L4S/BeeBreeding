@@ -579,6 +579,14 @@ export class BeeBreedingApp {
   showFilteredView(selectedNode) {
     this.isFilteredView = true;
 
+    // Disable layout toggle button
+    const layoutButton = document.getElementById("layoutToggle");
+    if (layoutButton) {
+      layoutButton.disabled = true;
+      layoutButton.style.opacity = "0.5";
+      layoutButton.style.cursor = "not-allowed";
+    }
+
     // Clear any previous highlights/classes
     this.node.classed("highlighted connected faded", false);
     this.link.classed("highlighted faded", false);
@@ -626,18 +634,14 @@ export class BeeBreedingApp {
       .filter((d) => allAncestors.has(d.id) || allDescendants.has(d.id))
       .classed("connected", true);
 
-    // Animate to new positions
+    // Update to new positions immediately
     this.node
       .filter((d) => connectedIds.has(d.id))
-      .transition()
-      .duration(500)
       .attr("transform", (d) => `translate(${d.x},${d.y})`);
 
-    // Update link positions
+    // Update link positions immediately
     this.link
       .filter((d) => connectedIds.has(d.source) && connectedIds.has(d.target))
-      .transition()
-      .duration(500)
       .attr("d", (d) => {
         const source = this.nodeMap.get(d.source);
         const target = this.nodeMap.get(d.target);
@@ -655,8 +659,8 @@ export class BeeBreedingApp {
         return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
       });
 
-    // Fit view to filtered nodes
-    setTimeout(() => this.fitViewToNodes(filteredNodes), 600);
+    // Fit view to filtered nodes immediately
+    this.fitViewToNodes(filteredNodes);
   }
 
   arrangeFilteredNodes(filteredNodes, selectedNode) {
@@ -790,6 +794,14 @@ export class BeeBreedingApp {
   restoreOriginalView() {
     this.isFilteredView = false;
 
+    // Re-enable layout toggle button
+    const layoutButton = document.getElementById("layoutToggle");
+    if (layoutButton) {
+      layoutButton.disabled = false;
+      layoutButton.style.opacity = "1";
+      layoutButton.style.cursor = "pointer";
+    }
+
     // Restore original positions
     this.nodes.forEach((node) => {
       const original = this.originalPositions.get(node.id);
@@ -815,36 +827,30 @@ export class BeeBreedingApp {
     // Reset node borders
     this.resetNodeBorders();
 
-    // Animate back to original positions
-    this.node
-      .transition()
-      .duration(500)
-      .attr("transform", (d) => `translate(${d.x},${d.y})`);
+    // Update back to original positions immediately
+    this.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
 
-    this.link
-      .transition()
-      .duration(500)
-      .attr("d", (d) => {
-        const source = this.nodeMap.get(d.source);
-        const target = this.nodeMap.get(d.target);
-        const sourceWidth = source.width || 120;
-        const targetWidth = target.width || 120;
-        const targetY = target.y + (d.targetYOffset || 0);
+    this.link.attr("d", (d) => {
+      const source = this.nodeMap.get(d.source);
+      const target = this.nodeMap.get(d.target);
+      const sourceWidth = source.width || 120;
+      const targetWidth = target.width || 120;
+      const targetY = target.y + (d.targetYOffset || 0);
 
-        const sourceX = source.x + sourceWidth / 2;
-        const targetX = target.x - targetWidth / 2 + 3;
-        const sourceXStraight = sourceX + config.straightLength;
-        const targetXStraight = targetX - config.straightLength;
-        const controlX1 = sourceX + config.controlOffset;
-        const controlX2 = targetX - config.controlOffset;
+      const sourceX = source.x + sourceWidth / 2;
+      const targetX = target.x - targetWidth / 2 + 3;
+      const sourceXStraight = sourceX + config.straightLength;
+      const targetXStraight = targetX - config.straightLength;
+      const controlX1 = sourceX + config.controlOffset;
+      const controlX2 = targetX - config.controlOffset;
 
-        return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
-      });
+      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+    });
 
     document.getElementById("infoPanel").style.display = "none";
 
-    // Fit view after animation
-    setTimeout(() => this.fitView(), 600);
+    // Fit view immediately
+    this.fitView();
   }
 
   fitViewToNodes(nodes) {
@@ -930,42 +936,36 @@ export class BeeBreedingApp {
         : config.layoutModes.SPLIT
     );
 
-    // Animate nodes
-    this.node
-      .transition()
-      .duration(750)
-      .attr("transform", (d) => `translate(${d.x},${d.y})`);
+    // Update nodes immediately
+    this.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
 
-    // Animate links
-    this.link
-      .transition()
-      .duration(750)
-      .attr("d", (d) => {
-        const source = this.nodeMap.get(d.source);
-        const target = this.nodeMap.get(d.target);
-        const sourceWidth = source.width || 120;
-        const targetWidth = target.width || 120;
+    // Update links immediately
+    this.link.attr("d", (d) => {
+      const source = this.nodeMap.get(d.source);
+      const target = this.nodeMap.get(d.target);
+      const sourceWidth = source.width || 120;
+      const targetWidth = target.width || 120;
 
-        const targetY = target.y + d.targetYOffset;
+      const targetY = target.y + d.targetYOffset;
 
-        // Connect to the straight sides of rounded rectangles
-        const sourceX = source.x + sourceWidth / 2;
-        const targetX = target.x - targetWidth / 2 + 3;
+      // Connect to the straight sides of rounded rectangles
+      const sourceX = source.x + sourceWidth / 2;
+      const targetX = target.x - targetWidth / 2 + 3;
 
-        // Add straight segments
-        const sourceXStraight = sourceX + config.straightLength;
-        const targetXStraight = targetX - config.straightLength;
+      // Add straight segments
+      const sourceXStraight = sourceX + config.straightLength;
+      const targetXStraight = targetX - config.straightLength;
 
-        // Create smoother control points
-        const controlX1 = sourceX + config.controlOffset;
-        const controlX2 = targetX - config.controlOffset;
+      // Create smoother control points
+      const controlX1 = sourceX + config.controlOffset;
+      const controlX2 = targetX - config.controlOffset;
 
-        // Create path
-        return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
-      });
+      // Create path
+      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+    });
 
-    // Fit view after transition
-    setTimeout(() => this.fitView(), 800);
+    // Fit view immediately
+    this.fitView();
   }
 
   setupSearch() {
@@ -1024,14 +1024,54 @@ export class BeeBreedingApp {
           const showAllNodes = filterModeCheckbox.checked;
 
           if (showAllNodes) {
-            // Switch to fade mode - restore first if in filtered view, then apply fade
+            // Switch to fade mode
             if (this.isFilteredView) {
-              this.restoreOriginalView();
-              // Wait for animation to complete, then apply fade
-              setTimeout(() => {
-                this.highlightConnections(this.currentSelectedNode);
-                this.showInfo(this.currentSelectedNode);
-              }, 550);
+              this.isFilteredView = false;
+
+              // Restore original positions to node data
+              this.nodes.forEach((node) => {
+                const original = this.originalPositions.get(node.id);
+                if (original) {
+                  node.x = original.x;
+                  node.y = original.y;
+                }
+              });
+
+              // Clear saved positions
+              this.originalPositions.clear();
+
+              // Show all nodes and links
+              this.node
+                .style("display", null)
+                .classed("highlighted connected faded", false);
+
+              this.link
+                .style("display", null)
+                .classed("highlighted faded", false);
+
+              // Update positions immediately without animation
+              this.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+
+              this.link.attr("d", (d) => {
+                const source = this.nodeMap.get(d.source);
+                const target = this.nodeMap.get(d.target);
+                const sourceWidth = source.width || 120;
+                const targetWidth = target.width || 120;
+                const targetY = target.y + (d.targetYOffset || 0);
+
+                const sourceX = source.x + sourceWidth / 2;
+                const targetX = target.x - targetWidth / 2 + 3;
+                const sourceXStraight = sourceX + config.straightLength;
+                const targetXStraight = targetX - config.straightLength;
+                const controlX1 = sourceX + config.controlOffset;
+                const controlX2 = targetX - config.controlOffset;
+
+                return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+              });
+
+              // Apply fade highlighting immediately
+              this.highlightConnections(this.currentSelectedNode);
+              this.showInfo(this.currentSelectedNode);
             } else {
               // Already in normal view, just apply fade
               this.highlightConnections(this.currentSelectedNode);
