@@ -1,9 +1,21 @@
 [
+  //   {
+  //     "parents": ["{ModName}:{BeeName}", "MyForestryAddon:MyBee1"],
+  //     "children": [
+  //       {
+  //         "species": "MyForestryAddon:MyBee2",
+  //         "probability": 0.2,
+  //         "requirements": {
+  //           "temperature": "cold",
+  //           "humidity": "damp",
+  //           "biome": "MyColdDampBiome",
+  //           "block": "chisel:basalt@10"
+  //         }
+  //       }
+  //     ]
+  //   },
   {
-    "parents": [
-      "Forestry:Farmerly",
-      "Forestry:Industrious"
-    ],
+    "parents": ["Forestry:Farmerly", "Forestry:Industrious"],
     "children": [
       {
         "species": "Forestry:Agrarian",
@@ -12,10 +24,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Frugal",
-      "Forestry:Modest"
-    ],
+    "parents": ["Forestry:Frugal", "Forestry:Modest"],
     "children": [
       {
         "species": "Forestry:Austere",
@@ -24,10 +33,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Vengeful",
-      "Forestry:Vindictive"
-    ],
+    "parents": ["Forestry:Vengeful", "Forestry:Vindictive"],
     "children": [
       {
         "species": "Forestry:Avenging",
@@ -36,10 +42,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:White"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:White"],
     "children": [
       {
         "species": "Forestry:Black",
@@ -48,10 +51,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Forest"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Forest"],
     "children": [
       {
         "species": "Forestry:Blue",
@@ -64,10 +64,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Tropical"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Tropical"],
     "children": [
       {
         "species": "Forestry:Brown",
@@ -76,10 +73,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Forest",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Forestry:Forest", "Forestry:Meadows"],
     "children": [
       {
         "species": "Forestry:Common",
@@ -88,10 +82,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Forestry:Common", "Forestry:Meadows"],
     "children": [
       {
         "species": "Forestry:Cultivated",
@@ -100,10 +91,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Blue",
-      "Forestry:Green"
-    ],
+    "parents": ["Forestry:Blue", "Forestry:Green"],
     "children": [
       {
         "species": "Forestry:Cyan",
@@ -112,10 +100,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Fiendish",
-      "Forestry:Sinister"
-    ],
+    "parents": ["Forestry:Fiendish", "Forestry:Sinister"],
     "children": [
       {
         "species": "Forestry:Demonic",
@@ -124,10 +109,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Marshy"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Marshy"],
     "children": [
       {
         "species": "Forestry:Derpious",
@@ -136,10 +118,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "Forestry:Cultivated"
-    ],
+    "parents": ["Forestry:Common", "Forestry:Cultivated"],
     "children": [
       {
         "species": "Forestry:Diligent",
@@ -156,10 +135,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Exotic",
-      "Forestry:Tropical"
-    ],
+    "parents": ["Forestry:Exotic", "Forestry:Tropical"],
     "children": [
       {
         "species": "Forestry:Edenic",
@@ -168,10 +144,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Austere",
-      "Forestry:Tropical"
-    ],
+    "parents": ["Forestry:Austere", "Forestry:Tropical"],
     "children": [
       {
         "species": "Forestry:Exotic",
@@ -180,10 +153,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Rural",
-      "Forestry:Unweary"
-    ],
+    "parents": ["Forestry:Rural", "Forestry:Unweary"],
     "children": [
       {
         "species": "Forestry:Farmerly",
@@ -192,10 +162,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Sinister"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Sinister"],
     "children": [
       {
         "species": "Forestry:Fiendish",
@@ -204,10 +171,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Modest",
-      "Forestry:Sinister"
-    ],
+    "parents": ["Forestry:Modest", "Forestry:Sinister"],
     "children": [
       {
         "species": "Forestry:Frugal",
@@ -216,10 +180,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Icy",
-      "Forestry:Wintry"
-    ],
+    "parents": ["Forestry:Icy", "Forestry:Wintry"],
     "children": [
       {
         "species": "Forestry:Glacial",
@@ -228,10 +189,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Black",
-      "Forestry:White"
-    ],
+    "parents": ["Forestry:Black", "Forestry:White"],
     "children": [
       {
         "species": "Forestry:Gray",
@@ -240,10 +198,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Blue",
-      "Forestry:Yellow"
-    ],
+    "parents": ["Forestry:Blue", "Forestry:Yellow"],
     "children": [
       {
         "species": "Forestry:Green",
@@ -252,10 +207,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Monastic",
-      "Forestry:Secluded"
-    ],
+    "parents": ["Forestry:Monastic", "Forestry:Secluded"],
     "children": [
       {
         "species": "Forestry:Hermitic",
@@ -264,10 +216,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Steadfast",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Steadfast", "Forestry:Valiant"],
     "children": [
       {
         "species": "Forestry:Heroic",
@@ -276,10 +225,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Industrious",
-      "Forestry:Wintry"
-    ],
+    "parents": ["Forestry:Industrious", "Forestry:Wintry"],
     "children": [
       {
         "species": "Forestry:Icy",
@@ -288,10 +234,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Majestic",
-      "Forestry:Noble"
-    ],
+    "parents": ["Forestry:Majestic", "Forestry:Noble"],
     "children": [
       {
         "species": "Forestry:Imperial",
@@ -300,10 +243,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Unweary"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Unweary"],
     "children": [
       {
         "species": "Forestry:Industrious",
@@ -312,10 +252,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Gray",
-      "Forestry:White"
-    ],
+    "parents": ["Forestry:Gray", "Forestry:White"],
     "children": [
       {
         "species": "Forestry:Light Gray",
@@ -324,10 +261,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Green",
-      "Forestry:White"
-    ],
+    "parents": ["Forestry:Green", "Forestry:White"],
     "children": [
       {
         "species": "Forestry:Lime",
@@ -336,10 +270,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Noble"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Noble"],
     "children": [
       {
         "species": "Forestry:Majestic",
@@ -348,10 +279,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Marshy",
-      "Forestry:Noble"
-    ],
+    "parents": ["Forestry:Marshy", "Forestry:Noble"],
     "children": [
       {
         "species": "Forestry:Miry",
@@ -360,10 +288,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Red",
-      "Forestry:Yellow"
-    ],
+    "parents": ["Forestry:Red", "Forestry:Yellow"],
     "children": [
       {
         "species": "Forestry:Orange",
@@ -372,10 +297,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Ender",
-      "Forestry:Spectral"
-    ],
+    "parents": ["Forestry:Ender", "Forestry:Spectral"],
     "children": [
       {
         "species": "Forestry:Phantasmal",
@@ -384,10 +306,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Red",
-      "Forestry:White"
-    ],
+    "parents": ["Forestry:Red", "Forestry:White"],
     "children": [
       {
         "species": "Forestry:Pink",
@@ -396,10 +315,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Blue",
-      "Forestry:Red"
-    ],
+    "parents": ["Forestry:Blue", "Forestry:Red"],
     "children": [
       {
         "species": "Forestry:Purple",
@@ -408,10 +324,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "Forestry:Diligent"
-    ],
+    "parents": ["Forestry:Common", "Forestry:Diligent"],
     "children": [
       {
         "species": "Forestry:Red",
@@ -420,10 +333,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Meadows"],
     "children": [
       {
         "species": "Forestry:Rural",
@@ -432,10 +342,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Austere",
-      "Forestry:Monastic"
-    ],
+    "parents": ["Forestry:Austere", "Forestry:Monastic"],
     "children": [
       {
         "species": "Forestry:Secluded",
@@ -444,10 +351,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Modest"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Modest"],
     "children": [
       {
         "species": "Forestry:Sinister",
@@ -456,10 +360,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Ender",
-      "Forestry:Hermitic"
-    ],
+    "parents": ["Forestry:Ender", "Forestry:Hermitic"],
     "children": [
       {
         "species": "Forestry:Spectral",
@@ -468,10 +369,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Diligent"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Diligent"],
     "children": [
       {
         "species": "Forestry:Unweary",
@@ -480,10 +378,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Demonic",
-      "Forestry:Vindictive"
-    ],
+    "parents": ["Forestry:Demonic", "Forestry:Vindictive"],
     "children": [
       {
         "species": "Forestry:Vengeful",
@@ -492,10 +387,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Demonic",
-      "Forestry:Monastic"
-    ],
+    "parents": ["Forestry:Demonic", "Forestry:Monastic"],
     "children": [
       {
         "species": "Forestry:Vindictive",
@@ -504,10 +396,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Wintry"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Wintry"],
     "children": [
       {
         "species": "Forestry:White",
@@ -520,10 +409,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Modest"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Modest"],
     "children": [
       {
         "species": "Forestry:Yellow",
@@ -532,10 +418,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Forestry:Cultivated"
-    ],
+    "parents": ["Career Bees:Graduate", "Forestry:Cultivated"],
     "children": [
       {
         "species": "Career Bees:Artistic",
@@ -544,10 +427,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Devil",
-      "Career Bees:Police"
-    ],
+    "parents": ["Career Bees:Devil", "Career Bees:Police"],
     "children": [
       {
         "species": "Career Bees:Assassin",
@@ -556,10 +436,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "Forestry:Imperial"
-    ],
+    "parents": ["Career Bees:PHD", "Forestry:Imperial"],
     "children": [
       {
         "species": "Career Bees:Buisness",
@@ -568,10 +445,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Career Bees:Lumber"
-    ],
+    "parents": ["Career Bees:Graduate", "Career Bees:Lumber"],
     "children": [
       {
         "species": "Career Bees:Butcher",
@@ -580,10 +454,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Engineer",
-      "Career Bees:Smelter"
-    ],
+    "parents": ["Career Bees:Engineer", "Career Bees:Smelter"],
     "children": [
       {
         "species": "Career Bees:Clockwork",
@@ -592,10 +463,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Student",
-      "Forestry:Common"
-    ],
+    "parents": ["Career Bees:Student", "Forestry:Common"],
     "children": [
       {
         "species": "Career Bees:Collecting",
@@ -608,10 +476,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Smelter",
-      "Forestry:Demonic"
-    ],
+    "parents": ["Career Bees:Smelter", "Forestry:Demonic"],
     "children": [
       {
         "species": "Career Bees:Devil",
@@ -620,10 +485,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "Forestry:Majestic"
-    ],
+    "parents": ["Career Bees:PHD", "Forestry:Majestic"],
     "children": [
       {
         "species": "Career Bees:Doctor",
@@ -632,10 +494,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Clockwork",
-      "Career Bees:Engineer"
-    ],
+    "parents": ["Career Bees:Clockwork", "Career Bees:Engineer"],
     "children": [
       {
         "species": "Career Bees:Electrician",
@@ -644,10 +503,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "Forestry:Noble"
-    ],
+    "parents": ["Career Bees:PHD", "Forestry:Noble"],
     "children": [
       {
         "species": "Career Bees:Engineer",
@@ -656,10 +512,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Career Bees:Smelter"
-    ],
+    "parents": ["Career Bees:Graduate", "Career Bees:Smelter"],
     "children": [
       {
         "species": "Career Bees:Honey-Smelter",
@@ -672,10 +525,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Career Bees:Graduate", "Forestry:Meadows"],
     "children": [
       {
         "species": "Career Bees:Husbandry",
@@ -684,10 +534,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Buisness",
-      "Forestry:Common"
-    ],
+    "parents": ["Career Bees:Buisness", "Forestry:Common"],
     "children": [
       {
         "species": "Career Bees:Junk Seller",
@@ -696,10 +543,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Forestry:Forest"
-    ],
+    "parents": ["Career Bees:Graduate", "Forestry:Forest"],
     "children": [
       {
         "species": "Career Bees:Lumber",
@@ -708,10 +552,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Engineer",
-      "Career Bees:Science"
-    ],
+    "parents": ["Career Bees:Engineer", "Career Bees:Science"],
     "children": [
       {
         "species": "Career Bees:Mad Scientist",
@@ -720,10 +561,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Devil",
-      "Career Bees:Politician"
-    ],
+    "parents": ["Career Bees:Devil", "Career Bees:Politician"],
     "children": [
       {
         "species": "Career Bees:N.C.A.",
@@ -732,10 +570,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Career Bees:Student"
-    ],
+    "parents": ["Career Bees:Graduate", "Career Bees:Student"],
     "children": [
       {
         "species": "Career Bees:PHD",
@@ -744,10 +579,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Doctor",
-      "Forestry:Sinister"
-    ],
+    "parents": ["Career Bees:Doctor", "Forestry:Sinister"],
     "children": [
       {
         "species": "Career Bees:Plague",
@@ -756,10 +588,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Career Bees:Graduate", "Forestry:Valiant"],
     "children": [
       {
         "species": "Career Bees:Police",
@@ -768,10 +597,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Devil",
-      "Career Bees:Thief"
-    ],
+    "parents": ["Career Bees:Devil", "Career Bees:Thief"],
     "children": [
       {
         "species": "Career Bees:Politician",
@@ -780,10 +606,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Career Bees:Yente"
-    ],
+    "parents": ["Career Bees:Graduate", "Career Bees:Yente"],
     "children": [
       {
         "species": "Career Bees:Priest",
@@ -792,10 +615,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Mad Scientist",
-      "Forestry:Phantasmal"
-    ],
+    "parents": ["Career Bees:Mad Scientist", "Forestry:Phantasmal"],
     "children": [
       {
         "species": "Career Bees:Quantum Charming",
@@ -808,10 +628,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Artistic",
-      "Career Bees:PHD"
-    ],
+    "parents": ["Career Bees:Artistic", "Career Bees:PHD"],
     "children": [
       {
         "species": "Career Bees:Rainbow",
@@ -820,10 +637,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Clockwork",
-      "Career Bees:Electrician"
-    ],
+    "parents": ["Career Bees:Clockwork", "Career Bees:Electrician"],
     "children": [
       {
         "species": "Career Bees:Robot",
@@ -832,10 +646,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "Forestry:Industrious"
-    ],
+    "parents": ["Career Bees:PHD", "Forestry:Industrious"],
     "children": [
       {
         "species": "Career Bees:Science",
@@ -844,10 +655,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Graduate",
-      "Forestry:Industrious"
-    ],
+    "parents": ["Career Bees:Graduate", "Forestry:Industrious"],
     "children": [
       {
         "species": "Career Bees:Smelter",
@@ -856,10 +664,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Quantum Charming",
-      "Career Bees:Quantum Strange"
-    ],
+    "parents": ["Career Bees:Quantum Charming", "Career Bees:Quantum Strange"],
     "children": [
       {
         "species": "Career Bees:Temporal",
@@ -868,10 +673,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Police",
-      "Forestry:Sinister"
-    ],
+    "parents": ["Career Bees:Police", "Forestry:Sinister"],
     "children": [
       {
         "species": "Career Bees:Thief",
@@ -880,10 +682,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Husbandry",
-      "Career Bees:Student"
-    ],
+    "parents": ["Career Bees:Husbandry", "Career Bees:Student"],
     "children": [
       {
         "species": "Career Bees:Yente",
@@ -892,10 +691,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Ender",
-      "Forestry:Secluded"
-    ],
+    "parents": ["Forestry:Ender", "Forestry:Secluded"],
     "children": [
       {
         "species": "ExtraBees:Abnormal",
@@ -904,10 +700,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Frigid",
-      "ExtraBees:Ocean"
-    ],
+    "parents": ["ExtraBees:Frigid", "ExtraBees:Ocean"],
     "children": [
       {
         "species": "ExtraBees:Absolute",
@@ -916,10 +709,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Darkened",
-      "ExtraBees:Shadowed"
-    ],
+    "parents": ["ExtraBees:Darkened", "ExtraBees:Shadowed"],
     "children": [
       {
         "species": "ExtraBees:Abyssal",
@@ -928,10 +718,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Caustic",
-      "ExtraBees:Corrosive"
-    ],
+    "parents": ["ExtraBees:Caustic", "ExtraBees:Corrosive"],
     "children": [
       {
         "species": "ExtraBees:Acidic",
@@ -940,10 +727,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Saffron",
-      "MagicBees:Maroon"
-    ],
+    "parents": ["ExtraBees:Saffron", "MagicBees:Maroon"],
     "children": [
       {
         "species": "ExtraBees:Amber",
@@ -952,10 +736,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Noble"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Noble"],
     "children": [
       {
         "species": "ExtraBees:Ancient",
@@ -964,10 +745,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Frugal",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Forestry:Frugal", "Forestry:Meadows"],
     "children": [
       {
         "species": "ExtraBees:Arid",
@@ -976,10 +754,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Bleached",
-      "ExtraBees:Slate"
-    ],
+    "parents": ["ExtraBees:Bleached", "ExtraBees:Slate"],
     "children": [
       {
         "species": "ExtraBees:Ashen",
@@ -988,10 +763,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Bleached",
-      "ExtraBees:Prussian"
-    ],
+    "parents": ["ExtraBees:Bleached", "ExtraBees:Prussian"],
     "children": [
       {
         "species": "ExtraBees:Azure",
@@ -1000,10 +772,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Arid",
-      "Forestry:Common"
-    ],
+    "parents": ["ExtraBees:Arid", "Forestry:Common"],
     "children": [
       {
         "species": "ExtraBees:Barren",
@@ -1012,10 +781,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Diligent"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Diligent"],
     "children": [
       {
         "species": "ExtraBees:Bauxite",
@@ -1024,10 +790,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Valiant",
-      "Forestry:Wintry"
-    ],
+    "parents": ["Forestry:Valiant", "Forestry:Wintry"],
     "children": [
       {
         "species": "ExtraBees:Bleached",
@@ -1036,10 +799,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Wintry",
-      "MagicBees:Shulking"
-    ],
+    "parents": ["Forestry:Wintry", "MagicBees:Shulking"],
     "children": [
       {
         "species": "ExtraBees:Blizzy",
@@ -1048,10 +808,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Thriving",
-      "Forestry:Industrious"
-    ],
+    "parents": ["ExtraBees:Thriving", "Forestry:Industrious"],
     "children": [
       {
         "species": "ExtraBees:Blooming",
@@ -1060,10 +817,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Cyanite",
-      "ExtraBees:Yellorium"
-    ],
+    "parents": ["ExtraBees:Cyanite", "ExtraBees:Yellorium"],
     "children": [
       {
         "species": "ExtraBees:Blutonium",
@@ -1072,10 +826,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Miry",
-      "Forestry:Marshy"
-    ],
+    "parents": ["Forestry:Miry", "Forestry:Marshy"],
     "children": [
       {
         "species": "ExtraBees:Boggy",
@@ -1084,10 +835,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Water",
-      "Forestry:Farmerly"
-    ],
+    "parents": ["ExtraBees:Water", "Forestry:Farmerly"],
     "children": [
       {
         "species": "ExtraBees:Bovine",
@@ -1096,10 +844,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Corrosive",
-      "Forestry:Fiendish"
-    ],
+    "parents": ["ExtraBees:Corrosive", "Forestry:Fiendish"],
     "children": [
       {
         "species": "ExtraBees:Caustic",
@@ -1108,10 +853,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Excited",
-      "Forestry:Austere"
-    ],
+    "parents": ["ExtraBees:Excited", "Forestry:Austere"],
     "children": [
       {
         "species": "ExtraBees:Celebratory",
@@ -1120,10 +862,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Sinister"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Sinister"],
     "children": [
       {
         "species": "ExtraBees:Cinnabar",
@@ -1132,10 +871,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Greek",
-      "ExtraBees:Roman"
-    ],
+    "parents": ["ExtraBees:Greek", "ExtraBees:Roman"],
     "children": [
       {
         "species": "ExtraBees:Classical",
@@ -1144,10 +880,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Wintry"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Wintry"],
     "children": [
       {
         "species": "ExtraBees:Corroded",
@@ -1160,10 +893,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Malicious",
-      "ExtraBees:Viscous"
-    ],
+    "parents": ["ExtraBees:Malicious", "ExtraBees:Viscous"],
     "children": [
       {
         "species": "ExtraBees:Corrosive",
@@ -1172,10 +902,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Desolate",
-      "Forestry:Modest"
-    ],
+    "parents": ["ExtraBees:Desolate", "Forestry:Modest"],
     "children": [
       {
         "species": "ExtraBees:Creepy",
@@ -1184,10 +911,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Nuclear",
-      "ExtraBees:Yellorium"
-    ],
+    "parents": ["ExtraBees:Nuclear", "ExtraBees:Yellorium"],
     "children": [
       {
         "species": "ExtraBees:Cyanite",
@@ -1196,10 +920,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Water",
-      "Forestry:Miry"
-    ],
+    "parents": ["ExtraBees:Water", "Forestry:Miry"],
     "children": [
       {
         "species": "ExtraBees:Damp",
@@ -1208,10 +929,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rocky",
-      "ExtraBees:Shadowed"
-    ],
+    "parents": ["ExtraBees:Rocky", "ExtraBees:Shadowed"],
     "children": [
       {
         "species": "ExtraBees:Darkened",
@@ -1220,10 +938,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Desolate",
-      "Forestry:Meadows"
-    ],
+    "parents": ["ExtraBees:Desolate", "Forestry:Meadows"],
     "children": [
       {
         "species": "ExtraBees:Decaying",
@@ -1232,10 +947,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Barren",
-      "Forestry:Marshy"
-    ],
+    "parents": ["ExtraBees:Barren", "Forestry:Marshy"],
     "children": [
       {
         "species": "ExtraBees:Decomposing",
@@ -1244,10 +956,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Arid",
-      "ExtraBees:Barren"
-    ],
+    "parents": ["ExtraBees:Arid", "ExtraBees:Barren"],
     "children": [
       {
         "species": "ExtraBees:Desolate",
@@ -1256,10 +965,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Lapis",
-      "Forestry:Cultivated"
-    ],
+    "parents": ["ExtraBees:Lapis", "Forestry:Cultivated"],
     "children": [
       {
         "species": "ExtraBees:Diamond",
@@ -1268,10 +974,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Oily",
-      "Forestry:Industrious"
-    ],
+    "parents": ["ExtraBees:Oily", "Forestry:Industrious"],
     "children": [
       {
         "species": "ExtraBees:Distilled",
@@ -1280,10 +983,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rocky",
-      "Forestry:Valiant"
-    ],
+    "parents": ["ExtraBees:Rocky", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Ebony",
@@ -1292,10 +992,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Energetic",
-      "ExtraBees:Excited"
-    ],
+    "parents": ["ExtraBees:Energetic", "ExtraBees:Excited"],
     "children": [
       {
         "species": "ExtraBees:Ecstatic",
@@ -1304,10 +1001,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Lapis",
-      "Forestry:Forest"
-    ],
+    "parents": ["ExtraBees:Lapis", "Forestry:Forest"],
     "children": [
       {
         "species": "ExtraBees:Emerald",
@@ -1316,10 +1010,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Excited",
-      "Forestry:Diligent"
-    ],
+    "parents": ["ExtraBees:Excited", "Forestry:Diligent"],
     "children": [
       {
         "species": "ExtraBees:Energetic",
@@ -1328,10 +1019,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Austere",
-      "MagicBees:Argentum"
-    ],
+    "parents": ["Forestry:Austere", "MagicBees:Argentum"],
     "children": [
       {
         "species": "ExtraBees:Esmeraldi",
@@ -1340,10 +1028,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Excited",
@@ -1352,10 +1037,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Farmerly",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Forestry:Farmerly", "Forestry:Meadows"],
     "children": [
       {
         "species": "ExtraBees:Farmed",
@@ -1368,10 +1050,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Growing",
-      "ExtraBees:Primeval"
-    ],
+    "parents": ["ExtraBees:Growing", "ExtraBees:Primeval"],
     "children": [
       {
         "species": "ExtraBees:Fossilised",
@@ -1380,10 +1059,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Sweetened",
-      "ExtraBees:Thriving"
-    ],
+    "parents": ["ExtraBees:Sweetened", "ExtraBees:Thriving"],
     "children": [
       {
         "species": "ExtraBees:Fruity",
@@ -1392,10 +1068,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Indigo",
-      "ExtraBees:Lavender"
-    ],
+    "parents": ["ExtraBees:Indigo", "ExtraBees:Lavender"],
     "children": [
       {
         "species": "ExtraBees:Fuchsia",
@@ -1404,10 +1077,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Boggy",
-      "Forestry:Miry"
-    ],
+    "parents": ["ExtraBees:Boggy", "Forestry:Miry"],
     "children": [
       {
         "species": "ExtraBees:Fungal",
@@ -1416,10 +1086,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Embittered",
-      "Forestry:Fiendish"
-    ],
+    "parents": ["ExtraBees:Embittered", "Forestry:Fiendish"],
     "children": [
       {
         "species": "ExtraBees:Furious",
@@ -1428,10 +1095,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Blizzy",
-      "Forestry:Icy"
-    ],
+    "parents": ["ExtraBees:Blizzy", "Forestry:Icy"],
     "children": [
       {
         "species": "ExtraBees:Gelid",
@@ -1440,10 +1104,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rusty",
-      "Forestry:Majestic"
-    ],
+    "parents": ["ExtraBees:Rusty", "Forestry:Majestic"],
     "children": [
       {
         "species": "ExtraBees:Glittering",
@@ -1452,10 +1113,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Excited",
-      "ExtraBees:Furious"
-    ],
+    "parents": ["ExtraBees:Excited", "ExtraBees:Furious"],
     "children": [
       {
         "species": "ExtraBees:Glowering",
@@ -1464,10 +1122,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Viscous",
-      "Forestry:Exotic"
-    ],
+    "parents": ["ExtraBees:Viscous", "Forestry:Exotic"],
     "children": [
       {
         "species": "ExtraBees:Glutinous",
@@ -1476,10 +1131,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Marbled",
-      "ExtraBees:Roman"
-    ],
+    "parents": ["ExtraBees:Marbled", "ExtraBees:Roman"],
     "children": [
       {
         "species": "ExtraBees:Greek",
@@ -1488,10 +1140,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Desolate",
-      "Forestry:Austere"
-    ],
+    "parents": ["ExtraBees:Desolate", "Forestry:Austere"],
     "children": [
       {
         "species": "ExtraBees:Hazardous",
@@ -1500,10 +1149,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Cultivated"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Cultivated"],
     "children": [
       {
         "species": "ExtraBees:Impregnable",
@@ -1512,10 +1158,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Prussian",
-      "MagicBees:Maroon"
-    ],
+    "parents": ["ExtraBees:Prussian", "MagicBees:Maroon"],
     "children": [
       {
         "species": "ExtraBees:Indigo",
@@ -1524,10 +1167,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Malicious",
-      "Forestry:Tropical"
-    ],
+    "parents": ["ExtraBees:Malicious", "Forestry:Tropical"],
     "children": [
       {
         "species": "ExtraBees:Infectious",
@@ -1536,10 +1176,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Common"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Common"],
     "children": [
       {
         "species": "ExtraBees:Invincible",
@@ -1548,10 +1185,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Relic",
-      "Forestry:Ender"
-    ],
+    "parents": ["ExtraBees:Relic", "Forestry:Ender"],
     "children": [
       {
         "species": "ExtraBees:Jaded",
@@ -1560,10 +1194,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "ExtraBees:Water"
-    ],
+    "parents": ["ExtraBees:Resilient", "ExtraBees:Water"],
     "children": [
       {
         "species": "ExtraBees:Lapis",
@@ -1572,10 +1203,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Bleached",
-      "MagicBees:Maroon"
-    ],
+    "parents": ["ExtraBees:Bleached", "MagicBees:Maroon"],
     "children": [
       {
         "species": "ExtraBees:Lavender",
@@ -1584,10 +1212,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Meadows"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Meadows"],
     "children": [
       {
         "species": "ExtraBees:Leaden",
@@ -1600,10 +1225,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Blue",
-      "Forestry:White"
-    ],
+    "parents": ["Forestry:Blue", "Forestry:White"],
     "children": [
       {
         "species": "ExtraBees:Light Blue",
@@ -1612,10 +1234,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Bleached",
-      "ExtraBees:Natural"
-    ],
+    "parents": ["ExtraBees:Bleached", "ExtraBees:Natural"],
     "children": [
       {
         "species": "ExtraBees:Lime",
@@ -1624,10 +1243,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Forest"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Forest"],
     "children": [
       {
         "species": "ExtraBees:Lustered",
@@ -1636,10 +1252,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Blue",
-      "Forestry:Pink"
-    ],
+    "parents": ["Forestry:Blue", "Forestry:Pink"],
     "children": [
       {
         "species": "ExtraBees:Magenta",
@@ -1648,10 +1261,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Sinister",
-      "Forestry:Tropical"
-    ],
+    "parents": ["Forestry:Sinister", "Forestry:Tropical"],
     "children": [
       {
         "species": "ExtraBees:Malicious",
@@ -1660,10 +1270,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Tropical",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Tropical", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Natural",
@@ -1672,10 +1279,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rusty",
-      "ExtraBees:Unstable"
-    ],
+    "parents": ["ExtraBees:Rusty", "ExtraBees:Unstable"],
     "children": [
       {
         "species": "ExtraBees:Nuclear",
@@ -1684,10 +1288,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Water",
-      "Forestry:Diligent"
-    ],
+    "parents": ["ExtraBees:Water", "Forestry:Diligent"],
     "children": [
       {
         "species": "ExtraBees:Ocean",
@@ -1700,10 +1301,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Ocean",
-      "ExtraBees:Primeval"
-    ],
+    "parents": ["ExtraBees:Ocean", "ExtraBees:Primeval"],
     "children": [
       {
         "species": "ExtraBees:Oily",
@@ -1712,10 +1310,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Ancient",
-      "ExtraBees:Primeval"
-    ],
+    "parents": ["ExtraBees:Ancient", "ExtraBees:Primeval"],
     "children": [
       {
         "species": "ExtraBees:Prehistoric",
@@ -1724,10 +1319,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Ancient",
-      "Forestry:Secluded"
-    ],
+    "parents": ["ExtraBees:Ancient", "Forestry:Secluded"],
     "children": [
       {
         "species": "ExtraBees:Primeval",
@@ -1736,10 +1328,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Water",
-      "Forestry:Valiant"
-    ],
+    "parents": ["ExtraBees:Water", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Prussian",
@@ -1748,10 +1337,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rusty",
-      "Forestry:Sinister"
-    ],
+    "parents": ["ExtraBees:Rusty", "Forestry:Sinister"],
     "children": [
       {
         "species": "ExtraBees:Pyrite",
@@ -1760,10 +1346,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Spatial",
-      "Forestry:Spectral"
-    ],
+    "parents": ["ExtraBees:Spatial", "Forestry:Spectral"],
     "children": [
       {
         "species": "ExtraBees:Quantum",
@@ -1772,10 +1355,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Glittering",
-      "ExtraBees:Nuclear"
-    ],
+    "parents": ["ExtraBees:Glittering", "ExtraBees:Nuclear"],
     "children": [
       {
         "species": "ExtraBees:Radioactive",
@@ -1784,10 +1364,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Prehistoric",
-      "Forestry:Imperial"
-    ],
+    "parents": ["ExtraBees:Prehistoric", "Forestry:Imperial"],
     "children": [
       {
         "species": "ExtraBees:Relic",
@@ -1796,10 +1373,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Robust",
-      "Forestry:Industrious"
-    ],
+    "parents": ["ExtraBees:Robust", "Forestry:Industrious"],
     "children": [
       {
         "species": "ExtraBees:Resilient",
@@ -1808,10 +1382,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Growing",
-      "ExtraBees:Sweetened"
-    ],
+    "parents": ["ExtraBees:Growing", "ExtraBees:Sweetened"],
     "children": [
       {
         "species": "ExtraBees:Ripening",
@@ -1820,10 +1391,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Tolerant",
-      "Forestry:Unweary"
-    ],
+    "parents": ["ExtraBees:Tolerant", "Forestry:Unweary"],
     "children": [
       {
         "species": "ExtraBees:Robust",
@@ -1832,10 +1400,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Marbled",
-      "Forestry:Heroic"
-    ],
+    "parents": ["ExtraBees:Marbled", "Forestry:Heroic"],
     "children": [
       {
         "species": "ExtraBees:Roman",
@@ -1844,10 +1409,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Lapis",
-      "Forestry:Modest"
-    ],
+    "parents": ["ExtraBees:Lapis", "Forestry:Modest"],
     "children": [
       {
         "species": "ExtraBees:Ruby",
@@ -1856,10 +1418,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Meadows",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Meadows", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Saffron",
@@ -1868,10 +1427,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Lapis",
-      "ExtraBees:Water"
-    ],
+    "parents": ["ExtraBees:Lapis", "ExtraBees:Water"],
     "children": [
       {
         "species": "ExtraBees:Sapphire",
@@ -1880,10 +1436,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Marshy",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Marshy", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Sepia",
@@ -1892,10 +1445,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rocky",
-      "Forestry:Sinister"
-    ],
+    "parents": ["ExtraBees:Rocky", "Forestry:Sinister"],
     "children": [
       {
         "species": "ExtraBees:Shadowed",
@@ -1904,10 +1454,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Galvanized",
-      "Forestry:Majestic"
-    ],
+    "parents": ["ExtraBees:Galvanized", "Forestry:Majestic"],
     "children": [
       {
         "species": "ExtraBees:Shining",
@@ -1916,10 +1463,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Desolate",
-      "Forestry:Forest"
-    ],
+    "parents": ["ExtraBees:Desolate", "Forestry:Forest"],
     "children": [
       {
         "species": "ExtraBees:Skeletal",
@@ -1928,10 +1472,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Bleached",
-      "ExtraBees:Ebony"
-    ],
+    "parents": ["ExtraBees:Bleached", "ExtraBees:Ebony"],
     "children": [
       {
         "species": "ExtraBees:Slate",
@@ -1940,10 +1481,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Lapis",
-      "Forestry:Diligent"
-    ],
+    "parents": ["ExtraBees:Lapis", "Forestry:Diligent"],
     "children": [
       {
         "species": "ExtraBees:Sodalite",
@@ -1952,10 +1490,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Boggy",
-      "ExtraBees:Damp"
-    ],
+    "parents": ["ExtraBees:Boggy", "ExtraBees:Damp"],
     "children": [
       {
         "species": "ExtraBees:Sodden",
@@ -1964,10 +1499,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Abnormal",
-      "Forestry:Hermitic"
-    ],
+    "parents": ["ExtraBees:Abnormal", "Forestry:Hermitic"],
     "children": [
       {
         "species": "ExtraBees:Spatial",
@@ -1976,10 +1508,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Sinister",
-      "MagicBees:Tarnished"
-    ],
+    "parents": ["Forestry:Sinister", "MagicBees:Tarnished"],
     "children": [
       {
         "species": "ExtraBees:Sphalerite",
@@ -1988,10 +1517,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Ebony",
-      "ExtraBees:Ocean"
-    ],
+    "parents": ["ExtraBees:Ebony", "ExtraBees:Ocean"],
     "children": [
       {
         "species": "ExtraBees:Stained",
@@ -2000,10 +1526,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Glutinous",
-      "ExtraBees:Viscous"
-    ],
+    "parents": ["ExtraBees:Glutinous", "ExtraBees:Viscous"],
     "children": [
       {
         "species": "ExtraBees:Sticky",
@@ -2012,10 +1535,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Sweetened",
-      "Forestry:Rural"
-    ],
+    "parents": ["ExtraBees:Sweetened", "Forestry:Rural"],
     "children": [
       {
         "species": "ExtraBees:Sugary",
@@ -2024,10 +1544,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Diligent",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Diligent", "Forestry:Valiant"],
     "children": [
       {
         "species": "ExtraBees:Sweetened",
@@ -2036,10 +1553,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Distilled",
-      "ExtraBees:Fossilised"
-    ],
+    "parents": ["ExtraBees:Distilled", "ExtraBees:Fossilised"],
     "children": [
       {
         "species": "ExtraBees:Tarry",
@@ -2048,10 +1562,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Growing",
-      "Forestry:Unweary"
-    ],
+    "parents": ["ExtraBees:Growing", "Forestry:Unweary"],
     "children": [
       {
         "species": "ExtraBees:Thriving",
@@ -2060,10 +1571,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Rocky",
-      "Forestry:Diligent"
-    ],
+    "parents": ["ExtraBees:Rocky", "Forestry:Diligent"],
     "children": [
       {
         "species": "ExtraBees:Tolerant",
@@ -2072,10 +1580,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Natural",
-      "ExtraBees:Prussian"
-    ],
+    "parents": ["ExtraBees:Natural", "ExtraBees:Prussian"],
     "children": [
       {
         "species": "ExtraBees:Turquoise",
@@ -2084,10 +1589,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Prehistoric",
-      "ExtraBees:Resilient"
-    ],
+    "parents": ["ExtraBees:Prehistoric", "ExtraBees:Resilient"],
     "children": [
       {
         "species": "ExtraBees:Unstable",
@@ -2096,10 +1598,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Glittering",
-      "ExtraBees:Shining"
-    ],
+    "parents": ["ExtraBees:Glittering", "ExtraBees:Shining"],
     "children": [
       {
         "species": "ExtraBees:Valuable",
@@ -2108,10 +1607,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Infectious",
-      "ExtraBees:Malicious"
-    ],
+    "parents": ["ExtraBees:Infectious", "ExtraBees:Malicious"],
     "children": [
       {
         "species": "ExtraBees:Virulent",
@@ -2120,10 +1616,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Water",
-      "Forestry:Exotic"
-    ],
+    "parents": ["ExtraBees:Water", "Forestry:Exotic"],
     "children": [
       {
         "species": "ExtraBees:Viscous",
@@ -2132,10 +1625,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Furious",
-      "Forestry:Demonic"
-    ],
+    "parents": ["ExtraBees:Furious", "Forestry:Demonic"],
     "children": [
       {
         "species": "ExtraBees:Volcanic",
@@ -2144,10 +1634,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Nuclear",
-      "Forestry:Frugal"
-    ],
+    "parents": ["ExtraBees:Nuclear", "Forestry:Frugal"],
     "children": [
       {
         "species": "ExtraBees:Yellorium",
@@ -2156,10 +1643,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Nameless",
-      "MagicBees:Oblivion"
-    ],
+    "parents": ["MagicBees:Nameless", "MagicBees:Oblivion"],
     "children": [
       {
         "species": "MagicBees:Abandoned",
@@ -2168,10 +1652,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "Forestry:Industrious"
-    ],
+    "parents": ["Forestry:Cultivated", "Forestry:Industrious"],
     "children": [
       {
         "species": "MagicBees:Aluminum",
@@ -2180,10 +1661,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Shocking",
-      "MagicBees:Windy"
-    ],
+    "parents": ["MagicBees:Shocking", "MagicBees:Windy"],
     "children": [
       {
         "species": "MagicBees:Amped",
@@ -2192,10 +1670,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Rural",
-      "MagicBees:Cuprum"
-    ],
+    "parents": ["Forestry:Rural", "MagicBees:Cuprum"],
     "children": [
       {
         "species": "MagicBees:Apatine",
@@ -2204,10 +1679,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Esoteric",
-      "MagicBees:Mysterious"
-    ],
+    "parents": ["MagicBees:Esoteric", "MagicBees:Mysterious"],
     "children": [
       {
         "species": "MagicBees:Arcane",
@@ -2216,10 +1688,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Imperial",
-      "Forestry:Modest"
-    ],
+    "parents": ["Forestry:Imperial", "Forestry:Modest"],
     "children": [
       {
         "species": "MagicBees:Argentum",
@@ -2228,10 +1697,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Imperial",
-      "MagicBees:Plumbum"
-    ],
+    "parents": ["Forestry:Imperial", "MagicBees:Plumbum"],
     "children": [
       {
         "species": "MagicBees:Auric",
@@ -2240,10 +1706,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Attuned",
-      "MagicBees:Ethereal"
-    ],
+    "parents": ["MagicBees:Attuned", "MagicBees:Ethereal"],
     "children": [
       {
         "species": "MagicBees:Aware",
@@ -2252,10 +1715,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Shulking",
-      "MagicBees:Windy"
-    ],
+    "parents": ["MagicBees:Shulking", "MagicBees:Windy"],
     "children": [
       {
         "species": "MagicBees:Batty",
@@ -2264,10 +1724,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "MagicBees:Shulking"
-    ],
+    "parents": ["Forestry:Common", "MagicBees:Shulking"],
     "children": [
       {
         "species": "MagicBees:Beefy",
@@ -2284,10 +1741,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Mysterious",
-      "MagicBees:Shulking"
-    ],
+    "parents": ["MagicBees:Mysterious", "MagicBees:Shulking"],
     "children": [
       {
         "species": "MagicBees:Big Bad",
@@ -2296,10 +1750,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Earthen",
-      "MagicBees:Botanic"
-    ],
+    "parents": ["MagicBees:Earthen", "MagicBees:Botanic"],
     "children": [
       {
         "species": "MagicBees:Blossom",
@@ -2308,10 +1759,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Cuprum",
-      "MagicBees:Stannum"
-    ],
+    "parents": ["MagicBees:Cuprum", "MagicBees:Stannum"],
     "children": [
       {
         "species": "MagicBees:Bronzed",
@@ -2320,10 +1768,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Spiteful",
-      "MagicBees:Stannum"
-    ],
+    "parents": ["MagicBees:Spiteful", "MagicBees:Stannum"],
     "children": [
       {
         "species": "MagicBees:Carbon",
@@ -2332,10 +1777,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Poultry",
-      "MagicBees:Spidery"
-    ],
+    "parents": ["MagicBees:Poultry", "MagicBees:Spidery"],
     "children": [
       {
         "species": "MagicBees:Catty",
@@ -2344,10 +1786,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "MagicBees:Eldritch"
-    ],
+    "parents": ["Forestry:Cultivated", "MagicBees:Eldritch"],
     "children": [
       {
         "species": "MagicBees:Charmed",
@@ -2360,10 +1799,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Imperial",
-      "MagicBees:Infernal"
-    ],
+    "parents": ["Forestry:Imperial", "MagicBees:Infernal"],
     "children": [
       {
         "species": "MagicBees:Cobalt",
@@ -2372,10 +1808,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Mutable",
-      "MagicBees:Unusual"
-    ],
+    "parents": ["MagicBees:Mutable", "MagicBees:Unusual"],
     "children": [
       {
         "species": "MagicBees:Crumbling",
@@ -2388,10 +1821,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Industrious",
-      "Forestry:Meadows"
-    ],
+    "parents": ["Forestry:Industrious", "Forestry:Meadows"],
     "children": [
       {
         "species": "MagicBees:Cuprum",
@@ -2400,10 +1830,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Austere",
-      "MagicBees:Smouldering"
-    ],
+    "parents": ["Forestry:Austere", "MagicBees:Smouldering"],
     "children": [
       {
         "species": "MagicBees:Dante",
@@ -2412,10 +1839,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Industrious",
-      "MagicBees:Spiteful"
-    ],
+    "parents": ["Forestry:Industrious", "MagicBees:Spiteful"],
     "children": [
       {
         "species": "MagicBees:Destabilized",
@@ -2424,10 +1848,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Austere",
-      "MagicBees:Auric"
-    ],
+    "parents": ["Forestry:Austere", "MagicBees:Auric"],
     "children": [
       {
         "species": "MagicBees:Diamandi",
@@ -2436,10 +1857,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Lordly",
-      "MagicBees:Timely"
-    ],
+    "parents": ["MagicBees:Lordly", "MagicBees:Timely"],
     "children": [
       {
         "species": "MagicBees:Doctoral",
@@ -2448,10 +1866,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Imperial",
-      "MagicBees:Abandoned"
-    ],
+    "parents": ["Forestry:Imperial", "MagicBees:Abandoned"],
     "children": [
       {
         "species": "MagicBees:Draconic",
@@ -2460,10 +1875,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Somnolent",
-      "MagicBees:Windy"
-    ],
+    "parents": ["MagicBees:Somnolent", "MagicBees:Windy"],
     "children": [
       {
         "species": "MagicBees:Dreaming",
@@ -2472,10 +1884,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Ethereal",
-      "MagicBees:Supernatural"
-    ],
+    "parents": ["MagicBees:Ethereal", "MagicBees:Supernatural"],
     "children": [
       {
         "species": "MagicBees:Earthen",
@@ -2496,10 +1905,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Cultivated",
-      "MagicBees:Mystical"
-    ],
+    "parents": ["Forestry:Cultivated", "MagicBees:Mystical"],
     "children": [
       {
         "species": "MagicBees:Eldritch",
@@ -2508,10 +1914,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Argentum",
-      "MagicBees:Auric"
-    ],
+    "parents": ["MagicBees:Argentum", "MagicBees:Auric"],
     "children": [
       {
         "species": "MagicBees:Electrum",
@@ -2520,10 +1923,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Charmed",
-      "MagicBees:Eldritch"
-    ],
+    "parents": ["MagicBees:Charmed", "MagicBees:Eldritch"],
     "children": [
       {
         "species": "MagicBees:Enchanted",
@@ -2532,10 +1932,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Carbon",
-      "MagicBees:Winsome"
-    ],
+    "parents": ["MagicBees:Carbon", "MagicBees:Winsome"],
     "children": [
       {
         "species": "MagicBees:Endearing",
@@ -2544,10 +1941,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Arcane",
-      "MagicBees:Supernatural"
-    ],
+    "parents": ["MagicBees:Arcane", "MagicBees:Supernatural"],
     "children": [
       {
         "species": "MagicBees:Ethereal",
@@ -2556,10 +1950,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "Forestry:Industrious"
-    ],
+    "parents": ["Forestry:Common", "Forestry:Industrious"],
     "children": [
       {
         "species": "MagicBees:Ferrous",
@@ -2572,10 +1963,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Blossom",
-      "MagicBees:Botanic"
-    ],
+    "parents": ["MagicBees:Blossom", "MagicBees:Botanic"],
     "children": [
       {
         "species": "MagicBees:Floral",
@@ -2584,10 +1972,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Destabilized",
-      "MagicBees:Electrum"
-    ],
+    "parents": ["MagicBees:Destabilized", "MagicBees:Electrum"],
     "children": [
       {
         "species": "MagicBees:Fluxed",
@@ -2596,10 +1981,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Abandoned",
-      "MagicBees:Nameless"
-    ],
+    "parents": ["MagicBees:Abandoned", "MagicBees:Nameless"],
     "children": [
       {
         "species": "MagicBees:Forlorn",
@@ -2608,10 +1990,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Earthen",
-      "MagicBees:Smouldering"
-    ],
+    "parents": ["MagicBees:Earthen", "MagicBees:Smouldering"],
     "children": [
       {
         "species": "MagicBees:Grounded",
@@ -2620,10 +1999,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Eldritch",
-      "MagicBees:Infernal"
-    ],
+    "parents": ["MagicBees:Eldritch", "MagicBees:Infernal"],
     "children": [
       {
         "species": "MagicBees:Hateful",
@@ -2632,10 +2008,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Ferrous",
-      "MagicBees:Nickel"
-    ],
+    "parents": ["MagicBees:Ferrous", "MagicBees:Nickel"],
     "children": [
       {
         "species": "MagicBees:Invar",
@@ -2644,10 +2017,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Mutable",
-      "MagicBees:Mystical"
-    ],
+    "parents": ["MagicBees:Mutable", "MagicBees:Mystical"],
     "children": [
       {
         "species": "MagicBees:Invisible",
@@ -2656,10 +2026,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Imperial",
-      "MagicBees:Timely"
-    ],
+    "parents": ["Forestry:Imperial", "MagicBees:Timely"],
     "children": [
       {
         "species": "MagicBees:Lordly",
@@ -2668,10 +2035,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Infernal",
-      "MagicBees:Smouldering"
-    ],
+    "parents": ["MagicBees:Infernal", "MagicBees:Smouldering"],
     "children": [
       {
         "species": "MagicBees:Lux",
@@ -2680,10 +2044,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Ardite",
-      "MagicBees:Cobalt"
-    ],
+    "parents": ["MagicBees:Ardite", "MagicBees:Cobalt"],
     "children": [
       {
         "species": "MagicBees:Manyullyn",
@@ -2692,10 +2053,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Forest",
-      "Forestry:Valiant"
-    ],
+    "parents": ["Forestry:Forest", "Forestry:Valiant"],
     "children": [
       {
         "species": "MagicBees:Maroon",
@@ -2704,10 +2062,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Eldritch",
-      "MagicBees:Unusual"
-    ],
+    "parents": ["MagicBees:Eldritch", "MagicBees:Unusual"],
     "children": [
       {
         "species": "MagicBees:Mutable",
@@ -2716,10 +2071,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "Forestry:Forest"
-    ],
+    "parents": ["Forestry:Common", "Forestry:Forest"],
     "children": [
       {
         "species": "MagicBees:Mysterious",
@@ -2728,10 +2080,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Monastic",
-      "Forestry:Noble"
-    ],
+    "parents": ["Forestry:Monastic", "Forestry:Noble"],
     "children": [
       {
         "species": "MagicBees:Mystical",
@@ -2740,10 +2089,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Ethereal",
-      "MagicBees:Oblivion"
-    ],
+    "parents": ["MagicBees:Ethereal", "MagicBees:Oblivion"],
     "children": [
       {
         "species": "MagicBees:Nameless",
@@ -2752,10 +2098,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Beefy",
-      "MagicBees:Sheepish"
-    ],
+    "parents": ["MagicBees:Beefy", "MagicBees:Sheepish"],
     "children": [
       {
         "species": "MagicBees:Neighsayer",
@@ -2764,10 +2107,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Esoteric",
-      "MagicBees:Ferrous"
-    ],
+    "parents": ["MagicBees:Esoteric", "MagicBees:Ferrous"],
     "children": [
       {
         "species": "MagicBees:Nickel",
@@ -2776,10 +2116,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Argentum",
-      "MagicBees:Cobalt"
-    ],
+    "parents": ["MagicBees:Argentum", "MagicBees:Cobalt"],
     "children": [
       {
         "species": "MagicBees:Osmium",
@@ -2788,10 +2125,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Invar",
-      "MagicBees:Nickel"
-    ],
+    "parents": ["MagicBees:Invar", "MagicBees:Nickel"],
     "children": [
       {
         "species": "MagicBees:Platinum",
@@ -2800,10 +2134,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Common",
-      "MagicBees:Stannum"
-    ],
+    "parents": ["Forestry:Common", "MagicBees:Stannum"],
     "children": [
       {
         "species": "MagicBees:Plumbum",
@@ -2812,10 +2143,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Monastic",
-      "MagicBees:Arcane"
-    ],
+    "parents": ["Forestry:Monastic", "MagicBees:Arcane"],
     "children": [
       {
         "species": "MagicBees:Pupil",
@@ -2824,10 +2152,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Carbon",
-      "MagicBees:Dante"
-    ],
+    "parents": ["MagicBees:Carbon", "MagicBees:Dante"],
     "children": [
       {
         "species": "MagicBees:Pyro",
@@ -2836,10 +2161,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Earthen",
-      "MagicBees:Grounded"
-    ],
+    "parents": ["MagicBees:Earthen", "MagicBees:Grounded"],
     "children": [
       {
         "species": "MagicBees:Rockin'",
@@ -2848,10 +2170,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Forest",
-      "MagicBees:Eldritch"
-    ],
+    "parents": ["Forestry:Forest", "MagicBees:Eldritch"],
     "children": [
       {
         "species": "MagicBees:Rooted",
@@ -2860,10 +2179,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Pupil",
-      "MagicBees:Scholarly"
-    ],
+    "parents": ["MagicBees:Pupil", "MagicBees:Scholarly"],
     "children": [
       {
         "species": "MagicBees:Savant",
@@ -2872,10 +2188,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Arcane",
-      "MagicBees:Pupil"
-    ],
+    "parents": ["MagicBees:Arcane", "MagicBees:Pupil"],
     "children": [
       {
         "species": "MagicBees:Scholarly",
@@ -2884,10 +2197,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Porcine",
-      "MagicBees:Shulking"
-    ],
+    "parents": ["MagicBees:Porcine", "MagicBees:Shulking"],
     "children": [
       {
         "species": "MagicBees:Sheepish",
@@ -2896,10 +2206,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Smouldering",
-      "MagicBees:Windy"
-    ],
+    "parents": ["MagicBees:Smouldering", "MagicBees:Windy"],
     "children": [
       {
         "species": "MagicBees:Shocking",
@@ -2908,10 +2215,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Earthen",
-      "MagicBees:Windy"
-    ],
+    "parents": ["MagicBees:Earthen", "MagicBees:Windy"],
     "children": [
       {
         "species": "MagicBees:Skystone",
@@ -2920,10 +2224,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Rooted",
-      "MagicBees:Watery"
-    ],
+    "parents": ["MagicBees:Rooted", "MagicBees:Watery"],
     "children": [
       {
         "species": "MagicBees:Somnolent",
@@ -2932,10 +2233,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Aware",
-      "MagicBees:Spirit"
-    ],
+    "parents": ["MagicBees:Aware", "MagicBees:Spirit"],
     "children": [
       {
         "species": "MagicBees:Soul",
@@ -2944,10 +2242,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Aware",
-      "MagicBees:Ethereal"
-    ],
+    "parents": ["MagicBees:Aware", "MagicBees:Ethereal"],
     "children": [
       {
         "species": "MagicBees:Spirit",
@@ -2956,10 +2251,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Hateful",
-      "MagicBees:Infernal"
-    ],
+    "parents": ["MagicBees:Hateful", "MagicBees:Infernal"],
     "children": [
       {
         "species": "MagicBees:Spiteful",
@@ -2968,10 +2260,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Forest",
-      "Forestry:Industrious"
-    ],
+    "parents": ["Forestry:Forest", "Forestry:Industrious"],
     "children": [
       {
         "species": "MagicBees:Stannum",
@@ -2980,10 +2269,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Charmed",
-      "MagicBees:Enchanted"
-    ],
+    "parents": ["MagicBees:Charmed", "MagicBees:Enchanted"],
     "children": [
       {
         "species": "MagicBees:Supernatural",
@@ -2992,10 +2278,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "Forestry:Marshy"
-    ],
+    "parents": ["ExtraBees:Resilient", "Forestry:Marshy"],
     "children": [
       {
         "species": "MagicBees:Tarnished",
@@ -3004,10 +2287,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Imperial",
-      "MagicBees:Ethereal"
-    ],
+    "parents": ["Forestry:Imperial", "MagicBees:Ethereal"],
     "children": [
       {
         "species": "MagicBees:Timely",
@@ -3016,10 +2296,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Oblivion",
-      "MagicBees:Platinum"
-    ],
+    "parents": ["MagicBees:Oblivion", "MagicBees:Platinum"],
     "children": [
       {
         "species": "MagicBees:Winsome",
@@ -3028,10 +2305,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Demonic",
-      "MagicBees:Spiteful"
-    ],
+    "parents": ["Forestry:Demonic", "MagicBees:Spiteful"],
     "children": [
       {
         "species": "MagicBees:Withering",
@@ -3040,10 +2314,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Skeletal",
-      "MagicBees:Scholarly"
-    ],
+    "parents": ["ExtraBees:Skeletal", "MagicBees:Scholarly"],
     "children": [
       {
         "species": "MeatballCraft:Aedial",
@@ -3052,10 +2323,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Virulent",
-      "MagicBees:Doctoral"
-    ],
+    "parents": ["ExtraBees:Virulent", "MagicBees:Doctoral"],
     "children": [
       {
         "species": "MeatballCraft:Agricultural",
@@ -3064,10 +2332,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Thief",
-      "MagicBees:Pupil"
-    ],
+    "parents": ["Career Bees:Thief", "MagicBees:Pupil"],
     "children": [
       {
         "species": "MeatballCraft:Baguette",
@@ -3076,10 +2341,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Temporal",
-      "MagicBees:Forlorn"
-    ],
+    "parents": ["Career Bees:Temporal", "MagicBees:Forlorn"],
     "children": [
       {
         "species": "MeatballCraft:Balanced",
@@ -3088,10 +2350,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Valuable",
-      "MagicBees:Skystone"
-    ],
+    "parents": ["ExtraBees:Valuable", "MagicBees:Skystone"],
     "children": [
       {
         "species": "MeatballCraft:Buried",
@@ -3100,10 +2359,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Energetic",
-      "MagicBees:Savant"
-    ],
+    "parents": ["ExtraBees:Energetic", "MagicBees:Savant"],
     "children": [
       {
         "species": "MeatballCraft:ChaosStrikez",
@@ -3112,10 +2368,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Robot",
-      "ExtraBees:Light Blue"
-    ],
+    "parents": ["Career Bees:Robot", "ExtraBees:Light Blue"],
     "children": [
       {
         "species": "MeatballCraft:Chevron",
@@ -3124,10 +2377,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Radioactive",
-      "MagicBees:Draconic"
-    ],
+    "parents": ["ExtraBees:Radioactive", "MagicBees:Draconic"],
     "children": [
       {
         "species": "MeatballCraft:Connor",
@@ -3136,10 +2386,7 @@
     ]
   },
   {
-    "parents": [
-      "MeatballCraft:Chevron",
-      "MeatballCraft:Ringbearer"
-    ],
+    "parents": ["MeatballCraft:Chevron", "MeatballCraft:Ringbearer"],
     "children": [
       {
         "species": "MeatballCraft:Controller",
@@ -3148,10 +2395,7 @@
     ]
   },
   {
-    "parents": [
-      "MeatballCraft:High-Pitched",
-      "MeatballCraft:Hyperventilating"
-    ],
+    "parents": ["MeatballCraft:High-Pitched", "MeatballCraft:Hyperventilating"],
     "children": [
       {
         "species": "MeatballCraft:Dentist",
@@ -3160,10 +2404,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Arcane",
-      "MagicBees:Ethereal"
-    ],
+    "parents": ["MagicBees:Arcane", "MagicBees:Ethereal"],
     "children": [
       {
         "species": "MeatballCraft:EMBee",
@@ -3172,10 +2413,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Armorer",
-      "MeatballCraft:Radiant"
-    ],
+    "parents": ["Career Bees:Armorer", "MeatballCraft:Radiant"],
     "children": [
       {
         "species": "MeatballCraft:Experienced",
@@ -3184,10 +2422,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Classical",
-      "ExtraBees:Light Blue"
-    ],
+    "parents": ["ExtraBees:Classical", "ExtraBees:Light Blue"],
     "children": [
       {
         "species": "MeatballCraft:Fios",
@@ -3196,10 +2431,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Acidic",
-      "Forestry:Meadows"
-    ],
+    "parents": ["ExtraBees:Acidic", "Forestry:Meadows"],
     "children": [
       {
         "species": "MeatballCraft:Formic",
@@ -3208,10 +2440,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Sweetened",
-      "MeatballCraft:EMBee"
-    ],
+    "parents": ["ExtraBees:Sweetened", "MeatballCraft:EMBee"],
     "children": [
       {
         "species": "MeatballCraft:Freeky",
@@ -3220,10 +2449,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Spectral",
-      "MagicBees:Endearing"
-    ],
+    "parents": ["Forestry:Spectral", "MagicBees:Endearing"],
     "children": [
       {
         "species": "MeatballCraft:Heraldry",
@@ -3232,10 +2458,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Quantum",
-      "MagicBees:Esoteric"
-    ],
+    "parents": ["ExtraBees:Quantum", "MagicBees:Esoteric"],
     "children": [
       {
         "species": "MeatballCraft:Herblore",
@@ -3244,10 +2467,7 @@
     ]
   },
   {
-    "parents": [
-      "MeatballCraft:Deep Learner",
-      "MeatballCraft:Hyperventilating"
-    ],
+    "parents": ["MeatballCraft:Deep Learner", "MeatballCraft:Hyperventilating"],
     "children": [
       {
         "species": "MeatballCraft:High-Pitched",
@@ -3256,10 +2476,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Student",
-      "Forestry:Imperial"
-    ],
+    "parents": ["Career Bees:Student", "Forestry:Imperial"],
     "children": [
       {
         "species": "MeatballCraft:Hyperventilating",
@@ -3268,10 +2485,7 @@
     ]
   },
   {
-    "parents": [
-      "MeatballCraft:Crepuscular",
-      "MeatballCraft:Deep Learner"
-    ],
+    "parents": ["MeatballCraft:Crepuscular", "MeatballCraft:Deep Learner"],
     "children": [
       {
         "species": "MeatballCraft:Isekai",
@@ -3280,10 +2494,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "MagicBees:Scholarly"
-    ],
+    "parents": ["Career Bees:PHD", "MagicBees:Scholarly"],
     "children": [
       {
         "species": "MeatballCraft:KurryCat",
@@ -3292,10 +2503,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Temporal",
-      "MagicBees:Sorcerous"
-    ],
+    "parents": ["Career Bees:Temporal", "MagicBees:Sorcerous"],
     "children": [
       {
         "species": "MeatballCraft:LordRaine",
@@ -3304,10 +2512,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Rainbow",
-      "ExtraBees:Abyssal"
-    ],
+    "parents": ["Career Bees:Rainbow", "ExtraBees:Abyssal"],
     "children": [
       {
         "species": "MeatballCraft:Luctor",
@@ -3316,10 +2521,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Robust",
-      "MeatballCraft:Ringbearer"
-    ],
+    "parents": ["ExtraBees:Robust", "MeatballCraft:Ringbearer"],
     "children": [
       {
         "species": "MeatballCraft:Mathias",
@@ -3328,10 +2530,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Abyssal",
-      "MagicBees:Savant"
-    ],
+    "parents": ["ExtraBees:Abyssal", "MagicBees:Savant"],
     "children": [
       {
         "species": "MeatballCraft:Necronomibee",
@@ -3340,10 +2539,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Esmeraldi",
-      "Forestry:Phantasmal"
-    ],
+    "parents": ["ExtraBees:Esmeraldi", "Forestry:Phantasmal"],
     "children": [
       {
         "species": "MeatballCraft:NerdySpider",
@@ -3352,10 +2548,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "MeatballCraft:Bomber"
-    ],
+    "parents": ["Career Bees:PHD", "MeatballCraft:Bomber"],
     "children": [
       {
         "species": "MeatballCraft:Nuclear Technician",
@@ -3364,10 +2557,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Temporal",
-      "MagicBees:Lordly"
-    ],
+    "parents": ["Career Bees:Temporal", "MagicBees:Lordly"],
     "children": [
       {
         "species": "MeatballCraft:Pyramid",
@@ -3376,10 +2566,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:Devil",
-      "Career Bees:Rainbow"
-    ],
+    "parents": ["Career Bees:Devil", "Career Bees:Rainbow"],
     "children": [
       {
         "species": "MeatballCraft:Pyromaniacal",
@@ -3388,10 +2575,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:White",
-      "MagicBees:Shocking"
-    ],
+    "parents": ["Forestry:White", "MagicBees:Shocking"],
     "children": [
       {
         "species": "MeatballCraft:RestlessClam",
@@ -3400,10 +2584,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Glittering",
-      "MagicBees:Endearing"
-    ],
+    "parents": ["ExtraBees:Glittering", "MagicBees:Endearing"],
     "children": [
       {
         "species": "MeatballCraft:Ringbearer",
@@ -3412,10 +2593,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Black",
-      "MagicBees:Firey"
-    ],
+    "parents": ["Forestry:Black", "MagicBees:Firey"],
     "children": [
       {
         "species": "MeatballCraft:Sandman366",
@@ -3424,10 +2602,7 @@
     ]
   },
   {
-    "parents": [
-      "MagicBees:Arcane",
-      "MeatballCraft:Radiant"
-    ],
+    "parents": ["MagicBees:Arcane", "MeatballCraft:Radiant"],
     "children": [
       {
         "species": "MeatballCraft:Serenading",
@@ -3436,10 +2611,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Fermented",
-      "MagicBees:Transmuting"
-    ],
+    "parents": ["ExtraBees:Fermented", "MagicBees:Transmuting"],
     "children": [
       {
         "species": "MeatballCraft:Shadow46x2",
@@ -3448,10 +2620,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Resilient",
-      "MagicBees:Supernatural"
-    ],
+    "parents": ["ExtraBees:Resilient", "MagicBees:Supernatural"],
     "children": [
       {
         "species": "MeatballCraft:SpoonyPanda",
@@ -3460,10 +2629,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Prehistoric",
-      "ExtraBees:Water"
-    ],
+    "parents": ["ExtraBees:Prehistoric", "ExtraBees:Water"],
     "children": [
       {
         "species": "MeatballCraft:StaffiX",
@@ -3472,10 +2638,7 @@
     ]
   },
   {
-    "parents": [
-      "ExtraBees:Classical",
-      "ExtraBees:Quantum"
-    ],
+    "parents": ["ExtraBees:Classical", "ExtraBees:Quantum"],
     "children": [
       {
         "species": "MeatballCraft:Stargazer",
@@ -3484,10 +2647,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "MagicBees:Pyro"
-    ],
+    "parents": ["Career Bees:PHD", "MagicBees:Pyro"],
     "children": [
       {
         "species": "MeatballCraft:Thermally Expanded",
@@ -3496,10 +2656,7 @@
     ]
   },
   {
-    "parents": [
-      "Career Bees:PHD",
-      "ExtraBees:Blutonium"
-    ],
+    "parents": ["Career Bees:PHD", "ExtraBees:Blutonium"],
     "children": [
       {
         "species": "MeatballCraft:Tinkerest",
@@ -3508,10 +2665,7 @@
     ]
   },
   {
-    "parents": [
-      "Forestry:Fiendish",
-      "Forestry:Red"
-    ],
+    "parents": ["Forestry:Fiendish", "Forestry:Red"],
     "children": [
       {
         "species": "MeatballCraft:UselessForce",

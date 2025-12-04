@@ -1,4 +1,24 @@
 {
+  //   "MyForestryAddon:MyBee1": {
+  //     "mod": "MyForestryAddon",
+  //     "name": "MyBee1",
+  //     "idealTemperature": "cold",
+  //     "idealHumidity": "damp",
+  //     "temperatureTolerance": "none",
+  //     "humidityTolerance": "down2",
+  //     "speed": "fast",
+  //     "lifespan": "shortest",
+  //     "fertility": "normal",
+  //     "neverSleeps": true,
+  //     "caveDwelling": false,
+  //     "tolerantFlyer": true,
+  //     "products": [
+  //       {"name": "forestry:honeyDrop", "percentage": 0.15},
+  //       {"name": "forestry:honeyDrop", "percentage": 0.15},
+  //       {"name": "myforestryaddon:special_honey_drop", "percentage": 0.30, "specialty": true},
+  //       {"name": "forestry:honeyComb", "percentage": 0.20}
+  //     ]
+  //   },
   "Forestry:Forest": {
     "mod": "Forestry",
     "name": "Forest",

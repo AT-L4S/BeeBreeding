@@ -12,9 +12,18 @@ export function buildHierarchy(beeData) {
   const visitedBees = new Set();
 
   // Find base bees (those with no parents)
-  const baseBees = allBees.filter(
-    (bee) => beeData[bee].parentCombinations.length === 0
-  );
+  const baseBees = allBees.filter((bee) => {
+    const beeInfo = beeData[bee];
+    if (!beeInfo) {
+      console.warn(`Missing bee data for: ${bee}`);
+      return false;
+    }
+    if (!beeInfo.parentCombinations) {
+      console.warn(`Missing parentCombinations for: ${bee}`);
+      return true; // Treat as base bee
+    }
+    return beeInfo.parentCombinations.length === 0;
+  });
 
   // Set base generation for base bees
   baseBees.forEach((bee) => {
@@ -30,7 +39,11 @@ export function buildHierarchy(beeData) {
     changed = false;
     allBees.forEach((bee) => {
       if (!visitedBees.has(bee)) {
-        const parentCombinations = beeData[bee].parentCombinations;
+        const beeInfo = beeData[bee];
+        if (!beeInfo || !beeInfo.parentCombinations) {
+          return; // Skip invalid entries
+        }
+        const parentCombinations = beeInfo.parentCombinations;
         if (parentCombinations.length > 0) {
           // Find the maximum generation among all possible parent combinations
           let maxParentGeneration = -1;

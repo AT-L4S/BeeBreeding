@@ -3,19 +3,39 @@
  * Handles loading and processing of bee data
  */
 
+/**
+ * Strip comments from JSON text using jsonc-parser library
+ * Supports single-line comments (//) and multi-line comments
+ */
+function stripJsonComments(jsonText) {
+  // Use the jsonc-parser library's stripComments function if available
+  if (window.jsoncparser && window.jsoncparser.stripComments) {
+    return window.jsoncparser.stripComments(jsonText);
+  }
+
+  // Fallback to basic regex if library not available
+  let result = jsonText.replace(/\/\*[\s\S]*?\*\//g, "");
+  result = result.replace(/([^:])\/\/.*$/gm, "$1");
+  return result;
+}
+
 export async function loadBeeData() {
   try {
     // Determine base path based on protocol
     const basePath = window.location.protocol === "file:" ? "/data/" : "data/";
-
-    // Load data from JSON files
+    
+    // Load data from JSONC files (JSON with comments)
     const [beesResponse, breedingPairsResponse] = await Promise.all([
-      fetch(`${basePath}bees.json`),
-      fetch(`${basePath}breeding_pairs.json`),
+      fetch(`${basePath}bees.jsonc`),
+      fetch(`${basePath}breeding_pairs.jsonc`),
     ]);
 
-    const beesData = await beesResponse.json();
-    const breedingPairsData = await breedingPairsResponse.json();
+    // Get text content and strip comments before parsing
+    const beesText = await beesResponse.text();
+    const breedingPairsText = await breedingPairsResponse.text();
+
+    const beesData = JSON.parse(stripJsonComments(beesText));
+    const breedingPairsData = JSON.parse(stripJsonComments(breedingPairsText));
 
     // Convert breeding pairs to the format expected by buildBeeData
     const rawMutations = convertBreedingPairsToMutations(
@@ -72,7 +92,7 @@ function convertBreedingPairsToMutations(breedingPairs, beesData) {
     pair.children.forEach((child) => {
       const childId = child.species;
 
-      // Ensure child exists (it should from bees.json)
+      // Ensure child exists (it should from bees.jsonc)
       if (!beeData[childId]) {
         const childParts = childId.split(":");
         const childMod = childParts.length === 2 ? childParts[0] : "Unknown";

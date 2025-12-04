@@ -44,7 +44,7 @@ beebreeding/
 │       └── math.js             # Math utilities
 │
 ├── data/                      # Data files (can be updated independently)
-│   ├── bees.json              # Main bee data with product info
+│   ├── bees.jsonc              # Main bee data with product info
 │   │   # {
 │   │   #   "BeesAddon:Special": {
 │   │   #     "mod": "BeesAddon",
@@ -68,7 +68,7 @@ beebreeding/
 │   │   #   }
 │   │   # }
 │   │
-│   ├── breeding_pairs.json    # Breeding combinations with probabilities
+│   ├── breeding_pairs.jsonc    # Breeding combinations with probabilities
 │   │   # [
 │   │   #   {
 │   │   #     "parents": ["Common", "Forest"],
@@ -79,7 +79,7 @@ beebreeding/
 │   │   #   }
 │   │   # ]
 │   │
-│   └── combs.json             # Comb processing information
+│   └── combs.jsonc             # Comb processing information
 │       # [
 │       #   {
 │       #     "name": "forestry:honeyComb",
