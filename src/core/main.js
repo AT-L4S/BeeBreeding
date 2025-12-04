@@ -1,12 +1,12 @@
 /**
  * Main application for bee breeding tree visualization
  */
-import { config } from "/src/core/config.js";
-import { buildHierarchy } from "/src/data/beeProcessor.js";
-import { loadBeeData } from "/src/data/dataLoader.js";
-import { renderEdges } from "/src/visualization/edgeRenderer.js";
-import { positionNodes } from "/src/visualization/layout.js";
-import { renderNodes } from "/src/visualization/nodeRenderer.js";
+import { buildHierarchy } from "../data/beeProcessor.js";
+import { loadBeeData } from "../data/dataLoader.js";
+import { renderEdges } from "../visualization/edgeRenderer.js";
+import { positionNodes } from "../visualization/layout.js";
+import { renderNodes } from "../visualization/nodeRenderer.js";
+import { config } from "./config.js";
 
 export class BeeBreedingApp {
   constructor() {

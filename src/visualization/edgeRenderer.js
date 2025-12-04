@@ -1,7 +1,7 @@
 /**
  * Edge rendering for bee breeding tree visualization
  */
-import { config } from "/src/core/config.js";
+import { config } from "../core/config.js";
 
 export function renderEdges(svg, links, nodes, nodeMap, nodeColors) {
   // Group links by target to calculate input connection offsets

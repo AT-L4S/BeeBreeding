@@ -1,7 +1,7 @@
 /**
  * Layout algorithms for bee breeding tree visualization
  */
-import { config } from "/src/core/config.js";
+import { config } from "../core/config.js";
 
 export function positionNodes(nodes, layoutMode = config.layoutModes.SPLIT) {
   if (layoutMode === config.layoutModes.COLUMN) {

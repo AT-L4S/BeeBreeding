@@ -1,7 +1,7 @@
 /**
  * Node rendering for bee breeding tree visualization
  */
-import { config } from "/src/core/config.js";
+import { config } from "../core/config.js";
 
 export function renderNodes(svg, nodes, links, nodeMap, nodeColors) {
   // Function to estimate text width
