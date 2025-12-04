@@ -130,6 +130,10 @@
     <div class="controls">
         <input type="text" class="search-box" placeholder="Search bee species..." id="searchInput">
         <br>
+        <label style="display: block; margin: 8px 0;">
+            <input type="checkbox" id="filterModeToggle">
+            Show all nodes (fade unrelated)
+        </label>
         <button class="btn" onclick="resetHighlight()">Clear Selection</button>
         <button class="btn" onclick="fitView()">Fit to View</button>
         <button class="btn" id="layoutToggle" onclick="toggleLeafLayout()">Switch to Column Layout</button>

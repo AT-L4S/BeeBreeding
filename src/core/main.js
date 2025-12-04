@@ -23,6 +23,9 @@ export class BeeBreedingApp {
     this.link = null;
     this.node = null;
     this.zoom = null;
+    this.isFilteredView = false;
+    this.originalPositions = new Map();
+    this.currentSelectedNode = null;
   }
 
   async initialize() {
@@ -165,7 +168,24 @@ export class BeeBreedingApp {
   setupNodeInteractions() {
     this.node.on("click", (event, d) => {
       event.stopPropagation();
-      this.highlightConnections(d);
+
+      // Save the selected node
+      this.currentSelectedNode = d;
+
+      // Check if filter mode checkbox is checked
+      const filterModeCheckbox = document.getElementById("filterModeToggle");
+      const showAllNodes = filterModeCheckbox
+        ? filterModeCheckbox.checked
+        : true;
+
+      if (showAllNodes) {
+        // Default behavior: show all nodes, fade unrelated
+        this.highlightConnections(d);
+      } else {
+        // Filtered view: show only related nodes with rearranged layout
+        this.showFilteredView(d);
+      }
+
       this.showInfo(d);
     });
 
@@ -535,6 +555,15 @@ export class BeeBreedingApp {
   }
 
   resetHighlight() {
+    // Clear current selection
+    this.currentSelectedNode = null;
+
+    // If we're in filtered view, restore original layout
+    if (this.isFilteredView) {
+      this.restoreOriginalView();
+      return;
+    }
+
     this.node.classed("highlighted connected faded", false);
     this.link.classed("highlighted faded", false);
 
@@ -545,6 +574,307 @@ export class BeeBreedingApp {
     this.resetNodeBorders();
 
     document.getElementById("infoPanel").style.display = "none";
+  }
+
+  showFilteredView(selectedNode) {
+    this.isFilteredView = true;
+
+    // Clear any previous highlights/classes
+    this.node.classed("highlighted connected faded", false);
+    this.link.classed("highlighted faded", false);
+    this.node.selectAll(".outer-selection-border").remove();
+
+    // Save original positions only if not already saved
+    if (this.originalPositions.size === 0) {
+      this.nodes.forEach((node) => {
+        this.originalPositions.set(node.id, { x: node.x, y: node.y });
+      });
+    }
+
+    // Collect related nodes
+    const allAncestors = this.getAllAncestors(selectedNode.id);
+    const allDescendants = this.getAllDescendants(selectedNode.id);
+    const connectedIds = new Set([selectedNode.id]);
+    allAncestors.forEach((id) => connectedIds.add(id));
+    allDescendants.forEach((id) => connectedIds.add(id));
+
+    // Filter nodes and links
+    const filteredNodes = this.nodes.filter((n) => connectedIds.has(n.id));
+    const filteredLinks = this.links.filter(
+      (l) => connectedIds.has(l.source) && connectedIds.has(l.target)
+    );
+
+    // Rearrange filtered nodes for better readability
+    this.arrangeFilteredNodes(filteredNodes, selectedNode);
+
+    // Hide unrelated nodes and links
+    this.node.style("display", (d) => (connectedIds.has(d.id) ? null : "none"));
+
+    this.link.style("display", (d) =>
+      connectedIds.has(d.source) && connectedIds.has(d.target) ? null : "none"
+    );
+
+    // Highlight the selected node
+    this.node
+      .filter((d) => d.id === selectedNode.id)
+      .classed("highlighted", true);
+
+    this.addSelectionBorder(selectedNode);
+
+    // Highlight connected nodes
+    this.node
+      .filter((d) => allAncestors.has(d.id) || allDescendants.has(d.id))
+      .classed("connected", true);
+
+    // Animate to new positions
+    this.node
+      .filter((d) => connectedIds.has(d.id))
+      .transition()
+      .duration(500)
+      .attr("transform", (d) => `translate(${d.x},${d.y})`);
+
+    // Update link positions
+    this.link
+      .filter((d) => connectedIds.has(d.source) && connectedIds.has(d.target))
+      .transition()
+      .duration(500)
+      .attr("d", (d) => {
+        const source = this.nodeMap.get(d.source);
+        const target = this.nodeMap.get(d.target);
+        const sourceWidth = source.width || 120;
+        const targetWidth = target.width || 120;
+        const targetY = target.y + (d.targetYOffset || 0);
+
+        const sourceX = source.x + sourceWidth / 2;
+        const targetX = target.x - targetWidth / 2 + 3;
+        const sourceXStraight = sourceX + config.straightLength;
+        const targetXStraight = targetX - config.straightLength;
+        const controlX1 = sourceX + config.controlOffset;
+        const controlX2 = targetX - config.controlOffset;
+
+        return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+      });
+
+    // Fit view to filtered nodes
+    setTimeout(() => this.fitViewToNodes(filteredNodes), 600);
+  }
+
+  arrangeFilteredNodes(filteredNodes, selectedNode) {
+    // Create a set of filtered node IDs for quick lookup
+    const filteredIds = new Set(filteredNodes.map((n) => n.id));
+
+    // Recalculate generations for filtered nodes
+    // Base nodes = nodes whose parents aren't in the filtered set
+    const filteredGenerations = new Map();
+    const visited = new Set();
+
+    // Find base nodes in the filtered set
+    const baseBees = filteredNodes.filter((node) => {
+      // A node is a base node if it has no parents OR all its parents are outside the filtered set
+      if (!node.parents || node.parents.length === 0) return true;
+      return !node.parents.some((parentId) => filteredIds.has(parentId));
+    });
+
+    // Set generation 0 for base nodes
+    baseBees.forEach((bee) => {
+      filteredGenerations.set(bee.id, 0);
+      visited.add(bee.id);
+    });
+
+    // Iteratively assign generations based on parent relationships within filtered set
+    let changed = true;
+    let iterations = 0;
+    while (changed && iterations < 20) {
+      iterations++;
+      changed = false;
+
+      filteredNodes.forEach((node) => {
+        if (!visited.has(node.id) && node.parents && node.parents.length > 0) {
+          // Find max generation among parents that are in the filtered set
+          let maxParentGen = -1;
+          let allFilteredParentsHaveGen = true;
+
+          const filteredParents = node.parents.filter((p) =>
+            filteredIds.has(p)
+          );
+
+          if (filteredParents.length === 0) {
+            // No parents in filtered set, treat as base node
+            filteredGenerations.set(node.id, 0);
+            visited.add(node.id);
+            changed = true;
+          } else {
+            for (const parentId of filteredParents) {
+              if (!filteredGenerations.has(parentId)) {
+                allFilteredParentsHaveGen = false;
+                break;
+              }
+              maxParentGen = Math.max(
+                maxParentGen,
+                filteredGenerations.get(parentId)
+              );
+            }
+
+            if (maxParentGen >= 0 && allFilteredParentsHaveGen) {
+              filteredGenerations.set(node.id, maxParentGen + 1);
+              visited.add(node.id);
+              changed = true;
+            }
+          }
+        }
+      });
+    }
+
+    // Group nodes by their NEW filtered generations
+    const generations = d3.group(
+      filteredNodes,
+      (d) => filteredGenerations.get(d.id) || 0
+    );
+    const sortedGens = Array.from(generations.keys()).sort((a, b) => a - b);
+
+    // Position nodes generation by generation
+    sortedGens.forEach((gen, genIndex) => {
+      const genNodes = generations.get(gen);
+      const xPos = genIndex * config.xSpacing;
+
+      // Separate leaf and non-leaf nodes within this generation
+      const leafNodes = genNodes.filter(
+        (n) =>
+          !filteredIds.has(n.id) ||
+          n.children.every((childId) => !filteredIds.has(childId))
+      );
+      const nonLeafNodes = genNodes.filter(
+        (n) =>
+          filteredIds.has(n.id) &&
+          n.children.some((childId) => filteredIds.has(childId))
+      );
+
+      // Sort each group
+      const sortNodes = (nodes) => {
+        nodes.sort((a, b) => {
+          if (a.id === selectedNode.id) return -1;
+          if (b.id === selectedNode.id) return 1;
+          return a.name.localeCompare(b.name);
+        });
+      };
+
+      sortNodes(leafNodes);
+      sortNodes(nonLeafNodes);
+
+      // Position: leaf nodes at top, non-leaf in middle, leaf at bottom
+      const halfLeaves = Math.floor(leafNodes.length / 2);
+      const topLeaves = leafNodes.slice(0, halfLeaves);
+      const bottomLeaves = leafNodes.slice(halfLeaves);
+
+      const orderedNodes = [...topLeaves, ...nonLeafNodes, ...bottomLeaves];
+
+      // Add alternating vertical stagger between generations for clarity
+      // Odd generations go up, even go down
+      const staggerAmount = 30;
+      const generationOffset =
+        genIndex % 2 === 0
+          ? -staggerAmount * Math.floor(genIndex / 2)
+          : staggerAmount * Math.ceil(genIndex / 2);
+
+      // Center nodes vertically with stagger
+      orderedNodes.forEach((node, i) => {
+        node.x = xPos;
+        node.y =
+          (i - (orderedNodes.length - 1) / 2) * config.ySpacing +
+          400 +
+          generationOffset;
+      });
+    });
+  }
+
+  restoreOriginalView() {
+    this.isFilteredView = false;
+
+    // Restore original positions
+    this.nodes.forEach((node) => {
+      const original = this.originalPositions.get(node.id);
+      if (original) {
+        node.x = original.x;
+        node.y = original.y;
+      }
+    });
+
+    // Clear saved positions so next filtered view saves fresh positions
+    this.originalPositions.clear();
+
+    // Show all nodes and links
+    this.node
+      .style("display", null)
+      .classed("highlighted connected faded", false);
+
+    this.link.style("display", null).classed("highlighted faded", false);
+
+    // Remove outer selection borders
+    this.node.selectAll(".outer-selection-border").remove();
+
+    // Reset node borders
+    this.resetNodeBorders();
+
+    // Animate back to original positions
+    this.node
+      .transition()
+      .duration(500)
+      .attr("transform", (d) => `translate(${d.x},${d.y})`);
+
+    this.link
+      .transition()
+      .duration(500)
+      .attr("d", (d) => {
+        const source = this.nodeMap.get(d.source);
+        const target = this.nodeMap.get(d.target);
+        const sourceWidth = source.width || 120;
+        const targetWidth = target.width || 120;
+        const targetY = target.y + (d.targetYOffset || 0);
+
+        const sourceX = source.x + sourceWidth / 2;
+        const targetX = target.x - targetWidth / 2 + 3;
+        const sourceXStraight = sourceX + config.straightLength;
+        const targetXStraight = targetX - config.straightLength;
+        const controlX1 = sourceX + config.controlOffset;
+        const controlX2 = targetX - config.controlOffset;
+
+        return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+      });
+
+    document.getElementById("infoPanel").style.display = "none";
+
+    // Fit view after animation
+    setTimeout(() => this.fitView(), 600);
+  }
+
+  fitViewToNodes(nodes) {
+    // Calculate bounds for specific nodes
+    const treeMinX = Math.min(...nodes.map((n) => n.x - (n.width || 100) / 2));
+    const treeMaxX = Math.max(...nodes.map((n) => n.x + (n.width || 100) / 2));
+    const treeMinY = Math.min(...nodes.map((n) => n.y));
+    const treeMaxY = Math.max(...nodes.map((n) => n.y));
+
+    const padding = 100;
+    const treeWidth = treeMaxX - treeMinX + padding * 2;
+    const treeHeight = treeMaxY - treeMinY + padding * 2;
+
+    const svgWidth = 1200;
+    const svgHeight = 800;
+
+    const scaleX = (svgWidth - padding * 2) / treeWidth;
+    const scaleY = (svgHeight - padding * 2) / treeHeight;
+    const scale = Math.min(scaleX, scaleY, 1.2);
+
+    const centerX = (treeMinX + treeMaxX) / 2;
+    const centerY = (treeMinY + treeMaxY) / 2;
+    const translateX = svgWidth / 2 - centerX * scale;
+    const translateY = svgHeight / 2 - centerY * scale;
+
+    const transform = d3.zoomIdentity
+      .translate(translateX, translateY)
+      .scale(scale);
+
+    this.svg.transition().duration(750).call(this.zoom.transform, transform);
   }
 
   fitView() {
@@ -684,6 +1014,36 @@ export class BeeBreedingApp {
     window.resetHighlight = () => this.resetHighlight();
     window.fitView = () => this.fitView();
     window.toggleLeafLayout = () => this.toggleLeafLayout();
+
+    // Add checkbox change listener
+    const filterModeCheckbox = document.getElementById("filterModeToggle");
+    if (filterModeCheckbox) {
+      filterModeCheckbox.addEventListener("change", () => {
+        // If a node is selected, immediately switch visualization mode
+        if (this.currentSelectedNode) {
+          const showAllNodes = filterModeCheckbox.checked;
+
+          if (showAllNodes) {
+            // Switch to fade mode - restore first if in filtered view, then apply fade
+            if (this.isFilteredView) {
+              this.restoreOriginalView();
+              // Wait for animation to complete, then apply fade
+              setTimeout(() => {
+                this.highlightConnections(this.currentSelectedNode);
+                this.showInfo(this.currentSelectedNode);
+              }, 550);
+            } else {
+              // Already in normal view, just apply fade
+              this.highlightConnections(this.currentSelectedNode);
+            }
+          } else {
+            // Switch to filtered mode
+            this.showFilteredView(this.currentSelectedNode);
+            this.showInfo(this.currentSelectedNode);
+          }
+        }
+      });
+    }
 
     console.log("Controls bound to window object");
   }
