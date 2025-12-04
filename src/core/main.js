@@ -639,7 +639,56 @@ export class BeeBreedingApp {
       .filter((d) => connectedIds.has(d.id))
       .attr("transform", (d) => `translate(${d.x},${d.y})`);
 
-    // Update link positions immediately
+    // Recalculate edge Y offsets for filtered nodes
+    const filteredLinksByTarget = d3.group(filteredLinks, (l) => l.target);
+
+    filteredLinksByTarget.forEach((targetLinks, targetId) => {
+      if (targetLinks.length > 1) {
+        // Sort by NEW filtered source Y position (node that's higher up connects to top)
+        // Create a map of filtered node positions for quick lookup
+        const filteredNodePositions = new Map(
+          filteredNodes.map((n) => [n.id, { x: n.x, y: n.y }])
+        );
+
+        const sortedLinks = targetLinks
+          .map((link) => {
+            // Use filtered node positions which have been updated by arrangeFilteredNodes
+            const sourcePos = filteredNodePositions.get(link.source);
+            return {
+              link,
+              sourceY: sourcePos
+                ? sourcePos.y
+                : this.nodeMap.get(link.source).y,
+            };
+          })
+          .sort((a, b) => a.sourceY - b.sourceY);
+
+        // Assign vertical offsets - lower index (higher up source) gets negative offset (top)
+        const spacing = config.spacing;
+        const totalHeight = (sortedLinks.length - 1) * spacing;
+
+        sortedLinks.forEach((item, index) => {
+          // Node at index 0 (highest source Y = smallest Y value) gets most negative offset (top)
+          const targetYOffset = index * spacing - totalHeight / 2;
+          item.link.targetYOffset = targetYOffset;
+        });
+      } else if (targetLinks.length === 1) {
+        targetLinks[0].targetYOffset = 0;
+      }
+    });
+
+    // Update the data on the D3 selection with new offsets
+    this.link.each(function (d) {
+      // Find the matching link in filteredLinks to get updated targetYOffset
+      const matchingLink = filteredLinks.find(
+        (l) => l.source === d.source && l.target === d.target
+      );
+      if (matchingLink && matchingLink.targetYOffset !== undefined) {
+        d.targetYOffset = matchingLink.targetYOffset;
+      }
+    });
+
+    // Update link positions immediately with recalculated offsets
     this.link
       .filter((d) => connectedIds.has(d.source) && connectedIds.has(d.target))
       .attr("d", (d) => {
@@ -658,6 +707,9 @@ export class BeeBreedingApp {
 
         return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
       });
+
+    // Update node borders to match the recalculated edge positions
+    this.updateFilteredNodeBorders(filteredNodes, filteredLinks);
 
     // Fit view to filtered nodes immediately
     this.fitViewToNodes(filteredNodes);
@@ -783,6 +835,86 @@ export class BeeBreedingApp {
         }
       });
     });
+  }
+
+  updateFilteredNodeBorders(filteredNodes, filteredLinks) {
+    // Create a map of filtered node positions
+    const filteredNodePositions = new Map(
+      filteredNodes.map((n) => [n.id, { x: n.x, y: n.y }])
+    );
+
+    // Group links by target for border calculations
+    const filteredLinksByTarget = d3.group(filteredLinks, (l) => l.target);
+
+    const app = this;
+    this.node
+      .filter((d) => filteredNodePositions.has(d.id))
+      .each(function (d) {
+        const nodeElement = d3.select(this);
+        const visibleInputLinks = filteredLinksByTarget.get(d.id) || [];
+
+        if (visibleInputLinks.length === 0) {
+          nodeElement.selectAll(".node-border").attr("stroke", "#000");
+        } else if (visibleInputLinks.length === 1) {
+          // Only 1 visible parent - use single color border
+          const edgeColor =
+            config.availableColors[
+              app.nodeColors[visibleInputLinks[0].source] || 0
+            ];
+          nodeElement
+            .selectAll(".node-border, .node-border-segment")
+            .attr("stroke", edgeColor);
+        } else {
+          // Multiple visible parents - calculate segment colors using filtered positions
+          const sortedLinks = visibleInputLinks
+            .map((link) => {
+              const sourcePos = filteredNodePositions.get(link.source);
+              return {
+                link,
+                sourceY: sourcePos
+                  ? sourcePos.y
+                  : app.nodeMap.get(link.source).y,
+              };
+            })
+            .sort((a, b) => a.sourceY - b.sourceY)
+            .map((item, index) => {
+              let targetYOffset = 0;
+              if (visibleInputLinks.length > 1) {
+                const spacing = config.spacing;
+                const totalHeight = (visibleInputLinks.length - 1) * spacing;
+                targetYOffset = index * spacing - totalHeight / 2;
+              }
+              return {
+                link: item.link,
+                offset: targetYOffset,
+                index,
+              };
+            });
+
+          // Find the colors based on actual spatial position
+          // The first sorted link (smallest Y) gets most negative offset (top)
+          // The last sorted link (largest Y) gets most positive offset (bottom)
+          const topColor =
+            config.availableColors[
+              app.nodeColors[sortedLinks[0].link.source] || 0
+            ];
+          const bottomColor =
+            config.availableColors[
+              app.nodeColors[sortedLinks[sortedLinks.length - 1].link.source] ||
+                0
+            ];
+
+          const segments = nodeElement
+            .selectAll(".node-border-segment")
+            .nodes();
+          if (segments.length >= 4) {
+            d3.select(segments[0]).attr("stroke", topColor);
+            d3.select(segments[1]).attr("stroke", bottomColor);
+            d3.select(segments[2]).attr("stroke", "#ddd");
+            d3.select(segments[3]).attr("stroke", "#ddd");
+          }
+        }
+      });
   }
 
   restoreOriginalView() {
