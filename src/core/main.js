@@ -95,6 +95,9 @@ export class BeeBreedingApp {
       // Set up search
       this.setupSearch();
 
+      // Set up resize handler
+      this.setupResizeHandler();
+
       // Initial fit
       this.fitView();
 
@@ -106,29 +109,12 @@ export class BeeBreedingApp {
   }
 
   setupSVG() {
-    const margin = {
-      top: 100,
-      right: 100,
-      bottom: 100,
-      left: 100,
-    };
-    const width = 1200;
-    const height = 800;
-
     this.svg = d3
       .select("#tree-svg")
       .attr("width", "100%")
-      .attr("height", "100vh")
-      .attr(
-        "viewBox",
-        `0 0 ${width + margin.left + margin.right} ${
-          height + margin.top + margin.bottom
-        }`
-      );
+      .attr("height", "100vh");
 
-    this.g = this.svg
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+    this.g = this.svg.append("g");
   }
 
   renderVisualization() {
@@ -711,6 +697,9 @@ export class BeeBreedingApp {
     // Update node borders to match the recalculated edge positions
     this.updateFilteredNodeBorders(filteredNodes, filteredLinks);
 
+    // Recalculate zoom constraints for filtered nodes
+    this.updateZoomConstraints(filteredNodes);
+
     // Fit view to filtered nodes immediately
     this.fitViewToNodes(filteredNodes);
   }
@@ -975,6 +964,9 @@ export class BeeBreedingApp {
 
     document.getElementById("infoPanel").style.display = "none";
 
+    // Recalculate zoom constraints for all nodes
+    this.updateZoomConstraints(this.nodes);
+
     // Fit view immediately
     this.fitView();
   }
@@ -987,62 +979,59 @@ export class BeeBreedingApp {
     const treeMaxY = Math.max(...nodes.map((n) => n.y));
 
     const padding = 100;
-    const treeWidth = treeMaxX - treeMinX + padding * 2;
-    const treeHeight = treeMaxY - treeMinY + padding * 2;
 
-    const svgWidth = 1200;
-    const svgHeight = 800;
+    // Get actual SVG dimensions
+    const svgNode = this.svg.node();
+    const bounds = svgNode.getBoundingClientRect();
+    const svgWidth = bounds.width;
+    const svgHeight = bounds.height;
 
-    const scaleX = (svgWidth - padding * 2) / treeWidth;
-    const scaleY = (svgHeight - padding * 2) / treeHeight;
-    const scale = Math.min(scaleX, scaleY, 1.2);
+    // Calculate tree dimensions
+    let treeWidth = treeMaxX - treeMinX;
+    let treeHeight = treeMaxY - treeMinY;
 
+    // If there are very few nodes (like a single node with no connections),
+    // treat it as if there are at least 3 generations worth of space
+    // This prevents a single node from filling the entire screen
+    const minTreeWidth = config.xSpacing * 2; // At least 3 generation widths
+    const minTreeHeight = config.ySpacing * 4; // At least 5 node heights
+
+    treeWidth = Math.max(treeWidth, minTreeWidth);
+    treeHeight = Math.max(treeHeight, minTreeHeight);
+
+    // Calculate scale to fit with padding
+    const scale = 0.9 / Math.max(treeWidth / svgWidth, treeHeight / svgHeight);
+
+    // Calculate center point
     const centerX = (treeMinX + treeMaxX) / 2;
     const centerY = (treeMinY + treeMaxY) / 2;
-    const translateX = svgWidth / 2 - centerX * scale;
-    const translateY = svgHeight / 2 - centerY * scale;
 
-    const transform = d3.zoomIdentity
-      .translate(translateX, translateY)
-      .scale(scale);
-
-    this.svg.transition().duration(750).call(this.zoom.transform, transform);
+    // Use D3 zoom's scaleTo and translateTo for smooth animation
+    this.svg
+      .transition()
+      .duration(750)
+      .call(
+        this.zoom.transform,
+        d3.zoomIdentity
+          .translate(svgWidth / 2, svgHeight / 2)
+          .scale(scale)
+          .translate(-centerX, -centerY)
+      );
   }
 
   fitView() {
-    // Calculate proper bounds to fit all nodes
-    const treeMinX = Math.min(
-      ...this.nodes.map((n) => n.x - (n.width || 100) / 2)
-    );
-    const treeMaxX = Math.max(
-      ...this.nodes.map((n) => n.x + (n.width || 100) / 2)
-    );
-    const treeMinY = Math.min(...this.nodes.map((n) => n.y));
-    const treeMaxY = Math.max(...this.nodes.map((n) => n.y));
-
-    const padding = 50;
-    const treeWidth = treeMaxX - treeMinX + padding * 2;
-    const treeHeight = treeMaxY - treeMinY + padding * 2;
-
-    const svgWidth = 1200;
-    const svgHeight = 800;
-
-    // Calculate scale to fit both width and height with padding
-    const scaleX = (svgWidth - padding * 2) / treeWidth;
-    const scaleY = (svgHeight - padding * 2) / treeHeight;
-    const scale = Math.min(scaleX, scaleY, 0.8);
-
-    // Center the tree
-    const centerX = (treeMinX + treeMaxX) / 2;
-    const centerY = (treeMinY + treeMaxY) / 2;
-    const translateX = svgWidth / 2 - centerX * scale;
-    const translateY = svgHeight / 2 - centerY * scale;
-
-    const transform = d3.zoomIdentity
-      .translate(translateX, translateY)
-      .scale(scale);
-
-    this.svg.transition().duration(750).call(this.zoom.transform, transform);
+    // Fit to currently visible nodes only
+    if (this.isFilteredView) {
+      // In filtered view, fit to only the visible nodes
+      const visibleNodes = this.nodes.filter((n) => {
+        const nodeElement = this.node.filter((d) => d.id === n.id);
+        return nodeElement.style("display") !== "none";
+      });
+      this.fitViewToNodes(visibleNodes);
+    } else {
+      // In normal view, fit to all nodes
+      this.fitViewToNodes(this.nodes);
+    }
   }
 
   toggleLeafLayout() {
@@ -1089,6 +1078,9 @@ export class BeeBreedingApp {
       // Create path
       return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
     });
+
+    // Recalculate zoom constraints after layout change
+    this.updateZoomConstraints(this.nodes);
 
     // Fit view immediately
     this.fitView();
@@ -1214,16 +1206,149 @@ export class BeeBreedingApp {
     console.log("Controls bound to window object");
   }
 
+  setupResizeHandler() {
+    // Add resize listener to re-fit view when window size changes
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // Re-fit the view to current content
+        this.fitView();
+      }, 250); // Debounce for 250ms
+    });
+    console.log("Resize handler set up");
+  }
+
   setupZoom() {
     console.log("Setting up zoom behavior...");
+
+    // Calculate initial fit scale to use as baseline for zoom constraints
+    this.calculateInitialScale();
+
+    // Calculate max scale based on node size constraint
+    // Limit so nodes don't exceed 400px width on screen
+    const maxNodeScreenWidth = 400;
+    const avgNodeWidth = 150; // approximate average node width
+    const maxScale = maxNodeScreenWidth / avgNodeWidth;
+
+    // Set up zoom with constrained scale and pan (but disable wheel zoom)
     this.zoom = d3
       .zoom()
-      .scaleExtent(config.zoomScaleExtent)
+      .scaleExtent([
+        this.initialScale * 0.8, // Can zoom out to 80% of fit view
+        Math.min(this.initialScale * 3, maxScale), // Limit by node screen size
+      ])
+      .extent(() => {
+        const bounds = this.svg.node().getBoundingClientRect();
+        return [
+          [0, 0],
+          [bounds.width, bounds.height],
+        ];
+      })
+      .translateExtent(this.calculateTranslateExtent())
       .on("zoom", (event) => {
         this.g.attr("transform", event.transform);
       });
 
     this.svg.call(this.zoom);
-    console.log("Zoom behavior initialized");
+    console.log("Zoom behavior initialized with scale extent:", [
+      this.initialScale * 0.8,
+      Math.min(this.initialScale * 3, maxScale),
+    ]);
+  }
+
+  calculateInitialScale() {
+    // Calculate the scale that would fit all nodes
+    const treeMinX = Math.min(
+      ...this.nodes.map((n) => n.x - (n.width || 100) / 2)
+    );
+    const treeMaxX = Math.max(
+      ...this.nodes.map((n) => n.x + (n.width || 100) / 2)
+    );
+    const treeMinY = Math.min(...this.nodes.map((n) => n.y));
+    const treeMaxY = Math.max(...this.nodes.map((n) => n.y));
+
+    const svgNode = this.svg.node();
+    const bounds = svgNode.getBoundingClientRect();
+    const svgWidth = bounds.width;
+    const svgHeight = bounds.height;
+
+    const treeWidth = treeMaxX - treeMinX;
+    const treeHeight = treeMaxY - treeMinY;
+
+    // Calculate scale to fit with padding (90% to leave some margin)
+    this.initialScale =
+      0.9 / Math.max(treeWidth / svgWidth, treeHeight / svgHeight);
+
+    // Store tree bounds for pan constraints
+    this.treeBounds = { treeMinX, treeMaxX, treeMinY, treeMaxY };
+  }
+
+  calculateTranslateExtent() {
+    if (!this.treeBounds)
+      return [
+        [-Infinity, -Infinity],
+        [Infinity, Infinity],
+      ];
+
+    const { treeMinX, treeMaxX, treeMinY, treeMaxY } = this.treeBounds;
+    const svgNode = this.svg.node();
+    const bounds = svgNode.getBoundingClientRect();
+    const svgWidth = bounds.width;
+    const svgHeight = bounds.height;
+
+    // Calculate margins - ensure at least one column/row stays on screen
+    // We want to allow panning until the opposite edge comes into view
+    const marginX = treeMaxX - treeMinX - config.xSpacing; // Keep at least one column visible
+    const marginY = treeMaxY - treeMinY - config.ySpacing; // Keep at least one row visible
+
+    // Translate extent defines how far the content can be panned
+    // [top-left corner can go to, bottom-right corner can go to]
+    return [
+      [treeMinX - marginX, treeMinY - marginY], // Min translate (content's min x,y)
+      [treeMaxX + marginX, treeMaxY + marginY], // Max translate (content's max x,y)
+    ];
+  }
+
+  updateZoomConstraints(nodes) {
+    // Recalculate bounds and scale for the given set of nodes
+    const treeMinX = Math.min(...nodes.map((n) => n.x - (n.width || 100) / 2));
+    const treeMaxX = Math.max(...nodes.map((n) => n.x + (n.width || 100) / 2));
+    const treeMinY = Math.min(...nodes.map((n) => n.y));
+    const treeMaxY = Math.max(...nodes.map((n) => n.y));
+
+    const svgNode = this.svg.node();
+    const bounds = svgNode.getBoundingClientRect();
+    const svgWidth = bounds.width;
+    const svgHeight = bounds.height;
+
+    const treeWidth = treeMaxX - treeMinX;
+    const treeHeight = treeMaxY - treeMinY;
+
+    // Calculate new initial scale
+    this.initialScale =
+      0.9 / Math.max(treeWidth / svgWidth, treeHeight / svgHeight);
+
+    // Store updated tree bounds
+    this.treeBounds = { treeMinX, treeMaxX, treeMinY, treeMaxY };
+
+    // Calculate max scale based on node size constraint
+    const maxNodeScreenWidth = 400;
+    const avgNodeWidth = 150;
+    const maxScale = maxNodeScreenWidth / avgNodeWidth;
+
+    // Update zoom constraints
+    this.zoom
+      .scaleExtent([
+        this.initialScale * 0.8, // Can zoom out to 80% of fit view
+        Math.min(this.initialScale * 3, maxScale), // Limit by node screen size
+      ])
+      .translateExtent(this.calculateTranslateExtent())
+      .on("zoom", (event) => {
+        this.g.attr("transform", event.transform);
+      });
+
+    // Re-apply the zoom behavior to the SVG
+    this.svg.call(this.zoom);
   }
 }
