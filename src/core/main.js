@@ -736,57 +736,22 @@ export class BeeBreedingApp {
     );
     const sortedGens = Array.from(generations.keys()).sort((a, b) => a - b);
 
-    // Position nodes generation by generation
+    // Position nodes generation by generation, preserving original vertical order
     sortedGens.forEach((gen, genIndex) => {
       const genNodes = generations.get(gen);
       const xPos = genIndex * config.xSpacing;
 
-      // Separate leaf and non-leaf nodes within this generation
-      const leafNodes = genNodes.filter(
-        (n) =>
-          !filteredIds.has(n.id) ||
-          n.children.every((childId) => !filteredIds.has(childId))
-      );
-      const nonLeafNodes = genNodes.filter(
-        (n) =>
-          filteredIds.has(n.id) &&
-          n.children.some((childId) => filteredIds.has(childId))
-      );
+      // Sort by original Y position to maintain vertical order
+      genNodes.sort((a, b) => {
+        const origA = this.originalPositions.get(a.id);
+        const origB = this.originalPositions.get(b.id);
+        return (origA?.y || a.y) - (origB?.y || b.y);
+      });
 
-      // Sort each group
-      const sortNodes = (nodes) => {
-        nodes.sort((a, b) => {
-          if (a.id === selectedNode.id) return -1;
-          if (b.id === selectedNode.id) return 1;
-          return a.name.localeCompare(b.name);
-        });
-      };
-
-      sortNodes(leafNodes);
-      sortNodes(nonLeafNodes);
-
-      // Position: leaf nodes at top, non-leaf in middle, leaf at bottom
-      const halfLeaves = Math.floor(leafNodes.length / 2);
-      const topLeaves = leafNodes.slice(0, halfLeaves);
-      const bottomLeaves = leafNodes.slice(halfLeaves);
-
-      const orderedNodes = [...topLeaves, ...nonLeafNodes, ...bottomLeaves];
-
-      // Add alternating vertical stagger between generations for clarity
-      // Odd generations go up, even go down
-      const staggerAmount = 30;
-      const generationOffset =
-        genIndex % 2 === 0
-          ? -staggerAmount * Math.floor(genIndex / 2)
-          : staggerAmount * Math.ceil(genIndex / 2);
-
-      // Center nodes vertically with stagger
-      orderedNodes.forEach((node, i) => {
+      // Position nodes vertically, maintaining their relative order
+      genNodes.forEach((node, i) => {
         node.x = xPos;
-        node.y =
-          (i - (orderedNodes.length - 1) / 2) * config.ySpacing +
-          400 +
-          generationOffset;
+        node.y = (i - (genNodes.length - 1) / 2) * config.ySpacing + 400;
       });
     });
   }
