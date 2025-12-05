@@ -743,10 +743,8 @@ export class BeeBreedingApp {
         const targetX = target.x - targetWidth / 2 + 3;
         const sourceXStraight = sourceX + config.straightLength;
         const targetXStraight = targetX - config.straightLength;
-        const controlX1 = sourceX + config.controlOffset;
-        const controlX2 = targetX - config.controlOffset;
 
-        return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+        return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
       });
 
     // Update node borders to match the recalculated edge positions
@@ -872,11 +870,12 @@ export class BeeBreedingApp {
       });
 
       // Add alternating vertical stagger between generations for clarity
+      // Odd indices go above (negative), even indices go below (positive)
       const staggerAmount = 30;
       const generationOffset =
-        genIndex % 2 === 0
-          ? -staggerAmount * Math.floor(genIndex / 2)
-          : staggerAmount * Math.ceil(genIndex / 2);
+        genIndex % 2 === 1
+          ? -staggerAmount * Math.ceil(genIndex / 2)
+          : staggerAmount * Math.floor(genIndex / 2);
 
       // Check if the selected node is in this generation
       const selectedNodeIndex = genNodes.findIndex(
@@ -1038,10 +1037,8 @@ export class BeeBreedingApp {
       const targetX = target.x - targetWidth / 2 + 3;
       const sourceXStraight = sourceX + config.straightLength;
       const targetXStraight = targetX - config.straightLength;
-      const controlX1 = sourceX + config.controlOffset;
-      const controlX2 = targetX - config.controlOffset;
 
-      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
     });
 
     document.getElementById("infoPanel").style.display = "none";
@@ -1073,9 +1070,9 @@ export class BeeBreedingApp {
     let treeHeight = treeMaxY - treeMinY;
 
     // If there are very few nodes (like a single node with no connections),
-    // treat it as if there are at least 3 generations worth of space
+    // treat it as if there are at least N generations worth of space
     // This prevents a single node from filling the entire screen
-    const minTreeWidth = config.xSpacing * 2; // At least 3 generation widths
+    const minTreeWidth = config.xSpacing * (config.minZoomGenerations - 1); // N generation widths (N-1 spacing between them)
     const minTreeHeight = config.ySpacing * 4; // At least 5 node heights
 
     treeWidth = Math.max(treeWidth, minTreeWidth);
@@ -1148,17 +1145,11 @@ export class BeeBreedingApp {
       // Connect to the straight sides of rounded rectangles
       const sourceX = source.x + sourceWidth / 2;
       const targetX = target.x - targetWidth / 2 + 3;
-
-      // Add straight segments
       const sourceXStraight = sourceX + config.straightLength;
       const targetXStraight = targetX - config.straightLength;
 
-      // Create smoother control points
-      const controlX1 = sourceX + config.controlOffset;
-      const controlX2 = targetX - config.controlOffset;
-
-      // Create path
-      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+      // Create path: horizontal from source -> straight diagonal -> horizontal to target
+      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
     });
 
     // Recalculate zoom constraints after layout change
@@ -1263,10 +1254,8 @@ export class BeeBreedingApp {
                 const targetX = target.x - targetWidth / 2 + 3;
                 const sourceXStraight = sourceX + config.straightLength;
                 const targetXStraight = targetX - config.straightLength;
-                const controlX1 = sourceX + config.controlOffset;
-                const controlX2 = targetX - config.controlOffset;
 
-                return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+                return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
               });
 
               // Apply fade highlighting immediately
@@ -1404,14 +1393,21 @@ export class BeeBreedingApp {
     const svgWidth = bounds.width;
     const svgHeight = bounds.height;
 
-    const treeWidth = treeMaxX - treeMinX;
-    const treeHeight = treeMaxY - treeMinY;
+    let treeWidth = treeMaxX - treeMinX;
+    let treeHeight = treeMaxY - treeMinY;
 
-    // Calculate new initial scale
+    // Apply minimum tree dimensions to prevent over-zooming on small trees
+    const minTreeWidth = config.xSpacing * (config.minZoomGenerations - 1);
+    const minTreeHeight = config.ySpacing * 4;
+
+    treeWidth = Math.max(treeWidth, minTreeWidth);
+    treeHeight = Math.max(treeHeight, minTreeHeight);
+
+    // Calculate new initial scale using the adjusted dimensions
     this.initialScale =
       0.9 / Math.max(treeWidth / svgWidth, treeHeight / svgHeight);
 
-    // Store updated tree bounds
+    // Store updated tree bounds (use original bounds, not inflated)
     this.treeBounds = { treeMinX, treeMaxX, treeMinY, treeMaxY };
 
     // Calculate max scale based on node size constraint

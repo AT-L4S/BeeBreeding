@@ -5,7 +5,7 @@ export const config = {
   // Layout settings
   xSpacing: 180,
   ySpacing: 40,
-  straightLength: 15,
+  straightLength: 10,
   controlOffset: 20,
   spacing: 20,
   gap: 10, // Horizontal gap between edge straight segments
@@ -38,6 +38,7 @@ export const config = {
   // Zoom settings
   zoomScaleExtent: [0.3, 2],
   zoomPadding: 150,
+  minZoomGenerations: 4, // Minimum number of generations to show when auto-zooming (prevents over-zooming on small trees)
 
   // Layout modes
   layoutModes: {

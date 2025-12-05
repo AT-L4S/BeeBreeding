@@ -132,20 +132,16 @@ export function renderEdges(svg, links, nodes, nodeMap, nodeColors) {
 
       const targetY = target.y + d.targetYOffset;
 
-      // Connect to the straight sides of rounded rectangles, extending well into the node
+      // Connect to the straight sides of rounded rectangles
       const sourceX = source.x + sourceWidth / 2; // Right edge of source
       const targetX = target.x - targetWidth / 2 + 3; // Left edge of target
 
-      // Add straight segments that extend well into the node edges to eliminate gaps
+      // Add horizontal segments extending from nodes
       const sourceXStraight = sourceX + config.straightLength;
       const targetXStraight = targetX - config.straightLength;
 
-      // Create smoother control points for gradual transition
-      const controlX1 = sourceX + config.controlOffset;
-      const controlX2 = targetX - config.controlOffset;
-
-      // Create path: straight into node -> smooth curve -> straight into node
-      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} C${controlX1},${source.y} ${controlX2},${targetY} ${targetXStraight},${targetY} L${targetX},${targetY}`;
+      // Create path: horizontal from source -> straight diagonal -> horizontal to target
+      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
     })
     .style("stroke", (d) => {
       return config.availableColors[nodeColors[d.source] || 0];
