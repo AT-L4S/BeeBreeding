@@ -40,6 +40,9 @@ export const config = {
   zoomPadding: 150,
   minZoomGenerations: 4, // Minimum number of generations to show when auto-zooming (prevents over-zooming on small trees)
 
+  // Search settings
+  searchDebounceDelay: 500, // Milliseconds to wait after user stops typing before executing search
+
   // Layout modes
   layoutModes: {
     SPLIT: "split",

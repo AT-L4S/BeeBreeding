@@ -153,28 +153,61 @@ export class BeeBreedingApp {
     this.setupNodeInteractions();
   }
 
+  selectNode(node) {
+    // Save the selected node
+    this.currentSelectedNode = node;
+
+    // Check if filter mode checkbox is checked
+    const filterModeCheckbox = document.getElementById("filterModeToggle");
+    const showAllNodes = filterModeCheckbox ? filterModeCheckbox.checked : true;
+
+    if (showAllNodes) {
+      // Default behavior: show all nodes, fade unrelated
+      this.highlightConnections(node);
+    } else {
+      // Filtered view: show only related nodes with rearranged layout
+      this.showFilteredView(node);
+    }
+
+    this.showInfo(node);
+  }
+
+  highlightMultipleNodes(nodes) {
+    // Clear current selection
+    this.currentSelectedNode = null;
+
+    // Reset highlighting and fading
+    this.node.classed("highlighted connected faded", false);
+    this.link.classed("highlighted faded", false);
+
+    // Remove any existing outer selection borders
+    this.node.selectAll(".outer-selection-border").remove();
+
+    // Reset ALL node borders to their default colors
+    this.resetNodeBorders();
+
+    // Collect all IDs to highlight
+    const highlightIds = new Set(nodes.map((n) => n.id));
+
+    // Highlight all matching nodes
+    this.node
+      .filter((d) => highlightIds.has(d.id))
+      .classed("highlighted", true);
+
+    // Fade out non-highlighted nodes
+    this.node.filter((d) => !highlightIds.has(d.id)).classed("faded", true);
+
+    // Fade all links to emphasize the highlighted nodes
+    this.link.classed("faded", true);
+
+    // Hide info panel since no single node is selected
+    document.getElementById("infoPanel").style.display = "none";
+  }
+
   setupNodeInteractions() {
     this.node.on("click", (event, d) => {
       event.stopPropagation();
-
-      // Save the selected node
-      this.currentSelectedNode = d;
-
-      // Check if filter mode checkbox is checked
-      const filterModeCheckbox = document.getElementById("filterModeToggle");
-      const showAllNodes = filterModeCheckbox
-        ? filterModeCheckbox.checked
-        : true;
-
-      if (showAllNodes) {
-        // Default behavior: show all nodes, fade unrelated
-        this.highlightConnections(d);
-      } else {
-        // Filtered view: show only related nodes with rearranged layout
-        this.showFilteredView(d);
-      }
-
-      this.showInfo(d);
+      this.selectNode(d);
     });
 
     // Clear selection on background click
@@ -419,8 +452,9 @@ export class BeeBreedingApp {
       .classed("faded", true);
 
     // Move highlighted links to end of link group
+    const app = this;
     highlightedLinks.each(function () {
-      this.g.node().appendChild(this);
+      app.g.node().appendChild(this);
     });
 
     // Ensure connected nodes stay in node group
@@ -432,7 +466,7 @@ export class BeeBreedingApp {
           d.id === selectedNode.id
       )
       .each(function () {
-        this.g.node().appendChild(this);
+        app.g.node().appendChild(this);
       });
   }
 
@@ -1194,46 +1228,87 @@ export class BeeBreedingApp {
     // Recalculate zoom constraints after layout change
     this.updateZoomConstraints(this.nodes);
 
-    // Fit view immediately
+    // Fit view after layout change
     this.fitView();
   }
 
   setupSearch() {
-    document.getElementById("searchInput").addEventListener("input", (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      if (searchTerm.length > 2) {
-        const foundNode = this.nodes.find(
-          (n) =>
-            (n.name && n.name.toLowerCase().includes(searchTerm)) ||
-            n.id.toLowerCase().includes(searchTerm)
-        );
-        if (foundNode) {
-          this.highlightConnections(foundNode);
-          this.showInfo(foundNode);
-          // Gentle center on found node
-          const currentTransform = d3.zoomTransform(this.svg.node());
-          const nodeScreenX = currentTransform.applyX(foundNode.x);
-          const nodeScreenY = currentTransform.applyY(foundNode.y);
+    let searchTimeout;
+    const searchInput = document.getElementById("searchInput");
 
-          // Only pan if node is significantly off-screen
-          if (
-            nodeScreenX < 100 ||
-            nodeScreenX > 1200 - 100 ||
-            nodeScreenY < 100 ||
-            nodeScreenY > 800 - 100
-          ) {
-            const transform = d3.zoomIdentity
-              .translate(600 - foundNode.x, 400 - foundNode.y)
-              .scale(currentTransform.k);
-            this.svg
-              .transition()
-              .duration(500)
-              .call(this.zoom.transform, transform);
+    searchInput.addEventListener("input", (e) => {
+      // Clear previous timeout
+      clearTimeout(searchTimeout);
+
+      const searchTerm = e.target.value.toLowerCase();
+
+      // Always debounce - wait for user to stop typing
+      searchTimeout = setTimeout(() => {
+        if (searchTerm.length === 0) {
+          // Empty search - show full tree
+          if (this.isFilteredView) {
+            this.restoreOriginalView();
+          } else {
+            this.resetHighlight();
+          }
+        } else {
+          // Search for matching nodes with prioritization
+          // Only search by display name, extracting bee name from mod-prefixed IDs if needed
+          const matches = this.nodes.filter((n) => {
+            // Extract display name - if no explicit name, extract from ID (e.g., "forestry:commonBee" -> "commonBee")
+            const displayName = n.name || n.id.split(":")[1] || n.id;
+            return displayName.toLowerCase().includes(searchTerm);
+          });
+
+          // Separate exact matches from partial matches
+          const exactMatches = matches.filter((n) => {
+            const displayName = n.name || n.id.split(":")[1] || n.id;
+            return displayName.toLowerCase() === searchTerm;
+          });
+          const partialMatches = matches.filter((n) => {
+            const displayName = n.name || n.id.split(":")[1] || n.id;
+            return displayName.toLowerCase() !== searchTerm;
+          });
+
+          // Sort partial matches by priority:
+          // 1. Starts with search term
+          // 2. Contains search term (shorter first)
+          partialMatches.sort((a, b) => {
+            const aName = (a.name || a.id.split(":")[1] || a.id).toLowerCase();
+            const bName = (b.name || b.id.split(":")[1] || b.id).toLowerCase();
+
+            // Check for starts with
+            const aStarts = aName.startsWith(searchTerm);
+            const bStarts = bName.startsWith(searchTerm);
+            if (aStarts && !bStarts) return -1;
+            if (!aStarts && bStarts) return 1;
+
+            // Both contain search term, sort by length (shorter first)
+            return aName.length - bName.length;
+          });
+
+          if (exactMatches.length > 0) {
+            // Always select first exact match
+            this.selectNode(exactMatches[0]);
+          } else if (partialMatches.length === 1) {
+            // Only one partial match - select it
+            this.selectNode(partialMatches[0]);
+          } else if (partialMatches.length > 1) {
+            // Multiple partial matches - highlight all of them
+            if (this.isFilteredView) {
+              this.restoreOriginalView();
+            }
+            this.highlightMultipleNodes(partialMatches);
+          } else {
+            // No matches found - show full tree
+            if (this.isFilteredView) {
+              this.restoreOriginalView();
+            } else {
+              this.resetHighlight();
+            }
           }
         }
-      } else {
-        this.resetHighlight();
-      }
+      }, config.searchDebounceDelay);
     });
   }
 
@@ -1249,13 +1324,19 @@ export class BeeBreedingApp {
     const filterModeCheckbox = document.getElementById("filterModeToggle");
     if (filterModeCheckbox) {
       filterModeCheckbox.addEventListener("change", () => {
-        // If a node is selected, immediately switch visualization mode
-        if (this.currentSelectedNode) {
-          const showAllNodes = filterModeCheckbox.checked;
+        const showAllNodes = filterModeCheckbox.checked;
+        console.log(
+          "Filter mode checkbox changed. showAllNodes:",
+          showAllNodes
+        );
 
-          if (showAllNodes) {
+        // If checkbox is checked (showing all nodes), always fit to view
+        if (showAllNodes) {
+          // If a node is selected, switch visualization mode
+          if (this.currentSelectedNode) {
             // Switch to fade mode
             if (this.isFilteredView) {
+              console.log("Switching from filtered view to fade view");
               this.isFilteredView = false;
 
               // Restore original positions to node data
@@ -1297,15 +1378,45 @@ export class BeeBreedingApp {
                 return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
               });
 
-              // Apply fade highlighting immediately
+              // Re-enable layout toggle button
+              const layoutButton = document.getElementById("layoutToggle");
+              if (layoutButton) {
+                layoutButton.disabled = false;
+                layoutButton.style.opacity = "1";
+                layoutButton.style.cursor = "pointer";
+              }
+
+              // Apply fade highlighting
               this.highlightConnections(this.currentSelectedNode);
               this.showInfo(this.currentSelectedNode);
             } else {
+              console.log("Already in normal view, just applying fade");
               // Already in normal view, just apply fade
               this.highlightConnections(this.currentSelectedNode);
             }
-          } else {
-            // Switch to filtered mode
+          }
+
+          // ALWAYS fit to view when showing all nodes, regardless of selected node state
+          // Recalculate zoom constraints BEFORE fitting to ensure proper bounds
+          console.log(
+            "Updating zoom constraints and fitting to view for all nodes"
+          );
+          console.log("Number of nodes:", this.nodes.length);
+          console.log("isFilteredView:", this.isFilteredView);
+
+          // Update zoom constraints for all nodes
+          this.updateZoomConstraints(this.nodes);
+
+          // Use setTimeout to ensure zoom constraints are applied before fitting
+          setTimeout(() => {
+            console.log(
+              "Fitting view to all nodes after zoom constraint update"
+            );
+            this.fitViewToNodes(this.nodes);
+          }, 0);
+        } else {
+          // Checkbox unchecked - switch to filtered mode (only if node is selected)
+          if (this.currentSelectedNode) {
             this.showFilteredView(this.currentSelectedNode);
             this.showInfo(this.currentSelectedNode);
           }

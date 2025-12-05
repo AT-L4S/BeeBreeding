@@ -1,9 +1,10 @@
-[ ] Add more than 1 parent breeding pair/add percentage toggle
 [ ] Filter by mods/modpacks
+[ ] Add colors/links to bee nodes in info boxes
+[ ] Add more than 1 parent breeding pair/add percentage toggle
 [ ] Merge code for filtered/full tree
 [ ] Add bee products/specialties + comb products
-[x] Put bees with more children in the center of each column
 
+[x] Put bees with more children in the center of each column
 [x] Split into multiple files/refactor with focus on speed and expandability (NOTE: design in a way that allows the features below)
 [x] Fix broken zoom/pan
 
