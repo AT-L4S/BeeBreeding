@@ -42,10 +42,10 @@
     ]
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:White"],
+    "parents": ["Forestry:Diligent", "ExtraBees:White"],
     "children": [
       {
-        "species": "Forestry:Black",
+        "species": "ExtraBees:Black",
         "probability": 1
       }
     ]
@@ -54,7 +54,7 @@
     "parents": ["Forestry:Diligent", "Forestry:Forest"],
     "children": [
       {
-        "species": "Forestry:Blue",
+        "species": "ExtraBees:Blue",
         "probability": 1
       },
       {
@@ -67,7 +67,7 @@
     "parents": ["Forestry:Diligent", "Forestry:Tropical"],
     "children": [
       {
-        "species": "Forestry:Brown",
+        "species": "ExtraBees:Brown",
         "probability": 1
       }
     ]
@@ -91,10 +91,10 @@
     ]
   },
   {
-    "parents": ["Forestry:Blue", "Forestry:Green"],
+    "parents": ["ExtraBees:Blue", "ExtraBees:Green"],
     "children": [
       {
-        "species": "Forestry:Cyan",
+        "species": "ExtraBees:Cyan",
         "probability": 1
       }
     ]
@@ -129,7 +129,7 @@
         "probability": 1
       },
       {
-        "species": "Career Bees:Student",
+        "species": "CareerBees:Student",
         "probability": 1
       }
     ]
@@ -189,19 +189,19 @@
     ]
   },
   {
-    "parents": ["Forestry:Black", "Forestry:White"],
+    "parents": ["ExtraBees:Black", "ExtraBees:White"],
     "children": [
       {
-        "species": "Forestry:Gray",
+        "species": "ExtraBees:Gray",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Forestry:Blue", "Forestry:Yellow"],
+    "parents": ["ExtraBees:Blue", "ExtraBees:Yellow"],
     "children": [
       {
-        "species": "Forestry:Green",
+        "species": "ExtraBees:Green",
         "probability": 1
       }
     ]
@@ -252,19 +252,19 @@
     ]
   },
   {
-    "parents": ["Forestry:Gray", "Forestry:White"],
+    "parents": ["ExtraBees:Gray", "ExtraBees:White"],
     "children": [
       {
-        "species": "Forestry:Light Gray",
+        "species": "ExtraBees:Light Gray",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Forestry:Green", "Forestry:White"],
+    "parents": ["ExtraBees:Green", "ExtraBees:White"],
     "children": [
       {
-        "species": "Forestry:Lime",
+        "species": "ExtraBees:Lime",
         "probability": 1
       }
     ]
@@ -288,10 +288,10 @@
     ]
   },
   {
-    "parents": ["Forestry:Red", "Forestry:Yellow"],
+    "parents": ["ExtraBees:Red", "ExtraBees:Yellow"],
     "children": [
       {
-        "species": "Forestry:Orange",
+        "species": "ExtraBees:Orange",
         "probability": 1
       }
     ]
@@ -306,19 +306,19 @@
     ]
   },
   {
-    "parents": ["Forestry:Red", "Forestry:White"],
+    "parents": ["ExtraBees:Red", "ExtraBees:White"],
     "children": [
       {
-        "species": "Forestry:Pink",
+        "species": "ExtraBees:Pink",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Forestry:Blue", "Forestry:Red"],
+    "parents": ["ExtraBees:Blue", "ExtraBees:Red"],
     "children": [
       {
-        "species": "Forestry:Purple",
+        "species": "ExtraBees:Purple",
         "probability": 1
       }
     ]
@@ -327,7 +327,7 @@
     "parents": ["Forestry:Common", "Forestry:Diligent"],
     "children": [
       {
-        "species": "Forestry:Red",
+        "species": "ExtraBees:Red",
         "probability": 1
       }
     ]
@@ -399,7 +399,7 @@
     "parents": ["Forestry:Diligent", "Forestry:Wintry"],
     "children": [
       {
-        "species": "Forestry:White",
+        "species": "ExtraBees:White",
         "probability": 1
       },
       {
@@ -412,280 +412,280 @@
     "parents": ["Forestry:Diligent", "Forestry:Modest"],
     "children": [
       {
-        "species": "Forestry:Yellow",
+        "species": "ExtraBees:Yellow",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Forestry:Cultivated"],
+    "parents": ["CareerBees:Graduate", "Forestry:Cultivated"],
     "children": [
       {
-        "species": "Career Bees:Artistic",
+        "species": "CareerBees:Artistic",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Devil", "Career Bees:Police"],
+    "parents": ["CareerBees:Devil", "CareerBees:Police"],
     "children": [
       {
-        "species": "Career Bees:Assassin",
+        "species": "CareerBees:Assassin",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "Forestry:Imperial"],
+    "parents": ["CareerBees:PHD", "Forestry:Imperial"],
     "children": [
       {
-        "species": "Career Bees:Buisness",
+        "species": "CareerBees:Buisness",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Career Bees:Lumber"],
+    "parents": ["CareerBees:Graduate", "CareerBees:Lumber"],
     "children": [
       {
-        "species": "Career Bees:Butcher",
+        "species": "CareerBees:Butcher",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Engineer", "Career Bees:Smelter"],
+    "parents": ["CareerBees:Engineer", "CareerBees:Smelter"],
     "children": [
       {
-        "species": "Career Bees:Clockwork",
+        "species": "CareerBees:Clockwork",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Student", "Forestry:Common"],
+    "parents": ["CareerBees:Student", "Forestry:Common"],
     "children": [
       {
-        "species": "Career Bees:Collecting",
+        "species": "CareerBees:Collecting",
         "probability": 1
       },
       {
-        "species": "Career Bees:Graduate",
+        "species": "CareerBees:Graduate",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Smelter", "Forestry:Demonic"],
+    "parents": ["CareerBees:Smelter", "Forestry:Demonic"],
     "children": [
       {
-        "species": "Career Bees:Devil",
+        "species": "CareerBees:Devil",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "Forestry:Majestic"],
+    "parents": ["CareerBees:PHD", "Forestry:Majestic"],
     "children": [
       {
-        "species": "Career Bees:Doctor",
+        "species": "CareerBees:Doctor",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Clockwork", "Career Bees:Engineer"],
+    "parents": ["CareerBees:Clockwork", "CareerBees:Engineer"],
     "children": [
       {
-        "species": "Career Bees:Electrician",
+        "species": "CareerBees:Electrician",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "Forestry:Noble"],
+    "parents": ["CareerBees:PHD", "Forestry:Noble"],
     "children": [
       {
-        "species": "Career Bees:Engineer",
+        "species": "CareerBees:Engineer",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Career Bees:Smelter"],
+    "parents": ["CareerBees:Graduate", "CareerBees:Smelter"],
     "children": [
       {
-        "species": "Career Bees:Honey-Smelter",
+        "species": "CareerBees:Honey-Smelter",
         "probability": 1
       },
       {
-        "species": "Career Bees:Mason",
+        "species": "CareerBees:Mason",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Forestry:Meadows"],
+    "parents": ["CareerBees:Graduate", "Forestry:Meadows"],
     "children": [
       {
-        "species": "Career Bees:Husbandry",
+        "species": "CareerBees:Husbandry",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Buisness", "Forestry:Common"],
+    "parents": ["CareerBees:Buisness", "Forestry:Common"],
     "children": [
       {
-        "species": "Career Bees:Junk Seller",
+        "species": "CareerBees:Junk Seller",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Forestry:Forest"],
+    "parents": ["CareerBees:Graduate", "Forestry:Forest"],
     "children": [
       {
-        "species": "Career Bees:Lumber",
+        "species": "CareerBees:Lumber",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Engineer", "Career Bees:Science"],
+    "parents": ["CareerBees:Engineer", "CareerBees:Science"],
     "children": [
       {
-        "species": "Career Bees:Mad Scientist",
+        "species": "CareerBees:Mad Scientist",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Devil", "Career Bees:Politician"],
+    "parents": ["CareerBees:Devil", "CareerBees:Politician"],
     "children": [
       {
-        "species": "Career Bees:N.C.A.",
+        "species": "CareerBees:N.C.A.",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Career Bees:Student"],
+    "parents": ["CareerBees:Graduate", "CareerBees:Student"],
     "children": [
       {
-        "species": "Career Bees:PHD",
+        "species": "CareerBees:PHD",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Doctor", "Forestry:Sinister"],
+    "parents": ["CareerBees:Doctor", "Forestry:Sinister"],
     "children": [
       {
-        "species": "Career Bees:Plague",
+        "species": "CareerBees:Plague",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Forestry:Valiant"],
+    "parents": ["CareerBees:Graduate", "Forestry:Valiant"],
     "children": [
       {
-        "species": "Career Bees:Police",
+        "species": "CareerBees:Police",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Devil", "Career Bees:Thief"],
+    "parents": ["CareerBees:Devil", "CareerBees:Thief"],
     "children": [
       {
-        "species": "Career Bees:Politician",
+        "species": "CareerBees:Politician",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Career Bees:Yente"],
+    "parents": ["CareerBees:Graduate", "CareerBees:Yente"],
     "children": [
       {
-        "species": "Career Bees:Priest",
+        "species": "CareerBees:Priest",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Mad Scientist", "Forestry:Phantasmal"],
+    "parents": ["CareerBees:Mad Scientist", "Forestry:Phantasmal"],
     "children": [
       {
-        "species": "Career Bees:Quantum Charming",
+        "species": "CareerBees:Quantum Charming",
         "probability": 1
       },
       {
-        "species": "Career Bees:Quantum Strange",
+        "species": "CareerBees:Quantum Strange",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Artistic", "Career Bees:PHD"],
+    "parents": ["CareerBees:Artistic", "CareerBees:PHD"],
     "children": [
       {
-        "species": "Career Bees:Rainbow",
+        "species": "CareerBees:Rainbow",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Clockwork", "Career Bees:Electrician"],
+    "parents": ["CareerBees:Clockwork", "CareerBees:Electrician"],
     "children": [
       {
-        "species": "Career Bees:Robot",
+        "species": "CareerBees:Robot",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "Forestry:Industrious"],
+    "parents": ["CareerBees:PHD", "Forestry:Industrious"],
     "children": [
       {
-        "species": "Career Bees:Science",
+        "species": "CareerBees:Science",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Graduate", "Forestry:Industrious"],
+    "parents": ["CareerBees:Graduate", "Forestry:Industrious"],
     "children": [
       {
-        "species": "Career Bees:Smelter",
+        "species": "CareerBees:Smelter",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Quantum Charming", "Career Bees:Quantum Strange"],
+    "parents": ["CareerBees:Quantum Charming", "CareerBees:Quantum Strange"],
     "children": [
       {
-        "species": "Career Bees:Temporal",
+        "species": "CareerBees:Temporal",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Police", "Forestry:Sinister"],
+    "parents": ["CareerBees:Police", "Forestry:Sinister"],
     "children": [
       {
-        "species": "Career Bees:Thief",
+        "species": "CareerBees:Thief",
         "probability": 1
       }
     ]
   },
   {
-    "parents": ["Career Bees:Husbandry", "Career Bees:Student"],
+    "parents": ["CareerBees:Husbandry", "CareerBees:Student"],
     "children": [
       {
-        "species": "Career Bees:Yente",
+        "species": "CareerBees:Yente",
         "probability": 1
       }
     ]
@@ -1225,7 +1225,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Blue", "Forestry:White"],
+    "parents": ["ExtraBees:Blue", "ExtraBees:White"],
     "children": [
       {
         "species": "ExtraBees:Light Blue",
@@ -1252,7 +1252,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Blue", "Forestry:Pink"],
+    "parents": ["ExtraBees:Blue", "ExtraBees:Pink"],
     "children": [
       {
         "species": "ExtraBees:Magenta",
@@ -2332,7 +2332,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Thief", "MagicBees:Pupil"],
+    "parents": ["CareerBees:Thief", "MagicBees:Pupil"],
     "children": [
       {
         "species": "MeatballCraft:Baguette",
@@ -2341,7 +2341,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Temporal", "MagicBees:Forlorn"],
+    "parents": ["CareerBees:Temporal", "MagicBees:Forlorn"],
     "children": [
       {
         "species": "MeatballCraft:Balanced",
@@ -2368,7 +2368,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Robot", "ExtraBees:Light Blue"],
+    "parents": ["CareerBees:Robot", "ExtraBees:Light Blue"],
     "children": [
       {
         "species": "MeatballCraft:Chevron",
@@ -2413,7 +2413,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Armorer", "MeatballCraft:Radiant"],
+    "parents": ["CareerBees:Armorer", "MeatballCraft:Radiant"],
     "children": [
       {
         "species": "MeatballCraft:Experienced",
@@ -2476,7 +2476,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Student", "Forestry:Imperial"],
+    "parents": ["CareerBees:Student", "Forestry:Imperial"],
     "children": [
       {
         "species": "MeatballCraft:Hyperventilating",
@@ -2494,7 +2494,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "MagicBees:Scholarly"],
+    "parents": ["CareerBees:PHD", "MagicBees:Scholarly"],
     "children": [
       {
         "species": "MeatballCraft:KurryCat",
@@ -2503,7 +2503,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Temporal", "MagicBees:Sorcerous"],
+    "parents": ["CareerBees:Temporal", "MagicBees:Sorcerous"],
     "children": [
       {
         "species": "MeatballCraft:LordRaine",
@@ -2512,7 +2512,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Rainbow", "ExtraBees:Abyssal"],
+    "parents": ["CareerBees:Rainbow", "ExtraBees:Abyssal"],
     "children": [
       {
         "species": "MeatballCraft:Luctor",
@@ -2548,7 +2548,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "MeatballCraft:Bomber"],
+    "parents": ["CareerBees:PHD", "MeatballCraft:Bomber"],
     "children": [
       {
         "species": "MeatballCraft:Nuclear Technician",
@@ -2557,7 +2557,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Temporal", "MagicBees:Lordly"],
+    "parents": ["CareerBees:Temporal", "MagicBees:Lordly"],
     "children": [
       {
         "species": "MeatballCraft:Pyramid",
@@ -2566,7 +2566,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:Devil", "Career Bees:Rainbow"],
+    "parents": ["CareerBees:Devil", "CareerBees:Rainbow"],
     "children": [
       {
         "species": "MeatballCraft:Pyromaniacal",
@@ -2575,7 +2575,7 @@
     ]
   },
   {
-    "parents": ["Forestry:White", "MagicBees:Shocking"],
+    "parents": ["ExtraBees:White", "MagicBees:Shocking"],
     "children": [
       {
         "species": "MeatballCraft:RestlessClam",
@@ -2593,7 +2593,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Black", "MagicBees:Firey"],
+    "parents": ["ExtraBees:Black", "MagicBees:Firey"],
     "children": [
       {
         "species": "MeatballCraft:Sandman366",
@@ -2647,7 +2647,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "MagicBees:Pyro"],
+    "parents": ["CareerBees:PHD", "MagicBees:Pyro"],
     "children": [
       {
         "species": "MeatballCraft:Thermally Expanded",
@@ -2656,7 +2656,7 @@
     ]
   },
   {
-    "parents": ["Career Bees:PHD", "ExtraBees:Blutonium"],
+    "parents": ["CareerBees:PHD", "ExtraBees:Blutonium"],
     "children": [
       {
         "species": "MeatballCraft:Tinkerest",
@@ -2665,7 +2665,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Fiendish", "Forestry:Red"],
+    "parents": ["Forestry:Fiendish", "ExtraBees:Red"],
     "children": [
       {
         "species": "MeatballCraft:UselessForce",

@@ -94,7 +94,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Black": {
+  "ExtraBees:Black": {
     "mod": "Forestry",
     "name": "Black",
     "idealTemperature": "",
@@ -109,8 +109,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Blue": {
-    "mod": "Forestry",
+  "ExtraBees:Blue": {
+    "mod": "ExtraBees",
     "name": "Blue",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -124,7 +124,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Brown": {
+  "ExtraBees:Brown": {
     "mod": "Forestry",
     "name": "Brown",
     "idealTemperature": "",
@@ -169,7 +169,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Cyan": {
+  "ExtraBees:Cyan": {
     "mod": "Forestry",
     "name": "Cyan",
     "idealTemperature": "",
@@ -319,8 +319,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Gray": {
-    "mod": "Forestry",
+  "ExtraBees:Gray": {
+    "mod": "ExtraBees",
     "name": "Gray",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -334,7 +334,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Green": {
+  "ExtraBees:Green": {
     "mod": "Forestry",
     "name": "Green",
     "idealTemperature": "",
@@ -424,8 +424,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Light Gray": {
-    "mod": "Forestry",
+  "ExtraBees:Light Gray": {
+    "mod": "ExtraBees",
     "name": "Light Gray",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -439,7 +439,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Lime": {
+  "ExtraBees:Lime": {
     "mod": "Forestry",
     "name": "Lime",
     "idealTemperature": "",
@@ -499,8 +499,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Orange": {
-    "mod": "Forestry",
+  "ExtraBees:Orange": {
+    "mod": "ExtraBees",
     "name": "Orange",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -529,7 +529,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Pink": {
+  "ExtraBees:Pink": {
     "mod": "Forestry",
     "name": "Pink",
     "idealTemperature": "",
@@ -544,7 +544,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Purple": {
+  "ExtraBees:Purple": {
     "mod": "Forestry",
     "name": "Purple",
     "idealTemperature": "",
@@ -559,7 +559,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Red": {
+  "ExtraBees:Red": {
     "mod": "Forestry",
     "name": "Red",
     "idealTemperature": "",
@@ -679,7 +679,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:White": {
+  "ExtraBees:White": {
     "mod": "Forestry",
     "name": "White",
     "idealTemperature": "",
@@ -694,7 +694,7 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Forestry:Yellow": {
+  "ExtraBees:Yellow": {
     "mod": "Forestry",
     "name": "Yellow",
     "idealTemperature": "",
@@ -1009,8 +1009,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Armorer": {
-    "mod": "Career Bees",
+  "CareerBees:Armorer": {
+    "mod": "CareerBees",
     "name": "Armorer",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1039,8 +1039,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Artistic": {
-    "mod": "Career Bees",
+  "CareerBees:Artistic": {
+    "mod": "CareerBees",
     "name": "Artistic",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1054,8 +1054,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Assassin": {
-    "mod": "Career Bees",
+  "CareerBees:Assassin": {
+    "mod": "CareerBees",
     "name": "Assassin",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1069,8 +1069,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Buisness": {
-    "mod": "Career Bees",
+  "CareerBees:Buisness": {
+    "mod": "CareerBees",
     "name": "Buisness",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1084,8 +1084,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Butcher": {
-    "mod": "Career Bees",
+  "CareerBees:Butcher": {
+    "mod": "CareerBees",
     "name": "Butcher",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1099,8 +1099,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Clockwork": {
-    "mod": "Career Bees",
+  "CareerBees:Clockwork": {
+    "mod": "CareerBees",
     "name": "Clockwork",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1114,8 +1114,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Collecting": {
-    "mod": "Career Bees",
+  "CareerBees:Collecting": {
+    "mod": "CareerBees",
     "name": "Collecting",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1129,8 +1129,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Devil": {
-    "mod": "Career Bees",
+  "CareerBees:Devil": {
+    "mod": "CareerBees",
     "name": "Devil",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1144,8 +1144,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Doctor": {
-    "mod": "Career Bees",
+  "CareerBees:Doctor": {
+    "mod": "CareerBees",
     "name": "Doctor",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1159,8 +1159,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Electrician": {
-    "mod": "Career Bees",
+  "CareerBees:Electrician": {
+    "mod": "CareerBees",
     "name": "Electrician",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1174,8 +1174,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Engineer": {
-    "mod": "Career Bees",
+  "CareerBees:Engineer": {
+    "mod": "CareerBees",
     "name": "Engineer",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1189,8 +1189,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Graduate": {
-    "mod": "Career Bees",
+  "CareerBees:Graduate": {
+    "mod": "CareerBees",
     "name": "Graduate",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1204,8 +1204,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Honey-Smelter": {
-    "mod": "Career Bees",
+  "CareerBees:Honey-Smelter": {
+    "mod": "CareerBees",
     "name": "Honey-Smelter",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1219,8 +1219,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Husbandry": {
-    "mod": "Career Bees",
+  "CareerBees:Husbandry": {
+    "mod": "CareerBees",
     "name": "Husbandry",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1234,8 +1234,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Junk Seller": {
-    "mod": "Career Bees",
+  "CareerBees:Junk Seller": {
+    "mod": "CareerBees",
     "name": "Junk Seller",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1249,8 +1249,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Lumber": {
-    "mod": "Career Bees",
+  "CareerBees:Lumber": {
+    "mod": "CareerBees",
     "name": "Lumber",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1264,8 +1264,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Mad Scientist": {
-    "mod": "Career Bees",
+  "CareerBees:Mad Scientist": {
+    "mod": "CareerBees",
     "name": "Mad Scientist",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1279,8 +1279,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Mason": {
-    "mod": "Career Bees",
+  "CareerBees:Mason": {
+    "mod": "CareerBees",
     "name": "Mason",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1294,8 +1294,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:N.C.A.": {
-    "mod": "Career Bees",
+  "CareerBees:N.C.A.": {
+    "mod": "CareerBees",
     "name": "N.C.A.",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1309,8 +1309,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:PHD": {
-    "mod": "Career Bees",
+  "CareerBees:PHD": {
+    "mod": "CareerBees",
     "name": "PHD",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1324,8 +1324,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Plague": {
-    "mod": "Career Bees",
+  "CareerBees:Plague": {
+    "mod": "CareerBees",
     "name": "Plague",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1339,8 +1339,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Police": {
-    "mod": "Career Bees",
+  "CareerBees:Police": {
+    "mod": "CareerBees",
     "name": "Police",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1354,8 +1354,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Politician": {
-    "mod": "Career Bees",
+  "CareerBees:Politician": {
+    "mod": "CareerBees",
     "name": "Politician",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1369,8 +1369,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Priest": {
-    "mod": "Career Bees",
+  "CareerBees:Priest": {
+    "mod": "CareerBees",
     "name": "Priest",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1384,8 +1384,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Quantum Charming": {
-    "mod": "Career Bees",
+  "CareerBees:Quantum Charming": {
+    "mod": "CareerBees",
     "name": "Quantum Charming",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1399,8 +1399,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Quantum Strange": {
-    "mod": "Career Bees",
+  "CareerBees:Quantum Strange": {
+    "mod": "CareerBees",
     "name": "Quantum Strange",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1414,8 +1414,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Rainbow": {
-    "mod": "Career Bees",
+  "CareerBees:Rainbow": {
+    "mod": "CareerBees",
     "name": "Rainbow",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1429,8 +1429,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Robot": {
-    "mod": "Career Bees",
+  "CareerBees:Robot": {
+    "mod": "CareerBees",
     "name": "Robot",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1444,8 +1444,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Science": {
-    "mod": "Career Bees",
+  "CareerBees:Science": {
+    "mod": "CareerBees",
     "name": "Science",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1459,8 +1459,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Smelter": {
-    "mod": "Career Bees",
+  "CareerBees:Smelter": {
+    "mod": "CareerBees",
     "name": "Smelter",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1474,8 +1474,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Student": {
-    "mod": "Career Bees",
+  "CareerBees:Student": {
+    "mod": "CareerBees",
     "name": "Student",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1489,8 +1489,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Temporal": {
-    "mod": "Career Bees",
+  "CareerBees:Temporal": {
+    "mod": "CareerBees",
     "name": "Temporal",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1504,8 +1504,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Thief": {
-    "mod": "Career Bees",
+  "CareerBees:Thief": {
+    "mod": "CareerBees",
     "name": "Thief",
     "idealTemperature": "",
     "idealHumidity": "",
@@ -1519,8 +1519,8 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "Career Bees:Yente": {
-    "mod": "Career Bees",
+  "CareerBees:Yente": {
+    "mod": "CareerBees",
     "name": "Yente",
     "idealTemperature": "",
     "idealHumidity": "",
