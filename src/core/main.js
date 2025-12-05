@@ -857,17 +857,56 @@ export class BeeBreedingApp {
       generationXPositions.set(gen + 1, currentX + spacing);
     }
 
-    // Position nodes generation by generation, preserving original vertical order
+    // Position nodes generation by generation, sorted by number of children
     sortedGens.forEach((gen, genIndex) => {
       const genNodes = generations.get(gen);
       const xPos = generationXPositions.get(genIndex);
 
-      // Sort by original Y position to maintain vertical order
-      genNodes.sort((a, b) => {
-        const origA = this.originalPositions.get(a.id);
-        const origB = this.originalPositions.get(b.id);
-        return (origA?.y || a.y) - (origB?.y || b.y);
-      });
+      // Sort by number of children (descending)
+      const sortedByChildren = genNodes
+        .slice()
+        .sort((a, b) => b.children.length - a.children.length);
+
+      // Reorder so the most children are in the middle (closest to center visually)
+      const reordered = [];
+      const isEven = sortedByChildren.length % 2 === 0;
+      const mid = Math.floor(sortedByChildren.length / 2);
+
+      for (let i = 0; i < sortedByChildren.length; i++) {
+        let targetIndex;
+        if (isEven) {
+          // For even numbers: first at top-center (mid-1), second at bottom-center (mid)
+          if (i === 0) {
+            targetIndex = mid - 1;
+          } else if (i === 1) {
+            targetIndex = mid;
+          } else if (i % 2 === 0) {
+            // Even indices (2,4,6...) go above
+            targetIndex = mid - 1 - i / 2;
+          } else {
+            // Odd indices (3,5,7...) go below
+            // For i=3: (3-1)/2 = 1, so mid + 1
+            // For i=5: (5-1)/2 = 2, so mid + 2
+            targetIndex = mid + (i - 1) / 2;
+          }
+        } else {
+          // For odd numbers: first at exact center
+          if (i === 0) {
+            targetIndex = mid;
+          } else if (i % 2 === 1) {
+            // Odd indices go above center
+            targetIndex = mid - Math.ceil(i / 2);
+          } else {
+            // Even indices go below center
+            targetIndex = mid + i / 2;
+          }
+        }
+        reordered[targetIndex] = sortedByChildren[i];
+      }
+
+      // Clear genNodes and replace with reordered
+      genNodes.length = 0;
+      genNodes.push(...reordered);
 
       // Add alternating vertical stagger between generations for clarity
       // Odd indices go above (negative), even indices go below (positive)

@@ -46,36 +46,54 @@ function positionSplitLayout(nodes) {
 
   nodes.forEach((node) => {
     const genNodes = generationGroups.get(node.generation);
-    const leafNodes = genNodes.filter((n) => n.children.length === 0);
-    const nonLeafNodes = genNodes.filter((n) => n.children.length > 0);
 
-    let finalIndex;
-    let finalSize;
+    // Sort nodes by number of children (descending)
+    const sortedByChildren = genNodes
+      .slice()
+      .sort((a, b) => b.children.length - a.children.length);
 
-    if (node.children.length === 0) {
-      // This is a leaf node - split above and below
-      const leafIndex = leafNodes.indexOf(node);
-      const halfLeaves = Math.floor(leafNodes.length / 2);
+    // Reorder so the most children are in the middle:
+    // Alternate placing nodes: center, then alternating left/right
+    const reordered = [];
+    const isEven = sortedByChildren.length % 2 === 0;
+    const mid = Math.floor(sortedByChildren.length / 2);
 
-      if (leafIndex < halfLeaves) {
-        // Top half of leaves (above non-leaves)
-        finalIndex = leafIndex;
+    for (let i = 0; i < sortedByChildren.length; i++) {
+      let targetIndex;
+      if (isEven) {
+        // For even numbers: first at top-center (mid-1), second at bottom-center (mid)
+        if (i === 0) {
+          targetIndex = mid - 1;
+        } else if (i === 1) {
+          targetIndex = mid;
+        } else if (i % 2 === 0) {
+          // Even indices (2,4,6...) go above
+          targetIndex = mid - 1 - i / 2;
+        } else {
+          // Odd indices (3,5,7...) go below
+          // For i=3: (3-1)/2 = 1, so mid + 1
+          // For i=5: (5-1)/2 = 2, so mid + 2
+          targetIndex = mid + (i - 1) / 2;
+        }
       } else {
-        // Bottom half of leaves (below non-leaves) - extra leaf goes below
-        finalIndex =
-          halfLeaves + nonLeafNodes.length + (leafIndex - halfLeaves);
+        // For odd numbers: first at exact center
+        if (i === 0) {
+          targetIndex = mid;
+        } else if (i % 2 === 1) {
+          // Odd indices go above center
+          targetIndex = mid - Math.ceil(i / 2);
+        } else {
+          // Even indices go below center
+          targetIndex = mid + i / 2;
+        }
       }
-      finalSize = genNodes.length;
-    } else {
-      // This is a non-leaf node - goes in middle
-      const nonLeafIndex = nonLeafNodes.indexOf(node);
-      const halfLeaves = Math.floor(leafNodes.length / 2);
-      finalIndex = halfLeaves + nonLeafIndex;
-      finalSize = genNodes.length;
+      reordered[targetIndex] = sortedByChildren[i];
     }
 
+    const nodeIndex = reordered.indexOf(node);
+
     node.x = generationXPositions.get(node.generation);
-    node.y = (finalIndex - (finalSize - 1) / 2) * config.ySpacing + 400;
+    node.y = (nodeIndex - (reordered.length - 1) / 2) * config.ySpacing + 400;
   });
 
   return nodes;
@@ -101,15 +119,55 @@ function positionColumnLayout(nodes) {
 
   const leafColumnStartX = generationXPositions.get(maxGeneration) + 200;
 
-  // Position non-leaf nodes normally
+  // Position non-leaf nodes with center-weighted sorting by children count
   const nonLeafGenerationGroups = d3.group(nonLeafNodes, (d) => d.generation);
   nonLeafNodes.forEach((node) => {
     const genNodes = nonLeafGenerationGroups.get(node.generation);
-    const genIndex = genNodes.indexOf(node);
-    const genSize = genNodes.length;
+
+    // Sort nodes by number of children (descending)
+    const sortedByChildren = genNodes
+      .slice()
+      .sort((a, b) => b.children.length - a.children.length);
+
+    // Reorder so the most children are in the middle
+    const reordered = [];
+    const isEven = sortedByChildren.length % 2 === 0;
+    const mid = Math.floor(sortedByChildren.length / 2);
+
+    for (let i = 0; i < sortedByChildren.length; i++) {
+      let targetIndex;
+      if (isEven) {
+        // For even numbers: first at top-center (mid-1), second at bottom-center (mid)
+        if (i === 0) {
+          targetIndex = mid - 1;
+        } else if (i === 1) {
+          targetIndex = mid;
+        } else if (i % 2 === 0) {
+          // Even indices (2,4,6...) go above
+          targetIndex = mid - 1 - i / 2;
+        } else {
+          // Odd indices (3,5,7...) go below
+          targetIndex = mid + (i - 1) / 2;
+        }
+      } else {
+        // For odd numbers: first at exact center
+        if (i === 0) {
+          targetIndex = mid;
+        } else if (i % 2 === 1) {
+          // Odd indices go above center
+          targetIndex = mid - Math.ceil(i / 2);
+        } else {
+          // Even indices go below center
+          targetIndex = mid + i / 2;
+        }
+      }
+      reordered[targetIndex] = sortedByChildren[i];
+    }
+
+    const nodeIndex = reordered.indexOf(node);
 
     node.x = generationXPositions.get(node.generation);
-    node.y = (genIndex - (genSize - 1) / 2) * config.ySpacing + 400;
+    node.y = (nodeIndex - (reordered.length - 1) / 2) * config.ySpacing + 400;
   });
 
   // Sort leaves by their original generation (leftmost first)
