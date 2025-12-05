@@ -190,7 +190,7 @@ export class BeeBreedingApp {
       conflicts.set(node.id, new Set());
     });
 
-    // Add parent-child conflicts
+    // Add parent-child conflicts - nodes must differ from parents and children
     nodes.forEach((node) => {
       node.parents.forEach((parentId) => {
         if (conflicts.has(parentId)) {
@@ -204,6 +204,21 @@ export class BeeBreedingApp {
           conflicts.get(childId).add(node.id);
         }
       });
+
+      // Add conflicts between parents of the same node (if possible)
+      // This ensures parents have different colors from each other
+      if (node.parents.length > 1) {
+        for (let i = 0; i < node.parents.length; i++) {
+          for (let j = i + 1; j < node.parents.length; j++) {
+            const parent1 = node.parents[i];
+            const parent2 = node.parents[j];
+            if (conflicts.has(parent1) && conflicts.has(parent2)) {
+              conflicts.get(parent1).add(parent2);
+              conflicts.get(parent2).add(parent1);
+            }
+          }
+        }
+      }
     });
 
     // Add spatial proximity conflicts
@@ -222,19 +237,32 @@ export class BeeBreedingApp {
       });
     });
 
-    // Welsh-Powell graph coloring algorithm
-    const sortedNodes = nodes
-      .slice()
-      .sort((a, b) => conflicts.get(b.id).size - conflicts.get(a.id).size);
+    // Sort nodes by generation first (to color parents before children),
+    // then by number of conflicts for tie-breaking
+    const sortedNodes = nodes.slice().sort((a, b) => {
+      if (a.generation !== b.generation) {
+        return a.generation - b.generation; // Lower generation first
+      }
+      return conflicts.get(b.id).size - conflicts.get(a.id).size;
+    });
 
-    // Assign colors with diversity preference
+    // Assign colors with strict parent-child differentiation
     sortedNodes.forEach((node, nodeIndex) => {
-      const usedColors = new Set();
+      const forbiddenColors = new Set();
+      const parentColors = new Set();
 
-      // Find colors used by conflicting nodes
+      // Collect colors from direct parents (MUST differ from these)
+      node.parents.forEach((parentId) => {
+        if (nodeColors[parentId] !== undefined) {
+          parentColors.add(nodeColors[parentId]);
+          forbiddenColors.add(nodeColors[parentId]);
+        }
+      });
+
+      // Collect colors from other conflicting nodes (prefer to differ)
       conflicts.get(node.id).forEach((conflictId) => {
         if (nodeColors[conflictId] !== undefined) {
-          usedColors.add(nodeColors[conflictId]);
+          forbiddenColors.add(nodeColors[conflictId]);
         }
       });
 
@@ -244,7 +272,7 @@ export class BeeBreedingApp {
         config.availableColors.length;
 
       // Try preferred color first if available
-      if (!usedColors.has(Math.floor(preferredColor))) {
+      if (!forbiddenColors.has(Math.floor(preferredColor))) {
         nodeColors[node.id] = Math.floor(preferredColor);
       } else {
         // Find first available color, but with some randomization for diversity
@@ -252,22 +280,47 @@ export class BeeBreedingApp {
         let attempts = 0;
 
         while (
-          usedColors.has(colorIndex) &&
+          forbiddenColors.has(colorIndex) &&
           attempts < config.availableColors.length
         ) {
           colorIndex = (colorIndex + 1) % config.availableColors.length;
           attempts++;
         }
 
-        // If we run out of colors, use fallback with node-specific offset
+        // STRICT FALLBACK: If we exhausted all colors, we MUST still differ from parents
+        // Search through ALL colors and find one that differs from parent colors
         if (attempts >= config.availableColors.length) {
-          colorIndex =
-            Math.abs(
-              node.id.split("").reduce((a, b) => {
-                a = (a << 5) - a + b.charCodeAt(0);
-                return a & a;
-              }, 0)
-            ) % config.availableColors.length;
+          // This should be extremely rare, but ensures we ALWAYS differ from parents
+          let foundColor = false;
+          for (let i = 0; i < config.availableColors.length; i++) {
+            if (!parentColors.has(i)) {
+              colorIndex = i;
+              foundColor = true;
+              break;
+            }
+          }
+
+          // If somehow all colors are used by parents (impossible with 15 colors and typical graphs),
+          // use hash-based color but ensure it's not a parent color
+          if (!foundColor) {
+            colorIndex =
+              Math.abs(
+                node.id.split("").reduce((a, b) => {
+                  a = (a << 5) - a + b.charCodeAt(0);
+                  return a & a;
+                }, 0)
+              ) % config.availableColors.length;
+
+            // Final safety check: cycle through colors until we find one that's not a parent color
+            let safetyAttempts = 0;
+            while (
+              parentColors.has(colorIndex) &&
+              safetyAttempts < config.availableColors.length
+            ) {
+              colorIndex = (colorIndex + 1) % config.availableColors.length;
+              safetyAttempts++;
+            }
+          }
         }
 
         nodeColors[node.id] = colorIndex;
