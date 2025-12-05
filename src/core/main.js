@@ -60,7 +60,7 @@ export class BeeBreedingApp {
       // Calculate node widths BEFORE positioning
       this.nodes.forEach((node) => {
         const text = node.name || node.id;
-        node.width = Math.max(100, text.toUpperCase().length * 8 + 30);
+        node.width = Math.max(100, text.toUpperCase().length * 9 + 30);
       });
 
       // Position nodes (now with widths set)
