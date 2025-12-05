@@ -85,28 +85,84 @@
             top: 10px;
             left: 10px;
             background: white;
-            padding: 15px;
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
 
         .search-box {
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 6px 8px;
+            margin-bottom: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            width: 200px;
+            width: 188px;
+            font-size: 13px;
+        }
+
+        .mod-filters-panel {
+            position: fixed;
+            top: 10px;
+            left: 240px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .mod-filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 6px;
+        }
+
+        .mod-filters-header h4 {
+            margin: 0;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .mod-filters-toggle {
+            font-size: 11px;
+            color: #666;
+            user-select: none;
+        }
+
+        .mod-filters-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mod-filters-content.expanded {
+            max-height: 150px;
+        }
+
+        .mod-filters-content label {
+            display: block;
+            margin: 3px 0;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .mod-filters-content input[type="checkbox"] {
+            margin-right: 5px;
+            cursor: pointer;
         }
 
         .btn {
-            padding: 6px 12px;
+            padding: 5px 8px;
             margin: 2px;
             background: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 11px;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -129,15 +185,55 @@
 <body>
     <div class="controls">
         <input type="text" class="search-box" placeholder="Search bee species..." id="searchInput">
-        <br>
-        <label style="display: block; margin: 8px 0;">
+
+        <label style="display: block; margin: 6px 0; font-size: 12px;">
             <input type="checkbox" id="filterModeToggle">
             Faded mode
         </label>
-        <button class="btn" onclick="resetHighlight()">Clear Selection</button>
-        <button class="btn" onclick="fitView()">Fit to View</button>
-        <button class="btn" id="layoutToggle" onclick="toggleLeafLayout()">Switch to Column Layout</button>
+        <div style="display: flex; gap: 2px; white-space: nowrap;">
+            <button class="btn" onclick="resetHighlight()">Clear</button>
+            <button class="btn" onclick="fitView()">Fit</button>
+            <button class="btn" id="layoutToggle" onclick="toggleLeafLayout()">Layout</button>
+        </div>
     </div>
+
+    <div class="mod-filters-panel">
+        <div class="mod-filters-header" onclick="toggleModFilters()">
+            <h4>Mod Filters</h4>
+            <span class="mod-filters-toggle" id="modFiltersToggle">▼</span>
+        </div>
+        <div class="mod-filters-content expanded" id="modFiltersContent">
+            <label>
+                <input type="checkbox" class="mod-filter-checkbox" value="forestry" checked>
+                Forestry
+            </label>
+            <label>
+                <input type="checkbox" class="mod-filter-checkbox" value="extrabees" checked>
+                ExtraBees
+            </label>
+            <label>
+                <input type="checkbox" class="mod-filter-checkbox" value="magicbees" checked>
+                MagicBees
+            </label>
+            <label>
+                <input type="checkbox" class="mod-filter-checkbox" value="careerbees" checked>
+                CareerBees
+            </label>
+            <label>
+                <input type="checkbox" class="mod-filter-checkbox" value="meatballcraft" checked>
+                MeatballCraft
+            </label>
+        </div>
+    </div>
+
+    <script>
+        function toggleModFilters() {
+            const content = document.getElementById('modFiltersContent');
+            const toggle = document.getElementById('modFiltersToggle');
+            content.classList.toggle('expanded');
+            toggle.textContent = content.classList.contains('expanded') ? '▼' : '▶';
+        }
+    </script>
 
     <div class="info-panel" id="infoPanel">
         <h4 id="selectedBee">Selected Bee</h4>

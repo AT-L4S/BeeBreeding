@@ -57,9 +57,9 @@ export async function loadBeeData() {
         mod: "ExtraBees",
       },
       // ... (fallback data would be here)
-      "Career Bees:Yente": {
-        parents: ["Career Bees:Student", "Career Bees:Husbandry"],
-        mod: "Career Bees",
+      "CareerBees:Yente": {
+        parents: ["CareerBees:Student", "CareerBees:Husbandry"],
+        mod: "CareerBees",
       },
     };
 

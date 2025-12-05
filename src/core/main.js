@@ -12,6 +12,7 @@ export class BeeBreedingApp {
   constructor() {
     this.useColumnLayoutForLeaves = false;
     this.beeData = null;
+    this.fullHierarchyData = null; // Store full unfiltered hierarchy
     this.hierarchyData = null;
     this.nodes = [];
     this.links = [];
@@ -26,17 +27,30 @@ export class BeeBreedingApp {
     this.isFilteredView = false;
     this.originalPositions = new Map();
     this.currentSelectedNode = null;
+    // Will be populated from HTML checkboxes on initialization
+    this.selectedMods = new Set();
+    this.isModFiltered = false;
   }
 
   async initialize() {
     console.log("Initializing BeeBreedingApp...");
 
     try {
+      // Read checkbox states FIRST, before building hierarchy
+      this.readCheckboxStates();
+
       // Load and process data
       this.beeData = await loadBeeData();
       console.log("Loaded bee data:", Object.keys(this.beeData).length, "bees");
 
-      this.hierarchyData = buildHierarchy(this.beeData);
+      // Build full hierarchy and store it
+      this.fullHierarchyData = buildHierarchy(this.beeData);
+
+      // Filter data based on checkbox states
+      let filteredBeeData = this.getFilteredBeeData();
+
+      // Build hierarchy with filtered data
+      this.hierarchyData = buildHierarchy(filteredBeeData);
       this.nodes = this.hierarchyData.nodes;
       this.links = this.hierarchyData.links;
       this.nodeMap = this.hierarchyData.nodeMap;
@@ -98,13 +112,16 @@ export class BeeBreedingApp {
       // Set up controls
       this.setupControls();
 
+      // Set up mod filters (reads initial state from checkboxes)
+      this.setupModFilters();
+
       // Set up search
       this.setupSearch();
 
       // Set up resize handler
       this.setupResizeHandler();
 
-      // Initial fit
+      // Initial fit (show all bees)
       this.fitView();
 
       console.log("Initialization complete");
@@ -223,7 +240,7 @@ export class BeeBreedingApp {
       conflicts.set(node.id, new Set());
     });
 
-    // Add parent-child conflicts - nodes must differ from parents and children
+    // Add STRICT parent-child conflicts - nodes MUST differ from parents and children
     nodes.forEach((node) => {
       node.parents.forEach((parentId) => {
         if (conflicts.has(parentId)) {
@@ -238,8 +255,8 @@ export class BeeBreedingApp {
         }
       });
 
-      // Add conflicts between parents of the same node (if possible)
-      // This ensures parents have different colors from each other
+      // STRICT: Add conflicts between parents of the same node
+      // This ensures parents ALWAYS have different colors from each other
       if (node.parents.length > 1) {
         for (let i = 0; i < node.parents.length; i++) {
           for (let j = i + 1; j < node.parents.length; j++) {
@@ -254,7 +271,7 @@ export class BeeBreedingApp {
       }
     });
 
-    // Add spatial proximity conflicts
+    // Add spatial proximity conflicts for better visual separation
     const proximityThreshold = 100;
     nodes.forEach((nodeA) => {
       nodes.forEach((nodeB) => {
@@ -270,7 +287,7 @@ export class BeeBreedingApp {
       });
     });
 
-    // Sort nodes by generation first (to color parents before children),
+    // Sort nodes by generation first (CRITICAL: color parents before children),
     // then by number of conflicts for tie-breaking
     const sortedNodes = nodes.slice().sort((a, b) => {
       if (a.generation !== b.generation) {
@@ -279,23 +296,48 @@ export class BeeBreedingApp {
       return conflicts.get(b.id).size - conflicts.get(a.id).size;
     });
 
-    // Assign colors with strict parent-child differentiation
+    // Assign colors with GUARANTEED parent-child and parent-parent differentiation
     sortedNodes.forEach((node, nodeIndex) => {
-      const forbiddenColors = new Set();
-      const parentColors = new Set();
+      const strictForbiddenColors = new Set(); // Colors we MUST NOT use (parents)
+      const preferredAvoidColors = new Set(); // Colors we prefer to avoid (spatial conflicts)
 
-      // Collect colors from direct parents (MUST differ from these)
+      // STRICT: Collect colors from direct parents (MUST differ from these)
       node.parents.forEach((parentId) => {
         if (nodeColors[parentId] !== undefined) {
-          parentColors.add(nodeColors[parentId]);
-          forbiddenColors.add(nodeColors[parentId]);
+          strictForbiddenColors.add(nodeColors[parentId]);
         }
       });
 
-      // Collect colors from other conflicting nodes (prefer to differ)
+      // Collect colors from direct children (MUST differ from these)
+      node.children.forEach((childId) => {
+        if (nodeColors[childId] !== undefined) {
+          strictForbiddenColors.add(nodeColors[childId]);
+        }
+      });
+
+      // STRICT: Collect colors from co-parents (siblings sharing children)
+      // If this node is a parent, ensure it differs from other parents of the same children
+      node.children.forEach((childId) => {
+        const childNode = nodeMap.get(childId);
+        if (childNode) {
+          childNode.parents.forEach((coParentId) => {
+            if (
+              coParentId !== node.id &&
+              nodeColors[coParentId] !== undefined
+            ) {
+              strictForbiddenColors.add(nodeColors[coParentId]);
+            }
+          });
+        }
+      });
+
+      // Collect colors from other spatial conflicts (prefer to avoid, but not strict)
       conflicts.get(node.id).forEach((conflictId) => {
         if (nodeColors[conflictId] !== undefined) {
-          forbiddenColors.add(nodeColors[conflictId]);
+          const color = nodeColors[conflictId];
+          if (!strictForbiddenColors.has(color)) {
+            preferredAvoidColors.add(color);
+          }
         }
       });
 
@@ -304,55 +346,55 @@ export class BeeBreedingApp {
         (node.generation * 3 + Math.abs(node.y) / 50) %
         config.availableColors.length;
 
-      // Try preferred color first if available
-      if (!forbiddenColors.has(Math.floor(preferredColor))) {
+      // Try preferred color first if it's not strictly forbidden
+      if (!strictForbiddenColors.has(Math.floor(preferredColor))) {
         nodeColors[node.id] = Math.floor(preferredColor);
       } else {
-        // Find first available color, but with some randomization for diversity
-        let colorIndex = (nodeIndex * 7) % config.availableColors.length;
-        let attempts = 0;
+        // Find first available color that's not strictly forbidden
+        // Prefer colors that aren't in preferredAvoidColors either
+        let colorIndex = -1;
 
-        while (
-          forbiddenColors.has(colorIndex) &&
-          attempts < config.availableColors.length
-        ) {
-          colorIndex = (colorIndex + 1) % config.availableColors.length;
-          attempts++;
+        // First pass: try to find a color that avoids both strict and preferred conflicts
+        for (let i = 0; i < config.availableColors.length; i++) {
+          const testIndex = (nodeIndex * 7 + i) % config.availableColors.length;
+          if (
+            !strictForbiddenColors.has(testIndex) &&
+            !preferredAvoidColors.has(testIndex)
+          ) {
+            colorIndex = testIndex;
+            break;
+          }
         }
 
-        // STRICT FALLBACK: If we exhausted all colors, we MUST still differ from parents
-        // Search through ALL colors and find one that differs from parent colors
-        if (attempts >= config.availableColors.length) {
-          // This should be extremely rare, but ensures we ALWAYS differ from parents
-          let foundColor = false;
+        // Second pass: if no "perfect" color found, just avoid strict conflicts
+        if (colorIndex === -1) {
           for (let i = 0; i < config.availableColors.length; i++) {
-            if (!parentColors.has(i)) {
+            if (!strictForbiddenColors.has(i)) {
               colorIndex = i;
-              foundColor = true;
               break;
             }
           }
+        }
 
-          // If somehow all colors are used by parents (impossible with 15 colors and typical graphs),
-          // use hash-based color but ensure it's not a parent color
-          if (!foundColor) {
-            colorIndex =
-              Math.abs(
-                node.id.split("").reduce((a, b) => {
-                  a = (a << 5) - a + b.charCodeAt(0);
-                  return a & a;
-                }, 0)
-              ) % config.availableColors.length;
+        // ABSOLUTE GUARANTEE: This should never happen with 15 colors, but if it does,
+        // use a deterministic hash and then force it to differ from parents
+        if (colorIndex === -1) {
+          colorIndex =
+            Math.abs(
+              node.id.split("").reduce((a, b) => {
+                a = (a << 5) - a + b.charCodeAt(0);
+                return a & a;
+              }, 0)
+            ) % config.availableColors.length;
 
-            // Final safety check: cycle through colors until we find one that's not a parent color
-            let safetyAttempts = 0;
-            while (
-              parentColors.has(colorIndex) &&
-              safetyAttempts < config.availableColors.length
-            ) {
-              colorIndex = (colorIndex + 1) % config.availableColors.length;
-              safetyAttempts++;
-            }
+          // Force differentiation from parents
+          let safetyAttempts = 0;
+          while (
+            strictForbiddenColors.has(colorIndex) &&
+            safetyAttempts < config.availableColors.length
+          ) {
+            colorIndex = (colorIndex + 1) % config.availableColors.length;
+            safetyAttempts++;
           }
         }
 
@@ -399,6 +441,113 @@ export class BeeBreedingApp {
       });
     }
     return descendants;
+  }
+
+  getModFromId(nodeId) {
+    // Extract mod name from ID format "modname:beename"
+    const parts = nodeId.split(":");
+    if (parts.length > 1) {
+      const modName = parts[0].toLowerCase();
+      // Normalize "CareerBees" to "careerbees" for matching
+      return modName.replace(/\s+/g, "");
+    }
+    return "unknown";
+  }
+
+  applyModFilter() {
+    // Clear SVG content
+    this.g.selectAll("*").remove();
+
+    let filteredBeeData;
+
+    if (this.selectedMods.size === 0) {
+      // No mods selected - use all bees
+      filteredBeeData = this.beeData;
+      this.isModFiltered = false;
+    } else {
+      // Filter bee data to selected mods
+      const allMods = [
+        "forestry",
+        "extrabees",
+        "magicbees",
+        "careerbees",
+        "meatballcraft",
+      ];
+      const allSelected = allMods.every((mod) => this.selectedMods.has(mod));
+
+      if (allSelected) {
+        // All mods selected - use all bees
+        filteredBeeData = this.beeData;
+        this.isModFiltered = false;
+      } else {
+        // Filter to selected mods + their dependencies
+        filteredBeeData = {};
+
+        // First pass: collect all bees from selected mods
+        const selectedBeeIds = new Set();
+        Object.keys(this.beeData).forEach((beeId) => {
+          const modName = this.getModFromId(beeId);
+          if (this.selectedMods.has(modName)) {
+            selectedBeeIds.add(beeId);
+          }
+        });
+
+        // Second pass: recursively add all ancestors
+        const beesWithAncestors = new Set(selectedBeeIds);
+        const addAncestors = (beeId) => {
+          const fullNode = this.fullHierarchyData.nodeMap.get(beeId);
+          if (fullNode && fullNode.parents) {
+            fullNode.parents.forEach((parentId) => {
+              if (!beesWithAncestors.has(parentId)) {
+                beesWithAncestors.add(parentId);
+                addAncestors(parentId);
+              }
+            });
+          }
+        };
+
+        selectedBeeIds.forEach((beeId) => addAncestors(beeId));
+
+        // Build filtered bee data
+        beesWithAncestors.forEach((beeId) => {
+          filteredBeeData[beeId] = this.beeData[beeId];
+        });
+
+        this.isModFiltered = true;
+      }
+    }
+
+    // Rebuild hierarchy with filtered data
+    this.hierarchyData = buildHierarchy(filteredBeeData);
+    this.nodes = this.hierarchyData.nodes;
+    this.links = this.hierarchyData.links;
+    this.nodeMap = this.hierarchyData.nodeMap;
+
+    // Calculate node widths
+    this.nodes.forEach((node) => {
+      const text = node.name || node.id;
+      node.width = Math.max(100, text.toUpperCase().length * 9 + 30);
+    });
+
+    // Position nodes
+    positionNodes(
+      this.nodes,
+      this.useColumnLayoutForLeaves
+        ? config.layoutModes.COLUMN
+        : config.layoutModes.SPLIT
+    );
+
+    // Assign colors
+    this.nodeColors = this.assignNodeColors(this.nodes, this.nodeMap);
+
+    // Render visualization
+    this.renderVisualization();
+
+    // Update zoom constraints
+    this.updateZoomConstraints(this.nodes);
+
+    // Fit view
+    this.fitView();
   }
 
   highlightConnections(selectedNode) {
@@ -1089,6 +1238,44 @@ export class BeeBreedingApp {
     // Clear saved positions so next filtered view saves fresh positions
     this.originalPositions.clear();
 
+    // Recalculate edge Y offsets based on ORIGINAL positions
+    const linksByTarget = d3.group(this.links, (l) => l.target);
+
+    linksByTarget.forEach((targetLinks, targetId) => {
+      if (targetLinks.length > 1) {
+        // Sort by source Y position using RESTORED positions
+        const sortedLinks = targetLinks
+          .map((link) => {
+            return {
+              link,
+              sourceY: this.nodeMap.get(link.source).y,
+            };
+          })
+          .sort((a, b) => a.sourceY - b.sourceY);
+
+        // Assign vertical offsets
+        const spacing = config.spacing;
+        const totalHeight = (sortedLinks.length - 1) * spacing;
+
+        sortedLinks.forEach((item, index) => {
+          const targetYOffset = index * spacing - totalHeight / 2;
+          item.link.targetYOffset = targetYOffset;
+        });
+      } else if (targetLinks.length === 1) {
+        targetLinks[0].targetYOffset = 0;
+      }
+    });
+
+    // Update the data on the D3 selection with recalculated offsets
+    this.link.each(function (d) {
+      const matchingLink = Array.from(linksByTarget.values())
+        .flat()
+        .find((l) => l.source === d.source && l.target === d.target);
+      if (matchingLink && matchingLink.targetYOffset !== undefined) {
+        d.targetYOffset = matchingLink.targetYOffset;
+      }
+    });
+
     // Show all nodes and links
     this.node
       .style("display", null)
@@ -1098,9 +1285,6 @@ export class BeeBreedingApp {
 
     // Remove outer selection borders
     this.node.selectAll(".outer-selection-border").remove();
-
-    // Reset node borders
-    this.resetNodeBorders();
 
     // Update back to original positions immediately
     this.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
@@ -1119,6 +1303,9 @@ export class BeeBreedingApp {
 
       return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
     });
+
+    // Reset node borders AFTER positions and offsets are recalculated
+    this.resetNodeBorders();
 
     document.getElementById("infoPanel").style.display = "none";
 
@@ -1197,9 +1384,6 @@ export class BeeBreedingApp {
 
     // Update button text
     const button = document.getElementById("layoutToggle");
-    button.textContent = this.useColumnLayoutForLeaves
-      ? "Switch to Split Layout"
-      : "Switch to Column Layout";
 
     // Update positions with transitions
     positionNodes(
@@ -1431,6 +1615,93 @@ export class BeeBreedingApp {
     }
 
     console.log("Controls bound to window object");
+  }
+
+  readCheckboxStates() {
+    // Read current checkbox states to populate selectedMods
+    const checkboxes = document.querySelectorAll(".mod-filter-checkbox");
+    checkboxes.forEach((checkbox) => {
+      const modName = checkbox.value.toLowerCase();
+      if (checkbox.checked) {
+        this.selectedMods.add(modName);
+      }
+    });
+  }
+
+  getFilteredBeeData() {
+    // Get filtered bee data based on selectedMods
+    if (this.selectedMods.size === 0) {
+      return this.beeData;
+    }
+
+    const allMods = [
+      "forestry",
+      "extrabees",
+      "magicbees",
+      "careerbees",
+      "meatballcraft",
+    ];
+    const allSelected = allMods.every((mod) => this.selectedMods.has(mod));
+
+    if (allSelected) {
+      return this.beeData;
+    }
+
+    // Filter to selected mods + their dependencies
+    const filteredBeeData = {};
+
+    // First pass: collect all bees from selected mods
+    const selectedBeeIds = new Set();
+    Object.keys(this.beeData).forEach((beeId) => {
+      const modName = this.getModFromId(beeId);
+      if (this.selectedMods.has(modName)) {
+        selectedBeeIds.add(beeId);
+      }
+    });
+
+    // Second pass: recursively add all ancestors
+    const beesWithAncestors = new Set(selectedBeeIds);
+    const addAncestors = (beeId) => {
+      const fullNode = this.fullHierarchyData.nodeMap.get(beeId);
+      if (fullNode && fullNode.parents) {
+        fullNode.parents.forEach((parentId) => {
+          if (!beesWithAncestors.has(parentId)) {
+            beesWithAncestors.add(parentId);
+            addAncestors(parentId);
+          }
+        });
+      }
+    };
+
+    selectedBeeIds.forEach((beeId) => addAncestors(beeId));
+
+    // Build filtered bee data
+    beesWithAncestors.forEach((beeId) => {
+      filteredBeeData[beeId] = this.beeData[beeId];
+    });
+
+    this.isModFiltered = true;
+    return filteredBeeData;
+  }
+
+  setupModFilters() {
+    const checkboxes = document.querySelectorAll(".mod-filter-checkbox");
+
+    // Set up change listeners
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", (e) => {
+        const modName = e.target.value.toLowerCase();
+
+        if (e.target.checked) {
+          this.selectedMods.add(modName);
+        } else {
+          this.selectedMods.delete(modName);
+        }
+
+        // Apply the filter
+        this.applyModFilter();
+      });
+    });
   }
 
   setupResizeHandler() {
