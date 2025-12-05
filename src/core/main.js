@@ -648,6 +648,12 @@ export class BeeBreedingApp {
     // Reset all node borders to their default colors
     this.resetNodeBorders();
 
+    // Restore proper stacking order: ensure ALL nodes are above ALL links
+    const app = this;
+    this.node.each(function () {
+      app.g.node().appendChild(this);
+    });
+
     document.getElementById("infoPanel").style.display = "none";
   }
 
