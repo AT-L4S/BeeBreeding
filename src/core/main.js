@@ -57,7 +57,13 @@ export class BeeBreedingApp {
         console.warn("WARNING: No links found in hierarchy!");
       }
 
-      // Position nodes
+      // Calculate node widths BEFORE positioning
+      this.nodes.forEach((node) => {
+        const text = node.name || node.id;
+        node.width = Math.max(100, text.toUpperCase().length * 8 + 30);
+      });
+
+      // Position nodes (now with widths set)
       positionNodes(
         this.nodes,
         this.useColumnLayoutForLeaves
@@ -118,11 +124,7 @@ export class BeeBreedingApp {
   }
 
   renderVisualization() {
-    // Calculate node widths BEFORE rendering edges
-    this.nodes.forEach((node) => {
-      const text = node.name || node.id;
-      node.width = Math.max(100, text.toUpperCase().length * 8 + 30);
-    });
+    // Note: Node widths are already calculated in initialize() before positioning
 
     // Create linksByTarget map for border rendering
     this.linksByTarget = d3.group(this.links, (d) => d.target);
@@ -777,10 +779,37 @@ export class BeeBreedingApp {
     );
     const sortedGens = Array.from(generations.keys()).sort((a, b) => a - b);
 
+    // Calculate cumulative X positions with dynamic spacing
+    const generationXPositions = new Map();
+    generationXPositions.set(0, 0);
+
+    for (let gen = 0; gen < sortedGens.length - 1; gen++) {
+      const currentX = generationXPositions.get(gen);
+
+      const currentGenNodes = generations.get(sortedGens[gen]);
+      const nextGenNodes = generations.get(sortedGens[gen + 1]);
+
+      const maxCurrentWidth =
+        currentGenNodes.length > 0
+          ? Math.max(...currentGenNodes.map((n) => n.width || 100))
+          : 100;
+      const maxNextWidth =
+        nextGenNodes && nextGenNodes.length > 0
+          ? Math.max(...nextGenNodes.map((n) => n.width || 100))
+          : 100;
+
+      const straightSegments = config.straightLength * 2;
+      const gap = config.gap;
+      const spacing =
+        maxCurrentWidth / 2 + straightSegments + gap + maxNextWidth / 2;
+
+      generationXPositions.set(gen + 1, currentX + spacing);
+    }
+
     // Position nodes generation by generation, preserving original vertical order
     sortedGens.forEach((gen, genIndex) => {
       const genNodes = generations.get(gen);
-      const xPos = genIndex * config.xSpacing;
+      const xPos = generationXPositions.get(genIndex);
 
       // Sort by original Y position to maintain vertical order
       genNodes.sort((a, b) => {

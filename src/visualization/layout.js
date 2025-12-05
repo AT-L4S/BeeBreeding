@@ -11,8 +11,38 @@ export function positionNodes(nodes, layoutMode = config.layoutModes.SPLIT) {
   }
 }
 
+function calculateDynamicXSpacing(nodes, generation) {
+  const currentGenNodes = nodes.filter((n) => n.generation === generation);
+  const nextGenNodes = nodes.filter((n) => n.generation === generation + 1);
+
+  const maxCurrentWidth =
+    currentGenNodes.length > 0
+      ? Math.max(...currentGenNodes.map((n) => n.width || 100))
+      : 100;
+  const maxNextWidth =
+    nextGenNodes.length > 0
+      ? Math.max(...nextGenNodes.map((n) => n.width || 100))
+      : 100;
+
+  const straightSegments = config.straightLength * 2;
+  const gap = config.gap;
+
+  return maxCurrentWidth / 2 + straightSegments + gap + maxNextWidth / 2;
+}
+
 function positionSplitLayout(nodes) {
   const generationGroups = d3.group(nodes, (d) => d.generation);
+  const maxGeneration = Math.max(...nodes.map((n) => n.generation));
+
+  // Calculate cumulative X positions with dynamic spacing
+  const generationXPositions = new Map();
+  generationXPositions.set(0, 0);
+
+  for (let gen = 0; gen < maxGeneration; gen++) {
+    const currentX = generationXPositions.get(gen);
+    const spacing = calculateDynamicXSpacing(nodes, gen);
+    generationXPositions.set(gen + 1, currentX + spacing);
+  }
 
   nodes.forEach((node) => {
     const genNodes = generationGroups.get(node.generation);
@@ -44,7 +74,7 @@ function positionSplitLayout(nodes) {
       finalSize = genNodes.length;
     }
 
-    node.x = node.generation * config.xSpacing;
+    node.x = generationXPositions.get(node.generation);
     node.y = (finalIndex - (finalSize - 1) / 2) * config.ySpacing + 400;
   });
 
@@ -53,12 +83,23 @@ function positionSplitLayout(nodes) {
 
 function positionColumnLayout(nodes) {
   const maxGeneration = Math.max(...nodes.map((n) => n.generation));
-  const leafColumnStartX = (maxGeneration + 1) * config.xSpacing;
   const leafsPerColumn = 15; // Adjust this for density
 
   // Separate leaf and non-leaf nodes
   const leafNodes = nodes.filter((n) => n.children.length === 0);
   const nonLeafNodes = nodes.filter((n) => n.children.length > 0);
+
+  // Calculate cumulative X positions for non-leaf generations
+  const generationXPositions = new Map();
+  generationXPositions.set(0, 0);
+
+  for (let gen = 0; gen < maxGeneration; gen++) {
+    const currentX = generationXPositions.get(gen);
+    const spacing = calculateDynamicXSpacing(nodes, gen);
+    generationXPositions.set(gen + 1, currentX + spacing);
+  }
+
+  const leafColumnStartX = generationXPositions.get(maxGeneration) + 200;
 
   // Position non-leaf nodes normally
   const nonLeafGenerationGroups = d3.group(nonLeafNodes, (d) => d.generation);
@@ -67,7 +108,7 @@ function positionColumnLayout(nodes) {
     const genIndex = genNodes.indexOf(node);
     const genSize = genNodes.length;
 
-    node.x = node.generation * config.xSpacing;
+    node.x = generationXPositions.get(node.generation);
     node.y = (genIndex - (genSize - 1) / 2) * config.ySpacing + 400;
   });
 

@@ -8,6 +8,7 @@ export const config = {
   straightLength: 15,
   controlOffset: 20,
   spacing: 20,
+  gap: 10, // Horizontal gap between edge straight segments
 
   // Node dimensions
   nodeHeight: 30,

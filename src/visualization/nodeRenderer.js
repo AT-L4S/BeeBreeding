@@ -4,15 +4,7 @@
 import { config } from "../core/config.js";
 
 export function renderNodes(svg, nodes, links, nodeMap, nodeColors) {
-  // Function to estimate text width
-  function getTextWidth(text) {
-    return Math.max(100, text.toUpperCase().length * 8 + 30);
-  }
-
-  // Calculate and store width for each node
-  nodes.forEach((node) => {
-    node.width = getTextWidth(node.name || node.id);
-  });
+  // Note: Node widths are already calculated in main.js before positioning
 
   // Group links by target to calculate input connection offsets
   const linksByTarget = d3.group(links, (d) => d.target);
