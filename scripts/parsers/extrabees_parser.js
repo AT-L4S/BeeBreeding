@@ -22,9 +22,9 @@ function parseExtraBeesDefinition(filePath) {
     branches: {},
   };
 
-  // Extract enum constants - ExtraBees pattern
+  // Extract enum constants - match until closing brace followed by comma or semicolon
   const enumPattern =
-    /(\w+)\(ExtraBeeBranchDefinition\.(\w+),\s*"([^"]+)",\s*(true|false),\s*new Color\((0x[0-9A-Fa-f]+)\)(?:,\s*new Color\((0x[0-9A-Fa-f]+)\))?\)\s*\{([\s\S]*?)\n\t\}/g;
+    /(\w+)\(ExtraBeeBranchDefinition\.(\w+),\s*"([^"]+)",\s*(true|false),\s*new Color\((0x[0-9A-Fa-f]+)\)(?:,\s*new Color\((0x[0-9A-Fa-f]+)\))?\)\s*\{([\s\S]*?)\s*\}\s*[,;]/g;
 
   let match;
   while ((match = enumPattern.exec(content)) !== null) {
@@ -237,22 +237,24 @@ function parseConditions(conditionsStr) {
 function resolveSpeciesReference(ref) {
   ref = ref.trim();
 
-  // ExtraBees bee reference
-  if (ref.match(/^[A-Z_]+$/)) {
-    return `extrabees.species.${ref.toLowerCase()}`;
-  }
-
-  // Forestry bee reference: BeeDefinition.NAME
-  const forestryMatch = ref.match(/BeeDefinition\.(\w+)/);
-  if (forestryMatch) {
-    const name = forestryMatch[1];
-    return `forestry.species${name.charAt(0) + name.slice(1).toLowerCase()}`;
-  }
-
-  // ExtraBees reference: ExtraBeeDefinition.NAME
+  // ExtraBees reference: ExtraBeeDefinition.NAME (check first before BeeDefinition!)
   const extraMatch = ref.match(/ExtraBeeDefinition\.(\w+)/);
   if (extraMatch) {
     return `extrabees.species.${extraMatch[1].toLowerCase()}`;
+  }
+
+  // Forestry bee reference: BeeDefinition.NAME (must not contain "ExtraBee")
+  const forestryMatch = ref.match(/^BeeDefinition\.(\w+)$/);
+  if (forestryMatch) {
+    const name = forestryMatch[1];
+    return `forestry.species${
+      name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+    }`;
+  }
+
+  // ExtraBees bee reference (bare ALL_CAPS in same file)
+  if (ref.match(/^[A-Z_]+$/)) {
+    return `extrabees.species.${ref.toLowerCase()}`;
   }
 
   return ref;

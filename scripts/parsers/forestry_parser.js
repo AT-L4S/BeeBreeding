@@ -22,9 +22,9 @@ function parseForestryBeeDefinition(filePath) {
     branches: {},
   };
 
-  // Extract enum constants
+  // Extract enum constants - match until closing brace followed by comma or semicolon
   const enumPattern =
-    /(\w+)\(BeeBranchDefinition\.(\w+),\s*"([^"]+)",\s*(true|false),\s*new Color\((0x[0-9A-Fa-f]+)\)(?:,\s*new Color\((0x[0-9A-Fa-f]+)\))?\)\s*\{([\s\S]*?)\n\t\}/g;
+    /(\w+)\(BeeBranchDefinition\.(\w+),\s*"([^"]+)",\s*(true|false),\s*new Color\((0x[0-9A-Fa-f]+)\)(?:,\s*new Color\((0x[0-9A-Fa-f]+)\))?\)\s*\{([\s\S]*?)\s*\}\s*[,;]/g;
 
   let match;
   while ((match = enumPattern.exec(content)) !== null) {
