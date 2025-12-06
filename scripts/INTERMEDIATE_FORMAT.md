@@ -55,6 +55,10 @@ List of mutation recipes:
     "parent2": "modid.speciesName2",
     "offspring": "modid.speciesOffspring",
     "chance": 10,
+    "source": {
+      "file": "relative/path/to/source.java",
+      "line": 123
+    },
     "conditions": {
       "temperature": ["HOT", "HELLISH"],
       "humidity": ["ARID"],

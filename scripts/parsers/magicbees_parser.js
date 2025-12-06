@@ -46,6 +46,11 @@ function parseMagicBeesSpecies(filePath) {
       enumName.charAt(0) + enumName.slice(1).toLowerCase()
     }`;
 
+    // Calculate line number where this enum body starts
+    const linesBeforeMatch = content
+      .substring(0, match.index)
+      .split("\n").length;
+
     const bee = {
       mod: "MagicBees",
       name:
@@ -80,7 +85,13 @@ function parseMagicBeesSpecies(filePath) {
     result.bees[uid]._enumName = enumName;
 
     // Parse mutations from this bee's registerMutations() method
-    const beeMutations = parseBeeMutations(body, enumName, result.bees);
+    const beeMutations = parseBeeMutations(
+      body,
+      enumName,
+      result.bees,
+      filePath,
+      linesBeforeMatch
+    );
     result.mutations.push(...beeMutations);
   }
 
@@ -195,7 +206,7 @@ function parseItemReference(itemRef) {
 /**
  * Parse mutations from a specific bee's registerMutations() method body
  */
-function parseBeeMutations(body, enumName, bees) {
+function parseBeeMutations(body, enumName, bees, filePath, bodyStartLine) {
   const mutations = [];
 
   // Extract registerMutations() method body
@@ -207,6 +218,8 @@ function parseBeeMutations(body, enumName, bees) {
   }
 
   const mutationBody = mutationMethodMatch[1];
+  const mutationBodyStartOffset =
+    mutationMethodMatch.index + mutationMethodMatch[0].indexOf("{") + 1;
 
   // Pattern: registerMutation(PARENT1, PARENT2, CHANCE)...
   // Can be chained with .restrictBiomeType(), .requireResource(), .addMutationCondition(), etc.
@@ -217,6 +230,14 @@ function parseBeeMutations(body, enumName, bees) {
   while ((match = mutationPattern.exec(mutationBody)) !== null) {
     const [, parent1, parent2, chance, chainedMethods] = match;
 
+    // Calculate line number: bodyStartLine + lines in body before mutationBody + lines in mutationBody before match
+    const linesBeforeMethodStart =
+      body.substring(0, mutationBodyStartOffset).split("\n").length - 1;
+    const linesInMethodBeforeMatch =
+      mutationBody.substring(0, match.index).split("\n").length - 1;
+    const lineNumber =
+      bodyStartLine + linesBeforeMethodStart + linesInMethodBeforeMatch;
+
     const mutation = {
       parent1: resolveSpeciesReference(parent1.trim(), bees),
       parent2: resolveSpeciesReference(parent2.trim(), bees),
@@ -224,6 +245,10 @@ function parseBeeMutations(body, enumName, bees) {
         enumName.charAt(0) + enumName.slice(1).toLowerCase()
       }`,
       chance: parseFloat(chance),
+      source: {
+        file: filePath,
+        line: lineNumber,
+      },
     };
 
     // Parse chained mutation conditions

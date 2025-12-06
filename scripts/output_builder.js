@@ -184,9 +184,16 @@ function buildBreedingPairsJsonc(merged) {
     const offspringBee = merged.bees[mutation.offspring];
 
     if (!parent1Bee || !parent2Bee || !offspringBee) {
-      console.warn(
-        `⚠️  Skipping mutation with missing bee data: ${mutation.parent1} + ${mutation.parent2} -> ${mutation.offspring}`
-      );
+      if (mutation.source) {
+        const fullPath = path.resolve(mutation.source.file);
+        console.warn(
+          `⚠️  Skipping mutation: ${mutation.offspring}\n    ${fullPath}:${mutation.source.line}`
+        );
+      } else {
+        console.warn(
+          `⚠️  Skipping mutation: ${mutation.offspring}\n    (no source location)`
+        );
+      }
       return;
     }
 

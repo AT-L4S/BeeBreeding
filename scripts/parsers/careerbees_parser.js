@@ -58,7 +58,7 @@ function parseCareerBeesSpecies(filePath) {
   }
 
   // Parse mutations from buildMutationList() method
-  const mutations = parseMutationTree(content, result.bees);
+  const mutations = parseMutationTree(content, result.bees, filePath);
   result.mutations.push(...mutations);
 
   // Extract branch names

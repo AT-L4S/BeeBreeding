@@ -43,6 +43,11 @@ function parseExtraBeesDefinition(filePath) {
     const uid = `extrabees.species.${enumName.toLowerCase()}`;
     const displayName = enumName.charAt(0) + enumName.slice(1).toLowerCase();
 
+    // Calculate line number where this enum body starts
+    const linesBeforeMatch = content
+      .substring(0, match.index)
+      .split("\n").length;
+
     // Parse the bee body
     const beeData = parseBeeBody(body);
 
@@ -64,7 +69,7 @@ function parseExtraBeesDefinition(filePath) {
     };
 
     // Extract mutations from registerMutations method
-    const mutations = parseMutations(body, uid);
+    const mutations = parseMutations(body, uid, filePath, linesBeforeMatch);
     result.mutations.push(...mutations);
   }
 
@@ -155,7 +160,7 @@ function parseBeeBody(body) {
 /**
  * Parse mutations from registerMutations method
  */
-function parseMutations(body, offspring) {
+function parseMutations(body, offspring, filePath, bodyStartLine) {
   const mutations = [];
 
   // Pattern: registerMutation(PARENT1, PARENT2, chance)
@@ -166,11 +171,20 @@ function parseMutations(body, offspring) {
   while ((match = mutationPattern.exec(body)) !== null) {
     const [, parent1, parent2, chance, conditions] = match;
 
+    // Calculate line number within the body
+    const linesBeforeMatch =
+      body.substring(0, match.index).split("\n").length - 1;
+    const lineNumber = bodyStartLine + linesBeforeMatch;
+
     const mutation = {
       parent1: resolveSpeciesReference(parent1),
       parent2: resolveSpeciesReference(parent2),
       offspring: offspring,
       chance: parseInt(chance),
+      source: {
+        file: filePath,
+        line: lineNumber,
+      },
     };
 
     // Parse conditions
