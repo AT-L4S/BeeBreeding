@@ -22,9 +22,10 @@ function parseExtraBeesDefinition(filePath) {
     branches: {},
   };
 
-  // Extract enum constants - match until closing brace followed by comma or semicolon
+  // Extract enum constants - match both ExtraBeeBranchDefinition and BeeBranchDefinition
+  // Some ExtraBees bees use Forestry branches (e.g., GROWING, THRIVING use BeeBranchDefinition.AGRARIAN)
   const enumPattern =
-    /(\w+)\(ExtraBeeBranchDefinition\.(\w+),\s*"([^"]+)",\s*(true|false),\s*new Color\((0x[0-9A-Fa-f]+)\)(?:,\s*new Color\((0x[0-9A-Fa-f]+)\))?\)\s*\{([\s\S]*?)\s*\}\s*[,;]/g;
+    /(\w+)\((?:ExtraBeeBranchDefinition|BeeBranchDefinition)\.(\w+),\s*"([^"]+)",\s*(true|false),\s*new Color\((0x[0-9A-Fa-f]+)\)(?:,\s*new Color\((0x[0-9A-Fa-f]+)\))?\)\s*\{([\s\S]*?)\s*\}\s*[,;]/g;
 
   let match;
   while ((match = enumPattern.exec(content)) !== null) {
