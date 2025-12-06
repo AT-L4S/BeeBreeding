@@ -439,21 +439,6 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "ExtraBees:Lime": {
-    "mod": "Forestry",
-    "name": "Lime",
-    "idealTemperature": "",
-    "idealHumidity": "",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": []
-  },
   "Forestry:Majestic": {
     "mod": "Forestry",
     "name": "Majestic",
