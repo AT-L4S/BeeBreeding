@@ -26,35 +26,43 @@ const MOD_CONFIGS = [
     key: "forestry",
     name: "Forestry",
     parser: parseForestry,
-    sourceFile:
-      "../whiteboard/ForestryMC-mc-1.12/src/main/java/forestry/apiculture/genetics/BeeDefinition.java",
+    sourceFile: path.join(
+      __dirname,
+      "../whiteboard/ForestryMC-mc-1.12/src/main/java/forestry/apiculture/genetics/BeeDefinition.java"
+    ),
   },
   {
     key: "extrabees",
     name: "ExtraBees",
     parser: parseExtraBees,
-    sourceFile:
-      "../whiteboard/Binnie-master-MC1.12/extrabees/src/main/java/binnie/extrabees/genetics/ExtraBeeDefinition.java",
+    sourceFile: path.join(
+      __dirname,
+      "../whiteboard/Binnie-master-MC1.12/extrabees/src/main/java/binnie/extrabees/genetics/ExtraBeeDefinition.java"
+    ),
   },
   {
     key: "careerbees",
     name: "CareerBees",
     parser: parseCareerBees,
-    sourceFile:
-      "../whiteboard/Careerbees-master/src/main/java/com/rwtema/careerbees/bees/CareerBeeSpecies.java",
+    sourceFile: path.join(
+      __dirname,
+      "../whiteboard/Careerbees-master/src/main/java/com/rwtema/careerbees/bees/CareerBeeSpecies.java"
+    ),
   },
   {
     key: "magicbees",
     name: "MagicBees",
     parser: parseMagicBees,
-    sourceFile:
-      "../whiteboard/MagicBees-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java",
+    sourceFile: path.join(
+      __dirname,
+      "../whiteboard/MagicBees-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java"
+    ),
   },
   {
     key: "meatballcraft",
     name: "MeatballCraft",
     parser: parseGendustry,
-    sourceFile: "../whiteboard/meatball_bees.cfg",
+    sourceFile: path.join(__dirname, "../whiteboard/meatball_bees.cfg"),
   },
 ];
 
@@ -108,9 +116,9 @@ function parseAllMods(modsToInclude = null) {
 function build(options = {}) {
   const {
     modsToInclude = null,
-    outputDir = "./data",
+    outputDir = path.join(__dirname, "data"),
     saveIntermediate = false,
-    intermediateDir = "./scripts/intermediate",
+    intermediateDir = path.join(__dirname, "intermediate"),
   } = options;
 
   console.log("╔═══════════════════════════════════════╗");
@@ -166,9 +174,9 @@ if (require.main === module) {
   // Parse command line arguments
   const options = {
     modsToInclude: null,
-    outputDir: "./data",
+    outputDir: path.join(__dirname, "data"),
     saveIntermediate: false,
-    intermediateDir: "./scripts/intermediate",
+    intermediateDir: path.join(__dirname, "intermediate"),
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -182,7 +190,7 @@ if (require.main === module) {
           "  --mods <mod1,mod2,...>     Only build specific mods (forestry,extrabees,careerbees,magicbees,meatballcraft)"
         );
         console.log(
-          "  --output-dir <dir>         Output directory for JSONC files (default: ./data)"
+          "  --output-dir <dir>         Output directory for JSONC files (default: scripts/data)"
         );
         console.log(
           "  --save-intermediate        Save intermediate JSON files"
