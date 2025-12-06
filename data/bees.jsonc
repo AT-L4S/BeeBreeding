@@ -814,9 +814,9 @@
     "tolerantFlyer": false,
     "products": []
   },
-  "MagicBees:Shulking": {
+  "MagicBees:Skulking": {
     "mod": "MagicBees",
-    "name": "Shulking",
+    "name": "Skulking",
     "idealTemperature": "",
     "idealHumidity": "",
     "temperatureTolerance": "",
@@ -5032,6 +5032,21 @@
   "MeatballCraft:Bomber": {
     "mod": "MeatballCraft",
     "name": "Bomber",
+    "idealTemperature": "",
+    "idealHumidity": "",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": []
+  },
+  "MagicBees:Brainy": {
+    "mod": "MagicBees",
+    "name": "Brainy",
     "idealTemperature": "",
     "idealHumidity": "",
     "temperatureTolerance": "",

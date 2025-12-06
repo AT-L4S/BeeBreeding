@@ -799,7 +799,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Wintry", "MagicBees:Shulking"],
+    "parents": ["Forestry:Wintry", "MagicBees:Skulking"],
     "children": [
       {
         "species": "ExtraBees:Blizzy",
@@ -1715,7 +1715,7 @@
     ]
   },
   {
-    "parents": ["MagicBees:Shulking", "MagicBees:Windy"],
+    "parents": ["MagicBees:Skulking", "MagicBees:Windy"],
     "children": [
       {
         "species": "MagicBees:Batty",
@@ -1724,7 +1724,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Common", "MagicBees:Shulking"],
+    "parents": ["Forestry:Common", "MagicBees:Skulking"],
     "children": [
       {
         "species": "MagicBees:Beefy",
@@ -1741,7 +1741,7 @@
     ]
   },
   {
-    "parents": ["MagicBees:Mysterious", "MagicBees:Shulking"],
+    "parents": ["MagicBees:Mysterious", "MagicBees:Skulking"],
     "children": [
       {
         "species": "MagicBees:Big Bad",
@@ -2197,7 +2197,7 @@
     ]
   },
   {
-    "parents": ["MagicBees:Porcine", "MagicBees:Shulking"],
+    "parents": ["MagicBees:Porcine", "MagicBees:Skulking"],
     "children": [
       {
         "species": "MagicBees:Sheepish",
@@ -2669,6 +2669,15 @@
     "children": [
       {
         "species": "MeatballCraft:UselessForce",
+        "probability": 1
+      }
+    ]
+  },
+  {
+    "parents": ["MagicBees:Skulking", "MagicBees:Pupil"],
+    "children": [
+      {
+        "species": "MagicBees:Brainy",
         "probability": 1
       }
     ]
