@@ -373,7 +373,7 @@ function parseChainedConditions(chainStr) {
 function resolveSpeciesReference(ref, bees) {
   ref = ref.trim();
 
-  // Look up in MagicBees species (by enum name)
+  // Look up in MagicBees species (by enum name) - handles already-parsed bees
   for (const [uid, bee] of Object.entries(bees)) {
     if (bee._enumName === ref) {
       return uid;
@@ -386,18 +386,19 @@ function resolveSpeciesReference(ref, bees) {
     return `forestry.species${forestryMatch[1]}`;
   }
 
-  // Pattern: BeeDefinition.COMMON or similar (Forestry direct reference)
-  if (ref.match(/^[A-Z_]+$/)) {
-    const name = ref.charAt(0) + ref.slice(1).toLowerCase();
-    return `forestry.species${name}`;
-  }
-
   // Pattern: ExtraBeeDefinition.XXX
   const extraBeesMatch = ref.match(/ExtraBeeDefinition\.(\w+)/);
   if (extraBeesMatch) {
     const name =
       extraBeesMatch[1].charAt(0) + extraBeesMatch[1].slice(1).toLowerCase();
     return `extrabees.species.${name}`;
+  }
+
+  // Pattern: Bare ALL_CAPS reference - assume MagicBees if not found in dictionary yet
+  // This handles forward references to bees defined later in the file
+  if (ref.match(/^[A-Z_]+$/)) {
+    const name = ref.charAt(0) + ref.slice(1).toLowerCase();
+    return `magicbees.species${name}`;
   }
 
   return ref;
