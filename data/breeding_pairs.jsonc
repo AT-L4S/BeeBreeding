@@ -6,10 +6,10 @@
   //         "species": "MyForestryAddon:MyBee2",
   //         "probability": 0.2,
   //         "requirements": {
-  //           "temperature": "cold",
-  //           "humidity": "damp",
-  //           "biome": "MyColdDampBiome",
-  //           "block": "chisel:basalt@10"
+  //           "temperature": ["icy", "cold"],
+  //           "humidity": ["damp"],
+  //           "biome": ["MyColdDampBiome"],
+  //           "block": ["chisel:basalt@10"]
   //         }
   //       }
   //     ]

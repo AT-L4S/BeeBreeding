@@ -219,6 +219,24 @@ function parseConditions(conditionsStr) {
     };
   }
 
+  // Day/Night requirement
+  if (conditionsStr.includes("requireDay()")) {
+    conditions.timeOfDay = "DAY";
+  } else if (conditionsStr.includes("requireNight()")) {
+    conditions.timeOfDay = "NIGHT";
+  }
+
+  // Resource block requirement
+  const resourceMatch = conditionsStr.match(/requireResource\(([^)]+)\)/);
+  if (resourceMatch) {
+    conditions.requiredBlock = cleanItemReference(resourceMatch[1]);
+  }
+
+  // Secret mutation flag
+  if (conditionsStr.includes("setIsSecret()")) {
+    conditions.isSecret = true;
+  }
+
   return conditions;
 }
 

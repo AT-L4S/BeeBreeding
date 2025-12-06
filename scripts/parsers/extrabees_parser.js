@@ -222,6 +222,12 @@ function parseConditions(conditionsStr) {
     conditions.block = [cleanItemReference(blockMatch[1])];
   }
 
+  // Player name requirement (ConditionPerson easter egg)
+  const playerMatch = conditionsStr.match(/ConditionPerson\("([^"]+)"\)/);
+  if (playerMatch) {
+    conditions.requirePlayer = playerMatch[1];
+  }
+
   return conditions;
 }
 

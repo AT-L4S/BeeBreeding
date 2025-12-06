@@ -241,41 +241,25 @@ function parseMutations(content, bees) {
 }
 
 /**
- * Parse mutation conditions
+ * Parse chained mutation conditions from method calls
  */
-function parseConditions(condStr) {
+function parseChainedConditions(chainStr) {
   const conditions = {};
 
-  // Temperature requirement: requireTemp(EnumTemperature.XXX)
-  const tempMatch = condStr.match(/requireTemp\s*\(\s*EnumTemperature\.(\w+)/);
-  if (tempMatch) {
-    conditions.temperature = tempMatch[1];
-  }
-
-  // Biome requirement: restrictBiomeType(BiomeType.XXX)
-  const biomeMatch = condStr.match(/restrictBiomeType\s*\(\s*BiomeType\.(\w+)/);
+  // restrictBiomeType(BiomeDictionary.Type.XXX)
+  const biomeMatch = chainStr.match(
+    /restrictBiomeType\s*\(\s*BiomeDictionary\.Type\.(\w+)/
+  );
   if (biomeMatch) {
-    conditions.biome = [biomeMatch[1].toLowerCase()];
+    conditions.biome = [biomeMatch[1]];
   }
 
-  // Block requirement: requireBlock(Blocks.XXX)
-  const blockMatch = condStr.match(/requireBlock\s*\(\s*Blocks\.(\w+)/);
-  if (blockMatch) {
-    conditions.block = [`minecraft:${blockMatch[1].toLowerCase()}`];
-  }
-
-  // Dimension requirement: restrictDimension(id)
-  const dimMatch = condStr.match(/restrictDimension\s*\(\s*(-?\d+)/);
-  if (dimMatch) {
-    conditions.dimension = parseInt(dimMatch[1]);
-  }
-
-  // Moon phase restriction: new MoonPhaseMutationRestriction(MoonPhase.XXX) or (MoonPhase.START, MoonPhase.END)
-  const moonPhaseMatch = condStr.match(
+  // addMutationCondition(new MoonPhaseMutationRestriction(MoonPhase.XXX, MoonPhase.YYY))
+  const moonRestrictionMatch = chainStr.match(
     /MoonPhaseMutationRestriction\s*\(\s*MoonPhase\.(\w+)(?:\s*,\s*MoonPhase\.(\w+))?\s*\)/
   );
-  if (moonPhaseMatch) {
-    const [, phase1, phase2] = moonPhaseMatch;
+  if (moonRestrictionMatch) {
+    const [, phase1, phase2] = moonRestrictionMatch;
     if (phase2 && phase2 !== phase1) {
       conditions.moonPhase = [phase1, phase2];
     } else {
@@ -283,16 +267,24 @@ function parseConditions(condStr) {
     }
   }
 
-  // Moon phase bonus: new MoonPhaseMutationBonus(MoonPhase.XXX, MoonPhase.XXX, bonus)
-  // Note: We capture this as a condition but it's actually a chance multiplier
-  const moonBonusMatch = condStr.match(
-    /MoonPhaseMutationBonus\s*\(\s*MoonPhase\.(\w+)\s*,\s*MoonPhase\.(\w+)\s*,\s*[\d.]+f?\s*\)/
+  // addMutationCondition(new MoonPhaseMutationBonus(MoonPhase.XXX, MoonPhase.YYY, multiplier))
+  const moonBonusMatch = chainStr.match(
+    /MoonPhaseMutationBonus\s*\(\s*MoonPhase\.(\w+)\s*,\s*MoonPhase\.(\w+)\s*,\s*([\d.]+)f?\s*\)/
   );
   if (moonBonusMatch) {
-    const [, phase1, phase2] = moonBonusMatch;
+    const [, phase1, phase2, multiplier] = moonBonusMatch;
     if (!conditions.moonPhase) {
       conditions.moonPhase = phase1 === phase2 ? [phase1] : [phase1, phase2];
     }
+    conditions.moonPhaseBonus = parseFloat(multiplier);
+  }
+
+  // addMutationCondition(BeeIntegrationInterface.TCVisMutationRequirement.apply(amount))
+  const tcVisMatch = chainStr.match(
+    /TCVisMutationRequirement\.apply\s*\(\s*(\d+)\s*\)/
+  );
+  if (tcVisMatch) {
+    conditions.thaumcraftVis = parseInt(tcVisMatch[1]);
   }
 
   return conditions;

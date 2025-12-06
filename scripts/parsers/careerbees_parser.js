@@ -168,6 +168,11 @@ function parseRequirements(reqStr) {
     }
   }
 
+  // Pattern: iBeeMutationBuilder -> iBeeMutationBuilder.addMutationCondition(new MutationRecentExplosion()...)
+  if (reqStr.includes("MutationRecentExplosion")) {
+    conditions.requireExplosion = true;
+  }
+
   return conditions;
 }
 

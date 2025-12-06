@@ -86,8 +86,12 @@ function extractCombs(merged) {
               producers: [],
             };
           }
+          // Convert UID to "Mod:Name" format for comb producers
+          const modName = bee.mod;
+          const beeName = bee.name;
+          const beeKey = `${modName}:${beeName}`;
           merged.combs[combId].producers.push({
-            bee: uid,
+            bee: beeKey,
             chance: product.chance,
           });
         }
@@ -106,7 +110,8 @@ function formatCombName(combId) {
 }
 
 /**
- * Build bees.jsonc content
+ * Build bees.jsonc content in the format matching existing data
+ * Key format: "Mod:BeeName" (e.g., "Forestry:Forest", "ExtraBees:Blue")
  */
 function buildBeesJsonc(merged) {
   const output = {};
@@ -119,62 +124,180 @@ function buildBeesJsonc(merged) {
   });
 
   sortedBees.forEach(([uid, bee]) => {
-    output[uid] = {
-      name: bee.name,
+    // Convert UID to "Mod:Name" format
+    const key = `${bee.mod}:${bee.name}`;
+
+    // Build bee object matching existing format
+    const beeData = {
       mod: bee.mod,
-      branch: bee.branch,
-      binomial: bee.binomial,
-      dominant: bee.dominant,
-      colors: bee.colors,
-      climate: {
-        temperature: bee.temperature,
-        humidity: bee.humidity,
-      },
-      hasEffect: bee.hasEffect,
-      isSecret: bee.isSecret,
+      name: bee.name,
+      idealTemperature: bee.temperature || "",
+      idealHumidity: bee.humidity || "",
+      temperatureTolerance: "", // Not available in parsed data
+      humidityTolerance: "", // Not available in parsed data
+      speed: "", // Not available in parsed data
+      lifespan: "", // Not available in parsed data
+      fertility: "", // Not available in parsed data
+      neverSleeps: false, // Not available in parsed data
+      caveDwelling: false, // Not available in parsed data
+      tolerantFlyer: false, // Not available in parsed data
     };
 
-    // Add products if present
+    // Add products if present (convert item format)
     if (bee.products && bee.products.length > 0) {
-      output[uid].products = bee.products;
+      beeData.products = bee.products.map((p) => ({
+        item: p.item,
+        chance: p.chance,
+      }));
+    } else {
+      beeData.products = [];
     }
+
+    // Add additional properties from parsed data (as supplementary info)
+    if (bee.branch) beeData.branch = bee.branch;
+    if (bee.binomial) beeData.binomial = bee.binomial;
+    if (bee.dominant !== undefined) beeData.dominant = bee.dominant;
+    if (bee.colors) beeData.colors = bee.colors;
+    if (bee.hasEffect !== undefined) beeData.hasEffect = bee.hasEffect;
+    if (bee.isSecret !== undefined) beeData.isSecret = bee.isSecret;
+
+    output[key] = beeData;
   });
 
   return output;
 }
 
 /**
- * Build breeding_pairs.jsonc content
+ * Build breeding_pairs.jsonc content in the format matching existing data
+ * Format: Array of {parents: [], children: [{species, probability, requirements?}]}
  */
 function buildBreedingPairsJsonc(merged) {
   const output = [];
 
-  // Sort mutations by offspring mod, then by offspring name
-  const sortedMutations = merged.mutations.sort((a, b) => {
-    const aOffspring = merged.bees[a.offspring];
-    const bOffspring = merged.bees[b.offspring];
+  // Group mutations by parent pair
+  const mutationGroups = new Map();
 
-    if (!aOffspring || !bOffspring) return 0;
+  merged.mutations.forEach((mutation) => {
+    // Convert UIDs to "Mod:Name" format
+    const parent1Bee = merged.bees[mutation.parent1];
+    const parent2Bee = merged.bees[mutation.parent2];
+    const offspringBee = merged.bees[mutation.offspring];
 
-    const modCompare = aOffspring.mod.localeCompare(bOffspring.mod);
-    if (modCompare !== 0) return modCompare;
-    return aOffspring.name.localeCompare(bOffspring.name);
-  });
-
-  sortedMutations.forEach((mutation) => {
-    const entry = {
-      parent1: mutation.parent1,
-      parent2: mutation.parent2,
-      offspring: mutation.offspring,
-      chance: mutation.chance,
-    };
-
-    // Add conditions if present
-    if (mutation.conditions) {
-      entry.conditions = mutation.conditions;
+    if (!parent1Bee || !parent2Bee || !offspringBee) {
+      console.warn(
+        `⚠️  Skipping mutation with missing bee data: ${mutation.parent1} + ${mutation.parent2} -> ${mutation.offspring}`
+      );
+      return;
     }
 
-    output.push(entry);
+    const parent1 = `${parent1Bee.mod}:${parent1Bee.name}`;
+    const parent2 = `${parent2Bee.mod}:${parent2Bee.name}`;
+    const offspring = `${offspringBee.mod}:${offspringBee.name}`;
+
+    // Create sorted key for parent pair (so [A,B] and [B,A] are treated the same)
+    const parentKey = [parent1, parent2].sort().join("|");
+
+    if (!mutationGroups.has(parentKey)) {
+      mutationGroups.set(parentKey, {
+        parents: [parent1, parent2].sort(),
+        children: [],
+      });
+    }
+
+    // Add offspring to this parent pair
+    const childEntry = {
+      species: offspring,
+      probability: mutation.chance / 100, // Convert percentage to decimal
+    };
+
+    // Add requirements if present
+    if (mutation.conditions && Object.keys(mutation.conditions).length > 0) {
+      childEntry.requirements = {};
+
+      // Temperature restrictions
+      if (mutation.conditions.temperature) {
+        childEntry.requirements.temperature = mutation.conditions.temperature;
+      }
+
+      // Humidity restrictions
+      if (mutation.conditions.humidity) {
+        childEntry.requirements.humidity = mutation.conditions.humidity;
+      }
+
+      // Biome restrictions
+      if (mutation.conditions.biome) {
+        childEntry.requirements.biome = mutation.conditions.biome;
+      }
+
+      // Date range (seasonal bees)
+      if (mutation.conditions.dateRange) {
+        childEntry.requirements.dateRange = mutation.conditions.dateRange;
+      }
+
+      // Time of day requirement
+      if (mutation.conditions.timeOfDay) {
+        childEntry.requirements.timeOfDay = mutation.conditions.timeOfDay;
+      }
+
+      // Required block
+      if (mutation.conditions.requiredBlock) {
+        childEntry.requirements.block = mutation.conditions.requiredBlock;
+      }
+
+      // Moon phase (MagicBees)
+      if (mutation.conditions.moonPhase) {
+        childEntry.requirements.moonPhase = mutation.conditions.moonPhase;
+      }
+
+      // Moon phase bonus multiplier (MagicBees)
+      if (mutation.conditions.moonPhaseBonus) {
+        childEntry.requirements.moonPhaseBonus =
+          mutation.conditions.moonPhaseBonus;
+      }
+
+      // Thaumcraft vis requirement (MagicBees)
+      if (mutation.conditions.thaumcraftVis) {
+        childEntry.requirements.thaumcraftVis =
+          mutation.conditions.thaumcraftVis;
+      }
+
+      // Recent explosion requirement (CareerBees)
+      if (mutation.conditions.requireExplosion) {
+        childEntry.requirements.requireExplosion = true;
+      }
+
+      // Player name requirement (ExtraBees easter egg)
+      if (mutation.conditions.requirePlayer) {
+        childEntry.requirements.requirePlayer =
+          mutation.conditions.requirePlayer;
+      }
+
+      // Dimension requirement
+      if (mutation.conditions.dimension) {
+        childEntry.requirements.dimension = mutation.conditions.dimension;
+      }
+
+      // Secret mutation flag
+      if (mutation.conditions.isSecret) {
+        childEntry.isSecret = true;
+      }
+    }
+
+    mutationGroups.get(parentKey).children.push(childEntry);
+  });
+
+  // Convert map to array and sort
+  const sortedGroups = Array.from(mutationGroups.values()).sort((a, b) => {
+    // Sort by first parent, then by second parent
+    const parent1Compare = a.parents[0].localeCompare(b.parents[0]);
+    if (parent1Compare !== 0) return parent1Compare;
+    return a.parents[1].localeCompare(b.parents[1]);
+  });
+
+  sortedGroups.forEach((group) => {
+    // Sort children by species name
+    group.children.sort((a, b) => a.species.localeCompare(b.species));
+    output.push(group);
   });
 
   return output;
@@ -194,9 +317,7 @@ function buildCombsJsonc(merged) {
   sortedCombs.forEach(([id, comb]) => {
     output[id] = {
       name: comb.name,
-      producers: comb.producers.sort((a, b) =>
-        merged.bees[a.bee].name.localeCompare(merged.bees[b.bee].name)
-      ),
+      producers: comb.producers.sort((a, b) => a.bee.localeCompare(b.bee)),
     };
   });
 

@@ -1,4 +1,5 @@
 [ ] Make script to extract bee/breeding pair info from different mods
+[ ] Split data into different folders by mods (fore easier generation)
 [ ] Add column mode to filtered view?
 [ ] Add colors/links to bee nodes in info boxes
 [ ] Add more than 1 parent breeding pair/add percentage toggle

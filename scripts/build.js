@@ -25,30 +25,30 @@ const MOD_CONFIGS = {
     name: "Forestry",
     parser: parseForestry,
     sourceFile:
-      "whiteboard/ForestryMC-mc-1.12/src/main/java/forestry/apiculture/genetics/BeeDefinition.java",
+      "../whiteboard/ForestryMC-mc-1.12/src/main/java/forestry/apiculture/genetics/BeeDefinition.java",
   },
   extrabees: {
     name: "ExtraBees",
     parser: parseExtraBees,
     sourceFile:
-      "whiteboard/Binnie-Mods-mc-1.12/extrabees/src/main/java/binnie/extrabees/genetics/ExtraBeeDefinition.java",
+      "../whiteboard/Binnie-Mods-mc-1.12/extrabees/src/main/java/binnie/extrabees/genetics/ExtraBeeDefinition.java",
   },
   careerbees: {
     name: "CareerBees",
     parser: parseCareerBees,
     sourceFile:
-      "whiteboard/CareerBees-mc-1.12/src/main/java/com/rwtema/careerbees/bees/CareerBeeSpecies.java",
+      "../whiteboard/CareerBees-mc-1.12/src/main/java/com/rwtema/careerbees/bees/CareerBeeSpecies.java",
   },
   magicbees: {
     name: "MagicBees",
     parser: parseMagicBees,
     sourceFile:
-      "whiteboard/MagicBees-mc-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java",
+      "../whiteboard/MagicBees-mc-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java",
   },
   meatballcraft: {
     name: "MeatballCraft",
     parser: parseGenDustry,
-    sourceFile: "whiteboard/meatball_bees.cfg",
+    sourceFile: "../whiteboard/meatball_bees.cfg",
   },
 };
 
