@@ -101,12 +101,12 @@ function parseBranchName(branch) {
 /**
  * Parse mutations from buildMutationList() method
  */
-function parseMutationTree(content, bees) {
+function parseMutationTree(content, bees, filePath) {
   const mutations = [];
 
   // Extract the buildMutationList() method body
   const methodMatch = content.match(
-    /void\s+buildMutationList\([^)]*\)\s*\{([\s\S]*?)\n\s*\}/
+    /public\s+static\s+void\s+buildMutationList\s*\(\s*\)\s*\{([\s\S]*?)\n\s*\}/
   );
   if (!methodMatch) {
     console.warn("Could not find buildMutationList() method");
@@ -114,20 +114,35 @@ function parseMutationTree(content, bees) {
   }
 
   const methodBody = methodMatch[1];
+  const methodStartLine = content
+    .substring(0, methodMatch.index)
+    .split("\n").length;
 
-  // Pattern: tree.add(PARENT1, PARENT2, OFFSPRING, CHANCE, REQUIREMENTS);
+  // Pattern: tree.add(PARENT1, PARENT2, OFFSPRING, CHANCE, optional_lambda);
+  // Need to handle: STUDENT, getFSpecies("Valiant"), etc.
+  // Use a more flexible pattern that handles function calls and identifiers
   const mutationPattern =
-    /tree\.add\(\s*(\w+)\s*,\s*(\w+)\s*,\s*(\w+)\s*,\s*([\\d.]+)\s*(?:,\s*([^)]+))?\)/g;
+    /tree\.add\(\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*([\d.]+)\s*(?:,\s*([^;]+?))?\s*\)\s*;/g;
 
   let match;
   while ((match = mutationPattern.exec(methodBody)) !== null) {
-    const [, parent1, parent2, offspring, chance, requirements] = match;
+    const [, parent1Raw, parent2Raw, offspringRaw, chance, requirements] =
+      match;
+
+    // Calculate line number
+    const linesBeforeMatch =
+      methodBody.substring(0, match.index).split("\n").length - 1;
+    const lineNumber = methodStartLine + linesBeforeMatch;
 
     const mutation = {
-      parent1: resolveSpeciesReference(parent1, bees),
-      parent2: resolveSpeciesReference(parent2, bees),
-      offspring: resolveSpeciesReference(offspring, bees),
+      parent1: resolveSpeciesReference(parent1Raw.trim(), bees),
+      parent2: resolveSpeciesReference(parent2Raw.trim(), bees),
+      offspring: resolveSpeciesReference(offspringRaw.trim(), bees),
       chance: parseFloat(chance),
+      source: {
+        file: filePath,
+        line: lineNumber,
+      },
     };
 
     // Parse requirements (lambda expressions)
@@ -182,26 +197,31 @@ function parseRequirements(reqStr) {
 function resolveSpeciesReference(ref, bees) {
   ref = ref.trim();
 
-  // Check if it's a Forestry bee reference
-  if (ref.startsWith('getSpecies("forestry.species')) {
-    const match = ref.match(/forestry\.species(\w+)/);
-    if (match) {
-      return `forestry.species${match[1]}`;
-    }
+  // Check for getFSpecies("Name") pattern - Forestry bee helper
+  const getFSpeciesMatch = ref.match(/getFSpecies\s*\(\s*"([^"]+)"\s*\)/);
+  if (getFSpeciesMatch) {
+    return `forestry.species${getFSpeciesMatch[1]}`;
   }
 
-  // Look up in CareerBees species
+  // Check for getSpecies("forestry.speciesName") pattern
+  const getSpeciesMatch = ref.match(
+    /getSpecies\s*\(\s*"(forestry\.species\w+)"\s*\)/
+  );
+  if (getSpeciesMatch) {
+    return getSpeciesMatch[1];
+  }
+
+  // Look up in CareerBees species by enum name
   for (const [uid, bee] of Object.entries(bees)) {
     if (bee._enumName === ref) {
       return uid;
     }
   }
 
-  // Check for direct Forestry enum references
-  // Pattern: BeeDefinition.COMMON or similar
-  const forestryMatch = ref.match(/^([A-Z_]+)$/);
-  if (forestryMatch) {
-    // First check if it's a CareerBees bee
+  // Check for bare ALL_CAPS references
+  const bareRefMatch = ref.match(/^([A-Z_]+)$/);
+  if (bareRefMatch) {
+    // First check if it's a CareerBees bee (must check before Forestry!)
     for (const [uid, bee] of Object.entries(bees)) {
       if (bee._enumName === ref) {
         return uid;
@@ -212,6 +232,7 @@ function resolveSpeciesReference(ref, bees) {
     return `forestry.species${name}`;
   }
 
+  // If no pattern matched, return as-is (likely will cause a skip warning)
   return ref;
 }
 
