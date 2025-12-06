@@ -9,7 +9,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Import parsers
-const { parseGenDustry } = require("./parsers/gendustry_parser");
+const { parseGendustry } = require("./parsers/gendustry_parser");
 const { parseForestry } = require("./parsers/forestry_parser");
 const { parseExtraBees } = require("./parsers/extrabees_parser");
 const { parseCareerBees } = require("./parsers/careerbees_parser");
@@ -18,39 +18,45 @@ const { buildOutputFiles } = require("./output_builder");
 
 /**
  * Configuration for mod parsers
+ * Ordered array: Forestry first (base mod), then addon mods, then GenDustry
  * Update these paths based on MOD_SOURCE_LOCATIONS.md
  */
-const MOD_CONFIGS = {
-  forestry: {
+const MOD_CONFIGS = [
+  {
+    key: "forestry",
     name: "Forestry",
     parser: parseForestry,
     sourceFile:
       "../whiteboard/ForestryMC-mc-1.12/src/main/java/forestry/apiculture/genetics/BeeDefinition.java",
   },
-  extrabees: {
+  {
+    key: "extrabees",
     name: "ExtraBees",
     parser: parseExtraBees,
     sourceFile:
-      "../whiteboard/Binnie-Mods-mc-1.12/extrabees/src/main/java/binnie/extrabees/genetics/ExtraBeeDefinition.java",
+      "../whiteboard/Binnie-master-MC1.12/extrabees/src/main/java/binnie/extrabees/genetics/ExtraBeeDefinition.java",
   },
-  careerbees: {
+  {
+    key: "careerbees",
     name: "CareerBees",
     parser: parseCareerBees,
     sourceFile:
-      "../whiteboard/CareerBees-mc-1.12/src/main/java/com/rwtema/careerbees/bees/CareerBeeSpecies.java",
+      "../whiteboard/Careerbees-master/src/main/java/com/rwtema/careerbees/bees/CareerBeeSpecies.java",
   },
-  magicbees: {
+  {
+    key: "magicbees",
     name: "MagicBees",
     parser: parseMagicBees,
     sourceFile:
-      "../whiteboard/MagicBees-mc-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java",
+      "../whiteboard/MagicBees-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java",
   },
-  meatballcraft: {
+  {
+    key: "meatballcraft",
     name: "MeatballCraft",
-    parser: parseGenDustry,
+    parser: parseGendustry,
     sourceFile: "../whiteboard/meatball_bees.cfg",
   },
-};
+];
 
 /**
  * Parse all mods and collect intermediate data
@@ -58,16 +64,13 @@ const MOD_CONFIGS = {
 function parseAllMods(modsToInclude = null) {
   const intermediateData = [];
   const modsConfig = modsToInclude
-    ? Object.fromEntries(
-        Object.entries(MOD_CONFIGS).filter(([key]) =>
-          modsToInclude.includes(key)
-        )
-      )
+    ? MOD_CONFIGS.filter((config) => modsToInclude.includes(config.key))
     : MOD_CONFIGS;
 
   console.log("Starting mod parsing...\n");
+  console.log("Parse order: Forestry → Standalone Addons → GenDustry\n");
 
-  for (const [modKey, config] of Object.entries(modsConfig)) {
+  for (const config of modsConfig) {
     console.log(`\n=== Parsing ${config.name} ===`);
 
     // Check if source file exists
@@ -81,6 +84,11 @@ function parseAllMods(modsToInclude = null) {
       const data = config.parser(config.sourceFile);
       intermediateData.push(data);
       console.log(`✓ Successfully parsed ${config.name}`);
+      console.log(
+        `  → ${Object.keys(data.bees).length} bees, ${
+          data.mutations.length
+        } mutations`
+      );
     } catch (error) {
       console.error(`✗ Error parsing ${config.name}: ${error.message}`);
       console.error(`  Stack: ${error.stack}`);

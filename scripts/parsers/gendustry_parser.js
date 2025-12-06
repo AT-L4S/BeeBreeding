@@ -268,7 +268,7 @@ function parseProducts(block) {
 /**
  * Main export function
  */
-function parseGenddustry(configPath) {
+function parseGendustry(configPath) {
   try {
     console.log(`Parsing GenDustry config: ${configPath}`);
     const result = parseGenDustryConfig(configPath);
@@ -284,7 +284,7 @@ function parseGenddustry(configPath) {
   }
 }
 
-module.exports = { parseGenddustry };
+module.exports = { parseGendustry };
 
 // CLI usage
 if (require.main === module) {
@@ -299,7 +299,7 @@ if (require.main === module) {
   const inputPath = args[0];
   const outputPath = args[1];
 
-  const result = parseGenddustry(inputPath);
+  const result = parseGendustry(inputPath);
 
   if (outputPath) {
     fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));

@@ -24,18 +24,18 @@ function parseMagicBeesSpecies(filePath) {
     branches: {},
   };
 
-  // Extract enum constants
-  // Pattern: ENUMNAME(Branch.BRANCH, "binomial", dominant, new Color(0xHEX), new Color(0xHEX)) { body },
+  // Extract enum constants with their full bodies including registerMutations()
+  // Pattern: ENUMNAME("binomial", EnumBeeBranches.BRANCH, dominant, new Color(0xHEX)) { ... },
   const enumPattern =
-    /(\w+)\s*\(\s*Branch\.(\w+)\s*,\s*"([^"]+)"\s*,\s*(true|false)\s*,\s*new\s+Color\s*\(\s*0x([0-9A-Fa-f]+)\s*\)\s*,\s*new\s+Color\s*\(\s*0x([0-9A-Fa-f]+)\s*\)\s*\)\s*\{([^}]*)\}/g;
+    /(\w+)\s*\(\s*"([^"]+)"\s*,\s*EnumBeeBranches\.(\w+)\s*,\s*(true|false)\s*,\s*new\s+Color\s*\(\s*0x([0-9A-Fa-f]+)\s*\)(?:\s*,\s*new\s+Color\s*\(\s*0x([0-9A-Fa-f]+)\s*\))?\s*\)\s*\{([\s\S]*?)(?=\n\s{4}\w+\s*\(|;\s*$)/g;
 
   let match;
   while ((match = enumPattern.exec(content)) !== null) {
     const [
       ,
       enumName,
-      branch,
       binomial,
+      branch,
       dominant,
       primaryColor,
       secondaryColor,
@@ -51,11 +51,13 @@ function parseMagicBeesSpecies(filePath) {
       name:
         enumName.charAt(0) + enumName.slice(1).toLowerCase().replace(/_/g, " "),
       binomial: binomial,
-      branch: `magicbees:${branch.toLowerCase()}`,
+      branch: `magicbees.${branch.toLowerCase()}`,
       dominant: dominant === "true",
       colors: {
         primary: `#${primaryColor.toUpperCase()}`,
-        secondary: `#${secondaryColor.toUpperCase()}`,
+        secondary: secondaryColor
+          ? `#${secondaryColor.toUpperCase()}`
+          : `#${primaryColor.toUpperCase()}`,
       },
       temperature: "NORMAL",
       humidity: "NORMAL",
@@ -76,11 +78,11 @@ function parseMagicBeesSpecies(filePath) {
 
     // Store enum name for mutation parsing
     result.bees[uid]._enumName = enumName;
-  }
 
-  // Parse mutations from registerMutations() method
-  const mutations = parseMutations(content, result.bees);
-  result.mutations.push(...mutations);
+    // Parse mutations from this bee's registerMutations() method
+    const beeMutations = parseBeeMutations(body, enumName, result.bees);
+    result.mutations.push(...beeMutations);
+  }
 
   // Extract branch names
   const branches = new Set();
@@ -91,7 +93,7 @@ function parseMagicBeesSpecies(filePath) {
   });
 
   branches.forEach((branchUID) => {
-    const parts = branchUID.split(":");
+    const parts = branchUID.split(".");
     const name = parts[parts.length - 1];
     result.branches[branchUID] = {
       name: name.charAt(0).toUpperCase() + name.slice(1),
@@ -190,6 +192,53 @@ function parseItemReference(itemRef) {
   // Direct item references
   return itemRef;
 }
+/**
+ * Parse mutations from a specific bee's registerMutations() method body
+ */
+function parseBeeMutations(body, enumName, bees) {
+  const mutations = [];
+
+  // Extract registerMutations() method body
+  const mutationMethodMatch = body.match(
+    /registerMutations\s*\(\s*\)\s*\{([\s\S]*?)\n\s{8}\}/
+  );
+  if (!mutationMethodMatch) {
+    return mutations;
+  }
+
+  const mutationBody = mutationMethodMatch[1];
+
+  // Pattern: registerMutation(PARENT1, PARENT2, CHANCE)...
+  // Can be chained with .restrictBiomeType(), .requireResource(), .addMutationCondition(), etc.
+  const mutationPattern =
+    /registerMutation\s*\(\s*([^,]+)\s*,\s*([^,]+)\s*,\s*([\d.]+)f?\s*\)((?:\.(?:restrictBiomeType|requireResource|requireNight|requireDay|addMutationCondition)\s*\([^)]*\))*)/g;
+
+  let match;
+  while ((match = mutationPattern.exec(mutationBody)) !== null) {
+    const [, parent1, parent2, chance, chainedMethods] = match;
+
+    const mutation = {
+      parent1: resolveSpeciesReference(parent1.trim(), bees),
+      parent2: resolveSpeciesReference(parent2.trim(), bees),
+      offspring: `magicbees.species${
+        enumName.charAt(0) + enumName.slice(1).toLowerCase()
+      }`,
+      chance: parseFloat(chance),
+    };
+
+    // Parse chained mutation conditions
+    if (chainedMethods) {
+      const parsedConditions = parseChainedConditions(chainedMethods);
+      if (Object.keys(parsedConditions).length > 0) {
+        mutation.conditions = parsedConditions;
+      }
+    }
+
+    mutations.push(mutation);
+  }
+
+  return mutations;
+}
 
 /**
  * Parse mutations from registerMutations() or similar method
@@ -246,12 +295,40 @@ function parseMutations(content, bees) {
 function parseChainedConditions(chainStr) {
   const conditions = {};
 
-  // restrictBiomeType(BiomeDictionary.Type.XXX)
-  const biomeMatch = chainStr.match(
-    /restrictBiomeType\s*\(\s*BiomeDictionary\.Type\.(\w+)/
-  );
-  if (biomeMatch) {
-    conditions.biome = [biomeMatch[1]];
+  // restrictBiomeType(BiomeDictionary.Type.XXX) or restrictBiomeType(BiomeDictionary.Type.XXX, BiomeDictionary.Type.YYY)
+  const biomeMatches = chainStr.matchAll(/BiomeDictionary\.Type\.(\w+)/g);
+  const biomes = [];
+  for (const match of biomeMatches) {
+    biomes.push(match[1]);
+  }
+  if (biomes.length > 0) {
+    conditions.biome = biomes;
+  }
+
+  // requireResource(block) or requireResource("oreDict")
+  const resourceMatch = chainStr.match(/requireResource\s*\(\s*([^)]+)\s*\)/);
+  if (resourceMatch) {
+    const resource = resourceMatch[1].trim();
+    if (resource.startsWith('"')) {
+      // Ore dictionary string
+      conditions.block = [resource.replace(/"/g, "")];
+    } else if (resource.includes(".getDefaultState()")) {
+      // Block reference like Blocks.WATER.getDefaultState()
+      const blockMatch = resource.match(/Blocks\.(\w+)/);
+      if (blockMatch) {
+        conditions.block = [`minecraft:${blockMatch[1].toLowerCase()}`];
+      }
+    }
+  }
+
+  // requireNight()
+  if (chainStr.includes("requireNight()")) {
+    conditions.time = "night";
+  }
+
+  // requireDay()
+  if (chainStr.includes("requireDay()")) {
+    conditions.time = "day";
   }
 
   // addMutationCondition(new MoonPhaseMutationRestriction(MoonPhase.XXX, MoonPhase.YYY))
@@ -296,21 +373,25 @@ function parseChainedConditions(chainStr) {
 function resolveSpeciesReference(ref, bees) {
   ref = ref.trim();
 
-  // Look up in MagicBees species
+  // Look up in MagicBees species (by enum name)
   for (const [uid, bee] of Object.entries(bees)) {
     if (bee._enumName === ref) {
       return uid;
     }
   }
 
-  // Check for Forestry bee references
-  // Pattern: BeeDefinition.COMMON or similar
+  // Pattern: EnumBeeSpecies.getForestrySpecies("Name")
+  const forestryMatch = ref.match(/getForestrySpecies\s*\(\s*"(\w+)"/);
+  if (forestryMatch) {
+    return `forestry.species${forestryMatch[1]}`;
+  }
+
+  // Pattern: BeeDefinition.COMMON or similar (Forestry direct reference)
   if (ref.match(/^[A-Z_]+$/)) {
     const name = ref.charAt(0) + ref.slice(1).toLowerCase();
     return `forestry.species${name}`;
   }
 
-  // Check for ExtraBees references
   // Pattern: ExtraBeeDefinition.XXX
   const extraBeesMatch = ref.match(/ExtraBeeDefinition\.(\w+)/);
   if (extraBeesMatch) {

@@ -242,9 +242,16 @@ function parseConditions(conditionsStr) {
 
 /**
  * Resolve species reference (enum name to UID)
+ * Returns null for loop variables or invalid references
  */
 function resolveSpeciesReference(ref) {
-  if (ref === "BeeDefinition") return ref; // Skip class name
+  if (ref === "BeeDefinition") return null; // Skip class name
+
+  // Skip loop variables and dynamic references
+  const loopVariables = /^(hiveBee\d*|parent\d+|bee\d*)$/i;
+  if (loopVariables.test(ref)) {
+    return null; // Cannot resolve dynamic loop variables
+  }
 
   // Forestry bee reference
   const name = ref.charAt(0) + ref.slice(1).toLowerCase();
