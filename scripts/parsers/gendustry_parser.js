@@ -9,7 +9,7 @@ const fs = require("fs");
 const path = require("path");
 
 /**
- * Remove comments from BACON content
+ * Remove comments from BACON contente
  */
 function removeComments(content) {
   // Remove multi-line comments /* */
@@ -49,11 +49,16 @@ function parseGenDustryConfig(filePath) {
     parseMutationsSection(sections.Mutations, result);
   }
 
+  // Parse inline mutations from recipes section
+  if (sections.recipes) {
+    parseRecipesMutations(sections.recipes, result, filePath);
+  }
+
   return result;
 }
 
 /**
- * Extract all top-level cfg sections
+ * Extract all top-level cfg sections and recipes section
  */
 function extractAllSections(content) {
   const sections = {};
@@ -80,6 +85,27 @@ function extractAllSections(content) {
     }
 
     sections[sectionName] = content.substring(startIndex, endIndex);
+  }
+
+  // Also extract recipes section (not cfg, just plain "recipes {")
+  const recipesMatch = content.match(/recipes\s*\{/i);
+  if (recipesMatch) {
+    const startIndex = recipesMatch.index + recipesMatch[0].length;
+    let braceDepth = 1;
+    let endIndex = startIndex;
+
+    for (let i = startIndex; i < content.length; i++) {
+      if (content[i] === "{") braceDepth++;
+      if (content[i] === "}") {
+        braceDepth--;
+        if (braceDepth === 0) {
+          endIndex = i;
+          break;
+        }
+      }
+    }
+
+    sections.recipes = content.substring(startIndex, endIndex);
   }
 
   return sections;
@@ -391,6 +417,177 @@ function parseMutationsSection(content, result) {
 
     result.mutations.push(mutation);
   }
+}
+
+/**
+ * Parse inline mutations from recipes section
+ * Format: mutation: CHANCE% "parent1" + "parent2" => "offspring" Req Condition Value
+ */
+function parseRecipesMutations(content, result, filePath) {
+  // Calculate the starting line of the recipes section in the file
+  const fullContent = fs.readFileSync(filePath, "utf-8");
+  const recipesMatch = fullContent.match(/recipes\s*\{/);
+  const recipesStartLine = recipesMatch
+    ? fullContent.substring(0, recipesMatch.index).split("\n").length
+    : 0;
+
+  const lines = content.split("\n");
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // Match: mutation: 10% "forestry.speciesIndustrious" + "forestry.speciesDiligent" => "gendustry.bee.Meatball" Req Temperature Hot
+    const mutationMatch = line.match(
+      /^mutation:\s*(\d+)%\s*"([^"]+)"\s*\+\s*"([^"]+)"\s*=>\s*"([^"]+)"(?:\s+(.*))?$/
+    );
+
+    if (mutationMatch) {
+      const [, chance, parent1, parent2, offspring, requirementsStr] =
+        mutationMatch;
+
+      // Normalize offspring UID to MeatballCraft:Name format
+      // Convert "gendustry.bee.Meatball" to "MeatballCraft:Meatball"
+      const offspringRaw = offspring.trim().replace(/\.bee\./, ".");
+      const offspringParts = offspringRaw.split(".");
+      const offspringName = offspringParts[offspringParts.length - 1];
+      const normalizedOffspring = `MeatballCraft:${
+        offspringName.charAt(0).toUpperCase() + offspringName.slice(1)
+      }`;
+
+      const mutation = {
+        parent1: normalizeParentUID(parent1.trim()),
+        parent2: normalizeParentUID(parent2.trim()),
+        offspring: normalizedOffspring,
+        chance: parseInt(chance),
+        source: {
+          file: filePath,
+          line: recipesStartLine + i + 1,
+        },
+      };
+
+      // Parse requirements if present
+      if (requirementsStr) {
+        const conditions = parseInlineRequirements(requirementsStr);
+        if (Object.keys(conditions).length > 0) {
+          mutation.conditions = conditions;
+        }
+      }
+
+      result.mutations.push(mutation);
+    }
+  }
+}
+
+/**
+ * Normalize parent UID from GenDustry format to standard format
+ * Examples:
+ *   forestry.speciesIndustrious → Forestry:Industrious
+ *   extrabees.species.acidic → ExtraBees:Acidic
+ *   magicbees.speciesForlorn → MagicBees:Forlorn
+ *   careerbees.acceleration → CareerBees:Acceleration
+ */
+function normalizeParentUID(uid) {
+  // Map of mod prefixes to proper mod names
+  const modMap = {
+    forestry: "Forestry",
+    extrabees: "ExtraBees",
+    magicbees: "MagicBees",
+    careerbees: "CareerBees",
+    gendustry: "MeatballCraft",
+  };
+
+  // Parse the UID
+  const parts = uid.split(".");
+
+  if (parts.length < 2) {
+    return uid; // Not a valid format
+  }
+
+  const modPrefix = parts[0].toLowerCase();
+  const modName = modMap[modPrefix];
+
+  if (!modName) {
+    return uid; // Unknown mod
+  }
+
+  // Extract species name
+  let speciesName = "";
+
+  if (parts[1].toLowerCase() === "bee" && parts.length === 3) {
+    // Handle: gendustry.bee.UniversalConstellation → UniversalConstellation
+    speciesName = parts[2];
+  } else if (parts[1].toLowerCase().startsWith("species")) {
+    // Handle: forestry.speciesIndustrious or extrabees.species.acidic
+    if (parts.length === 2) {
+      // forestry.speciesIndustrious → Industrious
+      speciesName = parts[1].substring(7); // Remove "species" prefix
+    } else if (parts.length === 3) {
+      // extrabees.species.acidic → Acidic
+      speciesName = parts[2];
+    }
+  } else {
+    // Handle: careerbees.acceleration → Acceleration
+    speciesName = parts[1];
+  }
+
+  // Capitalize first letter of species name and handle underscores
+  if (speciesName) {
+    // Handle MagicBees TE/AE prefixes: TEEndearing → TE_Endearing
+    // Insert underscore after all-caps prefix (TE, AE, etc.)
+    if (modName === "MagicBees" && /^[A-Z]{2}[A-Z][a-z]/.test(speciesName)) {
+      // TEEndearing → TE_Endearing, AESkystone → AE_Skystone
+      speciesName = speciesName.replace(/^([A-Z]{2})([A-Z][a-z])/, "$1_$2");
+    }
+
+    // Replace underscores with title case for each part
+    // Preserve all-caps prefixes like TE, AE
+    speciesName = speciesName
+      .split("_")
+      .map((part) => {
+        // Keep all-caps prefixes (TE, AE) as-is
+        if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+          return part;
+        }
+        return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+      })
+      .join("_");
+  }
+
+  return `${modName}:${speciesName}`;
+}
+
+/**
+ * Parse inline mutation requirements
+ * Format: Req Temperature Hot, Req Biome Hell, Req Block B:wool@1
+ */
+function parseInlineRequirements(reqStr) {
+  const conditions = {};
+
+  // Match: Req Temperature Hot
+  const tempMatch = reqStr.match(/Req\s+Temperature\s+(\w+)/i);
+  if (tempMatch) {
+    conditions.temperature = [tempMatch[1].toUpperCase()];
+  }
+
+  // Match: Req Humidity Damp
+  const humidMatch = reqStr.match(/Req\s+Humidity\s+(\w+)/i);
+  if (humidMatch) {
+    conditions.humidity = [humidMatch[1].toUpperCase()];
+  }
+
+  // Match: Req Biome Hell
+  const biomeMatch = reqStr.match(/Req\s+Biome\s+(\w+)/i);
+  if (biomeMatch) {
+    conditions.biome = [biomeMatch[1]];
+  }
+
+  // Match: Req Block B:wool@1
+  const blockMatch = reqStr.match(/Req\s+Block\s+(\S+)/i);
+  if (blockMatch) {
+    conditions.block = [blockMatch[1]];
+  }
+
+  return conditions;
 }
 
 /**

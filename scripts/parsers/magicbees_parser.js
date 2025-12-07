@@ -42,8 +42,11 @@ function parseMagicBeesSpecies(filePath) {
       body,
     ] = match;
 
+    // Create storage UID: Remove underscores to match lang file keys
+    // e.g., TE_ENDEARING → speciesTEEndearing (not speciesTe_endearing)
+    const uidName = enumName.replace(/_/g, "");
     const uid = `magicbees.species${
-      enumName.charAt(0) + enumName.slice(1).toLowerCase()
+      uidName.charAt(0) + uidName.slice(1).toLowerCase()
     }`;
 
     // Calculate line number where this enum body starts
@@ -53,8 +56,16 @@ function parseMagicBeesSpecies(filePath) {
 
     const bee = {
       mod: "MagicBees",
-      name:
-        enumName.charAt(0) + enumName.slice(1).toLowerCase().replace(/_/g, " "),
+      name: enumName
+        .split("_")
+        .map((part) => {
+          // Keep all-caps 2-letter prefixes (TE, AE) as-is
+          if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+            return part;
+          }
+          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        })
+        .join("_"),
       binomial: binomial,
       branch: `magicbees.${branch.toLowerCase()}`,
       dominant: dominant === "true",
@@ -238,11 +249,13 @@ function parseBeeMutations(body, enumName, bees, filePath, bodyStartLine) {
     const lineNumber =
       bodyStartLine + linesBeforeMethodStart + linesInMethodBeforeMatch;
 
+    // Create offspring UID matching storage format (no underscores)
+    const uidName = enumName.replace(/_/g, "");
     const mutation = {
       parent1: resolveSpeciesReference(parent1.trim(), bees),
       parent2: resolveSpeciesReference(parent2.trim(), bees),
       offspring: `magicbees.species${
-        enumName.charAt(0) + enumName.slice(1).toLowerCase()
+        uidName.charAt(0) + uidName.slice(1).toLowerCase()
       }`,
       chance: parseFloat(chance),
       source: {

@@ -184,17 +184,109 @@ function buildBreedingPairsJsonc(merged) {
   // Group mutations by parent pair
   const mutationGroups = new Map();
 
+  // Log first few bee keys to understand the structure
+  const beeKeys = Object.keys(merged.bees);
+  console.log(`Total bees in merged.bees: ${beeKeys.length}`);
+  console.log("Sample bee keys:", beeKeys.slice(0, 5));
+
   merged.mutations.forEach((mutation) => {
-    // Convert UIDs to "Mod:Name" format
-    const parent1Bee = merged.bees[mutation.parent1];
-    const parent2Bee = merged.bees[mutation.parent2];
-    const offspringBee = merged.bees[mutation.offspring];
+    // Find bees by either their UID or by Mod:Name format
+    const findBee = (identifier) => {
+      // Check for null/undefined identifier
+      if (!identifier) {
+        return null;
+      }
+
+      // First try direct UID lookup
+      if (merged.bees[identifier]) {
+        return merged.bees[identifier];
+      }
+
+      // Try to convert Mod:Name to UID format for lookup
+      if (identifier.includes(":")) {
+        const [mod, name] = identifier.split(":");
+
+        // Map mod names to their UID prefixes
+        const modPrefixMap = {
+          forestry: "forestry",
+          extrabees: "extrabees",
+          magicbees: "magicbees",
+          careerbees: "careerbees",
+          meatballcraft: "gendustry", // MeatballCraft uses gendustry prefix
+        };
+
+        const modPrefix = modPrefixMap[mod.toLowerCase()] || mod.toLowerCase();
+
+        // Try common UID patterns (preserve case for name in species pattern)
+        const patterns = [
+          `${modPrefix}.${name.toLowerCase()}`,
+          `${modPrefix}.species${name}`, // Preserve case: speciesIndustrious
+          `${modPrefix}.species.${name.toLowerCase()}`,
+        ];
+
+        // For MagicBees TE/AE bees, also try without underscore and lowercase
+        // e.g., MagicBees:TE_Endearing → magicbees.speciesTeendearing
+        if (mod.toLowerCase() === "magicbees" && name.includes("_")) {
+          const nameWithoutUnderscore = name.replace(/_/g, "");
+          // Storage keys are lowercase after first char: speciesTeendearing
+          patterns.push(
+            `${modPrefix}.species${
+              nameWithoutUnderscore.charAt(0) +
+              nameWithoutUnderscore.slice(1).toLowerCase()
+            }`
+          );
+        }
+
+        for (const pattern of patterns) {
+          if (merged.bees[pattern]) {
+            return merged.bees[pattern];
+          }
+        }
+
+        // If not found, also try with underscore replaced by space
+        // e.g., TE_Endearing → Te endearing
+        if (name.includes("_")) {
+          const nameWithSpace = name
+            .split("_")
+            .map(
+              (part) =>
+                part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+            )
+            .join(" ");
+
+          const spacePatterns = [
+            `${modPrefix}.${nameWithSpace.toLowerCase()}`,
+            `${modPrefix}.species${nameWithSpace}`,
+          ];
+
+          for (const pattern of spacePatterns) {
+            if (merged.bees[pattern]) {
+              return merged.bees[pattern];
+            }
+          }
+        }
+      }
+
+      return null;
+    };
+
+    const parent1Bee = findBee(mutation.parent1);
+    const parent2Bee = findBee(mutation.parent2);
+    const offspringBee = findBee(mutation.offspring);
 
     if (!parent1Bee || !parent2Bee || !offspringBee) {
       if (mutation.source) {
         const fullPath = path.resolve(mutation.source.file);
+        const missing = [];
+        if (!parent1Bee) missing.push(`parent1: ${mutation.parent1}`);
+        if (!parent2Bee) missing.push(`parent2: ${mutation.parent2}`);
+        if (!offspringBee) missing.push(`offspring: ${mutation.offspring}`);
         console.warn(
-          `⚠️  Skipping mutation: ${mutation.offspring}\n    ${fullPath}:${mutation.source.line}`
+          `⚠️  Skipping mutation: ${
+            mutation.offspring
+          }\n    Missing: ${missing.join(", ")}\n    ${fullPath}:${
+            mutation.source.line
+          }`
         );
       } else {
         console.warn(
