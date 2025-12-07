@@ -9,13 +9,11 @@ const fs = require("fs");
 const path = require("path");
 
 // Import parsers
-const {
-  parseMeatballCraftConfig,
-} = require("./parsers/meatballcraft_config_parser");
 const { parseForestry } = require("./parsers/forestry_parser");
 const { parseExtraBees } = require("./parsers/extrabees_parser");
 const { parseCareerBees } = require("./parsers/careerbees_parser");
 const { parseMagicBees } = require("./parsers/magicbees_parser");
+const { parseGenDustryConfig } = require("./parsers/gendustry_config_parser");
 const { buildOutputFiles } = require("./output_builder");
 
 /**
