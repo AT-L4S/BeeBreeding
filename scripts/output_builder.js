@@ -143,12 +143,19 @@ function buildBeesJsonc(merged) {
       tolerantFlyer: false, // Not available in parsed data
     };
 
-    // Add products if present (convert item format)
+    // Add products if present (convert item format and preserve isSpecialty flag)
     if (bee.products && bee.products.length > 0) {
-      beeData.products = bee.products.map((p) => ({
-        item: p.item,
-        chance: p.chance,
-      }));
+      beeData.products = bee.products.map((p) => {
+        const product = {
+          item: p.item,
+          chance: p.chance,
+        };
+        // Only include isSpecialty if it's explicitly true (omit for regular products)
+        if (p.isSpecialty === true) {
+          product.isSpecialty = true;
+        }
+        return product;
+      });
     } else {
       beeData.products = [];
     }
