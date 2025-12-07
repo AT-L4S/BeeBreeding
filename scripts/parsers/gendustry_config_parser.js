@@ -1,8 +1,11 @@
 /**
- * GenDustry .cfg Parser for MeatballCraft
+ * GenDustry Config Parser
  *
  * Parses GenDustry BACON configuration files (.cfg) and extracts bee species,
  * mutations, and branch information into the intermediate JSON format.
+ *
+ * GenDustry is a bee genetics mod that uses BACON config format for custom bees.
+ * This parser can handle any GenDustry config file (e.g., MeatballCraft's custom bees).
  */
 
 const fs = require("fs");
@@ -24,7 +27,7 @@ function removeComments(content) {
  * @param {string} filePath - Path to the .cfg file
  * @returns {Object} Intermediate format object with bees, mutations, and branches
  */
-function parseGenDustryConfig(filePath) {
+function parseGendustryConfigFile(filePath) {
   let content = fs.readFileSync(filePath, "utf-8");
   content = removeComments(content);
 
@@ -593,10 +596,10 @@ function parseInlineRequirements(reqStr) {
 /**
  * Main export function
  */
-function parseGendustry(configPath) {
+function parseGenDustryConfig(configPath) {
   try {
     console.log(`Parsing GenDustry config: ${configPath}`);
-    const result = parseGenDustryConfig(configPath);
+    const result = parseGendustryConfigFile(configPath);
     console.log(
       `Parsed ${Object.keys(result.bees).length} bees, ${
         result.mutations.length
@@ -610,7 +613,7 @@ function parseGendustry(configPath) {
   }
 }
 
-module.exports = { parseGendustry };
+module.exports = { parseGenDustryConfig };
 
 // CLI usage
 if (require.main === module) {
@@ -625,7 +628,7 @@ if (require.main === module) {
   const inputPath = args[0];
   const outputPath = args[1];
 
-  const result = parseGendustry(inputPath);
+  const result = parseGenDustryConfig(inputPath);
 
   if (outputPath) {
     fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));

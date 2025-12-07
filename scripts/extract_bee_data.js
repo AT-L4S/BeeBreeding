@@ -9,7 +9,9 @@ const fs = require("fs");
 const path = require("path");
 
 // Import parsers
-const { parseGendustry } = require("./parsers/gendustry_parser");
+const {
+  parseMeatballCraftConfig,
+} = require("./parsers/meatballcraft_config_parser");
 const { parseForestry } = require("./parsers/forestry_parser");
 const { parseExtraBees } = require("./parsers/extrabees_parser");
 const { parseCareerBees } = require("./parsers/careerbees_parser");
@@ -61,7 +63,7 @@ const MOD_CONFIGS = [
   {
     key: "meatballcraft",
     name: "MeatballCraft",
-    parser: parseGendustry,
+    parser: parseGenDustryConfig,
     sourceFile: path.join(__dirname, "../whiteboard/meatball_bees.cfg"),
   },
 ];
