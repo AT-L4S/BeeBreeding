@@ -1,4 +1,5 @@
 [ ] Make script to extract bee/breeding pair info from different mods
+[ ] Get ACTUAL bee names from lang files
 [ ] Split data into different folders by mods (fore easier generation)
 [ ] Add column mode to filtered view?
 [ ] Add colors/links to bee nodes in info boxes
