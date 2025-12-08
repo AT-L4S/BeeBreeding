@@ -24,10 +24,9 @@
           "timeOfDay": "night",
           "biome": ["FOREST", "PLAINS", "DESERT"],
           "block": ["minecraft:water"],
-          "dimension": "overworld",
           "moonPhase": ["FULL", "WANING_GIBBOUS"],
           "thaumcraftVis": 1000,
-          "requirePlayer": "Notch",
+          "requirePlayer": ["Notch"],
           "dateRange": {
             "startMonth": 10,
             "startDay": 15,
