@@ -7,7 +7,7 @@ This directory contains scripts to convert mod source files into the JSONC data 
 The parser system converts source code from various Minecraft bee mods into standardized JSONC files:
 
 - [`bees.jsonc`](../data/bees.jsonc): All bee species data
-- [`breeding_pairs.jsonc`](../data/breeding_pairs.jsonc): All mutation/breeding relationships
+- [`mutations.jsonc`](../data/mutations.jsonc): All mutation/breeding relationships
 - [`combs.jsonc`](../data/combs.jsonc): All honeycomb products
 
 ## Architecture

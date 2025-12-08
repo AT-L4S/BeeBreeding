@@ -15,7 +15,7 @@ Change from single merged files to mod-specific files:
 ```
 data/
   bees.jsonc
-  breeding_pairs.jsonc
+  mutations.jsonc
   combs.jsonc
 ```
 
@@ -25,23 +25,23 @@ data/
 data/
   forestry/
     bees.jsonc
-    breeding_pairs.jsonc
+    mutations.jsonc
     combs.jsonc
   extrabees/
     bees.jsonc
-    breeding_pairs.jsonc
+    mutations.jsonc
     combs.jsonc
   magicbees/
     bees.jsonc
-    breeding_pairs.jsonc
+    mutations.jsonc
     combs.jsonc
   careerbees/
     bees.jsonc
-    breeding_pairs.jsonc
+    mutations.jsonc
     combs.jsonc
   meatballcraft/
     bees.jsonc
-    breeding_pairs.jsonc
+    mutations.jsonc
     combs.jsonc
 ```
 
@@ -76,7 +76,7 @@ Change from:
 ```javascript
 // Load single merged files
 const bees = await loadJSON("data/bees.jsonc");
-const mutations = await loadJSON("data/breeding_pairs.jsonc");
+const mutations = await loadJSON("data/mutations.jsonc");
 ```
 
 To:
@@ -95,7 +95,7 @@ const allMutations = [];
 
 for (const mod of mods) {
   const bees = await loadJSON(`data/${mod}/bees.jsonc`);
-  const mutations = await loadJSON(`data/${mod}/breeding_pairs.jsonc`);
+  const mutations = await loadJSON(`data/${mod}/mutations.jsonc`);
   Object.assign(allBees, bees);
   allMutations.push(...mutations);
 }
@@ -115,7 +115,7 @@ Allow users to choose which mods to load:
 
 Each mod's data will include UIDs that reference other mods:
 
-**forestry/breeding_pairs.jsonc:**
+**forestry/mutations.jsonc:**
 
 ```jsonc
 [
@@ -128,7 +128,7 @@ Each mod's data will include UIDs that reference other mods:
 ]
 ```
 
-**extrabees/breeding_pairs.jsonc:**
+**extrabees/mutations.jsonc:**
 
 ```jsonc
 [
@@ -142,7 +142,7 @@ Each mod's data will include UIDs that reference other mods:
 ]
 ```
 
-**meatballcraft/breeding_pairs.jsonc:**
+**meatballcraft/mutations.jsonc:**
 
 ```jsonc
 [

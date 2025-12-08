@@ -68,7 +68,7 @@ beebreeding/
 │   │   #   }
 │   │   # }
 │   │
-│   ├── breeding_pairs.jsonc    # Breeding combinations with probabilities
+│   ├── mutations.jsonc    # Breeding combinations with probabilities
 │   │   # [
 │   │   #   {
 │   │   #     "parents": ["Common", "Forest"],

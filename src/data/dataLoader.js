@@ -23,11 +23,11 @@ export async function loadBeeData() {
   try {
     // Determine base path based on protocol
     const basePath = window.location.protocol === "file:" ? "/data/" : "data/";
-    
+
     // Load data from JSONC files (JSON with comments)
     const [beesResponse, breedingPairsResponse] = await Promise.all([
       fetch(`${basePath}bees.jsonc`),
-      fetch(`${basePath}breeding_pairs.jsonc`),
+      fetch(`${basePath}mutations.jsonc`),
     ]);
 
     // Get text content and strip comments before parsing

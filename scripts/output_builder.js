@@ -3,7 +3,7 @@
  *
  * Converts intermediate format from all parsers into final JSONC files:
  * - bees.jsonc: All bee species data
- * - breeding_pairs.jsonc: All mutation/breeding relationships
+ * - mutations.jsonc: All mutation/breeding relationships
  * - combs.jsonc: All honeycomb products
  */
 
@@ -48,10 +48,10 @@ function buildOutput(intermediateData, outputDir) {
     "Bee Species Data"
   );
 
-  // Build breeding_pairs.jsonc
+  // Build mutations.jsonc
   const breedingOutput = buildBreedingPairsJsonc(merged);
   writeJsonc(
-    path.join(outputDir, "breeding_pairs.jsonc"),
+    path.join(outputDir, "mutations.jsonc"),
     breedingOutput,
     "Breeding Pairs Data"
   );
@@ -180,7 +180,7 @@ function buildBeesJsonc(merged) {
 }
 
 /**
- * Build breeding_pairs.jsonc content in the format matching existing data
+ * Build mutations.jsonc content in the format matching existing data
  * Format: Array of {parents: [], children: [{species, probability, requirements?}]}
  */
 function buildBreedingPairsJsonc(merged) {
