@@ -1,0 +1,55 @@
+// BEES.JSONC - Bee Species Data Format
+// Key format: "ModName:BeeName"
+
+{
+  "MINIMAL_EXAMPLE:BasicBee": {
+    "mod": "MINIMAL_EXAMPLE",
+    "name": "BasicBee",
+    "idealTemperature": "",
+    "idealHumidity": "",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": null,
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": []
+  },
+
+  "COMPLETE_EXAMPLE:AdvancedBee": {
+    "mod": "COMPLETE_EXAMPLE",
+    "name": "AdvancedBee",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "BOTH_2",
+    "humidityTolerance": "UP_1",
+    "speed": "FASTEST",
+    "lifespan": "LONGEST",
+    "fertility": 4,
+    "neverSleeps": true,
+    "caveDwelling": true,
+    "tolerantFlyer": true,
+    "products": [
+      {
+        "item": "example:comb.regular",
+        "chance": 0.45
+      },
+      {
+        "item": "minecraft:diamond",
+        "chance": 0.05,
+        "isSpecialty": true
+      }
+    ],
+    "branch": "example.advanced",
+    "binomial": "Apis superiorus",
+    "dominant": true,
+    "colors": {
+      "primary": "#FF4500",
+      "secondary": "#FFD700"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  }
+}

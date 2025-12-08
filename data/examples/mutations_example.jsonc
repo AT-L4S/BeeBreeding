@@ -1,0 +1,47 @@
+// BREEDING_PAIRS.JSONC - Mutation/Breeding Relationships Format
+// Array of parent pairs with their possible offspring
+
+[
+  {
+    "parents": ["MINIMAL_EXAMPLE:Parent1", "MINIMAL:Parent2"],
+    "children": [
+      {
+        "species": "MINIMAL_EXAMPLE:Offspring",
+        "probability": 0.15
+      }
+    ]
+  },
+
+  {
+    "parents": ["COMPLETE_EXAMPLE:Parent1", "COMPLETE_EXAMPLE:Parent2"],
+    "children": [
+      {
+        "species": "COMPLETE_EXAMPLE:Offspring1",
+        "probability": 0.25,
+        "requirements": {
+          "temperature": ["NORMAL", "HOT"],
+          "humidity": ["NORMAL", "ARID"],
+          "timeOfDay": "night",
+          "biome": ["FOREST", "PLAINS", "DESERT"],
+          "block": ["minecraft:water"],
+          "dimension": "overworld",
+          "moonPhase": ["FULL", "WANING_GIBBOUS"],
+          "thaumcraftVis": 1000,
+          "requirePlayer": "Notch",
+          "dateRange": {
+            "startMonth": 10,
+            "startDay": 15,
+            "endMonth": 11,
+            "endDay": 3
+          },
+          "requireExplosion": true
+        }
+      },
+      {
+        "species": "COMPLETE_EXAMPLE:Offspring2",
+        "probability": 0.08,
+        "isSecret": true
+      }
+    ]
+  }
+]
