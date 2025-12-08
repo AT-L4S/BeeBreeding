@@ -25,9 +25,10 @@ function removeComments(content) {
 /**
  * Parse a GenDustry .cfg file using BACON format
  * @param {string} filePath - Path to the .cfg file
+ * @param {string} modName - Name of the mod (e.g., "GenDustry", "MeatballCraft")
  * @returns {Object} Intermediate format object with bees, mutations, and branches
  */
-function parseGendustryConfigFile(filePath) {
+function parseGendustryConfigFile(filePath, modName = "GenDustry") {
   let content = fs.readFileSync(filePath, "utf-8");
   content = removeComments(content);
 
@@ -35,6 +36,7 @@ function parseGendustryConfigFile(filePath) {
     bees: {},
     mutations: [],
     branches: {},
+    modName: modName, // Store mod name for use in bee processing
   };
 
   // Simple approach: just find each section and extract it
@@ -90,10 +92,14 @@ function extractAllSections(content) {
     sections[sectionName] = content.substring(startIndex, endIndex);
   }
 
-  // Also extract recipes section (not cfg, just plain "recipes {")
-  const recipesMatch = content.match(/recipes\s*\{/i);
-  if (recipesMatch) {
-    const startIndex = recipesMatch.index + recipesMatch[0].length;
+  // Extract all recipes sections (there may be multiple)
+  // We need to merge them all together
+  const recipesRegex = /recipes\s*\{/gi;
+  let recipesContent = "";
+  let match;
+
+  while ((match = recipesRegex.exec(content)) !== null) {
+    const startIndex = match.index + match[0].length;
     let braceDepth = 1;
     let endIndex = startIndex;
 
@@ -108,7 +114,11 @@ function extractAllSections(content) {
       }
     }
 
-    sections.recipes = content.substring(startIndex, endIndex);
+    recipesContent += content.substring(startIndex, endIndex) + "\n";
+  }
+
+  if (recipesContent) {
+    sections.recipes = recipesContent;
   }
 
   return sections;
@@ -315,7 +325,7 @@ function processBeeBlock(beeName, content, result, filePath) {
   }
 
   result.bees[uid] = {
-    mod: "MeatballCraft",
+    mod: result.modName || "MeatballCraft",
     name: beeName,
     binomial: data.Binominal || beeName,
     branch: data.Branch || "",
@@ -448,14 +458,18 @@ function parseRecipesMutations(content, result, filePath) {
       const [, chance, parent1, parent2, offspring, requirementsStr] =
         mutationMatch;
 
-      // Normalize offspring UID to MeatballCraft:Name format
-      // Convert "gendustry.bee.Meatball" to "MeatballCraft:Meatball"
+      // Normalize offspring UID to proper format based on config type
+      // For MeatballCraft config: "gendustry.bee.Meatball" -> "MeatballCraft:Meatball"
+      // For GenDustry config: "gendustry.bee.lightblue" -> "GenDustry:lightblue"
       const offspringRaw = offspring.trim().replace(/\.bee\./, ".");
       const offspringParts = offspringRaw.split(".");
       const offspringName = offspringParts[offspringParts.length - 1];
-      const normalizedOffspring = `MeatballCraft:${
-        offspringName.charAt(0).toUpperCase() + offspringName.slice(1)
-      }`;
+
+      // Determine mod name based on bee name case (lowercase = GenDustry built-in)
+      const isMeatballCraft =
+        offspringName.charAt(0) === offspringName.charAt(0).toUpperCase();
+      const modName = isMeatballCraft ? "MeatballCraft" : "GenDustry";
+      const normalizedOffspring = `${modName}:${offspringName}`;
 
       const mutation = {
         parent1: normalizeParentUID(parent1.trim()),
@@ -533,8 +547,17 @@ function normalizeParentUID(uid) {
     speciesName = parts[1];
   }
 
-  // Capitalize first letter of species name and handle underscores
+  // Determine if this is a GenDustry built-in bee (all lowercase)
   if (speciesName) {
+    // Check if the species name is all lowercase (GenDustry built-in bees)
+    const isGenDustryBuiltIn = speciesName === speciesName.toLowerCase();
+
+    if (isGenDustryBuiltIn && modName === "MeatballCraft") {
+      // This is a GenDustry built-in bee referenced from MeatballCraft config
+      // Keep lowercase and use GenDustry as mod
+      return `GenDustry:${speciesName}`;
+    }
+
     // Handle MagicBees TE/AE prefixes: TEEndearing → TE_Endearing
     // Insert underscore after all-caps prefix (TE, AE, etc.)
     if (modName === "MagicBees" && /^[A-Z]{2}[A-Z][a-z]/.test(speciesName)) {
@@ -544,16 +567,19 @@ function normalizeParentUID(uid) {
 
     // Replace underscores with title case for each part
     // Preserve all-caps prefixes like TE, AE
-    speciesName = speciesName
-      .split("_")
-      .map((part) => {
-        // Keep all-caps prefixes (TE, AE) as-is
-        if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
-          return part;
-        }
-        return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
-      })
-      .join("_");
+    // Don't modify if already all lowercase (GenDustry built-in)
+    if (!isGenDustryBuiltIn) {
+      speciesName = speciesName
+        .split("_")
+        .map((part) => {
+          // Keep all-caps prefixes (TE, AE) as-is
+          if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+            return part;
+          }
+          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        })
+        .join("_");
+    }
   }
 
   return `${modName}:${speciesName}`;
@@ -595,11 +621,22 @@ function parseInlineRequirements(reqStr) {
 
 /**
  * Main export function
+ * @param {string} configPath - Path to the config file
+ * @param {string} modName - Name of the mod (default: auto-detect from path)
  */
-function parseGenDustryConfig(configPath) {
+function parseGenDustryConfig(configPath, modName = null) {
   try {
+    // Auto-detect mod name from file path if not provided
+    if (!modName) {
+      if (configPath.includes("meatball_bees.cfg")) {
+        modName = "MeatballCraft";
+      } else {
+        modName = "GenDustry";
+      }
+    }
+
     console.log(`Parsing GenDustry config: ${configPath}`);
-    const result = parseGendustryConfigFile(configPath);
+    const result = parseGendustryConfigFile(configPath, modName);
     console.log(
       `Parsed ${Object.keys(result.bees).length} bees, ${
         result.mutations.length

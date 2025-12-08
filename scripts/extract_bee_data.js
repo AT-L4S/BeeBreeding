@@ -59,6 +59,18 @@ const MOD_CONFIGS = [
     ),
   },
   {
+    key: "gendustry_color",
+    name: "GenDustry Color Bees",
+    parser: parseGenDustryConfig,
+    sourceFile: path.join(__dirname, "../whiteboard/gendustry-mc1.12/resources/assets/gendustry/config/bees_color.cfg"),
+  },
+  {
+    key: "gendustry_patreon",
+    name: "GenDustry Patreon Bees",
+    parser: parseGenDustryConfig,
+    sourceFile: path.join(__dirname, "../whiteboard/gendustry-mc1.12/resources/assets/gendustry/config/bees_patreon.cfg"),
+  },
+  {
     key: "meatballcraft",
     name: "MeatballCraft",
     parser: parseGenDustryConfig,
