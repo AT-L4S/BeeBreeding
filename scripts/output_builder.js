@@ -66,7 +66,12 @@ function buildOutput(intermediateData, outputDir) {
 
   console.log("Output files built successfully!");
   console.log(`  - ${Object.keys(merged.bees).length} bees`);
-  console.log(`  - ${merged.mutations.length} mutations`);
+  console.log(
+    `  - ${breedingOutput.reduce(
+      (sum, group) => sum + group.children.length,
+      0
+    )} mutations (${merged.mutations.length} total parsed)`
+  );
   console.log(`  - ${Object.keys(merged.combs).length} combs`);
 }
 
@@ -180,6 +185,7 @@ function buildBeesJsonc(merged) {
  */
 function buildBreedingPairsJsonc(merged) {
   const output = [];
+  let skippedMutationsCount = 0;
 
   // Group mutations by parent pair
   const mutationGroups = new Map();
@@ -275,6 +281,7 @@ function buildBreedingPairsJsonc(merged) {
     const offspringBee = findBee(mutation.offspring);
 
     if (!parent1Bee || !parent2Bee || !offspringBee) {
+      skippedMutationsCount++;
       if (mutation.source) {
         const fullPath = path.resolve(mutation.source.file);
         const missing = [];
@@ -391,6 +398,10 @@ function buildBreedingPairsJsonc(merged) {
 
     mutationGroups.get(parentKey).children.push(childEntry);
   });
+
+  // Log mutation statistics
+  console.log(`Successfully processed: ${output.length} mutation groups`);
+  console.log(`Skipped mutations: ${skippedMutationsCount}`);
 
   // Convert map to array and sort
   const sortedGroups = Array.from(mutationGroups.values()).sort((a, b) => {

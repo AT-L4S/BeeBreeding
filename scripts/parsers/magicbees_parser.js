@@ -435,7 +435,9 @@ function resolveSpeciesReference(ref, bees) {
   // Pattern: Bare ALL_CAPS reference - assume MagicBees if not found in dictionary yet
   // This handles forward references to bees defined later in the file
   if (ref.match(/^[A-Z_]+$/)) {
-    const name = ref.charAt(0) + ref.slice(1).toLowerCase();
+    // Remove underscores to match storage UID format (e.g., TE_COAL → Tecoal)
+    const uidName = ref.replace(/_/g, "");
+    const name = uidName.charAt(0) + uidName.slice(1).toLowerCase();
     return `magicbees.species${name}`;
   }
 
