@@ -13,12 +13,12 @@ const { parseForestry } = require("./parsers/forestry_parser");
 const { parseExtraBees } = require("./parsers/extrabees_parser");
 const { parseCareerBees } = require("./parsers/careerbees_parser");
 const { parseMagicBees } = require("./parsers/magicbees_parser");
-const { parseGenDustryConfig } = require("./parsers/gendustry_config_parser");
+const { parseGendustryConfig } = require("./parsers/gendustry_config_parser");
 const { buildOutputFiles } = require("./output_builder");
 
 /**
  * Configuration for mod parsers
- * Ordered array: Forestry first (base mod), then addon mods, then GenDustry
+ * Ordered array: Forestry first (base mod), then addon mods, then Gendustry
  * Update these paths based on MOD_SOURCE_LOCATIONS.md
  */
 const MOD_CONFIGS = [
@@ -60,20 +60,26 @@ const MOD_CONFIGS = [
   },
   {
     key: "gendustry_color",
-    name: "GenDustry Color Bees",
-    parser: parseGenDustryConfig,
-    sourceFile: path.join(__dirname, "../whiteboard/gendustry-mc1.12/resources/assets/gendustry/config/bees_color.cfg"),
+    name: "Gendustry Color Bees",
+    parser: parseGendustryConfig,
+    sourceFile: path.join(
+      __dirname,
+      "../whiteboard/gendustry-mc1.12/resources/assets/gendustry/config/bees_color.cfg"
+    ),
   },
   {
     key: "gendustry_patreon",
-    name: "GenDustry Patreon Bees",
-    parser: parseGenDustryConfig,
-    sourceFile: path.join(__dirname, "../whiteboard/gendustry-mc1.12/resources/assets/gendustry/config/bees_patreon.cfg"),
+    name: "Gendustry Patreon Bees",
+    parser: parseGendustryConfig,
+    sourceFile: path.join(
+      __dirname,
+      "../whiteboard/gendustry-mc1.12/resources/assets/gendustry/config/bees_patreon.cfg"
+    ),
   },
   {
     key: "meatballcraft",
     name: "MeatballCraft",
-    parser: parseGenDustryConfig,
+    parser: parseGendustryConfig,
     sourceFile: path.join(__dirname, "../whiteboard/meatball_bees.cfg"),
   },
 ];
@@ -88,7 +94,7 @@ function parseAllMods(modsToInclude = null) {
     : MOD_CONFIGS;
 
   console.log("Starting mod parsing...\n");
-  console.log("Parse order: Forestry → Standalone Addons → GenDustry\n");
+  console.log("Parse order: Forestry → Standalone Addons → Gendustry\n");
 
   for (const config of modsConfig) {
     console.log(`\n=== Parsing ${config.name} ===`);

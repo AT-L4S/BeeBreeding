@@ -31,11 +31,11 @@ This file documents where the source code for each mod is located for parsing be
 ### MeatballCraft
 
 - **Path**: `whiteboard/meatball_bees.cfg`
-- **Format**: GenDustry .cfg file
-- **Parser**: Uses GenDustry config format parser
+- **Format**: Gendustry .cfg file
+- **Parser**: Uses Gendustry config format parser
 
 ## Notes
 
 - All Java-based mods use similar structures but may have different class hierarchies
-- GenDustry .cfg format is text-based and easier to parse
+- Gendustry .cfg format is text-based and easier to parse
 - Each mod defines bees and mutations, but the exact structure varies

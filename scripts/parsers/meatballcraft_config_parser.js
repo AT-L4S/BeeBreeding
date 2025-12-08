@@ -1,7 +1,7 @@
 /**
- * GenDustry .cfg Parser for MeatballCraft
+ * Gendustry .cfg Parser for MeatballCraft
  *
- * Parses GenDustry BACON configuration files (.cfg) and extracts bee species,
+ * Parses Gendustry BACON configuration files (.cfg) and extracts bee species,
  * mutations, and branch information into the intermediate JSON format.
  */
 
@@ -20,11 +20,11 @@ function removeComments(content) {
 }
 
 /**
- * Parse a GenDustry .cfg file using BACON format
+ * Parse a Gendustry .cfg file using BACON format
  * @param {string} filePath - Path to the .cfg file
  * @returns {Object} Intermediate format object with bees, mutations, and branches
  */
-function parseGenDustryConfig(filePath) {
+function parseGendustryConfig(filePath) {
   let content = fs.readFileSync(filePath, "utf-8");
   content = removeComments(content);
 
@@ -479,7 +479,7 @@ function parseRecipesMutations(content, result, filePath) {
 }
 
 /**
- * Normalize parent UID from GenDustry format to standard format
+ * Normalize parent UID from Gendustry format to standard format
  * Examples:
  *   forestry.speciesIndustrious → Forestry:Industrious
  *   extrabees.species.acidic → ExtraBees:Acidic
@@ -596,7 +596,7 @@ function parseInlineRequirements(reqStr) {
 function parseMeatballCraftConfig(configPath) {
   try {
     console.log(`Parsing MeatballCraft config: ${configPath}`);
-    const result = parseGenDustryConfig(configPath);
+    const result = parseGendustryConfig(configPath);
     console.log(
       `Parsed ${Object.keys(result.bees).length} bees, ${
         result.mutations.length

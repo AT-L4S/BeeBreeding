@@ -48,7 +48,7 @@ data/
 ### Benefits of This Approach
 
 1. **Modular Loading**: Can load only specific mods
-2. **Easy Extension**: Adding custom GenDustry bees or new mod packs is simpler
+2. **Easy Extension**: Adding custom Gendustry bees or new mod packs is simpler
 3. **Smaller Files**: Each mod's data is separate
 4. **Clear Dependencies**: Forestry is always required, other mods reference it
 

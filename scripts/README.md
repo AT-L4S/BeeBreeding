@@ -36,7 +36,7 @@ The system uses a modular architecture with three layers:
 | ExtraBees     | [`extrabees_parser.js`](parsers/extrabees_parser.js)   | Java enum (ExtraBeeDefinition.java)        |
 | CareerBees    | [`careerbees_parser.js`](parsers/careerbees_parser.js) | Java static fields (CareerBeeSpecies.java) |
 | MagicBees     | [`magicbees_parser.js`](parsers/magicbees_parser.js)   | Java enum (EnumBeeSpecies.java)            |
-| MeatballCraft | [`gendustry_parser.js`](parsers/gendustry_parser.js)   | GenDustry .cfg file                        |
+| MeatballCraft | [`gendustry_parser.js`](parsers/gendustry_parser.js)   | Gendustry .cfg file                        |
 
 ## Usage
 
@@ -88,7 +88,7 @@ node parsers/careerbees_parser.js whiteboard/CareerBees-mc-1.12/src/main/java/co
 # MagicBees
 node parsers/magicbees_parser.js whiteboard/MagicBees-1.12/src/main/java/magicbees/bees/EnumBeeSpecies.java output.json
 
-# MeatballCraft (GenDustry config)
+# MeatballCraft (Gendustry config)
 node parsers/gendustry_parser.js whiteboard/meatball_bees.cfg output.json
 ```
 
