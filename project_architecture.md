@@ -30,7 +30,7 @@ beebreeding/
 │   ├── visualization/          # Visualization components
 │   │   ├── treeRenderer.js     # Main tree rendering
 │   │   ├── nodeRenderer.js     # Node rendering and styling
-│   │   ├── edgeRenderer.js     # Edge rendering with probability display
+│   │   ├── edgeRenderer.js     # Edge rendering with chance display
 │   │   └── layout.js           # Layout algorithms
 │   │
 │   ├── ui/                    # User interface
@@ -60,10 +60,10 @@ beebreeding/
 │   │   #     "caveDwelling": true,
 │   │   #     "tolerantFlyer": true,
 │   │   #     "products": [
-│   │   #       {"name": "forestry:honeyDrop", "percentage": 0.15},
-│   │   #       {"name": "forestry:honeyDrop", "percentage": 0.15},
-│   │   #       {"name": "forestry:honeyDrop", "percentage": 0.30, "specialty": true},
-│   │   #       {"name": "forestry:honeyComb", "percentage": 0.20}
+│   │   #       {"name": "forestry:honeyDrop", "chance": 0.15},
+│   │   #       {"name": "forestry:honeyDrop", "chance": 0.15},
+│   │   #       {"name": "forestry:honeyDrop", "chance": 0.30, "specialty": true},
+│   │   #       {"name": "forestry:honeyComb", "chance": 0.20}
 │   │   #     ]
 │   │   #   }
 │   │   # }
@@ -73,8 +73,8 @@ beebreeding/
 │   │   #   {
 │   │   #     "parents": ["Common", "Forest"],
 │   │   #     "children": [
-│   │   #       {"species": "Meadows", "probability": 0.15},
-│   │   #       {"species": "Tropical", "probability": 0.20}
+│   │   #       {"species": "Meadows", "chance": 0.15},
+│   │   #       {"species": "Tropical", "chance": 0.20}
 │   │   #     ],
 │   │   #   }
 │   │   # ]
@@ -84,8 +84,8 @@ beebreeding/
 │       #   {
 │       #     "name": "forestry:honeyComb",
 │       #     "processing": [
-│       #       {"product": "forestry:honeyDrop", "percentage": 0.8},
-│       #       {"product": "forestry:beeswax", "percentage": 0.2}
+│       #       {"product": "forestry:honeyDrop", "chance": 0.8},
+│       #       {"product": "forestry:beeswax", "chance": 0.2}
 │       #     ]
 │       #   }
 │       # ]

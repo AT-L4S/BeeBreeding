@@ -13,10 +13,10 @@
   //     "caveDwelling": false,
   //     "tolerantFlyer": true,
   //     "products": [
-  //       {"name": "forestry:honeyDrop", "percentage": 0.15},
-  //       {"name": "forestry:honeyDrop", "percentage": 0.15},
-  //       {"name": "myforestryaddon:special_honey_drop", "percentage": 0.30, "specialty": true},
-  //       {"name": "forestry:honeyComb", "percentage": 0.20}
+  //       {"name": "forestry:honeyDrop", "chance": 0.15},
+  //       {"name": "forestry:honeyDrop", "chance": 0.15},
+  //       {"name": "myforestryaddon:special_honey_drop", "chance": 0.30, "specialty": true},
+  //       {"name": "forestry:honeyComb", "chance": 0.20}
   //     ]
   //   },
   "Forestry:Forest": {

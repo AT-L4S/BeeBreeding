@@ -1,4 +1,5 @@
-// COMBS.JSONC - Honeycomb Product Data Format
+// COMBS.JSONC
+// Combs with the bees that produce them + what items they produce
 
 {
   "EXAMPLEMOD:example_comb": {

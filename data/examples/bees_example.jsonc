@@ -1,5 +1,5 @@
 // BEES.JSONC - Bee Species Data Format
-// Key format: "ModName:BeeName"
+// Bee genetic information + what products they produce
 
 {
   "MINIMAL_EXAMPLE:BasicBee": {

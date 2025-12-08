@@ -3,7 +3,7 @@
 [ ] Split data into different folders by mods (fore easier generation)
 [ ] Add column mode to filtered view?
 [ ] Add colors/links to bee nodes in info boxes
-[ ] Add more than 1 parent breeding pair/add percentage toggle
+[ ] Add more than 1 parent breeding pair/add chance toggle
 [ ] Merge code for filtered/full tree
 [ ] Add bee products/specialties + comb products
 

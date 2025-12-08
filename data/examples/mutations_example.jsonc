@@ -1,4 +1,4 @@
-// BREEDING_PAIRS.JSONC - Mutation/Breeding Relationships Format
+// MUTATIONS.JSONC - Mutation/Breeding Relationships Format
 // Array of parent pairs with their possible offspring
 
 [
@@ -7,7 +7,7 @@
     "children": [
       {
         "species": "MINIMAL_EXAMPLE:Offspring",
-        "probability": 0.15
+        "chance": 0.15
       }
     ]
   },
@@ -17,7 +17,7 @@
     "children": [
       {
         "species": "COMPLETE_EXAMPLE:Offspring1",
-        "probability": 0.25,
+        "chance": 0.25,
         "requirements": {
           "temperature": ["NORMAL", "HOT"],
           "humidity": ["NORMAL", "ARID"],
@@ -39,7 +39,7 @@
       },
       {
         "species": "COMPLETE_EXAMPLE:Offspring2",
-        "probability": 0.08,
+        "chance": 0.08,
         "isSecret": true
       }
     ]

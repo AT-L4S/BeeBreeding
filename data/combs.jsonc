@@ -2,8 +2,8 @@
   //   {
   //     "name": "forestry:honeyComb",
   //     "processing": [
-  //       {"product": "forestry:honeyDrop", "percentage": 0.8},
-  //       {"product": "forestry:beeswax", "percentage": 0.2}
+  //       {"product": "forestry:honeyDrop", "chance": 0.8},
+  //       {"product": "forestry:beeswax", "chance": 0.2}
   //     ]
   //   }
 ]

@@ -4,7 +4,7 @@
   //     "children": [
   //       {
   //         "species": "MyForestryAddon:MyBee2",
-  //         "probability": 0.2,
+  //         "chance": 0.2,
   //         "requirements": {
   //           "temperature": ["icy", "cold"],
   //           "humidity": ["damp"],
@@ -19,7 +19,7 @@
     "children": [
       {
         "species": "Forestry:Agrarian",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -28,7 +28,7 @@
     "children": [
       {
         "species": "Forestry:Austere",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -37,7 +37,7 @@
     "children": [
       {
         "species": "Forestry:Avenging",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -46,7 +46,7 @@
     "children": [
       {
         "species": "ExtraBees:Black",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -55,11 +55,11 @@
     "children": [
       {
         "species": "ExtraBees:Blue",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "ExtraBees:Growing",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -68,7 +68,7 @@
     "children": [
       {
         "species": "ExtraBees:Brown",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -77,7 +77,7 @@
     "children": [
       {
         "species": "Forestry:Common",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -86,7 +86,7 @@
     "children": [
       {
         "species": "Forestry:Cultivated",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -95,7 +95,7 @@
     "children": [
       {
         "species": "ExtraBees:Cyan",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -104,7 +104,7 @@
     "children": [
       {
         "species": "Forestry:Demonic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -113,7 +113,7 @@
     "children": [
       {
         "species": "Forestry:Derpious",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -122,15 +122,15 @@
     "children": [
       {
         "species": "Forestry:Diligent",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "Forestry:Noble",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "CareerBees:Student",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -139,7 +139,7 @@
     "children": [
       {
         "species": "Forestry:Edenic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -148,7 +148,7 @@
     "children": [
       {
         "species": "Forestry:Exotic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -157,7 +157,7 @@
     "children": [
       {
         "species": "Forestry:Farmerly",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -166,7 +166,7 @@
     "children": [
       {
         "species": "Forestry:Fiendish",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -175,7 +175,7 @@
     "children": [
       {
         "species": "Forestry:Frugal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -184,7 +184,7 @@
     "children": [
       {
         "species": "Forestry:Glacial",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -193,7 +193,7 @@
     "children": [
       {
         "species": "ExtraBees:Gray",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -202,7 +202,7 @@
     "children": [
       {
         "species": "ExtraBees:Green",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -211,7 +211,7 @@
     "children": [
       {
         "species": "Forestry:Hermitic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -220,7 +220,7 @@
     "children": [
       {
         "species": "Forestry:Heroic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -229,7 +229,7 @@
     "children": [
       {
         "species": "Forestry:Icy",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -238,7 +238,7 @@
     "children": [
       {
         "species": "Forestry:Imperial",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -247,7 +247,7 @@
     "children": [
       {
         "species": "Forestry:Industrious",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -256,7 +256,7 @@
     "children": [
       {
         "species": "ExtraBees:Light Gray",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -265,7 +265,7 @@
     "children": [
       {
         "species": "ExtraBees:Lime",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -274,7 +274,7 @@
     "children": [
       {
         "species": "Forestry:Majestic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -283,7 +283,7 @@
     "children": [
       {
         "species": "Forestry:Miry",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -292,7 +292,7 @@
     "children": [
       {
         "species": "ExtraBees:Orange",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -301,7 +301,7 @@
     "children": [
       {
         "species": "Forestry:Phantasmal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -310,7 +310,7 @@
     "children": [
       {
         "species": "ExtraBees:Pink",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -319,7 +319,7 @@
     "children": [
       {
         "species": "ExtraBees:Purple",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -328,7 +328,7 @@
     "children": [
       {
         "species": "ExtraBees:Red",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -337,7 +337,7 @@
     "children": [
       {
         "species": "Forestry:Rural",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -346,7 +346,7 @@
     "children": [
       {
         "species": "Forestry:Secluded",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -355,7 +355,7 @@
     "children": [
       {
         "species": "Forestry:Sinister",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -364,7 +364,7 @@
     "children": [
       {
         "species": "Forestry:Spectral",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -373,7 +373,7 @@
     "children": [
       {
         "species": "Forestry:Unweary",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -382,7 +382,7 @@
     "children": [
       {
         "species": "Forestry:Vengeful",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -391,7 +391,7 @@
     "children": [
       {
         "species": "Forestry:Vindictive",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -400,11 +400,11 @@
     "children": [
       {
         "species": "ExtraBees:White",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "ExtraBees:Frigid",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -413,7 +413,7 @@
     "children": [
       {
         "species": "ExtraBees:Yellow",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -422,7 +422,7 @@
     "children": [
       {
         "species": "CareerBees:Artistic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -431,7 +431,7 @@
     "children": [
       {
         "species": "CareerBees:Assassin",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -440,7 +440,7 @@
     "children": [
       {
         "species": "CareerBees:Buisness",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -449,7 +449,7 @@
     "children": [
       {
         "species": "CareerBees:Butcher",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -458,7 +458,7 @@
     "children": [
       {
         "species": "CareerBees:Clockwork",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -467,11 +467,11 @@
     "children": [
       {
         "species": "CareerBees:Collecting",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "CareerBees:Graduate",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -480,7 +480,7 @@
     "children": [
       {
         "species": "CareerBees:Devil",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -489,7 +489,7 @@
     "children": [
       {
         "species": "CareerBees:Doctor",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -498,7 +498,7 @@
     "children": [
       {
         "species": "CareerBees:Electrician",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -507,7 +507,7 @@
     "children": [
       {
         "species": "CareerBees:Engineer",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -516,11 +516,11 @@
     "children": [
       {
         "species": "CareerBees:Honey-Smelter",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "CareerBees:Mason",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -529,7 +529,7 @@
     "children": [
       {
         "species": "CareerBees:Husbandry",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -538,7 +538,7 @@
     "children": [
       {
         "species": "CareerBees:Junk Seller",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -547,7 +547,7 @@
     "children": [
       {
         "species": "CareerBees:Lumber",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -556,7 +556,7 @@
     "children": [
       {
         "species": "CareerBees:Mad Scientist",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -565,7 +565,7 @@
     "children": [
       {
         "species": "CareerBees:N.C.A.",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -574,7 +574,7 @@
     "children": [
       {
         "species": "CareerBees:PHD",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -583,7 +583,7 @@
     "children": [
       {
         "species": "CareerBees:Plague",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -592,7 +592,7 @@
     "children": [
       {
         "species": "CareerBees:Police",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -601,7 +601,7 @@
     "children": [
       {
         "species": "CareerBees:Politician",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -610,7 +610,7 @@
     "children": [
       {
         "species": "CareerBees:Priest",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -619,11 +619,11 @@
     "children": [
       {
         "species": "CareerBees:Quantum Charming",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "CareerBees:Quantum Strange",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -632,7 +632,7 @@
     "children": [
       {
         "species": "CareerBees:Rainbow",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -641,7 +641,7 @@
     "children": [
       {
         "species": "CareerBees:Robot",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -650,7 +650,7 @@
     "children": [
       {
         "species": "CareerBees:Science",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -659,7 +659,7 @@
     "children": [
       {
         "species": "CareerBees:Smelter",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -668,7 +668,7 @@
     "children": [
       {
         "species": "CareerBees:Temporal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -677,7 +677,7 @@
     "children": [
       {
         "species": "CareerBees:Thief",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -686,7 +686,7 @@
     "children": [
       {
         "species": "CareerBees:Yente",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -695,7 +695,7 @@
     "children": [
       {
         "species": "ExtraBees:Abnormal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -704,7 +704,7 @@
     "children": [
       {
         "species": "ExtraBees:Absolute",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -713,7 +713,7 @@
     "children": [
       {
         "species": "ExtraBees:Abyssal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -722,7 +722,7 @@
     "children": [
       {
         "species": "ExtraBees:Acidic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -731,7 +731,7 @@
     "children": [
       {
         "species": "ExtraBees:Amber",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -740,7 +740,7 @@
     "children": [
       {
         "species": "ExtraBees:Ancient",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -749,7 +749,7 @@
     "children": [
       {
         "species": "ExtraBees:Arid",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -758,7 +758,7 @@
     "children": [
       {
         "species": "ExtraBees:Ashen",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -767,7 +767,7 @@
     "children": [
       {
         "species": "ExtraBees:Azure",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -776,7 +776,7 @@
     "children": [
       {
         "species": "ExtraBees:Barren",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -785,7 +785,7 @@
     "children": [
       {
         "species": "ExtraBees:Bauxite",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -794,7 +794,7 @@
     "children": [
       {
         "species": "ExtraBees:Bleached",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -803,7 +803,7 @@
     "children": [
       {
         "species": "ExtraBees:Blizzy",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -812,7 +812,7 @@
     "children": [
       {
         "species": "ExtraBees:Blooming",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -821,7 +821,7 @@
     "children": [
       {
         "species": "ExtraBees:Blutonium",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -830,7 +830,7 @@
     "children": [
       {
         "species": "ExtraBees:Boggy",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -839,7 +839,7 @@
     "children": [
       {
         "species": "ExtraBees:Bovine",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -848,7 +848,7 @@
     "children": [
       {
         "species": "ExtraBees:Caustic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -857,7 +857,7 @@
     "children": [
       {
         "species": "ExtraBees:Celebratory",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -866,7 +866,7 @@
     "children": [
       {
         "species": "ExtraBees:Cinnabar",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -875,7 +875,7 @@
     "children": [
       {
         "species": "ExtraBees:Classical",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -884,11 +884,11 @@
     "children": [
       {
         "species": "ExtraBees:Corroded",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "ExtraBees:Galvanized",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -897,7 +897,7 @@
     "children": [
       {
         "species": "ExtraBees:Corrosive",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -906,7 +906,7 @@
     "children": [
       {
         "species": "ExtraBees:Creepy",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -915,7 +915,7 @@
     "children": [
       {
         "species": "ExtraBees:Cyanite",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -924,7 +924,7 @@
     "children": [
       {
         "species": "ExtraBees:Damp",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -933,7 +933,7 @@
     "children": [
       {
         "species": "ExtraBees:Darkened",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -942,7 +942,7 @@
     "children": [
       {
         "species": "ExtraBees:Decaying",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -951,7 +951,7 @@
     "children": [
       {
         "species": "ExtraBees:Decomposing",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -960,7 +960,7 @@
     "children": [
       {
         "species": "ExtraBees:Desolate",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -969,7 +969,7 @@
     "children": [
       {
         "species": "ExtraBees:Diamond",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -978,7 +978,7 @@
     "children": [
       {
         "species": "ExtraBees:Distilled",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -987,7 +987,7 @@
     "children": [
       {
         "species": "ExtraBees:Ebony",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -996,7 +996,7 @@
     "children": [
       {
         "species": "ExtraBees:Ecstatic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1005,7 +1005,7 @@
     "children": [
       {
         "species": "ExtraBees:Emerald",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1014,7 +1014,7 @@
     "children": [
       {
         "species": "ExtraBees:Energetic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1023,7 +1023,7 @@
     "children": [
       {
         "species": "ExtraBees:Esmeraldi",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1032,7 +1032,7 @@
     "children": [
       {
         "species": "ExtraBees:Excited",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1041,11 +1041,11 @@
     "children": [
       {
         "species": "ExtraBees:Farmed",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "ExtraBees:Fermented",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1054,7 +1054,7 @@
     "children": [
       {
         "species": "ExtraBees:Fossilised",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1063,7 +1063,7 @@
     "children": [
       {
         "species": "ExtraBees:Fruity",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1072,7 +1072,7 @@
     "children": [
       {
         "species": "ExtraBees:Fuchsia",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1081,7 +1081,7 @@
     "children": [
       {
         "species": "ExtraBees:Fungal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1090,7 +1090,7 @@
     "children": [
       {
         "species": "ExtraBees:Furious",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1099,7 +1099,7 @@
     "children": [
       {
         "species": "ExtraBees:Gelid",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1108,7 +1108,7 @@
     "children": [
       {
         "species": "ExtraBees:Glittering",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1117,7 +1117,7 @@
     "children": [
       {
         "species": "ExtraBees:Glowering",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1126,7 +1126,7 @@
     "children": [
       {
         "species": "ExtraBees:Glutinous",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1135,7 +1135,7 @@
     "children": [
       {
         "species": "ExtraBees:Greek",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1144,7 +1144,7 @@
     "children": [
       {
         "species": "ExtraBees:Hazardous",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1153,7 +1153,7 @@
     "children": [
       {
         "species": "ExtraBees:Impregnable",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1162,7 +1162,7 @@
     "children": [
       {
         "species": "ExtraBees:Indigo",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1171,7 +1171,7 @@
     "children": [
       {
         "species": "ExtraBees:Infectious",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1180,7 +1180,7 @@
     "children": [
       {
         "species": "ExtraBees:Invincible",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1189,7 +1189,7 @@
     "children": [
       {
         "species": "ExtraBees:Jaded",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1198,7 +1198,7 @@
     "children": [
       {
         "species": "ExtraBees:Lapis",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1207,7 +1207,7 @@
     "children": [
       {
         "species": "ExtraBees:Lavender",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1216,11 +1216,11 @@
     "children": [
       {
         "species": "ExtraBees:Leaden",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "ExtraBees:Rusty",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1229,7 +1229,7 @@
     "children": [
       {
         "species": "ExtraBees:Light Blue",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1238,7 +1238,7 @@
     "children": [
       {
         "species": "ExtraBees:Lime",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1247,7 +1247,7 @@
     "children": [
       {
         "species": "ExtraBees:Lustered",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1256,7 +1256,7 @@
     "children": [
       {
         "species": "ExtraBees:Magenta",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1265,7 +1265,7 @@
     "children": [
       {
         "species": "ExtraBees:Malicious",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1274,7 +1274,7 @@
     "children": [
       {
         "species": "ExtraBees:Natural",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1283,7 +1283,7 @@
     "children": [
       {
         "species": "ExtraBees:Nuclear",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1292,11 +1292,11 @@
     "children": [
       {
         "species": "ExtraBees:Ocean",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "ExtraBees:River",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1305,7 +1305,7 @@
     "children": [
       {
         "species": "ExtraBees:Oily",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1314,7 +1314,7 @@
     "children": [
       {
         "species": "ExtraBees:Prehistoric",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1323,7 +1323,7 @@
     "children": [
       {
         "species": "ExtraBees:Primeval",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1332,7 +1332,7 @@
     "children": [
       {
         "species": "ExtraBees:Prussian",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1341,7 +1341,7 @@
     "children": [
       {
         "species": "ExtraBees:Pyrite",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1350,7 +1350,7 @@
     "children": [
       {
         "species": "ExtraBees:Quantum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1359,7 +1359,7 @@
     "children": [
       {
         "species": "ExtraBees:Radioactive",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1368,7 +1368,7 @@
     "children": [
       {
         "species": "ExtraBees:Relic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1377,7 +1377,7 @@
     "children": [
       {
         "species": "ExtraBees:Resilient",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1386,7 +1386,7 @@
     "children": [
       {
         "species": "ExtraBees:Ripening",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1395,7 +1395,7 @@
     "children": [
       {
         "species": "ExtraBees:Robust",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1404,7 +1404,7 @@
     "children": [
       {
         "species": "ExtraBees:Roman",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1413,7 +1413,7 @@
     "children": [
       {
         "species": "ExtraBees:Ruby",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1422,7 +1422,7 @@
     "children": [
       {
         "species": "ExtraBees:Saffron",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1431,7 +1431,7 @@
     "children": [
       {
         "species": "ExtraBees:Sapphire",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1440,7 +1440,7 @@
     "children": [
       {
         "species": "ExtraBees:Sepia",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1449,7 +1449,7 @@
     "children": [
       {
         "species": "ExtraBees:Shadowed",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1458,7 +1458,7 @@
     "children": [
       {
         "species": "ExtraBees:Shining",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1467,7 +1467,7 @@
     "children": [
       {
         "species": "ExtraBees:Skeletal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1476,7 +1476,7 @@
     "children": [
       {
         "species": "ExtraBees:Slate",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1485,7 +1485,7 @@
     "children": [
       {
         "species": "ExtraBees:Sodalite",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1494,7 +1494,7 @@
     "children": [
       {
         "species": "ExtraBees:Sodden",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1503,7 +1503,7 @@
     "children": [
       {
         "species": "ExtraBees:Spatial",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1512,7 +1512,7 @@
     "children": [
       {
         "species": "ExtraBees:Sphalerite",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1521,7 +1521,7 @@
     "children": [
       {
         "species": "ExtraBees:Stained",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1530,7 +1530,7 @@
     "children": [
       {
         "species": "ExtraBees:Sticky",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1539,7 +1539,7 @@
     "children": [
       {
         "species": "ExtraBees:Sugary",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1548,7 +1548,7 @@
     "children": [
       {
         "species": "ExtraBees:Sweetened",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1557,7 +1557,7 @@
     "children": [
       {
         "species": "ExtraBees:Tarry",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1566,7 +1566,7 @@
     "children": [
       {
         "species": "ExtraBees:Thriving",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1575,7 +1575,7 @@
     "children": [
       {
         "species": "ExtraBees:Tolerant",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1584,7 +1584,7 @@
     "children": [
       {
         "species": "ExtraBees:Turquoise",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1593,7 +1593,7 @@
     "children": [
       {
         "species": "ExtraBees:Unstable",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1602,7 +1602,7 @@
     "children": [
       {
         "species": "ExtraBees:Valuable",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1611,7 +1611,7 @@
     "children": [
       {
         "species": "ExtraBees:Virulent",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1620,7 +1620,7 @@
     "children": [
       {
         "species": "ExtraBees:Viscous",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1629,7 +1629,7 @@
     "children": [
       {
         "species": "ExtraBees:Volcanic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1638,7 +1638,7 @@
     "children": [
       {
         "species": "ExtraBees:Yellorium",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1647,7 +1647,7 @@
     "children": [
       {
         "species": "MagicBees:Abandoned",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1656,7 +1656,7 @@
     "children": [
       {
         "species": "MagicBees:Aluminum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1665,7 +1665,7 @@
     "children": [
       {
         "species": "MagicBees:Amped",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1674,7 +1674,7 @@
     "children": [
       {
         "species": "MagicBees:Apatine",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1683,7 +1683,7 @@
     "children": [
       {
         "species": "MagicBees:Arcane",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1692,7 +1692,7 @@
     "children": [
       {
         "species": "MagicBees:Argentum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1701,7 +1701,7 @@
     "children": [
       {
         "species": "MagicBees:Auric",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1710,7 +1710,7 @@
     "children": [
       {
         "species": "MagicBees:Aware",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1719,7 +1719,7 @@
     "children": [
       {
         "species": "MagicBees:Batty",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1728,15 +1728,15 @@
     "children": [
       {
         "species": "MagicBees:Beefy",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Porcine",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Poultry",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1745,7 +1745,7 @@
     "children": [
       {
         "species": "MagicBees:Big Bad",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1754,7 +1754,7 @@
     "children": [
       {
         "species": "MagicBees:Blossom",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1763,7 +1763,7 @@
     "children": [
       {
         "species": "MagicBees:Bronzed",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1772,7 +1772,7 @@
     "children": [
       {
         "species": "MagicBees:Carbon",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1781,7 +1781,7 @@
     "children": [
       {
         "species": "MagicBees:Catty",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1790,11 +1790,11 @@
     "children": [
       {
         "species": "MagicBees:Charmed",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Esoteric",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1803,7 +1803,7 @@
     "children": [
       {
         "species": "MagicBees:Cobalt",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1812,11 +1812,11 @@
     "children": [
       {
         "species": "MagicBees:Crumbling",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Transmuting",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1825,7 +1825,7 @@
     "children": [
       {
         "species": "MagicBees:Cuprum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1834,7 +1834,7 @@
     "children": [
       {
         "species": "MagicBees:Dante",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1843,7 +1843,7 @@
     "children": [
       {
         "species": "MagicBees:Destabilized",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1852,7 +1852,7 @@
     "children": [
       {
         "species": "MagicBees:Diamandi",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1861,7 +1861,7 @@
     "children": [
       {
         "species": "MagicBees:Doctoral",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1870,7 +1870,7 @@
     "children": [
       {
         "species": "MagicBees:Draconic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1879,7 +1879,7 @@
     "children": [
       {
         "species": "MagicBees:Dreaming",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1888,19 +1888,19 @@
     "children": [
       {
         "species": "MagicBees:Earthen",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Firey",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Watery",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MagicBees:Windy",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1909,7 +1909,7 @@
     "children": [
       {
         "species": "MagicBees:Eldritch",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1918,7 +1918,7 @@
     "children": [
       {
         "species": "MagicBees:Electrum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1927,7 +1927,7 @@
     "children": [
       {
         "species": "MagicBees:Enchanted",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1936,7 +1936,7 @@
     "children": [
       {
         "species": "MagicBees:Endearing",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1945,7 +1945,7 @@
     "children": [
       {
         "species": "MagicBees:Ethereal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1954,11 +1954,11 @@
     "children": [
       {
         "species": "MagicBees:Ferrous",
-        "probability": 1
+        "chance": 1
       },
       {
         "species": "MeatballCraft:Meatball",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1967,7 +1967,7 @@
     "children": [
       {
         "species": "MagicBees:Floral",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1976,7 +1976,7 @@
     "children": [
       {
         "species": "MagicBees:Fluxed",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1985,7 +1985,7 @@
     "children": [
       {
         "species": "MagicBees:Forlorn",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -1994,7 +1994,7 @@
     "children": [
       {
         "species": "MagicBees:Grounded",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2003,7 +2003,7 @@
     "children": [
       {
         "species": "MagicBees:Hateful",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2012,7 +2012,7 @@
     "children": [
       {
         "species": "MagicBees:Invar",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2021,7 +2021,7 @@
     "children": [
       {
         "species": "MagicBees:Invisible",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2030,7 +2030,7 @@
     "children": [
       {
         "species": "MagicBees:Lordly",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2039,7 +2039,7 @@
     "children": [
       {
         "species": "MagicBees:Lux",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2048,7 +2048,7 @@
     "children": [
       {
         "species": "MagicBees:Manyullyn",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2057,7 +2057,7 @@
     "children": [
       {
         "species": "MagicBees:Maroon",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2066,7 +2066,7 @@
     "children": [
       {
         "species": "MagicBees:Mutable",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2075,7 +2075,7 @@
     "children": [
       {
         "species": "MagicBees:Mysterious",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2084,7 +2084,7 @@
     "children": [
       {
         "species": "MagicBees:Mystical",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2093,7 +2093,7 @@
     "children": [
       {
         "species": "MagicBees:Nameless",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2102,7 +2102,7 @@
     "children": [
       {
         "species": "MagicBees:Neighsayer",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2111,7 +2111,7 @@
     "children": [
       {
         "species": "MagicBees:Nickel",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2120,7 +2120,7 @@
     "children": [
       {
         "species": "MagicBees:Osmium",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2129,7 +2129,7 @@
     "children": [
       {
         "species": "MagicBees:Platinum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2138,7 +2138,7 @@
     "children": [
       {
         "species": "MagicBees:Plumbum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2147,7 +2147,7 @@
     "children": [
       {
         "species": "MagicBees:Pupil",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2156,7 +2156,7 @@
     "children": [
       {
         "species": "MagicBees:Pyro",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2165,7 +2165,7 @@
     "children": [
       {
         "species": "MagicBees:Rockin'",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2174,7 +2174,7 @@
     "children": [
       {
         "species": "MagicBees:Rooted",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2183,7 +2183,7 @@
     "children": [
       {
         "species": "MagicBees:Savant",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2192,7 +2192,7 @@
     "children": [
       {
         "species": "MagicBees:Scholarly",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2201,7 +2201,7 @@
     "children": [
       {
         "species": "MagicBees:Sheepish",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2210,7 +2210,7 @@
     "children": [
       {
         "species": "MagicBees:Shocking",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2219,7 +2219,7 @@
     "children": [
       {
         "species": "MagicBees:Skystone",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2228,7 +2228,7 @@
     "children": [
       {
         "species": "MagicBees:Somnolent",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2237,7 +2237,7 @@
     "children": [
       {
         "species": "MagicBees:Soul",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2246,7 +2246,7 @@
     "children": [
       {
         "species": "MagicBees:Spirit",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2255,7 +2255,7 @@
     "children": [
       {
         "species": "MagicBees:Spiteful",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2264,7 +2264,7 @@
     "children": [
       {
         "species": "MagicBees:Stannum",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2273,7 +2273,7 @@
     "children": [
       {
         "species": "MagicBees:Supernatural",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2282,7 +2282,7 @@
     "children": [
       {
         "species": "MagicBees:Tarnished",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2291,7 +2291,7 @@
     "children": [
       {
         "species": "MagicBees:Timely",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2300,7 +2300,7 @@
     "children": [
       {
         "species": "MagicBees:Winsome",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2309,7 +2309,7 @@
     "children": [
       {
         "species": "MagicBees:Withering",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2318,7 +2318,7 @@
     "children": [
       {
         "species": "MeatballCraft:Aedial",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2327,7 +2327,7 @@
     "children": [
       {
         "species": "MeatballCraft:Agricultural",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2336,7 +2336,7 @@
     "children": [
       {
         "species": "MeatballCraft:Baguette",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2345,7 +2345,7 @@
     "children": [
       {
         "species": "MeatballCraft:Balanced",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2354,7 +2354,7 @@
     "children": [
       {
         "species": "MeatballCraft:Buried",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2363,7 +2363,7 @@
     "children": [
       {
         "species": "MeatballCraft:ChaosStrikez",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2372,7 +2372,7 @@
     "children": [
       {
         "species": "MeatballCraft:Chevron",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2381,7 +2381,7 @@
     "children": [
       {
         "species": "MeatballCraft:Connor",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2390,7 +2390,7 @@
     "children": [
       {
         "species": "MeatballCraft:Controller",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2399,7 +2399,7 @@
     "children": [
       {
         "species": "MeatballCraft:Dentist",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2408,7 +2408,7 @@
     "children": [
       {
         "species": "MeatballCraft:EMBee",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2417,7 +2417,7 @@
     "children": [
       {
         "species": "MeatballCraft:Experienced",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2426,7 +2426,7 @@
     "children": [
       {
         "species": "MeatballCraft:Fios",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2435,7 +2435,7 @@
     "children": [
       {
         "species": "MeatballCraft:Formic",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2444,7 +2444,7 @@
     "children": [
       {
         "species": "MeatballCraft:Freeky",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2453,7 +2453,7 @@
     "children": [
       {
         "species": "MeatballCraft:Heraldry",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2462,7 +2462,7 @@
     "children": [
       {
         "species": "MeatballCraft:Herblore",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2471,7 +2471,7 @@
     "children": [
       {
         "species": "MeatballCraft:High-Pitched",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2480,7 +2480,7 @@
     "children": [
       {
         "species": "MeatballCraft:Hyperventilating",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2489,7 +2489,7 @@
     "children": [
       {
         "species": "MeatballCraft:Isekai",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2498,7 +2498,7 @@
     "children": [
       {
         "species": "MeatballCraft:KurryCat",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2507,7 +2507,7 @@
     "children": [
       {
         "species": "MeatballCraft:LordRaine",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2516,7 +2516,7 @@
     "children": [
       {
         "species": "MeatballCraft:Luctor",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2525,7 +2525,7 @@
     "children": [
       {
         "species": "MeatballCraft:Mathias",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2534,7 +2534,7 @@
     "children": [
       {
         "species": "MeatballCraft:Necronomibee",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2543,7 +2543,7 @@
     "children": [
       {
         "species": "MeatballCraft:NerdySpider",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2552,7 +2552,7 @@
     "children": [
       {
         "species": "MeatballCraft:Nuclear Technician",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2561,7 +2561,7 @@
     "children": [
       {
         "species": "MeatballCraft:Pyramid",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2570,7 +2570,7 @@
     "children": [
       {
         "species": "MeatballCraft:Pyromaniacal",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2579,7 +2579,7 @@
     "children": [
       {
         "species": "MeatballCraft:RestlessClam",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2588,7 +2588,7 @@
     "children": [
       {
         "species": "MeatballCraft:Ringbearer",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2597,7 +2597,7 @@
     "children": [
       {
         "species": "MeatballCraft:Sandman366",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2606,7 +2606,7 @@
     "children": [
       {
         "species": "MeatballCraft:Serenading",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2615,7 +2615,7 @@
     "children": [
       {
         "species": "MeatballCraft:Shadow46x2",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2624,7 +2624,7 @@
     "children": [
       {
         "species": "MeatballCraft:SpoonyPanda",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2633,7 +2633,7 @@
     "children": [
       {
         "species": "MeatballCraft:StaffiX",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2642,7 +2642,7 @@
     "children": [
       {
         "species": "MeatballCraft:Stargazer",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2651,7 +2651,7 @@
     "children": [
       {
         "species": "MeatballCraft:Thermally Expanded",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2660,7 +2660,7 @@
     "children": [
       {
         "species": "MeatballCraft:Tinkerest",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2669,7 +2669,7 @@
     "children": [
       {
         "species": "MeatballCraft:UselessForce",
-        "probability": 1
+        "chance": 1
       }
     ]
   },
@@ -2678,7 +2678,7 @@
     "children": [
       {
         "species": "MagicBees:Brainy",
-        "probability": 1
+        "chance": 1
       }
     ]
   }

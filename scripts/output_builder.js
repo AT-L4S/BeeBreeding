@@ -181,7 +181,7 @@ function buildBeesJsonc(merged) {
 
 /**
  * Build mutations.jsonc content in the format matching existing data
- * Format: Array of {parents: [], children: [{species, probability, requirements?}]}
+ * Format: Array of {parents: [], children: [{species, chance, requirements?}]}
  */
 function buildBreedingPairsJsonc(merged) {
   const output = [];
@@ -320,7 +320,7 @@ function buildBreedingPairsJsonc(merged) {
     // Add offspring to this parent pair
     const childEntry = {
       species: offspring,
-      probability: mutation.chance / 100, // Convert percentage to decimal
+      chance: mutation.chance / 100, // Convert chance to decimal
     };
 
     // Add requirements if present
