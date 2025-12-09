@@ -3,25 +3,25 @@
 
 [
   {
-    "parents": ["MINIMAL_EXAMPLE:Parent1", "MINIMAL:Parent2"],
+    "parents": ["Minimal_Example:Parent1", "MINIMAL:Parent2"],
     "children": [
       {
-        "species": "MINIMAL_EXAMPLE:Offspring",
+        "species": "Minimal_Example:Offspring",
         "chance": 0.15
       }
     ]
   },
 
   {
-    "parents": ["COMPLETE_EXAMPLE:Parent1", "COMPLETE_EXAMPLE:Parent2"],
+    "parents": ["Complete_Example:Parent1", "Complete_Example:Parent2"],
     "children": [
       {
-        "species": "COMPLETE_EXAMPLE:Offspring1",
+        "species": "Complete_Example:Offspring1",
         "chance": 0.25,
         "requirements": {
           "temperature": ["NORMAL", "HOT"],
           "humidity": ["NORMAL", "ARID"],
-          "timeOfDay": "night",
+          "timeOfDay": "NIGHT",
           "biome": ["FOREST", "PLAINS", "DESERT"],
           "block": ["minecraft:water"],
           "moonPhase": ["FULL", "WANING_GIBBOUS"],
@@ -37,14 +37,14 @@
         }
       },
       {
-        "species": "COMPLETE_EXAMPLE:Offspring2",
+        "species": "Complete_Example:Offspring2",
         "chance": 0.08,
         "isSecret": true,
         "runtimeConditions": {
-          "type": "branch_available", // | "bee_available" | "mod_available"
-          "branch": "MYBEEBRANCH", // | "bee": "MYMOD:BEE1" | "mod": "MYMOD"
-          "available": true,
-          "code_description": "EnumBeeBranches.THAUMIC.enabled()"
+          "type": "BRANCH", // | "BEE" | "MOD"
+          "target": "MyBeeBranch", // | "MyMod:Bee1" | "MyMod"
+          "active": true,
+          "code_description": "MyBeeBranch.enabled()"
         }
       }
     ]

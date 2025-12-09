@@ -2,16 +2,16 @@
 // Combs with the bees that produce them + what items they produce
 
 {
-  "EXAMPLEMOD:example_comb": {
+  "ExampleMod:example_comb": {
     "name": "Example Comb",
 
     "producers": [
       {
-        "bee": "EXAMPLEMOD:Bee1",
+        "bee": "ExampleMod:Bee1",
         "chance": 0.4
       },
       {
-        "bee": "EXAMPLEMOD2:Bee2",
+        "bee": "ExampleMod2:Bee2",
         "chance": 0.99,
         "isSpecialty": true
       }
@@ -19,7 +19,7 @@
 
     "processing": [
       {
-        "product": "EXAMPLEMOD:example_honey_drop",
+        "product": "ExampleMod:example_honey_drop",
         "chance": 0.4
       },
       {
