@@ -65,7 +65,7 @@ function parseMagicBeesSpecies(filePath) {
           }
           return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
         })
-        .join("_"),
+        .join(" "),
       binomial: binomial,
       branch: `magicbees.${branch.toLowerCase()}`,
       dominant: dominant === "true",

@@ -91,9 +91,9 @@ function extractCombs(merged) {
               producers: [],
             };
           }
-          // Convert UID to "Mod:Name" format for comb producers
-          const modName = bee.mod;
-          const beeName = bee.name;
+          // Convert UID to "mod:name" format for comb producers (fully lowercase, no spaces)
+          const modName = bee.mod.toLowerCase();
+          const beeName = bee.name.toLowerCase().replace(/\s+/g, "");
           const beeKey = `${modName}:${beeName}`;
           merged.combs[combId].producers.push({
             bee: beeKey,
@@ -129,8 +129,10 @@ function buildBeesJsonc(merged) {
   });
 
   sortedBees.forEach(([uid, bee]) => {
-    // Convert UID to "Mod:Name" format
-    const key = `${bee.mod}:${bee.name}`;
+    // Convert UID to "mod:name" format (fully lowercase, no spaces)
+    const key = `${bee.mod.toLowerCase()}:${bee.name
+      .toLowerCase()
+      .replace(/\s+/g, "")}`;
 
     // Build bee object matching existing format
     const beeData = {
@@ -303,9 +305,15 @@ function buildBreedingPairsJsonc(merged) {
       return;
     }
 
-    const parent1 = `${parent1Bee.mod}:${parent1Bee.name}`;
-    const parent2 = `${parent2Bee.mod}:${parent2Bee.name}`;
-    const offspring = `${offspringBee.mod}:${offspringBee.name}`;
+    const parent1 = `${parent1Bee.mod.toLowerCase()}:${parent1Bee.name
+      .toLowerCase()
+      .replace(/\s+/g, "")}`;
+    const parent2 = `${parent2Bee.mod.toLowerCase()}:${parent2Bee.name
+      .toLowerCase()
+      .replace(/\s+/g, "")}`;
+    const offspring = `${offspringBee.mod.toLowerCase()}:${offspringBee.name
+      .toLowerCase()
+      .replace(/\s+/g, "")}`;
 
     // Create sorted key for parent pair (so [A,B] and [B,A] are treated the same)
     const parentKey = [parent1, parent2].sort().join("|");

@@ -48,18 +48,9 @@ export async function loadBeeData() {
     console.error("Error loading bee data:", error);
     // Fallback to hardcoded data if loading fails
     const rawMutations = {
-      "Forestry:Abandoned": {
-        parents: ["MagicBees:Oblivion", "MagicBees:Nameless"],
-        mod: "MagicBees",
-      },
-      "ExtraBees:Abnormal": {
-        parents: ["Ender", "Forestry:Secluded"],
-        mod: "ExtraBees",
-      },
-      // ... (fallback data would be here)
-      "CareerBees:Yente": {
-        parents: ["CareerBees:Student", "CareerBees:Husbandry"],
-        mod: "CareerBees",
+      "failedtoload:failedtoloadbees": {
+        mod: "failedtoload",
+        name: "FAILED TO LOAD BEES",
       },
     };
 

@@ -313,7 +313,10 @@ function processBeeBlock(beeName, content, result, filePath) {
 
   result.bees[uid] = {
     mod: "MeatballCraft",
-    name: beeName,
+    name: beeName
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" "),
     binomial: data.Binominal || beeName,
     branch: data.Branch || "",
     dominant: data.Dominant === true,
@@ -481,19 +484,19 @@ function parseRecipesMutations(content, result, filePath) {
 /**
  * Normalize parent UID from Gendustry format to standard format
  * Examples:
- *   forestry.speciesIndustrious → Forestry:Industrious
- *   extrabees.species.acidic → ExtraBees:Acidic
- *   magicbees.speciesForlorn → MagicBees:Forlorn
- *   careerbees.acceleration → CareerBees:Acceleration
+ *   forestry.speciesIndustrious → forestry:Industrious
+ *   extrabees.species.acidic → extrabees:Acidic
+ *   magicbees.speciesForlorn → magicbees:Forlorn
+ *   careerbees.acceleration → careerbees:Acceleration
  */
 function normalizeParentUID(uid) {
   // Map of mod prefixes to proper mod names
   const modMap = {
-    forestry: "Forestry",
-    extrabees: "ExtraBees",
-    magicbees: "MagicBees",
-    careerbees: "CareerBees",
-    gendustry: "MeatballCraft",
+    forestry: "forestry",
+    extrabees: "extrabees",
+    magicbees: "magicbees",
+    careerbees: "careerbees",
+    gendustry: "meatballcraft",
   };
 
   // Parse the UID

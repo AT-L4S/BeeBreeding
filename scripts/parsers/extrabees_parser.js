@@ -41,7 +41,11 @@ function parseExtraBeesDefinition(filePath) {
     ] = match;
 
     const uid = `extrabees.species.${enumName.toLowerCase()}`;
-    const displayName = enumName.charAt(0) + enumName.slice(1).toLowerCase();
+    // Convert underscores to spaces with title case
+    const displayName = enumName
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
 
     // Calculate line number where this enum body starts
     const linesBeforeMatch = content

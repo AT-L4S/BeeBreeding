@@ -37,8 +37,13 @@ function parseCareerBeesSpecies(filePath) {
     const uid = `careerbees.species.${name}`;
 
     result.bees[uid] = {
-      mod: "CareerBees",
-      name: name.charAt(0).toUpperCase() + name.slice(1),
+      mod: "careerbees",
+      name: name
+        .split("_")
+        .map(
+          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+        )
+        .join(" "),
       binomial: name,
       branch: parseBranchName(branch),
       dominant: dominant === "true",
