@@ -39,14 +39,13 @@ function parseForestryBeeDefinition(filePath) {
       body,
     ] = match;
 
-    const uid = `forestry.species${
-      enumName.charAt(0) + enumName.slice(1).toLowerCase()
-    }`;
     // Convert underscores to spaces with title case
     const displayName = enumName
       .split("_")
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
       .join(" ");
+    // Use standardized mod:name format (lowercase, no spaces)
+    const uid = `forestry:${displayName.toLowerCase().replace(/\s+/g, "")}`;
 
     // Calculate line number where this enum body starts
     const linesBeforeMatch = content
@@ -271,9 +270,11 @@ function resolveSpeciesReference(ref) {
     return null; // Cannot resolve dynamic loop variables
   }
 
-  // Forestry bee reference
-  const name = ref.charAt(0) + ref.slice(1).toLowerCase();
-  return `forestry.species${name}`;
+  // Forestry bee reference - convert to mod:name format
+  const displayName = ref.split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(" ");
+  return `forestry:${displayName.toLowerCase().replace(/\s+/g, "")}`;
 }
 
 /**

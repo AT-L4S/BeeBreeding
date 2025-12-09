@@ -241,7 +241,7 @@
     "children": [
       {
         "species": "magicbees:gold",
-        "chance": 0.16,
+        "chance": 0.08,
         "runtimeConditions": {
           "type": "BEE",
           "target": "magicbees:lead",
@@ -255,7 +255,7 @@
     "children": [
       {
         "species": "magicbees:gold",
-        "chance": 0.16,
+        "chance": 0.08,
         "runtimeConditions": [
           {
             "type": "BEE",

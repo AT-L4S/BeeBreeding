@@ -42,12 +42,19 @@ function parseMagicBeesSpecies(filePath) {
       body,
     ] = match;
 
-    // Create storage UID: Remove underscores to match lang file keys
-    // e.g., TE_ENDEARING → speciesTEEndearing (not speciesTe_endearing)
-    const uidName = enumName.replace(/_/g, "");
-    const uid = `magicbees.species${
-      uidName.charAt(0) + uidName.slice(1).toLowerCase()
-    }`;
+    // Create storage key using final format: mod:name (lowercase, no spaces)
+    // This matches the format used in manual_mutations.jsonc and final output
+    const displayName = enumName
+      .split("_")
+      .map((part) => {
+        // Keep all-caps 2-letter prefixes (TE, AE) as-is
+        if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+          return part;
+        }
+        return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+      })
+      .join(" ");
+    const uid = `magicbees:${displayName.toLowerCase().replace(/\s+/g, "")}`;
 
     // Calculate line number where this enum body starts
     const linesBeforeMatch = content
@@ -56,16 +63,7 @@ function parseMagicBeesSpecies(filePath) {
 
     const bee = {
       mod: "MagicBees",
-      name: enumName
-        .split("_")
-        .map((part) => {
-          // Keep all-caps 2-letter prefixes (TE, AE) as-is
-          if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
-            return part;
-          }
-          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
-        })
-        .join(" "),
+      name: displayName,
       binomial: binomial,
       branch: `magicbees.${branch.toLowerCase()}`,
       dominant: dominant === "true",
@@ -249,14 +247,20 @@ function parseBeeMutations(body, enumName, bees, filePath, bodyStartLine) {
     const lineNumber =
       bodyStartLine + linesBeforeMethodStart + linesInMethodBeforeMatch;
 
-    // Create offspring UID matching storage format (no underscores)
-    const uidName = enumName.replace(/_/g, "");
+    // Create offspring using final format: mod:name
+    const offspringName = enumName
+      .split("_")
+      .map((part) => {
+        if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+          return part;
+        }
+        return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+      })
+      .join(" ");
     const mutation = {
       parent1: resolveSpeciesReference(parent1.trim(), bees),
       parent2: resolveSpeciesReference(parent2.trim(), bees),
-      offspring: `magicbees.species${
-        uidName.charAt(0) + uidName.slice(1).toLowerCase()
-      }`,
+      offspring: `magicbees:${offspringName.toLowerCase().replace(/\s+/g, "")}`,
       chance: parseFloat(chance),
       source: {
         file: filePath,
@@ -421,24 +425,29 @@ function resolveSpeciesReference(ref, bees) {
   // Pattern: EnumBeeSpecies.getForestrySpecies("Name")
   const forestryMatch = ref.match(/getForestrySpecies\s*\(\s*"(\w+)"/);
   if (forestryMatch) {
-    return `forestry.species${forestryMatch[1]}`;
+    return `forestry:${forestryMatch[1].toLowerCase()}`;
   }
 
   // Pattern: ExtraBeeDefinition.XXX
   const extraBeesMatch = ref.match(/ExtraBeeDefinition\.(\w+)/);
   if (extraBeesMatch) {
-    const name =
-      extraBeesMatch[1].charAt(0) + extraBeesMatch[1].slice(1).toLowerCase();
-    return `extrabees.species.${name}`;
+    const name = extraBeesMatch[1].charAt(0).toUpperCase() + extraBeesMatch[1].slice(1).toLowerCase();
+    return `extrabees:${name.toLowerCase()}`;
   }
 
   // Pattern: Bare ALL_CAPS reference - assume MagicBees if not found in dictionary yet
   // This handles forward references to bees defined later in the file
   if (ref.match(/^[A-Z_]+$/)) {
-    // Remove underscores to match storage UID format (e.g., TE_COAL → Tecoal)
-    const uidName = ref.replace(/_/g, "");
-    const name = uidName.charAt(0) + uidName.slice(1).toLowerCase();
-    return `magicbees.species${name}`;
+    const displayName = ref
+      .split("_")
+      .map((part) => {
+        if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+          return part;
+        }
+        return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+      })
+      .join(" ");
+    return `magicbees:${displayName.toLowerCase().replace(/\s+/g, "")}`;
   }
 
   return ref;

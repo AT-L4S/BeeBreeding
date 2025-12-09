@@ -40,12 +40,13 @@ function parseExtraBeesDefinition(filePath) {
       body,
     ] = match;
 
-    const uid = `extrabees.species.${enumName.toLowerCase()}`;
     // Convert underscores to spaces with title case
     const displayName = enumName
       .split("_")
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
       .join(" ");
+    // Use standardized mod:name format (lowercase, no spaces)
+    const uid = `extrabees:${displayName.toLowerCase().replace(/\s+/g, "")}`;
 
     // Calculate line number where this enum body starts
     const linesBeforeMatch = content
@@ -256,24 +257,30 @@ function parseConditions(conditionsStr) {
 function resolveSpeciesReference(ref) {
   ref = ref.trim();
 
-  // ExtraBees reference: ExtraBeeDefinition.NAME (check first before BeeDefinition!)
+  // ExtraBees reference: ExtraBeeDefinition.NAME
   const extraMatch = ref.match(/ExtraBeeDefinition\.(\w+)/);
   if (extraMatch) {
-    return `extrabees.species.${extraMatch[1].toLowerCase()}`;
+    const displayName = extraMatch[1].split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+    return `extrabees:${displayName.toLowerCase().replace(/\s+/g, "")}`;
   }
 
-  // Forestry bee reference: BeeDefinition.NAME (must not contain "ExtraBee")
+  // Forestry bee reference: BeeDefinition.NAME
   const forestryMatch = ref.match(/^BeeDefinition\.(\w+)$/);
   if (forestryMatch) {
-    const name = forestryMatch[1];
-    return `forestry.species${
-      name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-    }`;
+    const displayName = forestryMatch[1].split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+    return `forestry:${displayName.toLowerCase().replace(/\s+/g, "")}`;
   }
 
   // ExtraBees bee reference (bare ALL_CAPS in same file)
   if (ref.match(/^[A-Z_]+$/)) {
-    return `extrabees.species.${ref.toLowerCase()}`;
+    const displayName = ref.split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+    return `extrabees:${displayName.toLowerCase().replace(/\s+/g, "")}`;
   }
 
   return ref;

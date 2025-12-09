@@ -298,8 +298,18 @@ function processBeeBlock(beeName, content, result, filePath) {
   // Parse traits
   const traits = parseKeyValuePairs(traitsContent);
 
-  // Create bee entry
-  const uid = `gendustry.${beeName.toLowerCase()}`;
+  // Create display name (convert BeeName to "Bee Name")
+  const displayName = beeName
+    .split(/(?=[A-Z])/)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(" ");
+
+  // Determine mod prefix based on naming convention
+  const isMeatballCraft = beeName.charAt(0) === beeName.charAt(0).toUpperCase();
+  const modPrefix = isMeatballCraft ? "meatballcraft" : "gendustry";
+
+  // Create standardized UID: mod:name (all lowercase, no spaces)
+  const uid = `${modPrefix}:${displayName.toLowerCase().replace(/\s+/g, "")}`;
 
   // Combine products and mark specialty products
   const products = [];
@@ -326,10 +336,7 @@ function processBeeBlock(beeName, content, result, filePath) {
 
   result.bees[uid] = {
     mod: result.modName || "MeatballCraft",
-    name: beeName
-      .split("_")
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
-      .join(" "),
+    name: displayName,
     binomial: data.Binominal || beeName,
     branch: data.Branch || "",
     dominant: data.Dominant === true,
@@ -468,11 +475,19 @@ function parseRecipesMutations(content, result, filePath) {
       const offspringParts = offspringRaw.split(".");
       const offspringName = offspringParts[offspringParts.length - 1];
 
-      // Determine mod name based on bee name case (lowercase = Gendustry built-in)
+      // Determine mod name and normalize bee name format
       const isMeatballCraft =
         offspringName.charAt(0) === offspringName.charAt(0).toUpperCase();
-      const modName = isMeatballCraft ? "MeatballCraft" : "Gendustry";
-      const normalizedOffspring = `${modName}:${offspringName}`;
+      const modName = isMeatballCraft ? "meatballcraft" : "gendustry";
+      const displayName = offspringName
+        .split("_")
+        .map(
+          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+        )
+        .join(" ");
+      const normalizedOffspring = `${modName}:${displayName
+        .toLowerCase()
+        .replace(/\s+/g, "")}`;
 
       const mutation = {
         parent1: normalizeParentUID(parent1.trim()),
@@ -555,33 +570,28 @@ function normalizeParentUID(uid) {
     // Check if the species name is all lowercase (Gendustry built-in bees)
     const isGendustryBuiltIn = speciesName === speciesName.toLowerCase();
 
-    if (isGendustryBuiltIn && modName === "MeatballCraft") {
+    if (isGendustryBuiltIn && modName === "meatballcraft") {
       // This is a Gendustry built-in bee referenced from MeatballCraft config
-      // Keep lowercase and use Gendustry as mod
-      return `Gendustry:${speciesName}`;
+      return `gendustry:${speciesName}`;
     }
 
-    // Handle MagicBees TE/AE prefixes: TEEndearing → TE_Endearing
-    // Insert underscore after all-caps prefix (TE, AE, etc.)
-    if (modName === "MagicBees" && /^[A-Z]{2}[A-Z][a-z]/.test(speciesName)) {
-      // TEEndearing → TE_Endearing, AESkystone → AE_Skystone
+    // Handle MagicBees TE/AE prefixes and convert to display format
+    if (modName === "magicbees" && /^[A-Z]{2}[A-Z][a-z]/.test(speciesName)) {
       speciesName = speciesName.replace(/^([A-Z]{2})([A-Z][a-z])/, "$1_$2");
     }
 
-    // Replace underscores with title case for each part
-    // Preserve all-caps prefixes like TE, AE
-    // Don't modify if already all lowercase (Gendustry built-in)
+    // Convert to display name format (title case with spaces), then to lowercase no-spaces
     if (!isGendustryBuiltIn) {
-      speciesName = speciesName
+      const displayName = speciesName
         .split("_")
         .map((part) => {
-          // Keep all-caps prefixes (TE, AE) as-is
           if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
             return part;
           }
           return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
         })
-        .join("_");
+        .join(" ");
+      speciesName = displayName.toLowerCase().replace(/\s+/g, "");
     }
   }
 

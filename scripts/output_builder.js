@@ -37,6 +37,20 @@ function buildOutput(intermediateData, outputDir) {
     Object.assign(merged.branches, data.branches);
   });
 
+  // Load manual mutations as starting template
+  const manualMutationsPath = path.join(__dirname, "manual_mutations.jsonc");
+  let manualMutations = [];
+  if (fs.existsSync(manualMutationsPath)) {
+    console.log("Loading manual mutations template...");
+    const content = fs.readFileSync(manualMutationsPath, "utf-8");
+    // Remove JSONC comments
+    const jsonContent = content
+      .replace(/\/\/.*$/gm, "")
+      .replace(/\/\*[\s\S]*?\*\//g, "");
+    manualMutations = JSON.parse(jsonContent);
+    console.log(`  Loaded ${manualMutations.length} manual mutation groups`);
+  }
+
   // Extract comb information from bee products
   extractCombs(merged);
 
@@ -48,8 +62,8 @@ function buildOutput(intermediateData, outputDir) {
     "Bee Species Data"
   );
 
-  // Build mutations.jsonc
-  const breedingOutput = buildBreedingPairsJsonc(merged);
+  // Build mutations.jsonc (starting with manual mutations)
+  const breedingOutput = buildBreedingPairsJsonc(merged, manualMutations);
   writeJsonc(
     path.join(outputDir, "mutations.jsonc"),
     breedingOutput,
@@ -66,12 +80,11 @@ function buildOutput(intermediateData, outputDir) {
 
   console.log("Output files built successfully!");
   console.log(`  - ${Object.keys(merged.bees).length} bees`);
-  console.log(
-    `  - ${breedingOutput.reduce(
-      (sum, group) => sum + group.children.length,
-      0
-    )} mutations (${merged.mutations.length} total parsed)`
+  const totalMutations = breedingOutput.reduce(
+    (sum, group) => sum + group.children.length,
+    0
   );
+  console.log(`  - ${totalMutations} mutations`);
   console.log(`  - ${Object.keys(merged.combs).length} combs`);
 }
 
@@ -185,12 +198,34 @@ function buildBeesJsonc(merged) {
  * Build mutations.jsonc content in the format matching existing data
  * Format: Array of {parents: [], children: [{species, chance, requirements?}]}
  */
-function buildBreedingPairsJsonc(merged) {
-  const output = [];
+function buildBreedingPairsJsonc(merged, manualMutations = []) {
+  // Start with manual mutations as template
+  const output = [...manualMutations];
   let skippedMutationsCount = 0;
+  let skippedInManualCount = 0;
 
-  // Group mutations by parent pair
+  // Group mutations by parent pair (start with manual mutations)
   const mutationGroups = new Map();
+
+  // Index manual mutations for quick lookup
+  const manualMutationSet = new Set();
+  manualMutations.forEach((group) => {
+    const parentKey = group.parents.sort().join("|");
+    group.children.forEach((child) => {
+      const mutationKey = `${parentKey}|${child.species}|${child.chance}`;
+      manualMutationSet.add(mutationKey);
+    });
+    // Add to mutation groups map
+    mutationGroups.set(parentKey, {
+      parents: [...group.parents],
+      children: [...group.children],
+    });
+  });
+
+  // Debug: Log first few manual mutation keys
+  console.log(`Indexed ${manualMutationSet.size} manual mutation entries`);
+  const sampleKeys = Array.from(manualMutationSet).slice(0, 3);
+  console.log("Sample manual mutation keys:", sampleKeys);
 
   // Log first few bee keys to understand the structure
   const beeKeys = Object.keys(merged.bees);
@@ -198,109 +233,73 @@ function buildBreedingPairsJsonc(merged) {
   console.log("Sample bee keys:", beeKeys.slice(0, 5));
 
   merged.mutations.forEach((mutation) => {
-    // Find bees by either their UID or by Mod:Name format
+    // Find bees by mod:name key (new standardized format)
     const findBee = (identifier) => {
       // Check for null/undefined identifier
       if (!identifier) {
         return null;
       }
 
-      // First try direct UID lookup
-      if (merged.bees[identifier]) {
-        return merged.bees[identifier];
-      }
-
-      // Try to convert Mod:Name to UID format for lookup
-      if (identifier.includes(":")) {
-        const [mod, name] = identifier.split(":");
-
-        // Map mod names to their UID prefixes
-        const modPrefixMap = {
-          forestry: "forestry",
-          extrabees: "extrabees",
-          magicbees: "magicbees",
-          careerbees: "careerbees",
-          meatballcraft: "gendustry", // MeatballCraft uses gendustry prefix
-        };
-
-        const modPrefix = modPrefixMap[mod.toLowerCase()] || mod.toLowerCase();
-
-        // Try common UID patterns (preserve case for name in species pattern)
-        const patterns = [
-          `${modPrefix}.${name.toLowerCase()}`,
-          `${modPrefix}.species${name}`, // Preserve case: speciesIndustrious
-          `${modPrefix}.species.${name.toLowerCase()}`,
-        ];
-
-        // For MagicBees TE/AE bees, also try without underscore and lowercase
-        // e.g., MagicBees:TE_Endearing → magicbees.speciesTeendearing
-        if (mod.toLowerCase() === "magicbees" && name.includes("_")) {
-          const nameWithoutUnderscore = name.replace(/_/g, "");
-          // Storage keys are lowercase after first char: speciesTeendearing
-          patterns.push(
-            `${modPrefix}.species${
-              nameWithoutUnderscore.charAt(0) +
-              nameWithoutUnderscore.slice(1).toLowerCase()
-            }`
-          );
-        }
-
-        for (const pattern of patterns) {
-          if (merged.bees[pattern]) {
-            return merged.bees[pattern];
-          }
-        }
-
-        // If not found, also try with underscore replaced by space
-        // e.g., TE_Endearing → Te endearing
-        if (name.includes("_")) {
-          const nameWithSpace = name
-            .split("_")
-            .map(
-              (part) =>
-                part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
-            )
-            .join(" ");
-
-          const spacePatterns = [
-            `${modPrefix}.${nameWithSpace.toLowerCase()}`,
-            `${modPrefix}.species${nameWithSpace}`,
-          ];
-
-          for (const pattern of spacePatterns) {
-            if (merged.bees[pattern]) {
-              return merged.bees[pattern];
-            }
-          }
-        }
-      }
-
-      return null;
+      // Direct lookup using mod:name format
+      return merged.bees[identifier] || null;
     };
 
     const parent1Bee = findBee(mutation.parent1);
     const parent2Bee = findBee(mutation.parent2);
     const offspringBee = findBee(mutation.offspring);
 
+    // Debug: Log Silicon and Certus offspring before checking
+    if (
+      mutation.offspring &&
+      (mutation.offspring.includes("Silicon") ||
+        mutation.offspring.includes("Certus"))
+    ) {
+      console.log(
+        `\n🔍 Parsing mutation: offspring="${mutation.offspring}" chance=${mutation.chance}`
+      );
+      console.log(`   Found bee? ${!!offspringBee}`);
+      if (offspringBee) {
+        console.log(
+          `   Bee mod:name = ${offspringBee.mod}:${offspringBee.name}`
+        );
+      }
+    }
+
     if (!parent1Bee || !parent2Bee || !offspringBee) {
-      skippedMutationsCount++;
+      // Check if this mutation is in manual_mutations.jsonc
+      const isInManual = checkIfInManualMutations(
+        mutation,
+        manualMutationSet,
+        merged.bees
+      );
+
+      if (isInManual) {
+        skippedInManualCount++;
+      } else {
+        skippedMutationsCount++;
+      }
+
       if (mutation.source) {
         const fullPath = path.resolve(mutation.source.file);
-        const missing = [];
-        if (!parent1Bee) missing.push(`parent1: ${mutation.parent1}`);
-        if (!parent2Bee) missing.push(`parent2: ${mutation.parent2}`);
-        if (!offspringBee) missing.push(`offspring: ${mutation.offspring}`);
+        const emoji = isInManual ? "ℹ️ " : "⚠️ ";
         console.warn(
-          `⚠️  Skipping mutation: ${
-            mutation.offspring
-          }\n    Missing: ${missing.join(", ")}\n    ${fullPath}:${
-            mutation.source.line
-          }`
+          `${emoji} Skipping mutation: ${mutation.offspring}\n    ${fullPath}:${mutation.source.line}`
         );
+
+        if (isInManual) {
+          console.warn(`    → Already in manual_mutations.jsonc`);
+        }
+        console.warn(""); // Add blank line after each skipped mutation
       } else {
+        const emoji = isInManual ? "ℹ️ " : "⚠️ ";
         console.warn(
-          `⚠️  Skipping mutation: ${mutation.offspring}\n    (no source location)`
+          `${emoji} Skipping mutation: ${mutation.offspring}\n    (no source location)`
         );
+
+        if (isInManual) {
+          console.warn(`    → Already in manual_mutations.jsonc`);
+        }
+        console.warn(""); // Add blank line after each skipped mutation
       }
       return;
     }
@@ -317,6 +316,20 @@ function buildBreedingPairsJsonc(merged) {
 
     // Create sorted key for parent pair (so [A,B] and [B,A] are treated the same)
     const parentKey = [parent1, parent2].sort().join("|");
+
+    // Check if this exact mutation already exists in manual mutations
+    const mutationKey = `${parentKey}|${offspring}|${mutation.chance / 100}`;
+
+    // Debug: Log first few parsed mutation keys
+    if (manualMutationSet.size > 0 && Math.random() < 0.01) {
+      console.log(`Sample parsed mutation key: ${mutationKey}`);
+    }
+
+    if (manualMutationSet.has(mutationKey)) {
+      // Skip - already in manual mutations
+      skippedInManualCount++;
+      return;
+    }
 
     if (!mutationGroups.has(parentKey)) {
       mutationGroups.set(parentKey, {
@@ -409,10 +422,33 @@ function buildBreedingPairsJsonc(merged) {
 
   // Log mutation statistics
   console.log(`Successfully processed: ${output.length} mutation groups`);
+  console.log(
+    `  - Started with ${manualMutations.length} manual mutation groups`
+  );
+  console.log(
+    `  - Added ${
+      output.length - manualMutations.length
+    } new groups from parsers`
+  );
   console.log(`Skipped mutations: ${skippedMutationsCount}`);
+  if (skippedInManualCount > 0) {
+    console.log(
+      `  - ${skippedInManualCount} already in manual_mutations.jsonc`
+    );
+  }
 
-  // Convert map to array and sort
-  const sortedGroups = Array.from(mutationGroups.values()).sort((a, b) => {
+  // Convert map to array (only new entries not in manual mutations)
+  const newGroups = Array.from(mutationGroups.values()).filter((group) => {
+    const parentKey = group.parents.sort().join("|");
+    // Check if this group was in the original manual mutations
+    const wasManual = manualMutations.some(
+      (manual) => manual.parents.sort().join("|") === parentKey
+    );
+    return !wasManual;
+  });
+
+  // Sort new groups
+  const sortedGroups = newGroups.sort((a, b) => {
     // Sort by first parent, then by second parent
     const parent1Compare = a.parents[0].localeCompare(b.parents[0]);
     if (parent1Compare !== 0) return parent1Compare;
@@ -426,6 +462,49 @@ function buildBreedingPairsJsonc(merged) {
   });
 
   return output;
+}
+
+/**
+ * Check if a mutation is already in manual_mutations.jsonc
+ */
+function checkIfInManualMutations(mutation, manualMutationSet, beesMap) {
+  // Identifier is already in mod:name format, just normalize case and spaces
+  const tryResolve = (identifier) => {
+    if (!identifier) return null;
+
+    // Already in mod:name format, just ensure lowercase and no spaces
+    if (identifier.includes(":")) {
+      const [mod, name] = identifier.split(":");
+      return `${mod.toLowerCase()}:${name
+        .toLowerCase()
+        .replace(/[_\s]+/g, "")}`;
+    }
+
+    return null;
+  };
+
+  const offspring = tryResolve(mutation.offspring);
+
+  // If we can't resolve the offspring, it's not in manual mutations
+  if (!offspring) {
+    return false;
+  }
+
+  // Check if ANY manual mutation produces this offspring (regardless of parents or chance)
+  for (const key of manualMutationSet) {
+    const parts = key.split("|");
+    if (parts.length >= 3) {
+      // Key format: parent1|parent2|offspring|chance
+      const manualOffspring = parts[2];
+
+      // If this offspring is defined in manual mutations, it's already covered
+      if (manualOffspring === offspring) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 /**

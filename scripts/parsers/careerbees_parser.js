@@ -34,16 +34,17 @@ function parseCareerBeesSpecies(filePath) {
   while ((match = beePattern.exec(content)) !== null) {
     const [, enumName, name, dominant, branch, r, g, b] = match;
 
-    const uid = `careerbees.species.${name}`;
+    // Convert to display name format
+    const displayName = name
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+    // Use standardized mod:name format (lowercase, no spaces)
+    const uid = `careerbees:${displayName.toLowerCase().replace(/\s+/g, "")}`;
 
     result.bees[uid] = {
       mod: "careerbees",
-      name: name
-        .split("_")
-        .map(
-          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
-        )
-        .join(" "),
+      name: displayName,
       binomial: name,
       branch: parseBranchName(branch),
       dominant: dominant === "true",
@@ -205,14 +206,17 @@ function resolveSpeciesReference(ref, bees) {
   // Check for getFSpecies("Name") pattern - Forestry bee helper
   const getFSpeciesMatch = ref.match(/getFSpecies\s*\(\s*"([^"]+)"\s*\)/);
   if (getFSpeciesMatch) {
-    return `forestry.species${getFSpeciesMatch[1]}`;
+    const displayName = getFSpeciesMatch[1]
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+    return `forestry:${displayName.toLowerCase().replace(/\s+/g, "")}`;
   }
 
-  // Check for getSpecies("forestry.speciesName") pattern
-  const getSpeciesMatch = ref.match(
-    /getSpecies\s*\(\s*"(forestry\.species\w+)"\s*\)/
-  );
+  // Check for getSpecies("mod:name") pattern
+  const getSpeciesMatch = ref.match(/getSpecies\s*\(\s*"([^"]+)"\s*\)/);
   if (getSpeciesMatch) {
+    // Already in mod:name format
     return getSpeciesMatch[1];
   }
 
@@ -233,8 +237,11 @@ function resolveSpeciesReference(ref, bees) {
       }
     }
     // Otherwise assume it's a Forestry bee
-    const name = ref.charAt(0) + ref.slice(1).toLowerCase();
-    return `forestry.species${name}`;
+    const displayName = ref
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+    return `forestry:${displayName.toLowerCase().replace(/\s+/g, "")}`;
   }
 
   // If no pattern matched, return as-is (likely will cause a skip warning)
