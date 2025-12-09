@@ -40,12 +40,13 @@
         "species": "Complete_Example:Offspring2",
         "chance": 0.08,
         "isSecret": true,
-        "runtimeConditions": {
-          "type": "BRANCH", // | "BEE" | "MOD"
-          "target": "MyBeeBranch", // | "MyMod:Bee1" | "MyMod"
-          "active": true,
-          "code_description": "MyBeeBranch.enabled()"
-        }
+        "runtimeConditions": [
+          {
+            "type": "BRANCH", // | "BEE" | "MOD"
+            "target": "MyBeeBranch", // | "MyMod:Bee1" | "MyMod"
+            "active": true
+          }
+        ]
       }
     ]
   }
