@@ -39,7 +39,13 @@
       {
         "species": "COMPLETE_EXAMPLE:Offspring2",
         "chance": 0.08,
-        "isSecret": true
+        "isSecret": true,
+        "runtimeConditions": {
+          "type": "branch_available", // | "bee_available" | "mod_available"
+          "branch": "MYBEEBRANCH", // | "bee": | "mod":
+          "available": true,
+          "code_description": "EnumBeeBranches.THAUMIC.enabled()"
+        }
       }
     ]
   }
