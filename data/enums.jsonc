@@ -1,0 +1,64 @@
+// ENUMS.JSONC - Valid Values for Bee Data
+// This file defines all valid enum values used across bees.jsonc, mutations.jsonc, and combs.jsonc
+// Use these for validation, UI dropdowns, and documentation
+//
+// IMPORTANT: These are FIXED enums from Minecraft/Forestry - do not change unless mod updates
+// Values NOT included here (like biomes, blocks, items, mod IDs) are extensible and can be added by mods
+
+{
+  "temperature": ["ICY", "COLD", "NORMAL", "WARM", "HOT", "HELLISH"],
+
+  "humidity": ["DAMP", "NORMAL", "ARID"],
+
+  "tolerance": [
+    "NONE",
+    "UP_1",
+    "UP_2",
+    "UP_3",
+    "DOWN_1",
+    "DOWN_2",
+    "DOWN_3",
+    "BOTH_1",
+    "BOTH_2",
+    "BOTH_3"
+  ],
+
+  "speed": [
+    "SLOWEST",
+    "SLOWER",
+    "SLOW",
+    "NORMAL",
+    "FAST",
+    "FASTER",
+    "FASTEST",
+    "ROBOTIC"
+  ],
+
+  "lifespan": [
+    "SHORTEST",
+    "SHORTER",
+    "SHORT",
+    "SHORTENED",
+    "NORMAL",
+    "ELONGATED",
+    "LONG",
+    "LONGER",
+    "LONGEST",
+    "IMMORTAL"
+  ],
+
+  "moonPhase": [
+    "FULL",
+    "WANING_GIBBOUS",
+    "LAST_QUARTER",
+    "WANING_CRESCENT",
+    "NEW",
+    "WAXING_CRESCENT",
+    "FIRST_QUARTER",
+    "WAXING_GIBBOUS"
+  ],
+
+  "timeOfDay": ["DAY", "NIGHT"],
+  
+  "runtimeConditionType": ["BRANCH", "BEE", "MOD"]
+}
