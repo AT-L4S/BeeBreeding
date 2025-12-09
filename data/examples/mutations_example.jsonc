@@ -42,7 +42,7 @@
         "isSecret": true,
         "runtimeConditions": {
           "type": "branch_available", // | "bee_available" | "mod_available"
-          "branch": "MYBEEBRANCH", // | "bee": | "mod":
+          "branch": "MYBEEBRANCH", // | "bee": "MYMOD:BEE1" | "mod": "MYMOD"
           "available": true,
           "code_description": "EnumBeeBranches.THAUMIC.enabled()"
         }
