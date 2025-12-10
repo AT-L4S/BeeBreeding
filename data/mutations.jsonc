@@ -2071,7 +2071,7 @@
     ]
   },
   {
-    "parents": ["Forestry:Common", "Forestry:Forest"],
+    "parents": ["MagicBees:Eldritch", "MagicBees:Esoteric"],
     "children": [
       {
         "species": "MagicBees:Mysterious",
