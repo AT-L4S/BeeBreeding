@@ -3,12 +3,28 @@
  */
 import { config } from "../core/config.js";
 
-export function renderEdges(svg, links, nodes, nodeMap, nodeColors) {
+export function renderEdges(
+  svg,
+  links,
+  nodes,
+  nodeMap,
+  nodeColors,
+  layoutMode = "split"
+) {
+  console.log("renderEdges called with layoutMode:", layoutMode);
+
+  // Always render all links - hiding will be handled dynamically by the app
+  const filteredLinks = links;
+
+  console.log(
+    `Original links: ${links.length}, Filtered links: ${filteredLinks.length}, Layout mode: ${layoutMode}`
+  );
+
   // Group links by target to calculate input connection offsets
-  const linksByTarget = d3.group(links, (d) => d.target);
+  const linksByTarget = d3.group(filteredLinks, (d) => d.target);
 
   // Calculate enhanced data for links including intersection priorities
-  const linksWithData = links.map((d) => {
+  const linksWithData = filteredLinks.map((d) => {
     const source = nodeMap.get(d.source);
     const target = nodeMap.get(d.target);
     const sourceWidth = source.width || 120;

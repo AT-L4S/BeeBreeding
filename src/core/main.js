@@ -146,15 +146,29 @@ export class BeeBreedingApp {
     // Create linksByTarget map for border rendering
     this.linksByTarget = d3.group(this.links, (d) => d.target);
 
+    // Determine current layout mode
+    const layoutMode = this.useColumnLayoutForLeaves
+      ? config.layoutModes.COLUMN
+      : config.layoutModes.SPLIT;
+
     // Render edges (now nodes have their widths set)
     const edgeResult = renderEdges(
       this.g,
       this.links,
       this.nodes,
       this.nodeMap,
-      this.nodeColors
+      this.nodeColors,
+      layoutMode
     );
     this.link = edgeResult.link;
+
+    // In COLUMN layout mode, hide edges to childless nodes (unless in filtered mode)
+    if (layoutMode === config.layoutModes.COLUMN && !this.isFilteredView) {
+      this.link.style("display", (d) => {
+        const targetNode = this.nodeMap.get(d.target);
+        return targetNode.children.length > 0 ? null : "none";
+      });
+    }
 
     // Render nodes
     const nodeResult = renderNodes(
@@ -1283,6 +1297,14 @@ export class BeeBreedingApp {
 
     this.link.style("display", null).classed("highlighted faded", false);
 
+    // In COLUMN layout mode, hide edges to childless nodes
+    if (this.useColumnLayoutForLeaves) {
+      this.link.style("display", (d) => {
+        const targetNode = this.nodeMap.get(d.target);
+        return targetNode.children.length > 0 ? null : "none";
+      });
+    }
+
     // Remove outer selection borders
     this.node.selectAll(".outer-selection-border").remove();
 
@@ -1393,27 +1415,10 @@ export class BeeBreedingApp {
         : config.layoutModes.SPLIT
     );
 
-    // Update nodes immediately
-    this.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-
-    // Update links immediately
-    this.link.attr("d", (d) => {
-      const source = this.nodeMap.get(d.source);
-      const target = this.nodeMap.get(d.target);
-      const sourceWidth = source.width || 120;
-      const targetWidth = target.width || 120;
-
-      const targetY = target.y + d.targetYOffset;
-
-      // Connect to the straight sides of rounded rectangles
-      const sourceX = source.x + sourceWidth / 2;
-      const targetX = target.x - targetWidth / 2 + 3;
-      const sourceXStraight = sourceX + config.straightLength;
-      const targetXStraight = targetX - config.straightLength;
-
-      // Create path: horizontal from source -> straight diagonal -> horizontal to target
-      return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
-    });
+    // Re-render the entire visualization to update edge filtering
+    // Clear and re-render
+    this.g.selectAll("*").remove();
+    this.renderVisualization();
 
     // Recalculate zoom constraints after layout change
     this.updateZoomConstraints(this.nodes);
@@ -1541,6 +1546,44 @@ export class BeeBreedingApp {
               // Clear saved positions
               this.originalPositions.clear();
 
+              // Recalculate edge Y offsets based on RESTORED positions
+              const linksByTarget = d3.group(this.links, (l) => l.target);
+
+              linksByTarget.forEach((targetLinks, targetId) => {
+                if (targetLinks.length > 1) {
+                  // Sort by source Y position using RESTORED positions
+                  const sortedLinks = targetLinks
+                    .map((link) => {
+                      return {
+                        link,
+                        sourceY: this.nodeMap.get(link.source).y,
+                      };
+                    })
+                    .sort((a, b) => a.sourceY - b.sourceY);
+
+                  // Assign vertical offsets
+                  const spacing = config.spacing;
+                  const totalHeight = (sortedLinks.length - 1) * spacing;
+
+                  sortedLinks.forEach((item, index) => {
+                    const targetYOffset = index * spacing - totalHeight / 2;
+                    item.link.targetYOffset = targetYOffset;
+                  });
+                } else if (targetLinks.length === 1) {
+                  targetLinks[0].targetYOffset = 0;
+                }
+              });
+
+              // Update the data on the D3 selection with recalculated offsets
+              this.link.each(function (d) {
+                const matchingLink = Array.from(linksByTarget.values())
+                  .flat()
+                  .find((l) => l.source === d.source && l.target === d.target);
+                if (matchingLink && matchingLink.targetYOffset !== undefined) {
+                  d.targetYOffset = matchingLink.targetYOffset;
+                }
+              });
+
               // Show all nodes and links
               this.node
                 .style("display", null)
@@ -1549,6 +1592,14 @@ export class BeeBreedingApp {
               this.link
                 .style("display", null)
                 .classed("highlighted faded", false);
+
+              // In COLUMN layout mode, hide edges to childless nodes
+              if (this.useColumnLayoutForLeaves) {
+                this.link.style("display", (d) => {
+                  const targetNode = this.nodeMap.get(d.target);
+                  return targetNode.children.length > 0 ? null : "none";
+                });
+              }
 
               // Update positions immediately without animation
               this.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
@@ -1567,6 +1618,9 @@ export class BeeBreedingApp {
 
                 return `M${sourceX},${source.y} L${sourceXStraight},${source.y} L${targetXStraight},${targetY} L${targetX},${targetY}`;
               });
+
+              // Reset node borders AFTER offsets are recalculated
+              this.resetNodeBorders();
 
               // Re-enable layout toggle button
               const layoutButton = document.getElementById("layoutToggle");
