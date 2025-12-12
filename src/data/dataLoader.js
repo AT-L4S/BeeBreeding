@@ -8,21 +8,69 @@
  * Supports single-line comments (//) and multi-line comments
  */
 function stripJsonComments(jsonText) {
-  // Use the jsonc-parser library's stripComments function if available
-  if (window.jsoncparser && window.jsoncparser.stripComments) {
-    return window.jsoncparser.stripComments(jsonText);
+  // Try different possible global names for jsonc-parser
+  const jsoncLib = window.jsoncparser || window.jsonc || window.jsoncParser;
+  if (jsoncLib && jsoncLib.stripComments) {
+    console.log("Using jsonc-parser library for comment stripping");
+    return jsoncLib.stripComments(jsonText);
   }
 
-  // Fallback to basic regex if library not available
-  let result = jsonText.replace(/\/\*[\s\S]*?\*\//g, "");
-  result = result.replace(/([^:])\/\/.*$/gm, "$1");
-  return result;
+  console.log("Using fallback regex for comment stripping");
+  // Fallback: process line by line to properly handle comments
+  const lines = jsonText.split('\n');
+  const result = [];
+  let inMultiLineComment = false;
+
+  for (let line of lines) {
+    // Handle multi-line comments
+    if (inMultiLineComment) {
+      const endIndex = line.indexOf('*/');
+      if (endIndex !== -1) {
+        inMultiLineComment = false;
+        line = line.substring(endIndex + 2);
+      } else {
+        continue; // Skip entire line if still in multi-line comment
+      }
+    }
+
+    // Check for multi-line comment start
+    const startIndex = line.indexOf('/*');
+    if (startIndex !== -1) {
+      const endIndex = line.indexOf('*/', startIndex + 2);
+      if (endIndex !== -1) {
+        // Comment starts and ends on same line
+        line = line.substring(0, startIndex) + line.substring(endIndex + 2);
+      } else {
+        // Multi-line comment starts but doesn't end
+        line = line.substring(0, startIndex);
+        inMultiLineComment = true;
+      }
+    }
+
+    // Remove single-line comments (// to end of line)
+    // But be careful not to remove // inside strings
+    const singleCommentIndex = line.indexOf('//');
+    if (singleCommentIndex !== -1) {
+      // Simple check: if // appears before any quotes, it's likely a comment
+      const beforeComment = line.substring(0, singleCommentIndex);
+      const quoteCount = (beforeComment.match(/"/g) || []).length;
+      // If even number of quotes before //, it's outside strings
+      if (quoteCount % 2 === 0) {
+        line = beforeComment;
+      }
+    }
+
+    result.push(line);
+  }
+
+  return result.join('\n');
 }
 
 export async function loadBeeData() {
   try {
     // Determine base path based on protocol
     const basePath = window.location.protocol === "file:" ? "/data/" : "data/";
+    console.log("Loading bee data from:", basePath);
 
     // Load data from JSONC files (JSON with comments)
     const [beesResponse, breedingPairsResponse] = await Promise.all([
@@ -30,12 +78,25 @@ export async function loadBeeData() {
       fetch(`${basePath}mutations.jsonc`),
     ]);
 
+    console.log("Fetch responses:", beesResponse.status, breedingPairsResponse.status);
+
+    if (!beesResponse.ok) {
+      throw new Error(`Failed to load bees.jsonc: ${beesResponse.status} ${beesResponse.statusText}`);
+    }
+    if (!breedingPairsResponse.ok) {
+      throw new Error(`Failed to load mutations.jsonc: ${breedingPairsResponse.status} ${breedingPairsResponse.statusText}`);
+    }
+
     // Get text content and strip comments before parsing
     const beesText = await beesResponse.text();
     const breedingPairsText = await breedingPairsResponse.text();
 
+    console.log("Loaded text sizes - bees:", beesText.length, "mutations:", breedingPairsText.length);
+
     const beesData = JSON.parse(stripJsonComments(beesText));
     const breedingPairsData = JSON.parse(stripJsonComments(breedingPairsText));
+
+    console.log("Parsed data - bees:", Object.keys(beesData).length, "mutations:", breedingPairsData.length);
 
     // Convert breeding pairs to the format expected by buildBeeData
     const rawMutations = convertBreedingPairsToMutations(
@@ -63,14 +124,10 @@ function convertBreedingPairsToMutations(breedingPairs, beesData) {
 
   // Initialize all bees from beesData
   Object.entries(beesData).forEach(([beeId, beeInfo]) => {
-    const beeParts = beeId.split(":");
-    const mod = beeParts.length === 2 ? beeParts[0] : "Unknown";
-    const name = beeParts.length === 2 ? beeParts[1] : beeId;
-
     beeData[beeId] = {
       id: beeId,
-      name: name,
-      mod: mod,
+      name: beeInfo.name || beeId.split(":")[1] || beeId,
+      mod: beeInfo.mod || "Unknown",
       parentCombinations: [], // Array of parent pair arrays
       children: [],
     };
@@ -80,9 +137,8 @@ function convertBreedingPairsToMutations(breedingPairs, beesData) {
   breedingPairs.forEach((pair) => {
     const [parent1, parent2] = pair.parents;
 
-    pair.children.forEach((child) => {
-      const childId = child.species;
-
+    // Children is now an object keyed by species ID
+    Object.entries(pair.children).forEach(([childId, childData]) => {
       // Ensure child exists (it should from bees.jsonc)
       if (!beeData[childId]) {
         const childParts = childId.split(":");

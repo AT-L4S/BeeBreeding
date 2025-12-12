@@ -1,2685 +1,3221 @@
+// Shortest Breeding Paths
+// Generated from mutations.jsonc
+// Contains only the shortest breeding path to obtain each bee
+
 [
-  //   {
-  //     "parents": ["{ModName}:{BeeName}", "MyForestryAddon:MyBee1"],
-  //     "children": [
-  //       {
-  //         "species": "MyForestryAddon:MyBee2",
-  //         "chance": 0.2,
-  //         "requirements": {
-  //           "temperature": ["icy", "cold"],
-  //           "humidity": ["damp"],
-  //           "biome": ["MyColdDampBiome"],
-  //           "block": ["chisel:basalt@10"]
-  //         }
-  //       }
-  //     ]
-  //   },
   {
-    "parents": ["Forestry:Farmerly", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "Forestry:Agrarian",
-        "chance": 1
+    "parents": ["careerbees:acceleration", "magicbees:forlorn"],
+    "children": {
+      "meatballcraft:balanced": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Frugal", "Forestry:Modest"],
-    "children": [
-      {
-        "species": "Forestry:Austere",
-        "chance": 1
+    "parents": ["careerbees:acceleration", "magicbees:lordly"],
+    "children": {
+      "meatballcraft:pyramid": {
+        "chance": 0.25,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Vengeful", "Forestry:Vindictive"],
-    "children": [
-      {
-        "species": "Forestry:Avenging",
-        "chance": 1
+    "parents": ["careerbees:acceleration", "magicbees:sorcerous"],
+    "children": {
+      "meatballcraft:lordraine": {
+        "chance": 0.6,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "ExtraBees:White"],
-    "children": [
-      {
-        "species": "ExtraBees:Black",
-        "chance": 1
+    "parents": ["careerbees:armorer", "careerbees:graduate"],
+    "children": {
+      "careerbees:sharpening": {
+        "chance": 0.001
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:Forest"],
-    "children": [
-      {
-        "species": "ExtraBees:Blue",
-        "chance": 1
+    "parents": ["careerbees:armorer", "careerbees:sharpening"],
+    "children": {
+      "careerbees:repair": {
+        "chance": 0.0005
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:artist", "careerbees:phd"],
+    "children": {
+      "careerbees:rainbow": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:artist", "careerbees:smelter"],
+    "children": {
+      "careerbees:cook": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:artist", "forestry:boggy"],
+    "children": {
+      "careerbees:bensen": {
+        "chance": 0.0001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:buisnessman", "forestry:common"],
+    "children": {
+      "careerbees:junkseller": {
+        "chance": 0.004
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:clock", "careerbees:electrician"],
+    "children": {
+      "careerbees:robot": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:clock", "careerbees:engineer"],
+    "children": {
+      "careerbees:electrician": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:clock", "careerbees:repair"],
+    "children": {
+      "careerbees:energy": {
+        "chance": 0.0005
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:devil", "careerbees:police"],
+    "children": {
+      "careerbees:assassin": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:devil", "careerbees:politician"],
+    "children": {
+      "careerbees:nca": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:devil", "careerbees:rainbow"],
+    "children": {
+      "meatballcraft:pyromaniacal": {
+        "chance": 0.21,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:devil", "careerbees:thief"],
+    "children": {
+      "careerbees:politician": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:digging", "careerbees:digging.silky"],
+    "children": {
+      "careerbees:digging.fortune": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:digging", "careerbees:engineer"],
+    "children": {
+      "careerbees:digging.silky": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:doctor", "forestry:sinister"],
+    "children": {
+      "careerbees:plaguedoctor": {
+        "chance": 0.003
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:engineer", "careerbees:graduate"],
+    "children": {
+      "careerbees:digging": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:engineer", "careerbees:science"],
+    "children": {
+      "careerbees:madscientist": {
+        "chance": 0.01,
+        "requirements": [
+          {
+            "requireExplosion": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:engineer", "careerbees:smelter"],
+    "children": {
+      "careerbees:clock": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:graduate", "careerbees:graduate"],
+    "children": {
+      "careerbees:armorer": {
+        "chance": 0.001,
+        "requirements": [
+          {
+            "block": ["minecraft:anvil"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:graduate", "careerbees:lumber"],
+    "children": {
+      "careerbees:butcher": {
+        "chance": 0.005
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:graduate", "careerbees:smelter"],
+    "children": {
+      "careerbees:honeysmelter": {
+        "chance": 0.002
       },
-      {
-        "species": "ExtraBees:Growing",
-        "chance": 1
+      "careerbees:mason": {
+        "chance": 0.005
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:Tropical"],
-    "children": [
-      {
-        "species": "ExtraBees:Brown",
-        "chance": 1
+    "parents": ["careerbees:graduate", "careerbees:student"],
+    "children": {
+      "careerbees:phd": {
+        "chance": 0.003
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Forest", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "Forestry:Common",
-        "chance": 1
+    "parents": ["careerbees:graduate", "careerbees:yente"],
+    "children": {
+      "careerbees:priest": {
+        "chance": 0.002
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Common", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "Forestry:Cultivated",
-        "chance": 1
+    "parents": ["careerbees:graduate", "forestry:cultivated"],
+    "children": {
+      "careerbees:artist": {
+        "chance": 0.004
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Blue", "ExtraBees:Green"],
-    "children": [
-      {
-        "species": "ExtraBees:Cyan",
-        "chance": 1
+    "parents": ["careerbees:graduate", "forestry:forest"],
+    "children": {
+      "careerbees:lumber": {
+        "chance": 0.005
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Fiendish", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "Forestry:Demonic",
-        "chance": 1
+    "parents": ["careerbees:graduate", "forestry:meadows"],
+    "children": {
+      "careerbees:husbandry": {
+        "chance": 0.005
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "Forestry:Marshy"],
-    "children": [
-      {
-        "species": "Forestry:Derpious",
-        "chance": 1
+    "parents": ["careerbees:graduate", "forestry:modest"],
+    "children": {
+      "careerbees:smelter": {
+        "chance": 0.005
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Common", "Forestry:Cultivated"],
-    "children": [
-      {
-        "species": "Forestry:Diligent",
-        "chance": 1
+    "parents": ["careerbees:graduate", "forestry:valiant"],
+    "children": {
+      "careerbees:police": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:honeysmelter", "meatballcraft:gallifreyan"],
+    "children": {
+      "meatballcraft:honeysmeltest": {
+        "chance": 0.8,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:husbandry", "careerbees:student"],
+    "children": {
+      "careerbees:yente": {
+        "chance": 0.005
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:madscientist", "forestry:phantasmal"],
+    "children": {
+      "careerbees:quantumcharm": {
+        "chance": 0.005
       },
-      {
-        "species": "Forestry:Noble",
-        "chance": 1
+      "careerbees:quantumstrange": {
+        "chance": 0.005
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:mason", "careerbees:sharpening"],
+    "children": {
+      "careerbees:crusher": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "extrabees:blutonium"],
+    "children": {
+      "meatballcraft:tinkerest": {
+        "chance": 0.55,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "forestry:imperial"],
+    "children": {
+      "careerbees:buisnessman": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "forestry:industrious"],
+    "children": {
+      "careerbees:science": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "forestry:majestic"],
+    "children": {
+      "careerbees:doctor": {
+        "chance": 0.003
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "forestry:noble"],
+    "children": {
+      "careerbees:engineer": {
+        "chance": 0.003
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "magicbees:scholarly"],
+    "children": {
+      "meatballcraft:kurrycat": {
+        "chance": 0.69,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "magicbees:tepyro"],
+    "children": {
+      "meatballcraft:thermallyexpanded": {
+        "chance": 0.55,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:phd", "meatballcraft:bomber"],
+    "children": {
+      "meatballcraft:nucleartechnician": {
+        "chance": 0.55,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:police", "careerbees:thief"],
+    "children": {
+      "careerbees:taxcollector": {
+        "chance": 0.002
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:police", "forestry:sinister"],
+    "children": {
+      "careerbees:thief": {
+        "chance": 0.001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:quantumcharm", "careerbees:quantumstrange"],
+    "children": {
+      "careerbees:acceleration": {
+        "chance": 0.0001
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:rainbow", "extrabees:abyss"],
+    "children": {
+      "meatballcraft:luctor": {
+        "chance": 0.55,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:robot", "gendustry:lightblue"],
+    "children": {
+      "meatballcraft:chevron": {
+        "chance": 0.14,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:smelter", "forestry:demonic"],
+    "children": {
+      "careerbees:devil": {
+        "chance": 0.0005
+      }
+    }
+  },
+  {
+    "parents": ["careerbees:student", "forestry:common"],
+    "children": {
+      "careerbees:collectors": {
+        "chance": 0.005
       },
-      {
-        "species": "CareerBees:Student",
-        "chance": 1
+      "careerbees:graduate": {
+        "chance": 0.005
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Exotic", "Forestry:Tropical"],
-    "children": [
-      {
-        "species": "Forestry:Edenic",
-        "chance": 1
+    "parents": ["careerbees:student", "forestry:imperial"],
+    "children": {
+      "meatballcraft:oxygen": {
+        "chance": 0.6,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Austere", "Forestry:Tropical"],
-    "children": [
-      {
-        "species": "Forestry:Exotic",
-        "chance": 1
+    "parents": ["careerbees:thief", "magicbees:pupil"],
+    "children": {
+      "meatballcraft:baguette": {
+        "chance": 0.33,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Rural", "Forestry:Unweary"],
-    "children": [
-      {
-        "species": "Forestry:Farmerly",
-        "chance": 1
+    "parents": ["extrabees:abyss", "magicbees:savant"],
+    "children": {
+      "meatballcraft:necronomibee": {
+        "chance": 0.55,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "Forestry:Fiendish",
-        "chance": 1
+    "parents": ["extrabees:acidic", "forestry:meadows"],
+    "children": {
+      "meatballcraft:formic": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Modest", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "Forestry:Frugal",
-        "chance": 1
+    "parents": ["extrabees:alcohol", "magicbees:transmuting"],
+    "children": {
+      "meatballcraft:shadow": {
+        "chance": 0.12,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Icy", "Forestry:Wintry"],
-    "children": [
-      {
-        "species": "Forestry:Glacial",
-        "chance": 1
+    "parents": ["extrabees:ancient", "extrabees:primeval"],
+    "children": {
+      "extrabees:prehistoric": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Black", "ExtraBees:White"],
-    "children": [
-      {
-        "species": "ExtraBees:Gray",
-        "chance": 1
+    "parents": ["extrabees:ancient", "forestry:secluded"],
+    "children": {
+      "extrabees:primeval": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Blue", "ExtraBees:Yellow"],
-    "children": [
-      {
-        "species": "ExtraBees:Green",
-        "chance": 1
+    "parents": ["extrabees:arid", "extrabees:barren"],
+    "children": {
+      "extrabees:desolate": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Monastic", "Forestry:Secluded"],
-    "children": [
-      {
-        "species": "Forestry:Hermitic",
-        "chance": 1
+    "parents": ["extrabees:arid", "forestry:common"],
+    "children": {
+      "extrabees:barren": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Steadfast", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "Forestry:Heroic",
-        "chance": 1
+    "parents": ["extrabees:artic", "extrabees:ocean"],
+    "children": {
+      "extrabees:freezing": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Industrious", "Forestry:Wintry"],
-    "children": [
-      {
-        "species": "Forestry:Icy",
-        "chance": 1
+    "parents": ["extrabees:barren", "forestry:forest"],
+    "children": {
+      "extrabees:gnawing": {
+        "chance": 0.15
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Majestic", "Forestry:Noble"],
-    "children": [
-      {
-        "species": "Forestry:Imperial",
-        "chance": 1
+    "parents": ["extrabees:barren", "forestry:marshy"],
+    "children": {
+      "extrabees:decomposing": {
+        "chance": 0.15
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:Unweary"],
-    "children": [
-      {
-        "species": "Forestry:Industrious",
-        "chance": 1
+    "parents": ["extrabees:basalt", "forestry:fiendish"],
+    "children": {
+      "extrabees:tempered": {
+        "chance": 0.3,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Gray", "ExtraBees:White"],
-    "children": [
-      {
-        "species": "ExtraBees:Light Gray",
-        "chance": 1
+    "parents": ["extrabees:black", "extrabees:ocean"],
+    "children": {
+      "extrabees:ink": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Green", "ExtraBees:White"],
-    "children": [
-      {
-        "species": "ExtraBees:Lime",
-        "chance": 1
+    "parents": ["extrabees:black", "extrabees:white"],
+    "children": {
+      "extrabees:gray": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "Forestry:Noble"],
-    "children": [
-      {
-        "species": "Forestry:Majestic",
-        "chance": 1
+    "parents": ["extrabees:blue", "extrabees:green"],
+    "children": {
+      "extrabees:cyan": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Marshy", "Forestry:Noble"],
-    "children": [
-      {
-        "species": "Forestry:Miry",
-        "chance": 1
+    "parents": ["extrabees:blue", "extrabees:red"],
+    "children": {
+      "extrabees:purple": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Red", "ExtraBees:Yellow"],
-    "children": [
-      {
-        "species": "ExtraBees:Orange",
-        "chance": 1
+    "parents": ["extrabees:blue", "extrabees:white"],
+    "children": {
+      "extrabees:lightblue": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Ender", "Forestry:Spectral"],
-    "children": [
-      {
-        "species": "Forestry:Phantasmal",
-        "chance": 1
+    "parents": ["extrabees:bone", "magicbees:scholarly"],
+    "children": {
+      "meatballcraft:aedial": {
+        "chance": 0.2,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Red", "ExtraBees:White"],
-    "children": [
-      {
-        "species": "ExtraBees:Pink",
-        "chance": 1
+    "parents": ["extrabees:caustic", "extrabees:corrosive"],
+    "children": {
+      "extrabees:acidic": {
+        "chance": 0.04
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Blue", "ExtraBees:Red"],
-    "children": [
-      {
-        "species": "ExtraBees:Purple",
-        "chance": 1
+    "parents": ["extrabees:classical", "extrabees:quantum"],
+    "children": {
+      "meatballcraft:stargazer": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Common", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "ExtraBees:Red",
-        "chance": 1
+    "parents": ["extrabees:classical", "gendustry:lightblue"],
+    "children": {
+      "meatballcraft:fiotic": {
+        "chance": 0.42,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "Forestry:Rural",
-        "chance": 1
+    "parents": ["extrabees:coal", "extrabees:distilled"],
+    "children": {
+      "extrabees:creosote": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Austere", "Forestry:Monastic"],
-    "children": [
-      {
-        "species": "Forestry:Secluded",
-        "chance": 1
+    "parents": ["extrabees:copper", "extrabees:unstable"],
+    "children": {
+      "extrabees:nuclear": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "Forestry:Modest"],
-    "children": [
-      {
-        "species": "Forestry:Sinister",
-        "chance": 1
+    "parents": ["extrabees:copper", "forestry:majestic"],
+    "children": {
+      "extrabees:gold": {
+        "chance": 0.02
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Ender", "Forestry:Hermitic"],
-    "children": [
-      {
-        "species": "Forestry:Spectral",
-        "chance": 1
+    "parents": ["extrabees:corrosive", "forestry:fiendish"],
+    "children": {
+      "extrabees:caustic": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "Forestry:Unweary",
-        "chance": 1
+    "parents": ["extrabees:cyanite", "extrabees:yellorium"],
+    "children": {
+      "extrabees:blutonium": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Demonic", "Forestry:Vindictive"],
-    "children": [
-      {
-        "species": "Forestry:Vengeful",
-        "chance": 1
+    "parents": ["extrabees:darkened", "extrabees:shadow"],
+    "children": {
+      "extrabees:abyss": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Demonic", "Forestry:Monastic"],
-    "children": [
-      {
-        "species": "Forestry:Vindictive",
-        "chance": 1
+    "parents": ["extrabees:desolate", "forestry:austere"],
+    "children": {
+      "extrabees:hazardous": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:Wintry"],
-    "children": [
-      {
-        "species": "ExtraBees:White",
-        "chance": 1
+    "parents": ["extrabees:desolate", "forestry:forest"],
+    "children": {
+      "extrabees:bone": {
+        "chance": 0.15
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:desolate", "forestry:meadows"],
+    "children": {
+      "extrabees:rotten": {
+        "chance": 0.15
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:desolate", "forestry:modest"],
+    "children": {
+      "extrabees:creeper": {
+        "chance": 0.15
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:distilled", "extrabees:oil"],
+    "children": {
+      "extrabees:fuel": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:distilled", "extrabees:resin"],
+    "children": {
+      "extrabees:latex": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:energetic", "extrabees:excited"],
+    "children": {
+      "extrabees:ecstatic": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:energetic", "magicbees:savant"],
+    "children": {
+      "meatballcraft:chaosstrikez": {
+        "chance": 0.99,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:excited", "extrabees:tempered"],
+    "children": {
+      "extrabees:glowstone": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:excited", "forestry:austere"],
+    "children": {
+      "extrabees:celebratory": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:excited", "forestry:diligent"],
+    "children": {
+      "extrabees:energetic": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:glutinous", "extrabees:viscous"],
+    "children": {
+      "extrabees:sticky": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:gold", "extrabees:nuclear"],
+    "children": {
+      "extrabees:radioactive": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:gold", "extrabees:silver"],
+    "children": {
+      "extrabees:platinum": {
+        "chance": 0.02
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:gold", "magicbees:teendearing"],
+    "children": {
+      "meatballcraft:ringbearer": {
+        "chance": 0.14,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:granite", "forestry:industrious"],
+    "children": {
+      "extrabees:mineral": {
+        "chance": 0.06
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:granite", "meatballcraft:ringbearer"],
+    "children": {
+      "meatballcraft:mathias": {
+        "chance": 0.22,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:gray", "extrabees:white"],
+    "children": {
+      "extrabees:lightgray": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:greek", "extrabees:roman"],
+    "children": {
+      "extrabees:classical": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:green", "extrabees:white"],
+    "children": {
+      "extrabees:limegreen": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:growing", "extrabees:primeval"],
+    "children": {
+      "extrabees:coal": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:growing", "extrabees:sweet"],
+    "children": {
+      "extrabees:ripening": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:growing", "forestry:unweary"],
+    "children": {
+      "extrabees:thriving": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:infectious", "extrabees:malicious"],
+    "children": {
+      "extrabees:virulent": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:iron", "forestry:sinister"],
+    "children": {
+      "extrabees:pyrite": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:lapis", "extrabees:water"],
+    "children": {
+      "extrabees:sapphire": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:lapis", "forestry:cultivated"],
+    "children": {
+      "extrabees:diamond": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:lapis", "forestry:diligent"],
+    "children": {
+      "extrabees:sodalite": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:lapis", "forestry:forest"],
+    "children": {
+      "extrabees:emerald": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:lapis", "forestry:modest"],
+    "children": {
+      "extrabees:ruby": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:lead", "forestry:majestic"],
+    "children": {
+      "extrabees:silver": {
+        "chance": 0.02
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:malicious", "extrabees:viscous"],
+    "children": {
+      "extrabees:corrosive": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:malicious", "forestry:tropical"],
+    "children": {
+      "extrabees:infectious": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:marble", "extrabees:roman"],
+    "children": {
+      "extrabees:greek": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:marble", "forestry:heroic"],
+    "children": {
+      "extrabees:roman": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:mineral", "extrabees:prehistoric"],
+    "children": {
+      "extrabees:unstable": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:mineral", "extrabees:water"],
+    "children": {
+      "extrabees:lapis": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:mineral", "forestry:common"],
+    "children": {
+      "extrabees:tungstate": {
+        "chance": 0.03
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:mineral", "forestry:cultivated"],
+    "children": {
+      "extrabees:titanium": {
+        "chance": 0.03
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:mineral", "forestry:diligent"],
+    "children": {
+      "extrabees:bauxite": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:mineral", "forestry:forest"],
+    "children": {
+      "extrabees:iron": {
+        "chance": 0.05
       },
-      {
-        "species": "ExtraBees:Frigid",
-        "chance": 1
+      "extrabees:nickel": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Diligent", "Forestry:Modest"],
-    "children": [
-      {
-        "species": "ExtraBees:Yellow",
-        "chance": 1
+    "parents": ["extrabees:mineral", "forestry:marshy"],
+    "children": {
+      "extrabees:tin": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "Forestry:Cultivated"],
-    "children": [
-      {
-        "species": "CareerBees:Artistic",
-        "chance": 1
+    "parents": ["extrabees:mineral", "forestry:meadows"],
+    "children": {
+      "extrabees:lead": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Devil", "CareerBees:Police"],
-    "children": [
-      {
-        "species": "CareerBees:Assassin",
-        "chance": 1
+    "parents": ["extrabees:mineral", "forestry:modest"],
+    "children": {
+      "extrabees:copper": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:PHD", "Forestry:Imperial"],
-    "children": [
-      {
-        "species": "CareerBees:Buisness",
-        "chance": 1
+    "parents": ["extrabees:mineral", "forestry:sinister"],
+    "children": {
+      "extrabees:cinnabar": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "CareerBees:Lumber"],
-    "children": [
-      {
-        "species": "CareerBees:Butcher",
-        "chance": 1
+    "parents": ["extrabees:mineral", "forestry:tropical"],
+    "children": {
+      "extrabees:zinc": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Engineer", "CareerBees:Smelter"],
-    "children": [
-      {
-        "species": "CareerBees:Clockwork",
-        "chance": 1
+    "parents": ["extrabees:mineral", "magicbees:supernatural"],
+    "children": {
+      "meatballcraft:spoonypanda": {
+        "chance": 0.33,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Student", "Forestry:Common"],
-    "children": [
-      {
-        "species": "CareerBees:Collecting",
-        "chance": 1
+    "parents": ["extrabees:nuclear", "extrabees:yellorium"],
+    "children": {
+      "extrabees:cyanite": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:nuclear", "forestry:frugal"],
+    "children": {
+      "extrabees:yellorium": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:ocean", "extrabees:primeval"],
+    "children": {
+      "extrabees:oil": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:oil", "forestry:industrious"],
+    "children": {
+      "extrabees:distilled": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:pink", "extrabees:purple"],
+    "children": {
+      "extrabees:magenta": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:platinum", "magicbees:aeskystone"],
+    "children": {
+      "meatballcraft:buried": {
+        "chance": 0.18,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:prehistoric", "extrabees:water"],
+    "children": {
+      "meatballcraft:feesh": {
+        "chance": 0.61,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:prehistoric", "forestry:imperial"],
+    "children": {
+      "extrabees:relic": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:primeval", "forestry:miry"],
+    "children": {
+      "extrabees:resin": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:quantum", "magicbees:esoteric"],
+    "children": {
+      "meatballcraft:herblore": {
+        "chance": 0.05,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:radioactive", "magicbees:draconic"],
+    "children": {
+      "meatballcraft:connor": {
+        "chance": 0.4,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:red", "extrabees:white"],
+    "children": {
+      "extrabees:pink": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:red", "extrabees:yellow"],
+    "children": {
+      "extrabees:orange": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:relic", "forestry:ended"],
+    "children": {
+      "extrabees:jaded": {
+        "chance": 0.02,
+        "requirements": [
+          {
+            "requirePlayer": "jadedcat"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:rock", "extrabees:shadow"],
+    "children": {
+      "extrabees:darkened": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:rock", "forestry:diligent"],
+    "children": {
+      "extrabees:stone": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:rock", "forestry:sinister"],
+    "children": {
+      "extrabees:shadow": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:rock", "forestry:valiant"],
+    "children": {
+      "extrabees:black": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:spatial", "forestry:spectral"],
+    "children": {
+      "extrabees:quantum": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:stone", "forestry:unweary"],
+    "children": {
+      "extrabees:granite": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:swamp", "forestry:boggy"],
+    "children": {
+      "extrabees:boggy": {
+        "chance": 0.08
       },
-      {
-        "species": "CareerBees:Graduate",
-        "chance": 1
+      "extrabees:fungal": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Smelter", "Forestry:Demonic"],
-    "children": [
-      {
-        "species": "CareerBees:Devil",
-        "chance": 1
+    "parents": ["extrabees:sweet", "extrabees:thriving"],
+    "children": {
+      "extrabees:fruit": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:PHD", "Forestry:Majestic"],
-    "children": [
-      {
-        "species": "CareerBees:Doctor",
-        "chance": 1
+    "parents": ["extrabees:sweet", "forestry:rural"],
+    "children": {
+      "extrabees:sugar": {
+        "chance": 0.15
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Clockwork", "CareerBees:Engineer"],
-    "children": [
-      {
-        "species": "CareerBees:Electrician",
-        "chance": 1
+    "parents": ["extrabees:sweet", "meatballcraft:alchemical"],
+    "children": {
+      "meatballcraft:freeky": {
+        "chance": 0.3,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:PHD", "Forestry:Noble"],
-    "children": [
-      {
-        "species": "CareerBees:Engineer",
-        "chance": 1
+    "parents": ["extrabees:tempered", "forestry:demonic"],
+    "children": {
+      "extrabees:volcanic": {
+        "chance": 0.2,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "CareerBees:Smelter"],
-    "children": [
-      {
-        "species": "CareerBees:Honey-Smelter",
-        "chance": 1
+    "parents": ["extrabees:thriving", "forestry:industrious"],
+    "children": {
+      "extrabees:blooming": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:tin", "forestry:sinister"],
+    "children": {
+      "extrabees:sphalerite": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:unusual", "forestry:hermitic"],
+    "children": {
+      "extrabees:spatial": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:virulent", "magicbees:doctoral"],
+    "children": {
+      "meatballcraft:agricultural": {
+        "chance": 0.24,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:viscous", "forestry:exotic"],
+    "children": {
+      "extrabees:glutinous": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["extrabees:water", "forestry:diligent"],
+    "children": {
+      "extrabees:ocean": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "biome": ["OCEAN"]
+          }
+        ]
       },
-      {
-        "species": "CareerBees:Mason",
-        "chance": 1
+      "extrabees:river": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "biome": ["RIVER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "CareerBees:Husbandry",
-        "chance": 1
+    "parents": ["extrabees:water", "forestry:exotic"],
+    "children": {
+      "extrabees:viscous": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Buisness", "Forestry:Common"],
-    "children": [
-      {
-        "species": "CareerBees:Junk Seller",
-        "chance": 1
+    "parents": ["extrabees:water", "forestry:farmerly"],
+    "children": {
+      "extrabees:milk": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "Forestry:Forest"],
-    "children": [
-      {
-        "species": "CareerBees:Lumber",
-        "chance": 1
+    "parents": ["extrabees:water", "forestry:miry"],
+    "children": {
+      "extrabees:swamp": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Engineer", "CareerBees:Science"],
-    "children": [
-      {
-        "species": "CareerBees:Mad Scientist",
-        "chance": 1
+    "parents": ["extrabees:water", "forestry:valiant"],
+    "children": {
+      "extrabees:blue": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Devil", "CareerBees:Politician"],
-    "children": [
-      {
-        "species": "CareerBees:N.C.A.",
-        "chance": 1
+    "parents": ["forestry:austere", "forestry:imperial"],
+    "children": {
+      "magicbees:emerald": {
+        "chance": 0.06
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "CareerBees:Student"],
-    "children": [
-      {
-        "species": "CareerBees:PHD",
-        "chance": 1
+    "parents": ["forestry:austere", "forestry:monastic"],
+    "children": {
+      "forestry:secluded": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Doctor", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "CareerBees:Plague",
-        "chance": 1
+    "parents": ["forestry:austere", "forestry:tropical"],
+    "children": {
+      "forestry:exotic": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "CareerBees:Police",
-        "chance": 1
+    "parents": ["forestry:austere", "magicbees:gold"],
+    "children": {
+      "magicbees:diamond": {
+        "chance": 0.07
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Devil", "CareerBees:Thief"],
-    "children": [
-      {
-        "species": "CareerBees:Politician",
-        "chance": 1
+    "parents": ["forestry:austere", "magicbees:smouldering"],
+    "children": {
+      "magicbees:tedante": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Graduate", "CareerBees:Yente"],
-    "children": [
-      {
-        "species": "CareerBees:Priest",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Mad Scientist", "Forestry:Phantasmal"],
-    "children": [
-      {
-        "species": "CareerBees:Quantum Charming",
-        "chance": 1
+    "parents": ["forestry:common", "forestry:cultivated"],
+    "children": {
+      "careerbees:student": {
+        "chance": 0.01,
+        "requirements": [
+          {
+            "block": ["minecraft:bookshelf"]
+          }
+        ]
       },
-      {
-        "species": "CareerBees:Quantum Strange",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Artistic", "CareerBees:PHD"],
-    "children": [
-      {
-        "species": "CareerBees:Rainbow",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Clockwork", "CareerBees:Electrician"],
-    "children": [
-      {
-        "species": "CareerBees:Robot",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:PHD", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "CareerBees:Science",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Graduate", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "CareerBees:Smelter",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Quantum Charming", "CareerBees:Quantum Strange"],
-    "children": [
-      {
-        "species": "CareerBees:Temporal",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Police", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "CareerBees:Thief",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Husbandry", "CareerBees:Student"],
-    "children": [
-      {
-        "species": "CareerBees:Yente",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Ender", "Forestry:Secluded"],
-    "children": [
-      {
-        "species": "ExtraBees:Abnormal",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Frigid", "ExtraBees:Ocean"],
-    "children": [
-      {
-        "species": "ExtraBees:Absolute",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Darkened", "ExtraBees:Shadowed"],
-    "children": [
-      {
-        "species": "ExtraBees:Abyssal",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Caustic", "ExtraBees:Corrosive"],
-    "children": [
-      {
-        "species": "ExtraBees:Acidic",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Saffron", "MagicBees:Maroon"],
-    "children": [
-      {
-        "species": "ExtraBees:Amber",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Diligent", "Forestry:Noble"],
-    "children": [
-      {
-        "species": "ExtraBees:Ancient",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Frugal", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "ExtraBees:Arid",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Bleached", "ExtraBees:Slate"],
-    "children": [
-      {
-        "species": "ExtraBees:Ashen",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Bleached", "ExtraBees:Prussian"],
-    "children": [
-      {
-        "species": "ExtraBees:Azure",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Arid", "Forestry:Common"],
-    "children": [
-      {
-        "species": "ExtraBees:Barren",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "ExtraBees:Bauxite",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Valiant", "Forestry:Wintry"],
-    "children": [
-      {
-        "species": "ExtraBees:Bleached",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Wintry", "MagicBees:Skulking"],
-    "children": [
-      {
-        "species": "ExtraBees:Blizzy",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Thriving", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "ExtraBees:Blooming",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Cyanite", "ExtraBees:Yellorium"],
-    "children": [
-      {
-        "species": "ExtraBees:Blutonium",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Miry", "Forestry:Marshy"],
-    "children": [
-      {
-        "species": "ExtraBees:Boggy",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Water", "Forestry:Farmerly"],
-    "children": [
-      {
-        "species": "ExtraBees:Bovine",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Corrosive", "Forestry:Fiendish"],
-    "children": [
-      {
-        "species": "ExtraBees:Caustic",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Excited", "Forestry:Austere"],
-    "children": [
-      {
-        "species": "ExtraBees:Celebratory",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "ExtraBees:Cinnabar",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Greek", "ExtraBees:Roman"],
-    "children": [
-      {
-        "species": "ExtraBees:Classical",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Wintry"],
-    "children": [
-      {
-        "species": "ExtraBees:Corroded",
-        "chance": 1
+      "forestry:diligent": {
+        "chance": 0.1
       },
-      {
-        "species": "ExtraBees:Galvanized",
-        "chance": 1
+      "forestry:noble": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Malicious", "ExtraBees:Viscous"],
-    "children": [
-      {
-        "species": "ExtraBees:Corrosive",
-        "chance": 1
+    "parents": ["forestry:common", "forestry:diligent"],
+    "children": {
+      "gendustry:red": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Desolate", "Forestry:Modest"],
-    "children": [
-      {
-        "species": "ExtraBees:Creepy",
-        "chance": 1
+    "parents": ["forestry:common", "forestry:forest"],
+    "children": {
+      "forestry:cultivated": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Nuclear", "ExtraBees:Yellorium"],
-    "children": [
-      {
-        "species": "ExtraBees:Cyanite",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Water", "Forestry:Miry"],
-    "children": [
-      {
-        "species": "ExtraBees:Damp",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Rocky", "ExtraBees:Shadowed"],
-    "children": [
-      {
-        "species": "ExtraBees:Darkened",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Desolate", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "ExtraBees:Decaying",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Barren", "Forestry:Marshy"],
-    "children": [
-      {
-        "species": "ExtraBees:Decomposing",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Arid", "ExtraBees:Barren"],
-    "children": [
-      {
-        "species": "ExtraBees:Desolate",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Lapis", "Forestry:Cultivated"],
-    "children": [
-      {
-        "species": "ExtraBees:Diamond",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Oily", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "ExtraBees:Distilled",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Rocky", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Ebony",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Energetic", "ExtraBees:Excited"],
-    "children": [
-      {
-        "species": "ExtraBees:Ecstatic",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Lapis", "Forestry:Forest"],
-    "children": [
-      {
-        "species": "ExtraBees:Emerald",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Excited", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "ExtraBees:Energetic",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Austere", "MagicBees:Argentum"],
-    "children": [
-      {
-        "species": "ExtraBees:Esmeraldi",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Cultivated", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Excited",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Farmerly", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "ExtraBees:Farmed",
-        "chance": 1
+    "parents": ["forestry:common", "forestry:industrious"],
+    "children": {
+      "magicbees:iron": {
+        "chance": 0.12
       },
-      {
-        "species": "ExtraBees:Fermented",
-        "chance": 1
+      "meatballcraft:meatball": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "biome": ["Hell"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Growing", "ExtraBees:Primeval"],
-    "children": [
-      {
-        "species": "ExtraBees:Fossilised",
-        "chance": 1
+    "parents": ["forestry:common", "forestry:sinister"],
+    "children": {
+      "forestry:tricky": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "dateRange": {
+              "startMonth": 10,
+              "startDay": 15,
+              "endMonth": 11,
+              "endDay": 3
+            },
+            "isSecret": true
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Sweetened", "ExtraBees:Thriving"],
-    "children": [
-      {
-        "species": "ExtraBees:Fruity",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Indigo", "ExtraBees:Lavender"],
-    "children": [
-      {
-        "species": "ExtraBees:Fuchsia",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Boggy", "Forestry:Miry"],
-    "children": [
-      {
-        "species": "ExtraBees:Fungal",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Embittered", "Forestry:Fiendish"],
-    "children": [
-      {
-        "species": "ExtraBees:Furious",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Blizzy", "Forestry:Icy"],
-    "children": [
-      {
-        "species": "ExtraBees:Gelid",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Rusty", "Forestry:Majestic"],
-    "children": [
-      {
-        "species": "ExtraBees:Glittering",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Excited", "ExtraBees:Furious"],
-    "children": [
-      {
-        "species": "ExtraBees:Glowering",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Viscous", "Forestry:Exotic"],
-    "children": [
-      {
-        "species": "ExtraBees:Glutinous",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Marbled", "ExtraBees:Roman"],
-    "children": [
-      {
-        "species": "ExtraBees:Greek",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Desolate", "Forestry:Austere"],
-    "children": [
-      {
-        "species": "ExtraBees:Hazardous",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Cultivated"],
-    "children": [
-      {
-        "species": "ExtraBees:Impregnable",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Prussian", "MagicBees:Maroon"],
-    "children": [
-      {
-        "species": "ExtraBees:Indigo",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Malicious", "Forestry:Tropical"],
-    "children": [
-      {
-        "species": "ExtraBees:Infectious",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Common"],
-    "children": [
-      {
-        "species": "ExtraBees:Invincible",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Relic", "Forestry:Ender"],
-    "children": [
-      {
-        "species": "ExtraBees:Jaded",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "ExtraBees:Water"],
-    "children": [
-      {
-        "species": "ExtraBees:Lapis",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Bleached", "MagicBees:Maroon"],
-    "children": [
-      {
-        "species": "ExtraBees:Lavender",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "ExtraBees:Leaden",
-        "chance": 1
+    "parents": ["forestry:common", "magicbees:skulking"],
+    "children": {
+      "magicbees:beef": {
+        "chance": 0.12
       },
-      {
-        "species": "ExtraBees:Rusty",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Blue", "ExtraBees:White"],
-    "children": [
-      {
-        "species": "ExtraBees:Light Blue",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Bleached", "ExtraBees:Natural"],
-    "children": [
-      {
-        "species": "ExtraBees:Lime",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "Forestry:Forest"],
-    "children": [
-      {
-        "species": "ExtraBees:Lustered",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Blue", "ExtraBees:Pink"],
-    "children": [
-      {
-        "species": "ExtraBees:Magenta",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Sinister", "Forestry:Tropical"],
-    "children": [
-      {
-        "species": "ExtraBees:Malicious",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Tropical", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Natural",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Rusty", "ExtraBees:Unstable"],
-    "children": [
-      {
-        "species": "ExtraBees:Nuclear",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Water", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "ExtraBees:Ocean",
-        "chance": 1
+      "magicbees:chicken": {
+        "chance": 0.12
       },
-      {
-        "species": "ExtraBees:River",
-        "chance": 1
+      "magicbees:pork": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Ocean", "ExtraBees:Primeval"],
-    "children": [
-      {
-        "species": "ExtraBees:Oily",
-        "chance": 1
+    "parents": ["forestry:common", "magicbees:tin"],
+    "children": {
+      "magicbees:lead": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "runtimeConditions": [
+              {
+                "type": "BEE",
+                "target": "magicbees:tin",
+                "active": true
+              }
+            ]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Ancient", "ExtraBees:Primeval"],
-    "children": [
-      {
-        "species": "ExtraBees:Prehistoric",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:diligent"],
+    "children": {
+      "forestry:unweary": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Ancient", "Forestry:Secluded"],
-    "children": [
-      {
-        "species": "ExtraBees:Primeval",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:industrious"],
+    "children": {
+      "magicbees:aluminium": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Water", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Prussian",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:marshy"],
+    "children": {
+      "gendustry:derpious": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Rusty", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "ExtraBees:Pyrite",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:modest"],
+    "children": {
+      "forestry:sinister": {
+        "chance": 0.6
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Spatial", "Forestry:Spectral"],
-    "children": [
-      {
-        "species": "ExtraBees:Quantum",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:noble"],
+    "children": {
+      "forestry:majestic": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Glittering", "ExtraBees:Nuclear"],
-    "children": [
-      {
-        "species": "ExtraBees:Radioactive",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:sinister"],
+    "children": {
+      "forestry:fiendish": {
+        "chance": 0.4
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Prehistoric", "Forestry:Imperial"],
-    "children": [
-      {
-        "species": "ExtraBees:Relic",
-        "chance": 1
+    "parents": ["forestry:cultivated", "forestry:valiant"],
+    "children": {
+      "extrabees:excited": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Robust", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "ExtraBees:Resilient",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Growing", "ExtraBees:Sweetened"],
-    "children": [
-      {
-        "species": "ExtraBees:Ripening",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Tolerant", "Forestry:Unweary"],
-    "children": [
-      {
-        "species": "ExtraBees:Robust",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Marbled", "Forestry:Heroic"],
-    "children": [
-      {
-        "species": "ExtraBees:Roman",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Lapis", "Forestry:Modest"],
-    "children": [
-      {
-        "species": "ExtraBees:Ruby",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Meadows", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Saffron",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Lapis", "ExtraBees:Water"],
-    "children": [
-      {
-        "species": "ExtraBees:Sapphire",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Marshy", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Sepia",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Rocky", "Forestry:Sinister"],
-    "children": [
-      {
-        "species": "ExtraBees:Shadowed",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Galvanized", "Forestry:Majestic"],
-    "children": [
-      {
-        "species": "ExtraBees:Shining",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Desolate", "Forestry:Forest"],
-    "children": [
-      {
-        "species": "ExtraBees:Skeletal",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Bleached", "ExtraBees:Ebony"],
-    "children": [
-      {
-        "species": "ExtraBees:Slate",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Lapis", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "ExtraBees:Sodalite",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Boggy", "ExtraBees:Damp"],
-    "children": [
-      {
-        "species": "ExtraBees:Sodden",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Abnormal", "Forestry:Hermitic"],
-    "children": [
-      {
-        "species": "ExtraBees:Spatial",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Sinister", "MagicBees:Tarnished"],
-    "children": [
-      {
-        "species": "ExtraBees:Sphalerite",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Ebony", "ExtraBees:Ocean"],
-    "children": [
-      {
-        "species": "ExtraBees:Stained",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Glutinous", "ExtraBees:Viscous"],
-    "children": [
-      {
-        "species": "ExtraBees:Sticky",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Sweetened", "Forestry:Rural"],
-    "children": [
-      {
-        "species": "ExtraBees:Sugary",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Diligent", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "ExtraBees:Sweetened",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Distilled", "ExtraBees:Fossilised"],
-    "children": [
-      {
-        "species": "ExtraBees:Tarry",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Growing", "Forestry:Unweary"],
-    "children": [
-      {
-        "species": "ExtraBees:Thriving",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Rocky", "Forestry:Diligent"],
-    "children": [
-      {
-        "species": "ExtraBees:Tolerant",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Natural", "ExtraBees:Prussian"],
-    "children": [
-      {
-        "species": "ExtraBees:Turquoise",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Prehistoric", "ExtraBees:Resilient"],
-    "children": [
-      {
-        "species": "ExtraBees:Unstable",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Glittering", "ExtraBees:Shining"],
-    "children": [
-      {
-        "species": "ExtraBees:Valuable",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Infectious", "ExtraBees:Malicious"],
-    "children": [
-      {
-        "species": "ExtraBees:Virulent",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Water", "Forestry:Exotic"],
-    "children": [
-      {
-        "species": "ExtraBees:Viscous",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Furious", "Forestry:Demonic"],
-    "children": [
-      {
-        "species": "ExtraBees:Volcanic",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Nuclear", "Forestry:Frugal"],
-    "children": [
-      {
-        "species": "ExtraBees:Yellorium",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Nameless", "MagicBees:Oblivion"],
-    "children": [
-      {
-        "species": "MagicBees:Abandoned",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Cultivated", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "MagicBees:Aluminum",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Shocking", "MagicBees:Windy"],
-    "children": [
-      {
-        "species": "MagicBees:Amped",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Rural", "MagicBees:Cuprum"],
-    "children": [
-      {
-        "species": "MagicBees:Apatine",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Esoteric", "MagicBees:Mysterious"],
-    "children": [
-      {
-        "species": "MagicBees:Arcane",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Imperial", "Forestry:Modest"],
-    "children": [
-      {
-        "species": "MagicBees:Argentum",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Imperial", "MagicBees:Plumbum"],
-    "children": [
-      {
-        "species": "MagicBees:Auric",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Attuned", "MagicBees:Ethereal"],
-    "children": [
-      {
-        "species": "MagicBees:Aware",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Skulking", "MagicBees:Windy"],
-    "children": [
-      {
-        "species": "MagicBees:Batty",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Common", "MagicBees:Skulking"],
-    "children": [
-      {
-        "species": "MagicBees:Beefy",
-        "chance": 1
+    "parents": ["forestry:cultivated", "magicbees:eldritch"],
+    "children": {
+      "magicbees:charmed": {
+        "chance": 0.1
       },
-      {
-        "species": "MagicBees:Porcine",
-        "chance": 1
+      "magicbees:esoteric": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["forestry:demonic", "forestry:monastic"],
+    "children": {
+      "forestry:vindictive": {
+        "chance": 0.04,
+        "requirements": [
+          {
+            "isSecret": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:demonic", "forestry:vindictive"],
+    "children": {
+      "forestry:vengeful": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "isSecret": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:demonic", "magicbees:spiteful"],
+    "children": {
+      "magicbees:withering": {
+        "chance": 0.06
+      }
+    }
+  },
+  {
+    "parents": ["forestry:diligent", "forestry:forest"],
+    "children": {
+      "extrabees:growing": {
+        "chance": 0.1
       },
-      {
-        "species": "MagicBees:Poultry",
-        "chance": 1
+      "gendustry:blue": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Mysterious", "MagicBees:Skulking"],
-    "children": [
-      {
-        "species": "MagicBees:Big Bad",
-        "chance": 1
+    "parents": ["forestry:diligent", "forestry:meadows"],
+    "children": {
+      "forestry:rural": {
+        "chance": 0.12,
+        "requirements": [
+          {
+            "biome": ["PLAINS"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Earthen", "MagicBees:Botanic"],
-    "children": [
-      {
-        "species": "MagicBees:Blossom",
-        "chance": 1
+    "parents": ["forestry:diligent", "forestry:modest"],
+    "children": {
+      "gendustry:yellow": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Cuprum", "MagicBees:Stannum"],
-    "children": [
-      {
-        "species": "MagicBees:Bronzed",
-        "chance": 1
+    "parents": ["forestry:diligent", "forestry:noble"],
+    "children": {
+      "extrabees:ancient": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Spiteful", "MagicBees:Stannum"],
-    "children": [
-      {
-        "species": "MagicBees:Carbon",
-        "chance": 1
+    "parents": ["forestry:diligent", "forestry:tropical"],
+    "children": {
+      "gendustry:brown": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Poultry", "MagicBees:Spidery"],
-    "children": [
-      {
-        "species": "MagicBees:Catty",
-        "chance": 1
+    "parents": ["forestry:diligent", "forestry:unweary"],
+    "children": {
+      "forestry:industrious": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "MagicBees:Eldritch"],
-    "children": [
-      {
-        "species": "MagicBees:Charmed",
-        "chance": 1
+    "parents": ["forestry:diligent", "forestry:valiant"],
+    "children": {
+      "extrabees:sweet": {
+        "chance": 0.15
+      }
+    }
+  },
+  {
+    "parents": ["forestry:diligent", "forestry:wintry"],
+    "children": {
+      "extrabees:artic": {
+        "chance": 0.1
       },
-      {
-        "species": "MagicBees:Esoteric",
-        "chance": 1
+      "gendustry:white": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Imperial", "MagicBees:Infernal"],
-    "children": [
-      {
-        "species": "MagicBees:Cobalt",
-        "chance": 1
+    "parents": ["forestry:diligent", "gendustry:white"],
+    "children": {
+      "gendustry:black": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Mutable", "MagicBees:Unusual"],
-    "children": [
-      {
-        "species": "MagicBees:Crumbling",
-        "chance": 1
+    "parents": ["forestry:ended", "forestry:hermitic"],
+    "children": {
+      "forestry:spectral": {
+        "chance": 0.04
+      }
+    }
+  },
+  {
+    "parents": ["forestry:ended", "forestry:secluded"],
+    "children": {
+      "extrabees:unusual": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:ended", "forestry:spectral"],
+    "children": {
+      "forestry:phantasmal": {
+        "chance": 0.02
+      }
+    }
+  },
+  {
+    "parents": ["forestry:exotic", "forestry:tropical"],
+    "children": {
+      "forestry:edenic": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:farmerly", "forestry:industrious"],
+    "children": {
+      "forestry:agrarian": {
+        "chance": 0.06,
+        "requirements": [
+          {
+            "biome": ["PLAINS"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:farmerly", "forestry:meadows"],
+    "children": {
+      "extrabees:alcohol": {
+        "chance": 0.1
       },
-      {
-        "species": "MagicBees:Transmuting",
-        "chance": 1
+      "extrabees:farm": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Industrious", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "MagicBees:Cuprum",
-        "chance": 1
+    "parents": ["forestry:farmerly", "forestry:tropical"],
+    "children": {
+      "extrabees:coffee": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Austere", "MagicBees:Smouldering"],
-    "children": [
-      {
-        "species": "MagicBees:Dante",
-        "chance": 1
+    "parents": ["forestry:fiendish", "forestry:sinister"],
+    "children": {
+      "forestry:demonic": {
+        "chance": 0.25,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Industrious", "MagicBees:Spiteful"],
-    "children": [
-      {
-        "species": "MagicBees:Destabilized",
-        "chance": 1
+    "parents": ["forestry:fiendish", "gendustry:red"],
+    "children": {
+      "meatballcraft:uselessforce": {
+        "chance": 0.25,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Austere", "MagicBees:Auric"],
-    "children": [
-      {
-        "species": "MagicBees:Diamandi",
-        "chance": 1
+    "parents": ["forestry:forest", "forestry:frugal"],
+    "children": {
+      "extrabees:arid": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Lordly", "MagicBees:Timely"],
-    "children": [
-      {
-        "species": "MagicBees:Doctoral",
-        "chance": 1
+    "parents": ["forestry:forest", "forestry:industrious"],
+    "children": {
+      "magicbees:tin": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Imperial", "MagicBees:Abandoned"],
-    "children": [
-      {
-        "species": "MagicBees:Draconic",
-        "chance": 1
+    "parents": ["forestry:forest", "forestry:marshy"],
+    "children": {
+      "forestry:common": {
+        "chance": 0.15
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Somnolent", "MagicBees:Windy"],
-    "children": [
-      {
-        "species": "MagicBees:Dreaming",
-        "chance": 1
+    "parents": ["forestry:forest", "forestry:meadows"],
+    "children": {
+      "forestry:leporine": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "dateRange": {
+              "startMonth": 3,
+              "startDay": 29,
+              "endMonth": 4,
+              "endDay": 15
+            },
+            "isSecret": true
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Ethereal", "MagicBees:Supernatural"],
-    "children": [
-      {
-        "species": "MagicBees:Earthen",
-        "chance": 1
+    "parents": ["forestry:forest", "forestry:valiant"],
+    "children": {
+      "extrabees:red": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:forest", "forestry:wintry"],
+    "children": {
+      "forestry:merry": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "dateRange": {
+              "startMonth": 12,
+              "startDay": 21,
+              "endMonth": 12,
+              "endDay": 27
+            },
+            "isSecret": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:forest", "magicbees:eldritch"],
+    "children": {
+      "magicbees:botrooted": {
+        "chance": 0.15
+      }
+    }
+  },
+  {
+    "parents": ["forestry:frugal", "forestry:modest"],
+    "children": {
+      "forestry:austere": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "temperature": ["HOT", "HELLISH"],
+            "humidity": ["ARID"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:icy", "forestry:wintry"],
+    "children": {
+      "forestry:glacial": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "temperature": ["ICY", "COLD"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:icy", "magicbees:teblizzy"],
+    "children": {
+      "magicbees:tegelid": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:imperial", "forestry:modest"],
+    "children": {
+      "magicbees:silver": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:imperial", "magicbees:abandoned"],
+    "children": {
+      "magicbees:draconic": {
+        "chance": 0.06
+      }
+    }
+  },
+  {
+    "parents": ["forestry:imperial", "magicbees:ethereal"],
+    "children": {
+      "magicbees:timely": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:imperial", "magicbees:infernal"],
+    "children": {
+      "magicbees:cobalt": {
+        "chance": 0.11
       },
-      {
-        "species": "MagicBees:Firey",
-        "chance": 1
+      "magicbees:osmium": {
+        "chance": 0.11,
+        "requirements": [
+          {
+            "runtimeConditions": [
+              {
+                "type": "BEE",
+                "target": "magicbees:silver",
+                "active": false
+              },
+              {
+                "type": "BEE",
+                "target": "magicbees:cobalt",
+                "active": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:imperial", "magicbees:lead"],
+    "children": {
+      "magicbees:gold": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "runtimeConditions": {
+              "type": "BEE",
+              "target": "magicbees:lead",
+              "active": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:imperial", "magicbees:timely"],
+    "children": {
+      "magicbees:lordly": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:industrious", "forestry:meadows"],
+    "children": {
+      "magicbees:copper": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["forestry:industrious", "forestry:wintry"],
+    "children": {
+      "forestry:icy": {
+        "chance": 0.12,
+        "requirements": [
+          {
+            "temperature": ["ICY", "COLD"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:industrious", "magicbees:infernal"],
+    "children": {
+      "magicbees:ardite": {
+        "chance": 0.09
+      }
+    }
+  },
+  {
+    "parents": ["forestry:industrious", "magicbees:spiteful"],
+    "children": {
+      "magicbees:tedestabilized": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["forestry:majestic", "forestry:noble"],
+    "children": {
+      "forestry:imperial": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:marshy", "forestry:miry"],
+    "children": {
+      "forestry:boggy": {
+        "chance": 0.09,
+        "requirements": [
+          {
+            "temperature": ["WARM"],
+            "humidity": ["DAMP"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:marshy", "forestry:noble"],
+    "children": {
+      "forestry:miry": {
+        "chance": 0.15,
+        "requirements": [
+          {
+            "temperature": ["WARM"],
+            "humidity": ["DAMP"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:marshy", "forestry:valiant"],
+    "children": {
+      "extrabees:brown": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:meadows", "forestry:valiant"],
+    "children": {
+      "extrabees:yellow": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:meadows", "forestry:wintry"],
+    "children": {
+      "forestry:tipsy": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "dateRange": {
+              "startMonth": 12,
+              "startDay": 27,
+              "endMonth": 1,
+              "endDay": 2
+            },
+            "isSecret": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:modest", "forestry:sinister"],
+    "children": {
+      "forestry:frugal": {
+        "chance": 0.16,
+        "requirements": [
+          {
+            "temperature": ["HOT", "HELLISH"],
+            "humidity": ["ARID"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:modest", "magicbees:eldritch"],
+    "children": {
+      "magicbees:skulking": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["forestry:monastic", "forestry:noble"],
+    "children": {
+      "extrabees:mystical": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:monastic", "forestry:secluded"],
+    "children": {
+      "forestry:hermitic": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["forestry:monastic", "magicbees:arcane"],
+    "children": {
+      "magicbees:pupil": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["forestry:phantasmal", "magicbees:emerald"],
+    "children": {
+      "meatballcraft:nerdyspider": {
+        "chance": 0.42,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:rural", "forestry:unweary"],
+    "children": {
+      "forestry:farmerly": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "biome": ["PLAINS"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:rural", "magicbees:copper"],
+    "children": {
+      "magicbees:apatite": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["forestry:sinister", "forestry:tropical"],
+    "children": {
+      "extrabees:malicious": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["forestry:spectral", "magicbees:teendearing"],
+    "children": {
+      "meatballcraft:heraldry": {
+        "chance": 0.44,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:steadfast", "forestry:valiant"],
+    "children": {
+      "forestry:heroic": {
+        "chance": 0.06,
+        "requirements": [
+          {
+            "biome": ["FOREST"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["forestry:tropical", "forestry:valiant"],
+    "children": {
+      "extrabees:green": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:tropical", "magicbees:skulking"],
+    "children": {
+      "magicbees:spidery": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["forestry:valiant", "forestry:wintry"],
+    "children": {
+      "extrabees:white": {
+        "chance": 0.05
+      }
+    }
+  },
+  {
+    "parents": ["forestry:vengeful", "forestry:vindictive"],
+    "children": {
+      "forestry:avenging": {
+        "chance": 0.04
+      }
+    }
+  },
+  {
+    "parents": ["forestry:wintry", "magicbees:skulking"],
+    "children": {
+      "magicbees:teblizzy": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:black", "gendustry:white"],
+    "children": {
+      "gendustry:gray": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:black", "magicbees:firey"],
+    "children": {
+      "meatballcraft:sandman": {
+        "chance": 0.44,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:blue", "gendustry:green"],
+    "children": {
+      "gendustry:cyan": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:blue", "gendustry:pink"],
+    "children": {
+      "gendustry:magenta": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:blue", "gendustry:red"],
+    "children": {
+      "gendustry:purple": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:blue", "gendustry:white"],
+    "children": {
+      "gendustry:lightblue": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:blue", "gendustry:yellow"],
+    "children": {
+      "gendustry:green": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:gray", "gendustry:white"],
+    "children": {
+      "gendustry:silver": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:green", "gendustry:white"],
+    "children": {
+      "gendustry:lime": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:red", "gendustry:white"],
+    "children": {
+      "gendustry:pink": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:red", "gendustry:yellow"],
+    "children": {
+      "gendustry:orange": {
+        "chance": 0.1
+      }
+    }
+  },
+  {
+    "parents": ["gendustry:white", "magicbees:teshocking"],
+    "children": {
+      "meatballcraft:restlessclam": {
+        "chance": 0.24,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:abandoned", "magicbees:nameless"],
+    "children": {
+      "magicbees:forlorn": {
+        "chance": 0.06
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:aeskystone", "magicbees:silicon"],
+    "children": {
+      "magicbees:certus": {
+        "chance": 0.17,
+        "requirements": [
+          {
+            "runtimeConditions": [
+              {
+                "type": "BEE",
+                "target": "magicbees:silicon",
+                "active": true
+              },
+              {
+                "type": "BEE",
+                "target": "magicbees:aeskystone",
+                "active": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:arcane", "magicbees:ethereal"],
+    "children": {
+      "magicbees:tcorder": {
+        "chance": 0.08
       },
-      {
-        "species": "MagicBees:Watery",
-        "chance": 1
+      "meatballcraft:alchemical": {
+        "chance": 0.2,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:arcane", "magicbees:pupil"],
+    "children": {
+      "magicbees:scholarly": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:arcane", "magicbees:supernatural"],
+    "children": {
+      "magicbees:ethereal": {
+        "chance": 0.07
       },
-      {
-        "species": "MagicBees:Windy",
-        "chance": 1
+      "magicbees:tcentropy": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Cultivated", "MagicBees:Mystical"],
-    "children": [
-      {
-        "species": "MagicBees:Eldritch",
-        "chance": 1
+    "parents": ["magicbees:arcane", "meatballcraft:radiant"],
+    "children": {
+      "meatballcraft:serenading": {
+        "chance": 0.55,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Argentum", "MagicBees:Auric"],
-    "children": [
-      {
-        "species": "MagicBees:Electrum",
-        "chance": 1
+    "parents": ["magicbees:ardite", "magicbees:cobalt"],
+    "children": {
+      "magicbees:manyullyn": {
+        "chance": 0.09
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Charmed", "MagicBees:Eldritch"],
-    "children": [
-      {
-        "species": "MagicBees:Enchanted",
-        "chance": 1
+    "parents": ["magicbees:attuned", "magicbees:aware"],
+    "children": {
+      "magicbees:spirit": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Carbon", "MagicBees:Winsome"],
-    "children": [
-      {
-        "species": "MagicBees:Endearing",
-        "chance": 1
+    "parents": ["magicbees:attuned", "magicbees:ethereal"],
+    "children": {
+      "magicbees:aware": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Arcane", "MagicBees:Supernatural"],
-    "children": [
-      {
-        "species": "MagicBees:Ethereal",
-        "chance": 1
+    "parents": ["magicbees:attuned", "magicbees:tcvis"],
+    "children": {
+      "magicbees:tcrejuvenating": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Common", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "MagicBees:Ferrous",
-        "chance": 1
+    "parents": ["magicbees:aware", "magicbees:spirit"],
+    "children": {
+      "magicbees:soul": {
+        "chance": 0.07
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:batty", "magicbees:ethereal"],
+    "children": {
+      "magicbees:ghastly": {
+        "chance": 0.09
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:beef", "magicbees:sheepish"],
+    "children": {
+      "magicbees:horse": {
+        "chance": 0.12,
+        "requirements": [
+          {
+            "biome": ["PLAINS"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:bigbad", "magicbees:tctaint"],
+    "children": {
+      "magicbees:tchungry": {
+        "chance": 0.15
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:botblossom", "magicbees:botbotanic"],
+    "children": {
+      "magicbees:botfloral": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:botbotanic", "magicbees:earthy"],
+    "children": {
+      "magicbees:botblossom": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:botrooted", "magicbees:watery"],
+    "children": {
+      "magicbees:botsomnolent": {
+        "chance": 0.16
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:botsomnolent", "magicbees:windy"],
+    "children": {
+      "magicbees:botdreaming": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:charmed", "magicbees:eldritch"],
+    "children": {
+      "magicbees:enchanted": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:charmed", "magicbees:enchanted"],
+    "children": {
+      "magicbees:supernatural": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:chicken", "magicbees:spidery"],
+    "children": {
+      "magicbees:catty": {
+        "chance": 0.15,
+        "requirements": [
+          {
+            "biome": ["JUNGLE"]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:copper", "magicbees:tin"],
+    "children": {
+      "magicbees:bronze": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:earthy", "magicbees:earthy"],
+    "children": {
+      "magicbees:tcearth": {
+        "chance": 0.08
+      }
+    }
+  },
+  {
+    "parents": ["magicbees:earthy", "magicbees:iron"],
+    "children": {
+      "magicbees:fluix": {
+        "chance": 0.17,
+        "requirements": [
+          {
+            "runtimeConditions": [
+              {
+                "type": "BEE",
+                "target": "magicbees:aeskystone",
+                "active": false
+              },
+              {
+                "type": "BEE",
+                "target": "magicbees:certus",
+                "active": false
+              },
+              {
+                "type": "BEE",
+                "target": "magicbees:silicon",
+                "active": false
+              }
+            ]
+          }
+        ]
       },
-      {
-        "species": "MeatballCraft:Meatball",
-        "chance": 1
+      "magicbees:silicon": {
+        "chance": 0.17,
+        "requirements": [
+          {
+            "runtimeConditions": [
+              {
+                "type": "BEE",
+                "target": "magicbees:aeskystone",
+                "active": false
+              }
+            ]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Blossom", "MagicBees:Botanic"],
-    "children": [
-      {
-        "species": "MagicBees:Floral",
-        "chance": 1
+    "parents": ["magicbees:earthy", "magicbees:smouldering"],
+    "children": {
+      "magicbees:tegrounded": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Destabilized", "MagicBees:Electrum"],
-    "children": [
-      {
-        "species": "MagicBees:Fluxed",
-        "chance": 1
+    "parents": ["magicbees:earthy", "magicbees:tegrounded"],
+    "children": {
+      "magicbees:terocking": {
+        "chance": 0.09
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Abandoned", "MagicBees:Nameless"],
-    "children": [
-      {
-        "species": "MagicBees:Forlorn",
-        "chance": 1
+    "parents": ["magicbees:earthy", "magicbees:windy"],
+    "children": {
+      "magicbees:aeskystone": {
+        "chance": 0.2
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Earthen", "MagicBees:Smouldering"],
-    "children": [
-      {
-        "species": "MagicBees:Grounded",
-        "chance": 1
+    "parents": ["magicbees:eldritch", "magicbees:esoteric"],
+    "children": {
+      "magicbees:mysterious": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Eldritch", "MagicBees:Infernal"],
-    "children": [
-      {
-        "species": "MagicBees:Hateful",
-        "chance": 1
+    "parents": ["magicbees:eldritch", "magicbees:infernal"],
+    "children": {
+      "magicbees:hateful": {
+        "chance": 0.09,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Ferrous", "MagicBees:Nickel"],
-    "children": [
-      {
-        "species": "MagicBees:Invar",
-        "chance": 1
+    "parents": ["magicbees:eldritch", "magicbees:unusual"],
+    "children": {
+      "magicbees:mutable": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Mutable", "MagicBees:Mystical"],
-    "children": [
-      {
-        "species": "MagicBees:Invisible",
-        "chance": 1
+    "parents": ["magicbees:electrum", "magicbees:tedestabilized"],
+    "children": {
+      "magicbees:rsafluxed": {
+        "chance": 0.1,
+        "requirements": [
+          {
+            "block": ["blockElectrumFlux"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Imperial", "MagicBees:Timely"],
-    "children": [
-      {
-        "species": "MagicBees:Lordly",
-        "chance": 1
+    "parents": ["magicbees:esoteric", "magicbees:iron"],
+    "children": {
+      "magicbees:nickel": {
+        "chance": 0.14
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Infernal", "MagicBees:Smouldering"],
-    "children": [
-      {
-        "species": "MagicBees:Lux",
-        "chance": 1
+    "parents": ["magicbees:esoteric", "magicbees:mysterious"],
+    "children": {
+      "magicbees:arcane": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Ardite", "MagicBees:Cobalt"],
-    "children": [
-      {
-        "species": "MagicBees:Manyullyn",
-        "chance": 1
+    "parents": ["magicbees:ethereal", "magicbees:ghastly"],
+    "children": {
+      "magicbees:tcwispy": {
+        "chance": 0.09,
+        "requirements": [
+          {
+            "moonPhase": ["WANING_CRESCENT", "WAXING_CRESCENT"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Forest", "Forestry:Valiant"],
-    "children": [
-      {
-        "species": "MagicBees:Maroon",
-        "chance": 1
+    "parents": ["magicbees:ethereal", "magicbees:infernal"],
+    "children": {
+      "magicbees:tcvis": {
+        "chance": 0.09,
+        "requirements": [
+          {
+            "moonPhase": ["WAXING_HALF", "WANING_HALF"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Eldritch", "MagicBees:Unusual"],
-    "children": [
-      {
-        "species": "MagicBees:Mutable",
-        "chance": 1
+    "parents": ["magicbees:ethereal", "magicbees:oblivion"],
+    "children": {
+      "magicbees:nameless": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Eldritch", "MagicBees:Esoteric"],
-    "children": [
-      {
-        "species": "MagicBees:Mysterious",
-        "chance": 1
+    "parents": ["magicbees:ethereal", "magicbees:supernatural"],
+    "children": {
+      "magicbees:earthy": {
+        "chance": 0.14
+      },
+      "magicbees:firey": {
+        "chance": 0.14
+      },
+      "magicbees:watery": {
+        "chance": 0.14
+      },
+      "magicbees:windy": {
+        "chance": 0.14,
+        "requirements": [
+          {
+            "block": ["treeLeaves"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Monastic", "Forestry:Noble"],
-    "children": [
-      {
-        "species": "MagicBees:Mystical",
-        "chance": 1
+    "parents": ["magicbees:firey", "magicbees:firey"],
+    "children": {
+      "magicbees:tcfire": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Ethereal", "MagicBees:Oblivion"],
-    "children": [
-      {
-        "species": "MagicBees:Nameless",
-        "chance": 1
+    "parents": ["magicbees:ghastly", "magicbees:hateful"],
+    "children": {
+      "magicbees:smouldering": {
+        "chance": 0.07,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Beefy", "MagicBees:Sheepish"],
-    "children": [
-      {
-        "species": "MagicBees:Neighsayer",
-        "chance": 1
+    "parents": ["magicbees:gold", "magicbees:silver"],
+    "children": {
+      "magicbees:electrum": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Esoteric", "MagicBees:Ferrous"],
-    "children": [
-      {
-        "species": "MagicBees:Nickel",
-        "chance": 1
+    "parents": ["magicbees:hateful", "magicbees:infernal"],
+    "children": {
+      "magicbees:spiteful": {
+        "chance": 0.07,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Argentum", "MagicBees:Cobalt"],
-    "children": [
-      {
-        "species": "MagicBees:Osmium",
-        "chance": 1
+    "parents": ["magicbees:infernal", "magicbees:smouldering"],
+    "children": {
+      "magicbees:telux": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Invar", "MagicBees:Nickel"],
-    "children": [
-      {
-        "species": "MagicBees:Platinum",
-        "chance": 1
+    "parents": ["magicbees:invar", "magicbees:nickel"],
+    "children": {
+      "magicbees:platinum": {
+        "chance": 0.1
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Common", "MagicBees:Stannum"],
-    "children": [
-      {
-        "species": "MagicBees:Plumbum",
-        "chance": 1
+    "parents": ["magicbees:iron", "magicbees:nickel"],
+    "children": {
+      "magicbees:invar": {
+        "chance": 0.14
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Monastic", "MagicBees:Arcane"],
-    "children": [
-      {
-        "species": "MagicBees:Pupil",
-        "chance": 1
+    "parents": ["magicbees:iron", "magicbees:tctaint"],
+    "children": {
+      "magicbees:tcvoid": {
+        "chance": 0.04,
+        "requirements": [
+          {
+            "biome": ["MAGICAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Carbon", "MagicBees:Dante"],
-    "children": [
-      {
-        "species": "MagicBees:Pyro",
-        "chance": 1
+    "parents": ["magicbees:lordly", "magicbees:timely"],
+    "children": {
+      "magicbees:doctoral": {
+        "chance": 0.07
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Earthen", "MagicBees:Grounded"],
-    "children": [
-      {
-        "species": "MagicBees:Rockin'",
-        "chance": 1
+    "parents": ["magicbees:mutable", "magicbees:mystical"],
+    "children": {
+      "magicbees:invisible": {
+        "chance": 0.15
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Forest", "MagicBees:Eldritch"],
-    "children": [
-      {
-        "species": "MagicBees:Rooted",
-        "chance": 1
+    "parents": ["magicbees:mutable", "magicbees:unusual"],
+    "children": {
+      "magicbees:crumbling": {
+        "chance": 0.09
+      },
+      "magicbees:transmuting": {
+        "chance": 0.09
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Pupil", "MagicBees:Scholarly"],
-    "children": [
-      {
-        "species": "MagicBees:Savant",
-        "chance": 1
+    "parents": ["magicbees:mysterious", "magicbees:skulking"],
+    "children": {
+      "magicbees:bigbad": {
+        "chance": 0.07
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Arcane", "MagicBees:Pupil"],
-    "children": [
-      {
-        "species": "MagicBees:Scholarly",
-        "chance": 1
+    "parents": ["magicbees:nameless", "magicbees:oblivion"],
+    "children": {
+      "magicbees:abandoned": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Porcine", "MagicBees:Skulking"],
-    "children": [
-      {
-        "species": "MagicBees:Sheepish",
-        "chance": 1
+    "parents": ["magicbees:oblivion", "magicbees:platinum"],
+    "children": {
+      "magicbees:tewinsome": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Smouldering", "MagicBees:Windy"],
-    "children": [
-      {
-        "species": "MagicBees:Shocking",
-        "chance": 1
+    "parents": ["magicbees:pork", "magicbees:skulking"],
+    "children": {
+      "magicbees:sheepish": {
+        "chance": 0.13,
+        "requirements": [
+          {
+            "biome": ["PLAINS"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Earthen", "MagicBees:Windy"],
-    "children": [
-      {
-        "species": "MagicBees:Skystone",
-        "chance": 1
+    "parents": ["magicbees:pupil", "magicbees:scholarly"],
+    "children": {
+      "magicbees:savant": {
+        "chance": 0.06
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Rooted", "MagicBees:Watery"],
-    "children": [
-      {
-        "species": "MagicBees:Somnolent",
-        "chance": 1
+    "parents": ["magicbees:skulking", "magicbees:windy"],
+    "children": {
+      "magicbees:batty": {
+        "chance": 0.09
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Aware", "MagicBees:Spirit"],
-    "children": [
-      {
-        "species": "MagicBees:Soul",
-        "chance": 1
+    "parents": ["magicbees:smouldering", "magicbees:windy"],
+    "children": {
+      "magicbees:teshocking": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Aware", "MagicBees:Ethereal"],
-    "children": [
-      {
-        "species": "MagicBees:Spirit",
-        "chance": 1
+    "parents": ["magicbees:spiteful", "magicbees:tin"],
+    "children": {
+      "magicbees:tecoal": {
+        "chance": 0.12
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Hateful", "MagicBees:Infernal"],
-    "children": [
-      {
-        "species": "MagicBees:Spiteful",
-        "chance": 1
+    "parents": ["magicbees:tcempowering", "magicbees:tcrejuvenating"],
+    "children": {
+      "magicbees:tcnexus": {
+        "chance": 0.09,
+        "requirements": [
+          {
+            "biome": ["MAGICAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Forest", "Forestry:Industrious"],
-    "children": [
-      {
-        "species": "MagicBees:Stannum",
-        "chance": 1
+    "parents": ["magicbees:tcempowering", "magicbees:transmuting"],
+    "children": {
+      "magicbees:tctaint": {
+        "chance": 0.11
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Charmed", "MagicBees:Enchanted"],
-    "children": [
-      {
-        "species": "MagicBees:Supernatural",
-        "chance": 1
+    "parents": ["magicbees:tcrejuvenating", "magicbees:tcvis"],
+    "children": {
+      "magicbees:tcempowering": {
+        "chance": 0.05
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Resilient", "Forestry:Marshy"],
-    "children": [
-      {
-        "species": "MagicBees:Tarnished",
-        "chance": 1
+    "parents": ["magicbees:tcrejuvenating", "magicbees:transmuting"],
+    "children": {
+      "magicbees:tcpure": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "biome": ["MAGICAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Imperial", "MagicBees:Ethereal"],
-    "children": [
-      {
-        "species": "MagicBees:Timely",
-        "chance": 1
+    "parents": ["magicbees:tecoal", "magicbees:tedante"],
+    "children": {
+      "magicbees:tepyro": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "biome": ["NETHER"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["MagicBees:Oblivion", "MagicBees:Platinum"],
-    "children": [
-      {
-        "species": "MagicBees:Winsome",
-        "chance": 1
+    "parents": ["magicbees:tecoal", "magicbees:tewinsome"],
+    "children": {
+      "magicbees:teendearing": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "block": ["blockEnderium"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["Forestry:Demonic", "MagicBees:Spiteful"],
-    "children": [
-      {
-        "species": "MagicBees:Withering",
-        "chance": 1
+    "parents": ["magicbees:teshocking", "magicbees:windy"],
+    "children": {
+      "magicbees:teamped": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Skeletal", "MagicBees:Scholarly"],
-    "children": [
-      {
-        "species": "MeatballCraft:Aedial",
-        "chance": 1
+    "parents": ["magicbees:watery", "magicbees:watery"],
+    "children": {
+      "magicbees:tcwater": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Virulent", "MagicBees:Doctoral"],
-    "children": [
-      {
-        "species": "MeatballCraft:Agricultural",
-        "chance": 1
+    "parents": ["magicbees:windy", "magicbees:windy"],
+    "children": {
+      "magicbees:tcair": {
+        "chance": 0.08
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Thief", "MagicBees:Pupil"],
-    "children": [
-      {
-        "species": "MeatballCraft:Baguette",
-        "chance": 1
+    "parents": [
+      "meatballcraft:apothecary",
+      "meatballcraft:universalconstellation"
+    ],
+    "children": {
+      "meatballcraft:ascendant": {
+        "chance": 0.8,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Temporal", "MagicBees:Forlorn"],
-    "children": [
-      {
-        "species": "MeatballCraft:Balanced",
-        "chance": 1
+    "parents": ["meatballcraft:armored", "meatballcraft:radiant"],
+    "children": {
+      "meatballcraft:experienced": {
+        "chance": 0.15,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Valuable", "MagicBees:Skystone"],
-    "children": [
-      {
-        "species": "MeatballCraft:Buried",
-        "chance": 1
+    "parents": ["meatballcraft:chevron", "meatballcraft:ringbearer"],
+    "children": {
+      "meatballcraft:controller": {
+        "chance": 0.36,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Energetic", "MagicBees:Savant"],
-    "children": [
-      {
-        "species": "MeatballCraft:ChaosStrikez",
-        "chance": 1
+    "parents": ["meatballcraft:crepuscular", "meatballcraft:deeplearner"],
+    "children": {
+      "meatballcraft:isekai": {
+        "chance": 0.25,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["CareerBees:Robot", "ExtraBees:Light Blue"],
-    "children": [
-      {
-        "species": "MeatballCraft:Chevron",
-        "chance": 1
+    "parents": ["meatballcraft:deeplearner", "meatballcraft:oxygen"],
+    "children": {
+      "meatballcraft:helium": {
+        "chance": 0.36,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
+    }
   },
   {
-    "parents": ["ExtraBees:Radioactive", "MagicBees:Draconic"],
-    "children": [
-      {
-        "species": "MeatballCraft:Connor",
-        "chance": 1
+    "parents": ["meatballcraft:helium", "meatballcraft:oxygen"],
+    "children": {
+      "meatballcraft:fluorine": {
+        "chance": 0.36,
+        "requirements": [
+          {
+            "temperature": ["NORMAL"]
+          }
+        ]
       }
-    ]
-  },
-  {
-    "parents": ["MeatballCraft:Chevron", "MeatballCraft:Ringbearer"],
-    "children": [
-      {
-        "species": "MeatballCraft:Controller",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MeatballCraft:High-Pitched", "MeatballCraft:Hyperventilating"],
-    "children": [
-      {
-        "species": "MeatballCraft:Dentist",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Arcane", "MagicBees:Ethereal"],
-    "children": [
-      {
-        "species": "MeatballCraft:EMBee",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Armorer", "MeatballCraft:Radiant"],
-    "children": [
-      {
-        "species": "MeatballCraft:Experienced",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Classical", "ExtraBees:Light Blue"],
-    "children": [
-      {
-        "species": "MeatballCraft:Fios",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Acidic", "Forestry:Meadows"],
-    "children": [
-      {
-        "species": "MeatballCraft:Formic",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Sweetened", "MeatballCraft:EMBee"],
-    "children": [
-      {
-        "species": "MeatballCraft:Freeky",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Spectral", "MagicBees:Endearing"],
-    "children": [
-      {
-        "species": "MeatballCraft:Heraldry",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Quantum", "MagicBees:Esoteric"],
-    "children": [
-      {
-        "species": "MeatballCraft:Herblore",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MeatballCraft:Deep Learner", "MeatballCraft:Hyperventilating"],
-    "children": [
-      {
-        "species": "MeatballCraft:High-Pitched",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Student", "Forestry:Imperial"],
-    "children": [
-      {
-        "species": "MeatballCraft:Hyperventilating",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MeatballCraft:Crepuscular", "MeatballCraft:Deep Learner"],
-    "children": [
-      {
-        "species": "MeatballCraft:Isekai",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:PHD", "MagicBees:Scholarly"],
-    "children": [
-      {
-        "species": "MeatballCraft:KurryCat",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Temporal", "MagicBees:Sorcerous"],
-    "children": [
-      {
-        "species": "MeatballCraft:LordRaine",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Rainbow", "ExtraBees:Abyssal"],
-    "children": [
-      {
-        "species": "MeatballCraft:Luctor",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Robust", "MeatballCraft:Ringbearer"],
-    "children": [
-      {
-        "species": "MeatballCraft:Mathias",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Abyssal", "MagicBees:Savant"],
-    "children": [
-      {
-        "species": "MeatballCraft:Necronomibee",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Esmeraldi", "Forestry:Phantasmal"],
-    "children": [
-      {
-        "species": "MeatballCraft:NerdySpider",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:PHD", "MeatballCraft:Bomber"],
-    "children": [
-      {
-        "species": "MeatballCraft:Nuclear Technician",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Temporal", "MagicBees:Lordly"],
-    "children": [
-      {
-        "species": "MeatballCraft:Pyramid",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:Devil", "CareerBees:Rainbow"],
-    "children": [
-      {
-        "species": "MeatballCraft:Pyromaniacal",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:White", "MagicBees:Shocking"],
-    "children": [
-      {
-        "species": "MeatballCraft:RestlessClam",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Glittering", "MagicBees:Endearing"],
-    "children": [
-      {
-        "species": "MeatballCraft:Ringbearer",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Black", "MagicBees:Firey"],
-    "children": [
-      {
-        "species": "MeatballCraft:Sandman366",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Arcane", "MeatballCraft:Radiant"],
-    "children": [
-      {
-        "species": "MeatballCraft:Serenading",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Fermented", "MagicBees:Transmuting"],
-    "children": [
-      {
-        "species": "MeatballCraft:Shadow46x2",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Resilient", "MagicBees:Supernatural"],
-    "children": [
-      {
-        "species": "MeatballCraft:SpoonyPanda",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Prehistoric", "ExtraBees:Water"],
-    "children": [
-      {
-        "species": "MeatballCraft:StaffiX",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["ExtraBees:Classical", "ExtraBees:Quantum"],
-    "children": [
-      {
-        "species": "MeatballCraft:Stargazer",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:PHD", "MagicBees:Pyro"],
-    "children": [
-      {
-        "species": "MeatballCraft:Thermally Expanded",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["CareerBees:PHD", "ExtraBees:Blutonium"],
-    "children": [
-      {
-        "species": "MeatballCraft:Tinkerest",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["Forestry:Fiendish", "ExtraBees:Red"],
-    "children": [
-      {
-        "species": "MeatballCraft:UselessForce",
-        "chance": 1
-      }
-    ]
-  },
-  {
-    "parents": ["MagicBees:Skulking", "MagicBees:Pupil"],
-    "children": [
-      {
-        "species": "MagicBees:Brainy",
-        "chance": 1
-      }
-    ]
+    }
   }
 ]
