@@ -1,0 +1,31 @@
+// COMBS.JSONC
+// Combs with the bees that produce them + what items they produce
+
+{
+  "examplemod:example_comb": {
+    "name": "Example Comb",
+
+    "producers": [
+      {
+        "bee": "examplemod:bee1",
+        "chance": 0.4
+      },
+      {
+        "bee": "examplemod:bee2",
+        "chance": 0.99,
+        "isSpecialty": true
+      }
+    ],
+
+    "processing": [
+      {
+        "product": "examplemod:example_honey_drop",
+        "chance": 0.4
+      },
+      {
+        "product": "forestry:honey_drop",
+        "chance": 0.3
+      }
+    ]
+  }
+}

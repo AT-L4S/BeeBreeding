@@ -1,0 +1,70 @@
+// MUTATIONS.JSONC - Mutation/Breeding Relationships Format (Option D)
+// Array of parent pairs with offspring species grouped by name
+// Each offspring has a default chance and an optional array of requirements
+// Empty requirements arrays are omitted
+
+[
+  {
+    "parents": ["minimalexample:parent1", "minimalexample:parent2"],
+    "children": {
+      "minimalexample:offspring": {
+        "chance": 0.15
+        // No requirements - unconditional mutation at default chance
+      }
+    }
+  },
+
+  {
+    "parents": ["completeexample:parent1", "completeexample:parent2"],
+    "children": {
+      "completeexample:offspring1": {
+        "chance": 0.25,
+        "requirements": [
+          {
+            "temperature": ["NORMAL", "HOT"],
+            "humidity": ["NORMAL", "ARID"],
+            "timeOfDay": "NIGHT",
+            "biome": ["FOREST", "PLAINS", "DESERT"],
+            "block": ["minecraft:water"],
+            "moonPhase": ["FULL", "WANING_GIBBOUS"],
+            "thaumcraftVis": 1000,
+            "requirePlayer": ["Notch"],
+            "dateRange": {
+              "startMonth": 10,
+              "startDay": 15,
+              "endMonth": 11,
+              "endDay": 3
+            },
+            "requireExplosion": true
+          }
+        ]
+      },
+      "completeexample:offspring2": {
+        "chance": 0.08,
+        "requirements": [
+          {
+            "isSecret": true,
+            "runtimeConditions": [
+              {
+                "type": "BRANCH", // | "BEE" | "MOD"
+                "target": "MyBeeBranch", // | "mymod:bee1" | "MyMod"
+                "active": true
+              }
+            ]
+          },
+          {
+            "chance": 0.12, // Override default chance for this mutation path
+            "biome": ["DESERT"],
+            "runtimeConditions": [
+              {
+                "type": "MOD",
+                "target": "SomeOtherMod",
+                "active": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+]
