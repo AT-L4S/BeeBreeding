@@ -1689,6 +1689,14 @@
     }
   },
   {
+    "parents": ["forestry:cultivated", "magicbees:attuned"],
+    "children": {
+      "magicbees:eldritch": {
+        "chance": 0.12
+      }
+    }
+  },
+  {
     "parents": ["forestry:cultivated", "magicbees:eldritch"],
     "children": {
       "magicbees:charmed": {

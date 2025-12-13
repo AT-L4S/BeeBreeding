@@ -1,9 +1,28 @@
-[
-  //   {
-  //     "name": "forestry:honeyComb",
-  //     "processing": [
-  //       {"product": "forestry:honeyDrop", "chance": 0.8},
-  //       {"product": "forestry:beeswax", "chance": 0.2}
-  //     ]
-  //   }
-]
+// Honeycomb Data
+// Generated from mod source files
+// Do not edit manually - regenerate using scripts/build.js
+
+{
+  "HoneyComb:necronomicomb": {
+    "name": "HoneyComb:necronomicomb",
+    "producers": [
+      {
+        "bee": "meatballcraft:necronomibee",
+        "chance": 0.9
+      },
+      {
+        "bee": "meatballcraft:necronomibee",
+        "chance": 0.99
+      }
+    ]
+  },
+  "I:forestry:bee_combs@3": {
+    "name": "I:forestry:bee combs@3",
+    "producers": [
+      {
+        "bee": "gendustry:derpious",
+        "chance": 0.15
+      }
+    ]
+  }
+}
