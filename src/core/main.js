@@ -811,11 +811,16 @@ export class BeeBreedingApp {
     // Reset all node borders to their default colors
     this.resetNodeBorders();
 
-    // Restore proper stacking order: ensure ALL nodes are above ALL links
-    const app = this;
-    this.node.each(function () {
-      app.g.node().appendChild(this);
-    });
+    // Restore proper stacking order: ensure link group is below node group
+    const linkGroup = this.g.select(".links");
+    const nodeGroup = this.g.select(".nodes");
+
+    if (linkGroup.node() && nodeGroup.node()) {
+      // Move link group to be first child (bottom of stack)
+      this.g.node().insertBefore(linkGroup.node(), this.g.node().firstChild);
+      // Node group should already be on top, but ensure it
+      this.g.node().appendChild(nodeGroup.node());
+    }
 
     document.getElementById("infoPanel").style.display = "none";
   }
@@ -1329,6 +1334,17 @@ export class BeeBreedingApp {
     // Reset node borders AFTER positions and offsets are recalculated
     this.resetNodeBorders();
 
+    // Restore proper stacking order: ensure link group is below node group
+    const linkGroup = this.g.select(".links");
+    const nodeGroup = this.g.select(".nodes");
+
+    if (linkGroup.node() && nodeGroup.node()) {
+      // Move link group to be first child (bottom of stack)
+      this.g.node().insertBefore(linkGroup.node(), this.g.node().firstChild);
+      // Node group should already be on top, but ensure it
+      this.g.node().appendChild(nodeGroup.node());
+    }
+
     document.getElementById("infoPanel").style.display = "none";
 
     // Recalculate zoom constraints for all nodes
@@ -1621,6 +1637,17 @@ export class BeeBreedingApp {
 
               // Reset node borders AFTER offsets are recalculated
               this.resetNodeBorders();
+              
+              // Restore proper stacking order: ensure link group is below node group
+              const linkGroup = this.g.select(".links");
+              const nodeGroup = this.g.select(".nodes");
+
+              if (linkGroup.node() && nodeGroup.node()) {
+                // Move link group to be first child (bottom of stack)
+                this.g.node().insertBefore(linkGroup.node(), this.g.node().firstChild);
+                // Node group should already be on top, but ensure it
+                this.g.node().appendChild(nodeGroup.node());
+              }
 
               // Re-enable layout toggle button
               const layoutButton = document.getElementById("layoutToggle");
