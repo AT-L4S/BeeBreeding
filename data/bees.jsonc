@@ -1,31 +1,8 @@
 // Bee Species Data
 // Generated from mod source files
+// Do not edit manually - regenerate using scripts/build.js
 
 {
-  "careerbees:acceleration": {
-    "mod": "careerbees",
-    "name": "Acceleration",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "careerbees:tempus:fugit",
-    "binomial": "acceleration",
-    "dominant": false,
-    "colors": {
-      "primary": "#8C3228",
-      "secondary": "#8C3228"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "careerbees:armorer": {
     "mod": "careerbees",
     "name": "Armorer",
@@ -52,7 +29,7 @@
   },
   "careerbees:artist": {
     "mod": "careerbees",
-    "name": "Artist",
+    "name": "Artistic",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -124,7 +101,7 @@
   },
   "careerbees:buisnessman": {
     "mod": "careerbees",
-    "name": "Buisnessman",
+    "name": "Buisness",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -170,9 +147,33 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "careerbees:cook": {
+    "mod": "careerbees",
+    "name": "Chef",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "careerbees:cook:cookus",
+    "binomial": "cook",
+    "dominant": false,
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#FFFFFF"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "careerbees:clock": {
     "mod": "careerbees",
-    "name": "Clock",
+    "name": "Clockwork",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -196,7 +197,7 @@
   },
   "careerbees:collectors": {
     "mod": "careerbees",
-    "name": "Collectors",
+    "name": "Collecting",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -214,54 +215,6 @@
     "colors": {
       "primary": "#C53C3C",
       "secondary": "#C53C3C"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "careerbees:cook": {
-    "mod": "careerbees",
-    "name": "Cook",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "careerbees:cook:cookus",
-    "binomial": "cook",
-    "dominant": false,
-    "colors": {
-      "primary": "#FFFFFF",
-      "secondary": "#FFFFFF"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "careerbees:crusher": {
-    "mod": "careerbees",
-    "name": "Crusher",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "careerbees:crusher:crusher",
-    "binomial": "crusher",
-    "dominant": false,
-    "colors": {
-      "primary": "#787878",
-      "secondary": "#787878"
     },
     "hasEffect": false,
     "isSecret": false
@@ -286,30 +239,6 @@
     "colors": {
       "primary": "#4C0000",
       "secondary": "#4C0000"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "careerbees:digging": {
-    "mod": "careerbees",
-    "name": "Digging",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "careerbees:digging:diggicus",
-    "binomial": "digging",
-    "dominant": false,
-    "colors": {
-      "primary": "#DE7A14",
-      "secondary": "#DE7A14"
     },
     "hasEffect": false,
     "isSecret": false
@@ -626,9 +555,33 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "careerbees:digging": {
+    "mod": "careerbees",
+    "name": "Miner",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "careerbees:digging:diggicus",
+    "binomial": "digging",
+    "dominant": false,
+    "colors": {
+      "primary": "#DE7A14",
+      "secondary": "#DE7A14"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "careerbees:nca": {
     "mod": "careerbees",
-    "name": "Nca",
+    "name": "N.C.A.",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -650,9 +603,33 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "careerbees:crusher": {
+    "mod": "careerbees",
+    "name": "Ore Crusher",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "careerbees:crusher:crusher",
+    "binomial": "crusher",
+    "dominant": false,
+    "colors": {
+      "primary": "#787878",
+      "secondary": "#787878"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "careerbees:phd": {
     "mod": "careerbees",
-    "name": "Phd",
+    "name": "PHD",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -676,7 +653,7 @@
   },
   "careerbees:plaguedoctor": {
     "mod": "careerbees",
-    "name": "Plaguedoctor",
+    "name": "Plague",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -1034,6 +1011,30 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "careerbees:acceleration": {
+    "mod": "careerbees",
+    "name": "Temporal",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "careerbees:tempus:fugit",
+    "binomial": "acceleration",
+    "dominant": false,
+    "colors": {
+      "primary": "#8C3228",
+      "secondary": "#8C3228"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "careerbees:thief": {
     "mod": "careerbees",
     "name": "Thief",
@@ -1082,9 +1083,71 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:unusual": {
+    "mod": "ExtraBees",
+    "name": "Abnormal",
+    "idealTemperature": "COLD",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "QUARTZ",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:quantum",
+    "binomial": "daniella",
+    "dominant": true,
+    "colors": {
+      "primary": "#59A4BA",
+      "secondary": "#BAA2EB"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:freezing": {
+    "mod": "ExtraBees",
+    "name": "Absolute",
+    "idealTemperature": "ICY",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "FROZEN",
+        "chance": 0.2
+      },
+      {
+        "item": "GLACIAL",
+        "chance": 0.1
+      }
+    ],
+    "branch": "extrabees:frozen",
+    "binomial": "glacia",
+    "dominant": true,
+    "colors": {
+      "primary": "#7BE3E3",
+      "secondary": "#DAF5F3"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:abyss": {
     "mod": "ExtraBees",
-    "name": "Abyss",
+    "name": "Abyssal",
     "idealTemperature": "HELLISH",
     "idealHumidity": "ARID",
     "temperatureTolerance": "",
@@ -1144,9 +1207,9 @@
     "hasEffect": true,
     "isSecret": false
   },
-  "extrabees:alcohol": {
+  "extrabees:orange": {
     "mod": "ExtraBees",
-    "name": "Alcohol",
+    "name": "Amber",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -1159,20 +1222,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "WHEATEN",
-        "chance": 0.3
+        "item": "HONEY",
+        "chance": 0.75
       },
       {
-        "item": "ALCOHOL",
-        "chance": 0.1
+        "item": "ORANGE",
+        "chance": 0.25
       }
     ],
-    "branch": "extrabees:farming",
-    "binomial": "vinum",
-    "dominant": false,
+    "branch": "extrabees:secondary",
+    "binomial": "flammeus",
+    "dominant": true,
     "colors": {
-      "primary": "#E88A61",
-      "secondary": "#FFDC16"
+      "primary": "#FF9D00",
+      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -1235,10 +1298,10 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:artic": {
+  "extrabees:lightgray": {
     "mod": "ExtraBees",
-    "name": "Artic",
-    "idealTemperature": "ICY",
+    "name": "Ashen",
+    "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
     "humidityTolerance": "",
@@ -1250,16 +1313,53 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "FROZEN",
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "LIGHTGRAY",
         "chance": 0.25
       }
     ],
-    "branch": "extrabees:frozen",
-    "binomial": "artica",
+    "branch": "extrabees:tertiary",
+    "binomial": "canus",
     "dominant": true,
     "colors": {
-      "primary": "#ADE0E0",
-      "secondary": "#DAF5F3"
+      "primary": "#C9C9C9",
+      "secondary": "#8CFF00"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:lightblue": {
+    "mod": "ExtraBees",
+    "name": "Azure",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "LIGHTBLUE",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:secondary",
+    "binomial": "aqua",
+    "dominant": true,
+    "colors": {
+      "primary": "#009DFF",
+      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -1293,35 +1393,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:basalt": {
-    "mod": "ExtraBees",
-    "name": "Basalt",
-    "idealTemperature": "HELLISH",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "SIMMERING",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:volcanic",
-    "binomial": "aceri",
-    "dominant": true,
-    "colors": {
-      "primary": "#8C6969",
-      "secondary": "#9A2323"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:bauxite": {
     "mod": "ExtraBees",
     "name": "Bauxite",
@@ -1346,9 +1417,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:black": {
+  "extrabees:white": {
     "mod": "ExtraBees",
-    "name": "Black",
+    "name": "Bleached",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -1365,15 +1436,15 @@
         "chance": 0.75
       },
       {
-        "item": "BLACK",
+        "item": "WHITE",
         "chance": 0.25
       }
     ],
     "branch": "extrabees:primary",
-    "binomial": "niger",
+    "binomial": "albus",
     "dominant": true,
     "colors": {
-      "primary": "#575757",
+      "primary": "#FFFFFF",
       "secondary": "#8CFF00"
     },
     "hasEffect": false,
@@ -1404,39 +1475,6 @@
     "colors": {
       "primary": "#0ABF34",
       "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:blue": {
-    "mod": "ExtraBees",
-    "name": "Blue",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "BLUE",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:primary",
-    "binomial": "caeruleus",
-    "dominant": true,
-    "colors": {
-      "primary": "#0022FF",
-      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -1474,9 +1512,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:boggy": {
+  "extrabees:milk": {
     "mod": "ExtraBees",
-    "name": "Boggy",
+    "name": "Bovine",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -1489,56 +1527,27 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "MOSSY",
+        "item": "WHEATEN",
         "chance": 0.3
+      },
+      {
+        "item": "MILK",
+        "chance": 0.1
       }
     ],
-    "branch": "extrabees:boggy",
-    "binomial": "lama",
-    "dominant": false,
+    "branch": "extrabees:farming",
+    "binomial": "lacteus",
+    "dominant": true,
     "colors": {
-      "primary": "#785C29",
+      "primary": "#E3E8E8",
       "secondary": "#FFDC16"
     },
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:bone": {
+  "extrabees:coffee": {
     "mod": "ExtraBees",
-    "name": "Bone",
-    "idealTemperature": "HOT",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "BARREN",
-        "chance": 0.3
-      },
-      {
-        "item": "BONE",
-        "chance": 0.1
-      }
-    ],
-    "branch": "extrabees:hostile",
-    "binomial": "os",
-    "dominant": true,
-    "colors": {
-      "primary": "#E9EDE8",
-      "secondary": "#CBE374"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:brown": {
-    "mod": "ExtraBees",
-    "name": "Brown",
+    "name": "Caffeinated",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -1551,20 +1560,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "HONEY",
-        "chance": 0.75
+        "item": "WHEATEN",
+        "chance": 0.3
       },
       {
-        "item": "BROWN",
-        "chance": 0.25
+        "item": "COFFEE",
+        "chance": 0.08
       }
     ],
-    "branch": "extrabees:primary",
-    "binomial": "fuscus",
+    "branch": "extrabees:farming",
+    "binomial": "arabica",
     "dominant": true,
     "colors": {
-      "primary": "#5C350F",
-      "secondary": "#8CFF00"
+      "primary": "#8C5E30",
+      "secondary": "#FFDC16"
     },
     "hasEffect": false,
     "isSecret": false
@@ -1683,75 +1692,9 @@
     "hasEffect": true,
     "isSecret": false
   },
-  "extrabees:coal": {
-    "mod": "ExtraBees",
-    "name": "Coal",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "OLD",
-        "chance": 0.2
-      },
-      {
-        "item": "COAL",
-        "chance": 0.08
-      }
-    ],
-    "branch": "extrabees:fossilized",
-    "binomial": "carbo",
-    "dominant": true,
-    "colors": {
-      "primary": "#7A7648",
-      "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:coffee": {
-    "mod": "ExtraBees",
-    "name": "Coffee",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "WHEATEN",
-        "chance": 0.3
-      },
-      {
-        "item": "COFFEE",
-        "chance": 0.08
-      }
-    ],
-    "branch": "extrabees:farming",
-    "binomial": "arabica",
-    "dominant": true,
-    "colors": {
-      "primary": "#8C5E30",
-      "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:copper": {
     "mod": "ExtraBees",
-    "name": "Copper",
+    "name": "Corroded",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -1813,7 +1756,7 @@
   },
   "extrabees:creeper": {
     "mod": "ExtraBees",
-    "name": "Creeper",
+    "name": "Creepy",
     "idealTemperature": "HOT",
     "idealHumidity": "ARID",
     "temperatureTolerance": "",
@@ -1840,72 +1783,6 @@
     "colors": {
       "primary": "#2CE615",
       "secondary": "#CBE374"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:creosote": {
-    "mod": "ExtraBees",
-    "name": "Creosote",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "COAL",
-        "chance": 0.1
-      },
-      {
-        "item": "CREOSOTE",
-        "chance": 0.07
-      }
-    ],
-    "branch": "extrabees:refined",
-    "binomial": "creosota",
-    "dominant": true,
-    "colors": {
-      "primary": "#979E13",
-      "secondary": "#FFDC16"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "extrabees:cyan": {
-    "mod": "ExtraBees",
-    "name": "Cyan",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "CYAN",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:secondary",
-    "binomial": "cyana",
-    "dominant": true,
-    "colors": {
-      "primary": "#00FFE5",
-      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -1943,6 +1820,35 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:swamp": {
+    "mod": "ExtraBees",
+    "name": "Damp",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "DAMP",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "MOSSY",
+        "chance": 0.3
+      }
+    ],
+    "branch": "extrabees:boggy",
+    "binomial": "paludis",
+    "dominant": true,
+    "colors": {
+      "primary": "#356933",
+      "secondary": "#FFDC16"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:darkened": {
     "mod": "ExtraBees",
     "name": "Darkened",
@@ -1968,6 +1874,39 @@
     "colors": {
       "primary": "#332E33",
       "secondary": "#333333"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:rotten": {
+    "mod": "ExtraBees",
+    "name": "Decaying",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "BARREN",
+        "chance": 0.3
+      },
+      {
+        "item": "ROTTEN",
+        "chance": 0.1
+      }
+    ],
+    "branch": "extrabees:hostile",
+    "binomial": "caries",
+    "dominant": true,
+    "colors": {
+      "primary": "#BFE0B6",
+      "secondary": "#CBE374"
     },
     "hasEffect": false,
     "isSecret": false
@@ -2096,6 +2035,39 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:black": {
+    "mod": "ExtraBees",
+    "name": "Ebony",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "BLACK",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:primary",
+    "binomial": "niger",
+    "dominant": true,
+    "colors": {
+      "primary": "#575757",
+      "secondary": "#8CFF00"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:ecstatic": {
     "mod": "ExtraBees",
     "name": "Ecstatic",
@@ -2127,6 +2099,68 @@
       "secondary": "#FFDC16"
     },
     "hasEffect": true,
+    "isSecret": false
+  },
+  "extrabees:latex": {
+    "mod": "ExtraBees",
+    "name": "Elastic",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "RESIN",
+        "chance": 0.1
+      },
+      {
+        "item": "LATEX",
+        "chance": 0.05
+      }
+    ],
+    "branch": "extrabees:refined",
+    "binomial": "latex",
+    "dominant": true,
+    "colors": {
+      "primary": "#494A3E",
+      "secondary": "#FFDC16"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
+  "extrabees:basalt": {
+    "mod": "ExtraBees",
+    "name": "Embittered",
+    "idealTemperature": "HELLISH",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "SIMMERING",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:volcanic",
+    "binomial": "aceri",
+    "dominant": true,
+    "colors": {
+      "primary": "#8C6969",
+      "secondary": "#9A2323"
+    },
+    "hasEffect": false,
     "isSecret": false
   },
   "extrabees:emerald": {
@@ -2222,7 +2256,7 @@
   },
   "extrabees:farm": {
     "mod": "ExtraBees",
-    "name": "Farm",
+    "name": "Farmed",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2253,9 +2287,75 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:freezing": {
+  "extrabees:alcohol": {
     "mod": "ExtraBees",
-    "name": "Freezing",
+    "name": "Fermented",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "WHEATEN",
+        "chance": 0.3
+      },
+      {
+        "item": "ALCOHOL",
+        "chance": 0.1
+      }
+    ],
+    "branch": "extrabees:farming",
+    "binomial": "vinum",
+    "dominant": false,
+    "colors": {
+      "primary": "#E88A61",
+      "secondary": "#FFDC16"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:coal": {
+    "mod": "ExtraBees",
+    "name": "Fossilised",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "OLD",
+        "chance": 0.2
+      },
+      {
+        "item": "COAL",
+        "chance": 0.08
+      }
+    ],
+    "branch": "extrabees:fossilized",
+    "binomial": "carbo",
+    "dominant": true,
+    "colors": {
+      "primary": "#7A7648",
+      "secondary": "#FFDC16"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:artic": {
+    "mod": "ExtraBees",
+    "name": "Frigid",
     "idealTemperature": "ICY",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2269,18 +2369,14 @@
     "products": [
       {
         "item": "FROZEN",
-        "chance": 0.2
-      },
-      {
-        "item": "GLACIAL",
-        "chance": 0.1
+        "chance": 0.25
       }
     ],
     "branch": "extrabees:frozen",
-    "binomial": "glacia",
+    "binomial": "artica",
     "dominant": true,
     "colors": {
-      "primary": "#7BE3E3",
+      "primary": "#ADE0E0",
       "secondary": "#DAF5F3"
     },
     "hasEffect": false,
@@ -2288,7 +2384,7 @@
   },
   "extrabees:fruit": {
     "mod": "ExtraBees",
-    "name": "Fruit",
+    "name": "Fruity",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2319,9 +2415,9 @@
     "hasEffect": true,
     "isSecret": false
   },
-  "extrabees:fuel": {
+  "extrabees:magenta": {
     "mod": "ExtraBees",
-    "name": "Fuel",
+    "name": "Fuchsia",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2334,22 +2430,22 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "OIL",
-        "chance": 0.1
+        "item": "HONEY",
+        "chance": 0.75
       },
       {
-        "item": "FUEL",
-        "chance": 0.04
+        "item": "MAGENTA",
+        "chance": 0.25
       }
     ],
-    "branch": "extrabees:refined",
-    "binomial": "refina",
+    "branch": "extrabees:tertiary",
+    "binomial": "fuchsia",
     "dominant": true,
     "colors": {
-      "primary": "#FFC003",
-      "secondary": "#FFDC16"
+      "primary": "#FF00CC",
+      "secondary": "#8CFF00"
     },
-    "hasEffect": true,
+    "hasEffect": false,
     "isSecret": false
   },
   "extrabees:fungal": {
@@ -2385,9 +2481,104 @@
     "hasEffect": true,
     "isSecret": false
   },
+  "extrabees:tempered": {
+    "mod": "ExtraBees",
+    "name": "Furious",
+    "idealTemperature": "HELLISH",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "SIMMERING",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:volcanic",
+    "binomial": "iratus",
+    "dominant": false,
+    "colors": {
+      "primary": "#8A4848",
+      "secondary": "#9A2323"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:zinc": {
+    "mod": "ExtraBees",
+    "name": "Galvanized",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "STONE",
+        "chance": 0.2
+      },
+      {
+        "item": "ZINC",
+        "chance": 0.05
+      }
+    ],
+    "branch": "extrabees:metallic2",
+    "binomial": "spelta",
+    "dominant": true,
+    "colors": {
+      "primary": "#EDEBFF",
+      "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:gold": {
+    "mod": "ExtraBees",
+    "name": "Glittering",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "STONE",
+        "chance": 0.2
+      },
+      {
+        "item": "GOLD",
+        "chance": 0.02
+      }
+    ],
+    "branch": "extrabees:precious",
+    "binomial": "aureus",
+    "dominant": true,
+    "colors": {
+      "primary": "#E6CC0B",
+      "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:glowstone": {
     "mod": "ExtraBees",
-    "name": "Glowstone",
+    "name": "Glowering",
     "idealTemperature": "HELLISH",
     "idealHumidity": "ARID",
     "temperatureTolerance": "",
@@ -2476,101 +2667,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:gold": {
-    "mod": "ExtraBees",
-    "name": "Gold",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.2
-      },
-      {
-        "item": "GOLD",
-        "chance": 0.02
-      }
-    ],
-    "branch": "extrabees:precious",
-    "binomial": "aureus",
-    "dominant": true,
-    "colors": {
-      "primary": "#E6CC0B",
-      "secondary": "#999999"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:granite": {
-    "mod": "ExtraBees",
-    "name": "Granite",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.3
-      }
-    ],
-    "branch": "extrabees:rocky",
-    "binomial": "granum",
-    "dominant": true,
-    "colors": {
-      "primary": "#695555",
-      "secondary": "#999999"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:gray": {
-    "mod": "ExtraBees",
-    "name": "Gray",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "GRAY",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:secondary",
-    "binomial": "ravus",
-    "dominant": true,
-    "colors": {
-      "primary": "#BABABA",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:greek": {
     "mod": "ExtraBees",
     "name": "Greek",
@@ -2596,39 +2692,6 @@
     "colors": {
       "primary": "#854C8A",
       "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:green": {
-    "mod": "ExtraBees",
-    "name": "Green",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "GREEN",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:primary",
-    "binomial": "prasinus",
-    "dominant": true,
-    "colors": {
-      "primary": "#009900",
-      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -2691,6 +2754,72 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:titanium": {
+    "mod": "ExtraBees",
+    "name": "Impregnable",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "STONE",
+        "chance": 0.2
+      },
+      {
+        "item": "TITANIUM",
+        "chance": 0.02
+      }
+    ],
+    "branch": "extrabees:metallic2",
+    "binomial": "titania",
+    "dominant": true,
+    "colors": {
+      "primary": "#B0AAE3",
+      "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:purple": {
+    "mod": "ExtraBees",
+    "name": "Indigo",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "PURPLE",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:secondary",
+    "binomial": "purpureus",
+    "dominant": true,
+    "colors": {
+      "primary": "#AE00FF",
+      "secondary": "#8CFF00"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:infectious": {
     "mod": "ExtraBees",
     "name": "Infectious",
@@ -2720,38 +2849,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:ink": {
+  "extrabees:tungstate": {
     "mod": "ExtraBees",
-    "name": "Ink",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "DAMP",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "WATER",
-        "chance": 0.3
-      }
-    ],
-    "branch": "extrabees:aquatic",
-    "binomial": "atramentum",
-    "dominant": true,
-    "colors": {
-      "primary": "#0E1447",
-      "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:iron": {
-    "mod": "ExtraBees",
-    "name": "Iron",
+    "name": "Invincible",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2768,15 +2868,15 @@
         "chance": 0.2
       },
       {
-        "item": "IRON",
-        "chance": 0.05
+        "item": "TUNGSTEN",
+        "chance": 0.01
       }
     ],
-    "branch": "extrabees:metallic",
-    "binomial": "ferrous",
-    "dominant": false,
+    "branch": "extrabees:metallic2",
+    "binomial": "wolfram",
+    "dominant": true,
     "colors": {
-      "primary": "#A87058",
+      "primary": "#131214",
       "secondary": "#999999"
     },
     "hasEffect": false,
@@ -2852,9 +2952,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:latex": {
+  "extrabees:pink": {
     "mod": "ExtraBees",
-    "name": "Latex",
+    "name": "Lavender",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2867,27 +2967,27 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "RESIN",
-        "chance": 0.1
+        "item": "HONEY",
+        "chance": 0.75
       },
       {
-        "item": "LATEX",
-        "chance": 0.05
+        "item": "PINK",
+        "chance": 0.25
       }
     ],
-    "branch": "extrabees:refined",
-    "binomial": "latex",
+    "branch": "extrabees:secondary",
+    "binomial": "rosaceus",
     "dominant": true,
     "colors": {
-      "primary": "#494A3E",
-      "secondary": "#FFDC16"
+      "primary": "#FF80DF",
+      "secondary": "#8CFF00"
     },
-    "hasEffect": true,
+    "hasEffect": false,
     "isSecret": false
   },
   "extrabees:lead": {
     "mod": "ExtraBees",
-    "name": "Lead",
+    "name": "Leaden",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -2918,75 +3018,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:lightblue": {
-    "mod": "ExtraBees",
-    "name": "Lightblue",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "LIGHTBLUE",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:secondary",
-    "binomial": "aqua",
-    "dominant": true,
-    "colors": {
-      "primary": "#009DFF",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:lightgray": {
-    "mod": "ExtraBees",
-    "name": "Lightgray",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "LIGHTGRAY",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:tertiary",
-    "binomial": "canus",
-    "dominant": true,
-    "colors": {
-      "primary": "#C9C9C9",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:limegreen": {
     "mod": "ExtraBees",
-    "name": "Limegreen",
+    "name": "Lime",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3017,9 +3051,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:magenta": {
+  "extrabees:nickel": {
     "mod": "ExtraBees",
-    "name": "Magenta",
+    "name": "Lustered",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3032,20 +3066,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "HONEY",
-        "chance": 0.75
+        "item": "STONE",
+        "chance": 0.2
       },
       {
-        "item": "MAGENTA",
-        "chance": 0.25
+        "item": "NICKEL",
+        "chance": 0.05
       }
     ],
-    "branch": "extrabees:tertiary",
-    "binomial": "fuchsia",
+    "branch": "extrabees:metallic2",
+    "binomial": "claro",
     "dominant": true,
     "colors": {
-      "primary": "#FF00CC",
-      "secondary": "#8CFF00"
+      "primary": "#FFDEFC",
+      "secondary": "#999999"
     },
     "hasEffect": false,
     "isSecret": false
@@ -3108,9 +3142,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:milk": {
+  "extrabees:red": {
     "mod": "ExtraBees",
-    "name": "Milk",
+    "name": "Maroon",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3123,49 +3157,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "WHEATEN",
-        "chance": 0.3
+        "item": "HONEY",
+        "chance": 0.75
       },
       {
-        "item": "MILK",
-        "chance": 0.1
+        "item": "RED",
+        "chance": 0.25
       }
     ],
-    "branch": "extrabees:farming",
-    "binomial": "lacteus",
+    "branch": "extrabees:primary",
+    "binomial": "rubra",
     "dominant": true,
     "colors": {
-      "primary": "#E3E8E8",
-      "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:mineral": {
-    "mod": "ExtraBees",
-    "name": "Mineral",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.3
-      }
-    ],
-    "branch": "extrabees:rocky",
-    "binomial": "minerale",
-    "dominant": true,
-    "colors": {
-      "primary": "#6E757D",
-      "secondary": "#999999"
+      "primary": "#FF0000",
+      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -3194,9 +3199,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:nickel": {
+  "extrabees:green": {
     "mod": "ExtraBees",
-    "name": "Nickel",
+    "name": "Natural",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3209,20 +3214,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "STONE",
-        "chance": 0.2
+        "item": "HONEY",
+        "chance": 0.75
       },
       {
-        "item": "NICKEL",
-        "chance": 0.05
+        "item": "GREEN",
+        "chance": 0.25
       }
     ],
-    "branch": "extrabees:metallic2",
-    "binomial": "claro",
+    "branch": "extrabees:primary",
+    "binomial": "prasinus",
     "dominant": true,
     "colors": {
-      "primary": "#FFDEFC",
-      "secondary": "#999999"
+      "primary": "#009900",
+      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -3287,7 +3292,7 @@
   },
   "extrabees:oil": {
     "mod": "ExtraBees",
-    "name": "Oil",
+    "name": "Oily",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3314,105 +3319,6 @@
     "colors": {
       "primary": "#574770",
       "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:orange": {
-    "mod": "ExtraBees",
-    "name": "Orange",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "ORANGE",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:secondary",
-    "binomial": "flammeus",
-    "dominant": true,
-    "colors": {
-      "primary": "#FF9D00",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:pink": {
-    "mod": "ExtraBees",
-    "name": "Pink",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "PINK",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:secondary",
-    "binomial": "rosaceus",
-    "dominant": true,
-    "colors": {
-      "primary": "#FF80DF",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:platinum": {
-    "mod": "ExtraBees",
-    "name": "Platinum",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.2
-      },
-      {
-        "item": "PLATINUM",
-        "chance": 0.01
-      }
-    ],
-    "branch": "extrabees:precious",
-    "binomial": "platina",
-    "dominant": false,
-    "colors": {
-      "primary": "#DBDBDB",
-      "secondary": "#999999"
     },
     "hasEffect": false,
     "isSecret": false
@@ -3475,9 +3381,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:purple": {
+  "extrabees:blue": {
     "mod": "ExtraBees",
-    "name": "Purple",
+    "name": "Prussian",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3494,15 +3400,15 @@
         "chance": 0.75
       },
       {
-        "item": "PURPLE",
+        "item": "BLUE",
         "chance": 0.25
       }
     ],
-    "branch": "extrabees:secondary",
-    "binomial": "purpureus",
+    "branch": "extrabees:primary",
+    "binomial": "caeruleus",
     "dominant": true,
     "colors": {
-      "primary": "#AE00FF",
+      "primary": "#0022FF",
       "secondary": "#8CFF00"
     },
     "hasEffect": false,
@@ -3602,9 +3508,9 @@
     "hasEffect": true,
     "isSecret": false
   },
-  "extrabees:red": {
+  "extrabees:fuel": {
     "mod": "ExtraBees",
-    "name": "Red",
+    "name": "Refined",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3617,22 +3523,22 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "HONEY",
-        "chance": 0.75
+        "item": "OIL",
+        "chance": 0.1
       },
       {
-        "item": "RED",
-        "chance": 0.25
+        "item": "FUEL",
+        "chance": 0.04
       }
     ],
-    "branch": "extrabees:primary",
-    "binomial": "rubra",
+    "branch": "extrabees:refined",
+    "binomial": "refina",
     "dominant": true,
     "colors": {
-      "primary": "#FF0000",
-      "secondary": "#8CFF00"
+      "primary": "#FFC003",
+      "secondary": "#FFDC16"
     },
-    "hasEffect": false,
+    "hasEffect": true,
     "isSecret": false
   },
   "extrabees:relic": {
@@ -3664,9 +3570,38 @@
     "hasEffect": true,
     "isSecret": false
   },
+  "extrabees:mineral": {
+    "mod": "ExtraBees",
+    "name": "Resilient",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "STONE",
+        "chance": 0.3
+      }
+    ],
+    "branch": "extrabees:rocky",
+    "binomial": "minerale",
+    "dominant": true,
+    "colors": {
+      "primary": "#6E757D",
+      "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:resin": {
     "mod": "ExtraBees",
-    "name": "Resin",
+    "name": "Resinous",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3763,9 +3698,38 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:granite": {
+    "mod": "ExtraBees",
+    "name": "Robust",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "STONE",
+        "chance": 0.3
+      }
+    ],
+    "branch": "extrabees:rocky",
+    "binomial": "granum",
+    "dominant": true,
+    "colors": {
+      "primary": "#695555",
+      "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:rock": {
     "mod": "ExtraBees",
-    "name": "Rock",
+    "name": "Rocky",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3821,39 +3785,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:rotten": {
-    "mod": "ExtraBees",
-    "name": "Rotten",
-    "idealTemperature": "HOT",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "BARREN",
-        "chance": 0.3
-      },
-      {
-        "item": "ROTTEN",
-        "chance": 0.1
-      }
-    ],
-    "branch": "extrabees:hostile",
-    "binomial": "caries",
-    "dominant": true,
-    "colors": {
-      "primary": "#BFE0B6",
-      "secondary": "#CBE374"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:ruby": {
     "mod": "ExtraBees",
     "name": "Ruby",
@@ -3883,6 +3814,72 @@
     "colors": {
       "primary": "#D60000",
       "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:iron": {
+    "mod": "ExtraBees",
+    "name": "Rusty",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "STONE",
+        "chance": 0.2
+      },
+      {
+        "item": "IRON",
+        "chance": 0.05
+      }
+    ],
+    "branch": "extrabees:metallic",
+    "binomial": "ferrous",
+    "dominant": false,
+    "colors": {
+      "primary": "#A87058",
+      "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:yellow": {
+    "mod": "ExtraBees",
+    "name": "Saffron",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "YELLOW",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:primary",
+    "binomial": "fulvus",
+    "dominant": true,
+    "colors": {
+      "primary": "#FFDD00",
+      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -3920,9 +3917,42 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:brown": {
+    "mod": "ExtraBees",
+    "name": "Sepia",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "BROWN",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:primary",
+    "binomial": "fuscus",
+    "dominant": true,
+    "colors": {
+      "primary": "#5C350F",
+      "secondary": "#8CFF00"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:shadow": {
     "mod": "ExtraBees",
-    "name": "Shadow",
+    "name": "Shadowed",
     "idealTemperature": "HELLISH",
     "idealHumidity": "ARID",
     "temperatureTolerance": "",
@@ -3951,7 +3981,7 @@
   },
   "extrabees:silver": {
     "mod": "ExtraBees",
-    "name": "Silver",
+    "name": "Shining",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -3982,6 +4012,72 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:bone": {
+    "mod": "ExtraBees",
+    "name": "Skeletal",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "BARREN",
+        "chance": 0.3
+      },
+      {
+        "item": "BONE",
+        "chance": 0.1
+      }
+    ],
+    "branch": "extrabees:hostile",
+    "binomial": "os",
+    "dominant": true,
+    "colors": {
+      "primary": "#E9EDE8",
+      "secondary": "#CBE374"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:gray": {
+    "mod": "ExtraBees",
+    "name": "Slate",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HONEY",
+        "chance": 0.75
+      },
+      {
+        "item": "GRAY",
+        "chance": 0.25
+      }
+    ],
+    "branch": "extrabees:secondary",
+    "binomial": "ravus",
+    "dominant": true,
+    "colors": {
+      "primary": "#BABABA",
+      "secondary": "#8CFF00"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:sodalite": {
     "mod": "ExtraBees",
     "name": "Sodalite",
@@ -4002,6 +4098,35 @@
     "colors": {
       "primary": "#154FED",
       "secondary": "#999999"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:boggy": {
+    "mod": "ExtraBees",
+    "name": "Sodden",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "MOSSY",
+        "chance": 0.3
+      }
+    ],
+    "branch": "extrabees:boggy",
+    "binomial": "lama",
+    "dominant": false,
+    "colors": {
+      "primary": "#785C29",
+      "secondary": "#FFDC16"
     },
     "hasEffect": false,
     "isSecret": false
@@ -4063,6 +4188,35 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "extrabees:ink": {
+    "mod": "ExtraBees",
+    "name": "Stained",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "DAMP",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "WATER",
+        "chance": 0.3
+      }
+    ],
+    "branch": "extrabees:aquatic",
+    "binomial": "atramentum",
+    "dominant": true,
+    "colors": {
+      "primary": "#0E1447",
+      "secondary": "#FFDC16"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "extrabees:sticky": {
     "mod": "ExtraBees",
     "name": "Sticky",
@@ -4096,38 +4250,9 @@
     "hasEffect": true,
     "isSecret": false
   },
-  "extrabees:stone": {
-    "mod": "ExtraBees",
-    "name": "Stone",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.3
-      }
-    ],
-    "branch": "extrabees:rocky",
-    "binomial": "lapis",
-    "dominant": false,
-    "colors": {
-      "primary": "#757575",
-      "secondary": "#999999"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:sugar": {
     "mod": "ExtraBees",
-    "name": "Sugar",
+    "name": "Sugary",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -4154,38 +4279,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:swamp": {
-    "mod": "ExtraBees",
-    "name": "Swamp",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "DAMP",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "MOSSY",
-        "chance": 0.3
-      }
-    ],
-    "branch": "extrabees:boggy",
-    "binomial": "paludis",
-    "dominant": true,
-    "colors": {
-      "primary": "#356933",
-      "secondary": "#FFDC16"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:sweet": {
     "mod": "ExtraBees",
-    "name": "Sweet",
+    "name": "Sweetened",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -4212,11 +4308,11 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:tempered": {
+  "extrabees:tin": {
     "mod": "ExtraBees",
-    "name": "Tempered",
-    "idealTemperature": "HELLISH",
-    "idealHumidity": "ARID",
+    "name": "Tarnished",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
     "humidityTolerance": "",
     "speed": "",
@@ -4227,18 +4323,55 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "SIMMERING",
-        "chance": 0.25
+        "item": "STONE",
+        "chance": 0.2
+      },
+      {
+        "item": "TIN",
+        "chance": 0.06
       }
     ],
-    "branch": "extrabees:volcanic",
-    "binomial": "iratus",
-    "dominant": false,
+    "branch": "extrabees:metallic",
+    "binomial": "stannus",
+    "dominant": true,
     "colors": {
-      "primary": "#8A4848",
-      "secondary": "#9A2323"
+      "primary": "#BDB1BD",
+      "secondary": "#999999"
     },
     "hasEffect": false,
+    "isSecret": false
+  },
+  "extrabees:creosote": {
+    "mod": "ExtraBees",
+    "name": "Tarry",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "COAL",
+        "chance": 0.1
+      },
+      {
+        "item": "CREOSOTE",
+        "chance": 0.07
+      }
+    ],
+    "branch": "extrabees:refined",
+    "binomial": "creosota",
+    "dominant": true,
+    "colors": {
+      "primary": "#979E13",
+      "secondary": "#FFDC16"
+    },
+    "hasEffect": true,
     "isSecret": false
   },
   "extrabees:thriving": {
@@ -4270,9 +4403,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:tin": {
+  "extrabees:stone": {
     "mod": "ExtraBees",
-    "name": "Tin",
+    "name": "Tolerant",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -4286,26 +4419,22 @@
     "products": [
       {
         "item": "STONE",
-        "chance": 0.2
-      },
-      {
-        "item": "TIN",
-        "chance": 0.06
+        "chance": 0.3
       }
     ],
-    "branch": "extrabees:metallic",
-    "binomial": "stannus",
-    "dominant": true,
+    "branch": "extrabees:rocky",
+    "binomial": "lapis",
+    "dominant": false,
     "colors": {
-      "primary": "#BDB1BD",
+      "primary": "#757575",
       "secondary": "#999999"
     },
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:titanium": {
+  "extrabees:cyan": {
     "mod": "ExtraBees",
-    "name": "Titanium",
+    "name": "Turquoise",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -4318,53 +4447,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "STONE",
-        "chance": 0.2
+        "item": "HONEY",
+        "chance": 0.75
       },
       {
-        "item": "TITANIUM",
-        "chance": 0.02
+        "item": "CYAN",
+        "chance": 0.25
       }
     ],
-    "branch": "extrabees:metallic2",
-    "binomial": "titania",
+    "branch": "extrabees:secondary",
+    "binomial": "cyana",
     "dominant": true,
     "colors": {
-      "primary": "#B0AAE3",
-      "secondary": "#999999"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:tungstate": {
-    "mod": "ExtraBees",
-    "name": "Tungstate",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.2
-      },
-      {
-        "item": "TUNGSTEN",
-        "chance": 0.01
-      }
-    ],
-    "branch": "extrabees:metallic2",
-    "binomial": "wolfram",
-    "dominant": true,
-    "colors": {
-      "primary": "#131214",
-      "secondary": "#999999"
+      "primary": "#00FFE5",
+      "secondary": "#8CFF00"
     },
     "hasEffect": false,
     "isSecret": false
@@ -4398,10 +4494,10 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:unusual": {
+  "extrabees:platinum": {
     "mod": "ExtraBees",
-    "name": "Unusual",
-    "idealTemperature": "COLD",
+    "name": "Valuable",
+    "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
     "humidityTolerance": "",
@@ -4413,16 +4509,20 @@
     "tolerantFlyer": false,
     "products": [
       {
-        "item": "QUARTZ",
-        "chance": 0.25
+        "item": "STONE",
+        "chance": 0.2
+      },
+      {
+        "item": "PLATINUM",
+        "chance": 0.01
       }
     ],
-    "branch": "extrabees:quantum",
-    "binomial": "daniella",
-    "dominant": true,
+    "branch": "extrabees:precious",
+    "binomial": "platina",
+    "dominant": false,
     "colors": {
-      "primary": "#59A4BA",
-      "secondary": "#BAA2EB"
+      "primary": "#DBDBDB",
+      "secondary": "#999999"
     },
     "hasEffect": false,
     "isSecret": false
@@ -4551,39 +4651,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "extrabees:white": {
-    "mod": "ExtraBees",
-    "name": "White",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "WHITE",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:primary",
-    "binomial": "albus",
-    "dominant": true,
-    "colors": {
-      "primary": "#FFFFFF",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "extrabees:yellorium": {
     "mod": "ExtraBees",
     "name": "Yellorium",
@@ -4612,72 +4679,6 @@
     "dominant": true,
     "colors": {
       "primary": "#D5ED00",
-      "secondary": "#999999"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:yellow": {
-    "mod": "ExtraBees",
-    "name": "Yellow",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HONEY",
-        "chance": 0.75
-      },
-      {
-        "item": "YELLOW",
-        "chance": 0.25
-      }
-    ],
-    "branch": "extrabees:primary",
-    "binomial": "fulvus",
-    "dominant": true,
-    "colors": {
-      "primary": "#FFDD00",
-      "secondary": "#8CFF00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "extrabees:zinc": {
-    "mod": "ExtraBees",
-    "name": "Zinc",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "STONE",
-        "chance": 0.2
-      },
-      {
-        "item": "ZINC",
-        "chance": 0.05
-      }
-    ],
-    "branch": "extrabees:metallic2",
-    "binomial": "spelta",
-    "dominant": true,
-    "colors": {
-      "primary": "#EDEBFF",
       "secondary": "#999999"
     },
     "hasEffect": false,
@@ -4911,7 +4912,7 @@
   },
   "forestry:ended": {
     "mod": "Forestry",
-    "name": "Ended",
+    "name": "Ender",
     "idealTemperature": "COLD",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -5795,7 +5796,7 @@
     "isSecret": false
   },
   "gendustry:black": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Black",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -5824,7 +5825,7 @@
     "isSecret": false
   },
   "gendustry:blue": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Blue",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -5853,7 +5854,7 @@
     "isSecret": false
   },
   "gendustry:brown": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Brown",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -5882,7 +5883,7 @@
     "isSecret": false
   },
   "gendustry:cyan": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Cyan",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -5910,37 +5911,8 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "gendustry:derpious": {
-    "mod": "Gendustry",
-    "name": "Derpious",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "I:forestry:bee_combs@3",
-        "chance": 0.15
-      }
-    ],
-    "branch": "gendustry.patreon",
-    "binomial": "Asinalis",
-    "dominant": true,
-    "colors": {
-      "primary": "#6FBAF7",
-      "secondary": "#E8D56A"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "gendustry:gray": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Gray",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -5969,7 +5941,7 @@
     "isSecret": false
   },
   "gendustry:green": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Green",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -5998,8 +5970,8 @@
     "isSecret": false
   },
   "gendustry:lightblue": {
-    "mod": "Gendustry",
-    "name": "Lightblue",
+    "mod": "Gendustry Color Bees",
+    "name": "Light Blue",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -6026,8 +5998,37 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "gendustry:silver": {
+    "mod": "Gendustry Color Bees",
+    "name": "Light Gray",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "HoneyComb:silver",
+        "chance": 0.3
+      }
+    ],
+    "branch": "gendustry.color",
+    "binomial": "Argentum",
+    "dominant": true,
+    "colors": {
+      "primary": "#ABABAB",
+      "secondary": "#E8D56A"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "gendustry:lime": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Lime",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6056,7 +6057,7 @@
     "isSecret": false
   },
   "gendustry:magenta": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Magenta",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6085,7 +6086,7 @@
     "isSecret": false
   },
   "gendustry:orange": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Orange",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6114,7 +6115,7 @@
     "isSecret": false
   },
   "gendustry:pink": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Pink",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6143,7 +6144,7 @@
     "isSecret": false
   },
   "gendustry:purple": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Purple",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6172,7 +6173,7 @@
     "isSecret": false
   },
   "gendustry:red": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Red",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6200,37 +6201,8 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "gendustry:silver": {
-    "mod": "Gendustry",
-    "name": "Silver",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [
-      {
-        "item": "HoneyComb:silver",
-        "chance": 0.3
-      }
-    ],
-    "branch": "gendustry.color",
-    "binomial": "Argentum",
-    "dominant": true,
-    "colors": {
-      "primary": "#ABABAB",
-      "secondary": "#E8D56A"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "gendustry:white": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "White",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6259,7 +6231,7 @@
     "isSecret": false
   },
   "gendustry:yellow": {
-    "mod": "Gendustry",
+    "mod": "Gendustry Color Bees",
     "name": "Yellow",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
@@ -6282,6 +6254,35 @@
     "dominant": true,
     "colors": {
       "primary": "#DECF2A",
+      "secondary": "#E8D56A"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "gendustry:derpious": {
+    "mod": "Gendustry Patreon Bees",
+    "name": "Derpious",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [
+      {
+        "item": "I:forestry:bee_combs@3",
+        "chance": 0.15
+      }
+    ],
+    "branch": "gendustry.patreon",
+    "binomial": "Asinalis",
+    "dominant": true,
+    "colors": {
+      "primary": "#6FBAF7",
       "secondary": "#E8D56A"
     },
     "hasEffect": false,
@@ -6311,11 +6312,11 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:aeskystone": {
+  "magicbees:tcair": {
     "mod": "MagicBees",
-    "name": "Skystone",
-    "idealTemperature": "HOT",
-    "idealHumidity": "ARID",
+    "name": "Aer",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
     "humidityTolerance": "",
     "speed": "",
@@ -6325,19 +6326,19 @@
     "caveDwelling": false,
     "tolerantFlyer": false,
     "products": [],
-    "branch": "magicbees.transmuting",
-    "binomial": "terra astris",
+    "branch": "magicbees.thaumic",
+    "binomial": "aether",
     "dominant": true,
     "colors": {
-      "primary": "#4B8381",
-      "secondary": "#252929"
+      "primary": "#D9D636",
+      "secondary": "#D9D636"
     },
-    "hasEffect": false,
+    "hasEffect": true,
     "isSecret": false
   },
   "magicbees:aluminium": {
     "mod": "MagicBees",
-    "name": "Aluminium",
+    "name": "Aluminum",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -6359,9 +6360,33 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:teamped": {
+    "mod": "MagicBees",
+    "name": "Amped",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "concitatus",
+    "dominant": false,
+    "colors": {
+      "primary": "#8AFFFF",
+      "secondary": "#ECE670"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
   "magicbees:apatite": {
     "mod": "MagicBees",
-    "name": "Apatite",
+    "name": "Apatine",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -6381,6 +6406,30 @@
       "secondary": "#001D51"
     },
     "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcwater": {
+    "mod": "MagicBees",
+    "name": "Aqua",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "DAMP",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "umidus",
+    "dominant": true,
+    "colors": {
+      "primary": "#36CFD9",
+      "secondary": "#36CFD9"
+    },
+    "hasEffect": true,
     "isSecret": false
   },
   "magicbees:arcane": {
@@ -6431,6 +6480,30 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:silver": {
+    "mod": "MagicBees",
+    "name": "Argentum",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "argenteus",
+    "dominant": false,
+    "colors": {
+      "primary": "#747C81",
+      "secondary": "#96BFC4"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:attuned": {
     "mod": "MagicBees",
     "name": "Attuned",
@@ -6453,6 +6526,30 @@
       "secondary": "#0086A8"
     },
     "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:gold": {
+    "mod": "MagicBees",
+    "name": "Auric",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "aurum",
+    "dominant": false,
+    "colors": {
+      "primary": "#684B01",
+      "secondary": "#FFFF0B"
+    },
+    "hasEffect": true,
     "isSecret": false
   },
   "magicbees:aware": {
@@ -6505,7 +6602,7 @@
   },
   "magicbees:beef": {
     "mod": "MagicBees",
-    "name": "Beef",
+    "name": "Beefy",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -6529,7 +6626,7 @@
   },
   "magicbees:bigbad": {
     "mod": "MagicBees",
-    "name": "Bigbad",
+    "name": "Big Bad",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -6547,6 +6644,30 @@
     "colors": {
       "primary": "#A9344B",
       "secondary": "#453536"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:teblizzy": {
+    "mod": "MagicBees",
+    "name": "Blizzy",
+    "idealTemperature": "COLD",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "blizzard",
+    "dominant": false,
+    "colors": {
+      "primary": "#0073C4",
+      "secondary": "#FF7C26"
     },
     "hasEffect": false,
     "isSecret": false
@@ -6599,126 +6720,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:botdreaming": {
-    "mod": "MagicBees",
-    "name": "Dreaming",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.botanical",
-    "binomial": "somnior",
-    "dominant": true,
-    "colors": {
-      "primary": "#123456",
-      "secondary": "#123456"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:botfloral": {
-    "mod": "MagicBees",
-    "name": "Floral",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.botanical",
-    "binomial": "florens",
-    "dominant": true,
-    "colors": {
-      "primary": "#29D81A",
-      "secondary": "#29D81A"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:botrooted": {
-    "mod": "MagicBees",
-    "name": "Rooted",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.botanical",
-    "binomial": "truncus",
-    "dominant": true,
-    "colors": {
-      "primary": "#00A800",
-      "secondary": "#00A800"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:botsomnolent": {
-    "mod": "MagicBees",
-    "name": "Somnolent",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.botanical",
-    "binomial": "soporatus",
-    "dominant": true,
-    "colors": {
-      "primary": "#2978C6",
-      "secondary": "#2978C6"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:botvazbee": {
-    "mod": "MagicBees",
-    "name": "Vazbee",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.botanical",
-    "binomial": "vazbii",
-    "dominant": false,
-    "colors": {
-      "primary": "#FF6B9C",
-      "secondary": "#FF6B9C"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "magicbees:brainy": {
     "mod": "MagicBees",
     "name": "Brainy",
@@ -6745,7 +6746,7 @@
   },
   "magicbees:bronze": {
     "mod": "MagicBees",
-    "name": "Bronze",
+    "name": "Bronzed",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -6763,6 +6764,30 @@
     "colors": {
       "primary": "#B56D07",
       "secondary": "#B56D07"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tecoal": {
+    "mod": "MagicBees",
+    "name": "Carbon",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thermal",
+    "binomial": "carbonis",
+    "dominant": false,
+    "colors": {
+      "primary": "#2E2D2D",
+      "secondary": "#2E2D2D"
     },
     "hasEffect": false,
     "isSecret": false
@@ -6815,6 +6840,30 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:tcentropy": {
+    "mod": "MagicBees",
+    "name": "Chaotic",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "tenebrarum",
+    "dominant": false,
+    "colors": {
+      "primary": "#CCCCCC",
+      "secondary": "#CCCCCC"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
   "magicbees:charmed": {
     "mod": "MagicBees",
     "name": "Charmed",
@@ -6835,30 +6884,6 @@
     "colors": {
       "primary": "#48EEEC",
       "secondary": "#48EEEC"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:chicken": {
-    "mod": "MagicBees",
-    "name": "Chicken",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.fleshy",
-    "binomial": "pullus",
-    "dominant": true,
-    "colors": {
-      "primary": "#FF0000",
-      "secondary": "#D3D3D3"
     },
     "hasEffect": false,
     "isSecret": false
@@ -6887,30 +6912,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:copper": {
-    "mod": "MagicBees",
-    "name": "Copper",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "aercus",
-    "dominant": true,
-    "colors": {
-      "primary": "#684B01",
-      "secondary": "#FFC81A"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "magicbees:crumbling": {
     "mod": "MagicBees",
     "name": "Crumbling",
@@ -6935,9 +6936,81 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:copper": {
+    "mod": "MagicBees",
+    "name": "Cuprum",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "aercus",
+    "dominant": true,
+    "colors": {
+      "primary": "#684B01",
+      "secondary": "#FFC81A"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tedante": {
+    "mod": "MagicBees",
+    "name": "Dante",
+    "idealTemperature": "HELLISH",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "inferno",
+    "dominant": false,
+    "colors": {
+      "primary": "#F7AC4A",
+      "secondary": "#FF7C26"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tedestabilized": {
+    "mod": "MagicBees",
+    "name": "Destabilized",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thermal",
+    "binomial": "electric",
+    "dominant": false,
+    "colors": {
+      "primary": "#5E0203",
+      "secondary": "#5E0203"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:diamond": {
     "mod": "MagicBees",
-    "name": "Diamond",
+    "name": "Diamandi",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -7007,9 +7080,33 @@
     "hasEffect": true,
     "isSecret": false
   },
+  "magicbees:botdreaming": {
+    "mod": "MagicBees",
+    "name": "Dreaming",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.botanical",
+    "binomial": "somnior",
+    "dominant": true,
+    "colors": {
+      "primary": "#123456",
+      "secondary": "#123456"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:earthy": {
     "mod": "MagicBees",
-    "name": "Earthy",
+    "name": "Earthen",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -7079,9 +7176,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:emerald": {
+  "magicbees:tcempowering": {
     "mod": "MagicBees",
-    "name": "Emerald",
+    "name": "Empowering",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -7093,12 +7190,12 @@
     "caveDwelling": false,
     "tolerantFlyer": false,
     "products": [],
-    "branch": "magicbees.gem",
-    "binomial": "prasinus",
-    "dominant": false,
+    "branch": "magicbees.thaumic",
+    "binomial": "tractus",
+    "dominant": true,
     "colors": {
-      "primary": "#005300",
-      "secondary": "#17DD62"
+      "primary": "#96FFBC",
+      "secondary": "#675ED1"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7123,6 +7220,54 @@
     "colors": {
       "primary": "#18E726",
       "secondary": "#18E726"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:teendearing": {
+    "mod": "MagicBees",
+    "name": "Endearing",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thermal",
+    "binomial": "cognito",
+    "dominant": true,
+    "colors": {
+      "primary": "#069E97",
+      "secondary": "#069E97"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
+  "magicbees:emerald": {
+    "mod": "MagicBees",
+    "name": "Esmeraldi",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.gem",
+    "binomial": "prasinus",
+    "dominant": false,
+    "colors": {
+      "primary": "#005300",
+      "secondary": "#17DD62"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7175,6 +7320,30 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:iron": {
+    "mod": "MagicBees",
+    "name": "Ferrous",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "ferrus",
+    "dominant": true,
+    "colors": {
+      "primary": "#686868",
+      "secondary": "#E9E9E9"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:firey": {
     "mod": "MagicBees",
     "name": "Firey",
@@ -7195,6 +7364,30 @@
     "colors": {
       "primary": "#D35119",
       "secondary": "#D35119"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:botfloral": {
+    "mod": "MagicBees",
+    "name": "Floral",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.botanical",
+    "binomial": "florens",
+    "dominant": true,
+    "colors": {
+      "primary": "#29D81A",
+      "secondary": "#29D81A"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7223,6 +7416,54 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:tctaint": {
+    "mod": "MagicBees",
+    "name": "Flux",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "arcanus labe",
+    "dominant": false,
+    "colors": {
+      "primary": "#91376A",
+      "secondary": "#675ED1"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:rsafluxed": {
+    "mod": "MagicBees",
+    "name": "Fluxed",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thermal",
+    "binomial": "Thermametallic electroflux",
+    "dominant": false,
+    "colors": {
+      "primary": "#9E060D",
+      "secondary": "#9E060D"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:forlorn": {
     "mod": "MagicBees",
     "name": "Forlorn",
@@ -7243,6 +7484,30 @@
     "colors": {
       "primary": "#CBA88C",
       "secondary": "#CBA88C"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
+  "magicbees:tegelid": {
+    "mod": "MagicBees",
+    "name": "Gelid",
+    "idealTemperature": "COLD",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "cyro",
+    "dominant": true,
+    "colors": {
+      "primary": "#4AAFF7",
+      "secondary": "#FF7C26"
     },
     "hasEffect": true,
     "isSecret": false
@@ -7271,11 +7536,11 @@
     "hasEffect": false,
     "isSecret": true
   },
-  "magicbees:gold": {
+  "magicbees:tegrounded": {
     "mod": "MagicBees",
-    "name": "Gold",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
+    "name": "Grounded",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
     "temperatureTolerance": "",
     "humidityTolerance": "",
     "speed": "",
@@ -7285,14 +7550,14 @@
     "caveDwelling": false,
     "tolerantFlyer": false,
     "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "aurum",
-    "dominant": false,
+    "branch": "magicbees.abominable",
+    "binomial": "tellus",
+    "dominant": true,
     "colors": {
-      "primary": "#684B01",
-      "secondary": "#FFFF0B"
+      "primary": "#CEC1C1",
+      "secondary": "#826767"
     },
-    "hasEffect": true,
+    "hasEffect": false,
     "isSecret": false
   },
   "magicbees:hateful": {
@@ -7319,11 +7584,11 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:horse": {
+  "magicbees:tcfire": {
     "mod": "MagicBees",
-    "name": "Horse",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
+    "name": "Ignis",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
     "temperatureTolerance": "",
     "humidityTolerance": "",
     "speed": "",
@@ -7333,14 +7598,14 @@
     "caveDwelling": false,
     "tolerantFlyer": false,
     "products": [],
-    "branch": "magicbees.fleshy",
-    "binomial": "equus",
+    "branch": "magicbees.thaumic",
+    "binomial": "praefervidus",
     "dominant": true,
     "colors": {
-      "primary": "#906330",
-      "secondary": "#7B4E1B"
+      "primary": "#E50B0B",
+      "secondary": "#E50B0B"
     },
-    "hasEffect": false,
+    "hasEffect": true,
     "isSecret": false
   },
   "magicbees:infernal": {
@@ -7415,54 +7680,6 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:iron": {
-    "mod": "MagicBees",
-    "name": "Iron",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "ferrus",
-    "dominant": true,
-    "colors": {
-      "primary": "#686868",
-      "secondary": "#E9E9E9"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:lead": {
-    "mod": "MagicBees",
-    "name": "Lead",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "plumbeus",
-    "dominant": true,
-    "colors": {
-      "primary": "#96BFC4",
-      "secondary": "#91A9F3"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "magicbees:lordly": {
     "mod": "MagicBees",
     "name": "Lordly",
@@ -7483,6 +7700,30 @@
     "colors": {
       "primary": "#C6AF86",
       "secondary": "#8E0213"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:telux": {
+    "mod": "MagicBees",
+    "name": "Lux",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thermal",
+    "binomial": "lux",
+    "dominant": false,
+    "colors": {
+      "primary": "#F1FA89",
+      "secondary": "#F1FA89"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7607,6 +7848,54 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:horse": {
+    "mod": "MagicBees",
+    "name": "Neighsayer",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.fleshy",
+    "binomial": "equus",
+    "dominant": true,
+    "colors": {
+      "primary": "#906330",
+      "secondary": "#7B4E1B"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcnexus": {
+    "mod": "MagicBees",
+    "name": "Nexus",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "nexi",
+    "dominant": false,
+    "colors": {
+      "primary": "#15AFAF",
+      "secondary": "#675ED1"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
   "magicbees:nickel": {
     "mod": "MagicBees",
     "name": "Nickel",
@@ -7653,6 +7942,30 @@
       "secondary": "#D5C3E5"
     },
     "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcorder": {
+    "mod": "MagicBees",
+    "name": "Ordered",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "ordinatus",
+    "dominant": true,
+    "colors": {
+      "primary": "#AA32FC",
+      "secondary": "#AA32FC"
+    },
+    "hasEffect": true,
     "isSecret": false
   },
   "magicbees:osmium": {
@@ -7703,9 +8016,33 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:lead": {
+    "mod": "MagicBees",
+    "name": "Plumbum",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "plumbeus",
+    "dominant": true,
+    "colors": {
+      "primary": "#96BFC4",
+      "secondary": "#91A9F3"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:pork": {
     "mod": "MagicBees",
-    "name": "Pork",
+    "name": "Porcine",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -7723,6 +8060,30 @@
     "colors": {
       "primary": "#F1AEAC",
       "secondary": "#DF847B"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:chicken": {
+    "mod": "MagicBees",
+    "name": "Poultry",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.fleshy",
+    "binomial": "pullus",
+    "dominant": true,
+    "colors": {
+      "primary": "#FF0000",
+      "secondary": "#D3D3D3"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7751,9 +8112,9 @@
     "hasEffect": false,
     "isSecret": false
   },
-  "magicbees:rsafluxed": {
+  "magicbees:tcpure": {
     "mod": "MagicBees",
-    "name": "Fluxed",
+    "name": "Pure",
     "idealTemperature": "NORMAL",
     "idealHumidity": "NORMAL",
     "temperatureTolerance": "",
@@ -7765,12 +8126,132 @@
     "caveDwelling": false,
     "tolerantFlyer": false,
     "products": [],
-    "branch": "magicbees.thermal",
-    "binomial": "Thermametallic electroflux",
+    "branch": "magicbees.thaumic",
+    "binomial": "arcanus puritatem",
     "dominant": false,
     "colors": {
-      "primary": "#9E060D",
-      "secondary": "#9E060D"
+      "primary": "#E23F65",
+      "secondary": "#675ED1"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tepyro": {
+    "mod": "MagicBees",
+    "name": "Pyro",
+    "idealTemperature": "HELLISH",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "pyromania",
+    "dominant": true,
+    "colors": {
+      "primary": "#FA930C",
+      "secondary": "#FF7C26"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
+  "magicbees:tchungry": {
+    "mod": "MagicBees",
+    "name": "Ravening",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "omnique",
+    "dominant": false,
+    "colors": {
+      "primary": "#DCA5E2",
+      "secondary": "#675ED1"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcrejuvenating": {
+    "mod": "MagicBees",
+    "name": "Rejuvenating",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "arcanus vitae",
+    "dominant": false,
+    "colors": {
+      "primary": "#91D0D9",
+      "secondary": "#675ED1"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:terocking": {
+    "mod": "MagicBees",
+    "name": "Rockin'",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "saxsous",
+    "dominant": true,
+    "colors": {
+      "primary": "#980000",
+      "secondary": "#AB9D9B"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
+  "magicbees:botrooted": {
+    "mod": "MagicBees",
+    "name": "Rooted",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.botanical",
+    "binomial": "truncus",
+    "dominant": true,
+    "colors": {
+      "primary": "#00A800",
+      "secondary": "#00A800"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7847,6 +8328,30 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:teshocking": {
+    "mod": "MagicBees",
+    "name": "Shocking",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.abominable",
+    "binomial": "horrendum",
+    "dominant": false,
+    "colors": {
+      "primary": "#C5FF26",
+      "secondary": "#F8EE00"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:silicon": {
     "mod": "MagicBees",
     "name": "Silicon",
@@ -7867,30 +8372,6 @@
     "colors": {
       "primary": "#ADA2A7",
       "secondary": "#736675"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:silver": {
-    "mod": "MagicBees",
-    "name": "Silver",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "argenteus",
-    "dominant": false,
-    "colors": {
-      "primary": "#747C81",
-      "secondary": "#96BFC4"
     },
     "hasEffect": false,
     "isSecret": false
@@ -7919,6 +8400,30 @@
     "hasEffect": false,
     "isSecret": true
   },
+  "magicbees:aeskystone": {
+    "mod": "MagicBees",
+    "name": "Skystone",
+    "idealTemperature": "HOT",
+    "idealHumidity": "ARID",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.transmuting",
+    "binomial": "terra astris",
+    "dominant": true,
+    "colors": {
+      "primary": "#4B8381",
+      "secondary": "#252929"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:smouldering": {
     "mod": "MagicBees",
     "name": "Smouldering",
@@ -7942,6 +8447,54 @@
     },
     "hasEffect": false,
     "isSecret": true
+  },
+  "magicbees:tcearth": {
+    "mod": "MagicBees",
+    "name": "Solum",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "sordida",
+    "dominant": true,
+    "colors": {
+      "primary": "#005100",
+      "secondary": "#005100"
+    },
+    "hasEffect": true,
+    "isSecret": false
+  },
+  "magicbees:botsomnolent": {
+    "mod": "MagicBees",
+    "name": "Somnolent",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.botanical",
+    "binomial": "soporatus",
+    "dominant": true,
+    "colors": {
+      "primary": "#2978C6",
+      "secondary": "#2978C6"
+    },
+    "hasEffect": false,
+    "isSecret": false
   },
   "magicbees:sorcerous": {
     "mod": "MagicBees",
@@ -8063,6 +8616,30 @@
     "hasEffect": true,
     "isSecret": false
   },
+  "magicbees:tin": {
+    "mod": "MagicBees",
+    "name": "Stannum",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "stannum",
+    "dominant": true,
+    "colors": {
+      "primary": "#3E596D",
+      "secondary": "#A6BACB"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:supernatural": {
     "mod": "MagicBees",
     "name": "Supernatural",
@@ -8087,678 +8664,6 @@
     "hasEffect": true,
     "isSecret": false
   },
-  "magicbees:tcair": {
-    "mod": "MagicBees",
-    "name": "Air",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "aether",
-    "dominant": true,
-    "colors": {
-      "primary": "#D9D636",
-      "secondary": "#D9D636"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tcearth": {
-    "mod": "MagicBees",
-    "name": "Earth",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "sordida",
-    "dominant": true,
-    "colors": {
-      "primary": "#005100",
-      "secondary": "#005100"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tcempowering": {
-    "mod": "MagicBees",
-    "name": "Empowering",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "tractus",
-    "dominant": true,
-    "colors": {
-      "primary": "#96FFBC",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tcentropy": {
-    "mod": "MagicBees",
-    "name": "Entropy",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "tenebrarum",
-    "dominant": false,
-    "colors": {
-      "primary": "#CCCCCC",
-      "secondary": "#CCCCCC"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tcfire": {
-    "mod": "MagicBees",
-    "name": "Fire",
-    "idealTemperature": "HOT",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "praefervidus",
-    "dominant": true,
-    "colors": {
-      "primary": "#E50B0B",
-      "secondary": "#E50B0B"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tchungry": {
-    "mod": "MagicBees",
-    "name": "Hungry",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "omnique",
-    "dominant": false,
-    "colors": {
-      "primary": "#DCA5E2",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tcnexus": {
-    "mod": "MagicBees",
-    "name": "Nexus",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "nexi",
-    "dominant": false,
-    "colors": {
-      "primary": "#15AFAF",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tcorder": {
-    "mod": "MagicBees",
-    "name": "Order",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "ordinatus",
-    "dominant": true,
-    "colors": {
-      "primary": "#AA32FC",
-      "secondary": "#AA32FC"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tcpure": {
-    "mod": "MagicBees",
-    "name": "Pure",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "arcanus puritatem",
-    "dominant": false,
-    "colors": {
-      "primary": "#E23F65",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tcrejuvenating": {
-    "mod": "MagicBees",
-    "name": "Rejuvenating",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "arcanus vitae",
-    "dominant": false,
-    "colors": {
-      "primary": "#91D0D9",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tctaint": {
-    "mod": "MagicBees",
-    "name": "Taint",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "arcanus labe",
-    "dominant": false,
-    "colors": {
-      "primary": "#91376A",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tcvis": {
-    "mod": "MagicBees",
-    "name": "Vis",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "arcanus saecula",
-    "dominant": false,
-    "colors": {
-      "primary": "#004C99",
-      "secondary": "#675ED1"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tcvoid": {
-    "mod": "MagicBees",
-    "name": "Void",
-    "idealTemperature": "ICY",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "obscurus",
-    "dominant": false,
-    "colors": {
-      "primary": "#180A29",
-      "secondary": "#4B2A74"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tcwater": {
-    "mod": "MagicBees",
-    "name": "Water",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "DAMP",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "umidus",
-    "dominant": true,
-    "colors": {
-      "primary": "#36CFD9",
-      "secondary": "#36CFD9"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tcwispy": {
-    "mod": "MagicBees",
-    "name": "Wispy",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thaumic",
-    "binomial": "umbrabilis",
-    "dominant": false,
-    "colors": {
-      "primary": "#9CB8D5",
-      "secondary": "#E15236"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:teamped": {
-    "mod": "MagicBees",
-    "name": "Amped",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "concitatus",
-    "dominant": false,
-    "colors": {
-      "primary": "#8AFFFF",
-      "secondary": "#ECE670"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:teblizzy": {
-    "mod": "MagicBees",
-    "name": "Blizzy",
-    "idealTemperature": "COLD",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "blizzard",
-    "dominant": false,
-    "colors": {
-      "primary": "#0073C4",
-      "secondary": "#FF7C26"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tecoal": {
-    "mod": "MagicBees",
-    "name": "Coal",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thermal",
-    "binomial": "carbonis",
-    "dominant": false,
-    "colors": {
-      "primary": "#2E2D2D",
-      "secondary": "#2E2D2D"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tedante": {
-    "mod": "MagicBees",
-    "name": "Dante",
-    "idealTemperature": "HELLISH",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "inferno",
-    "dominant": false,
-    "colors": {
-      "primary": "#F7AC4A",
-      "secondary": "#FF7C26"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tedestabilized": {
-    "mod": "MagicBees",
-    "name": "Destabilized",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thermal",
-    "binomial": "electric",
-    "dominant": false,
-    "colors": {
-      "primary": "#5E0203",
-      "secondary": "#5E0203"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:teendearing": {
-    "mod": "MagicBees",
-    "name": "Endearing",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thermal",
-    "binomial": "cognito",
-    "dominant": true,
-    "colors": {
-      "primary": "#069E97",
-      "secondary": "#069E97"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tegelid": {
-    "mod": "MagicBees",
-    "name": "Gelid",
-    "idealTemperature": "COLD",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "cyro",
-    "dominant": true,
-    "colors": {
-      "primary": "#4AAFF7",
-      "secondary": "#FF7C26"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:tegrounded": {
-    "mod": "MagicBees",
-    "name": "Grounded",
-    "idealTemperature": "HOT",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "tellus",
-    "dominant": true,
-    "colors": {
-      "primary": "#CEC1C1",
-      "secondary": "#826767"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:telux": {
-    "mod": "MagicBees",
-    "name": "Lux",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thermal",
-    "binomial": "lux",
-    "dominant": false,
-    "colors": {
-      "primary": "#F1FA89",
-      "secondary": "#F1FA89"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tepyro": {
-    "mod": "MagicBees",
-    "name": "Pyro",
-    "idealTemperature": "HELLISH",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "pyromania",
-    "dominant": true,
-    "colors": {
-      "primary": "#FA930C",
-      "secondary": "#FF7C26"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:terocking": {
-    "mod": "MagicBees",
-    "name": "Rocking",
-    "idealTemperature": "HOT",
-    "idealHumidity": "ARID",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "saxsous",
-    "dominant": true,
-    "colors": {
-      "primary": "#980000",
-      "secondary": "#AB9D9B"
-    },
-    "hasEffect": true,
-    "isSecret": false
-  },
-  "magicbees:teshocking": {
-    "mod": "MagicBees",
-    "name": "Shocking",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.abominable",
-    "binomial": "horrendum",
-    "dominant": false,
-    "colors": {
-      "primary": "#C5FF26",
-      "secondary": "#F8EE00"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tewinsome": {
-    "mod": "MagicBees",
-    "name": "Winsome",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.thermal",
-    "binomial": "cuniculus",
-    "dominant": false,
-    "colors": {
-      "primary": "#096B67",
-      "secondary": "#096B67"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
   "magicbees:timely": {
     "mod": "MagicBees",
     "name": "Timely",
@@ -8779,30 +8684,6 @@
     "colors": {
       "primary": "#C6AF86",
       "secondary": "#C6AF86"
-    },
-    "hasEffect": false,
-    "isSecret": false
-  },
-  "magicbees:tin": {
-    "mod": "MagicBees",
-    "name": "Tin",
-    "idealTemperature": "NORMAL",
-    "idealHumidity": "NORMAL",
-    "temperatureTolerance": "",
-    "humidityTolerance": "",
-    "speed": "",
-    "lifespan": "",
-    "fertility": "",
-    "neverSleeps": false,
-    "caveDwelling": false,
-    "tolerantFlyer": false,
-    "products": [],
-    "branch": "magicbees.metallic",
-    "binomial": "stannum",
-    "dominant": true,
-    "colors": {
-      "primary": "#3E596D",
-      "secondary": "#A6BACB"
     },
     "hasEffect": false,
     "isSecret": false
@@ -8855,6 +8736,78 @@
     "hasEffect": false,
     "isSecret": false
   },
+  "magicbees:botvazbee": {
+    "mod": "MagicBees",
+    "name": "Vazbee",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.botanical",
+    "binomial": "vazbii",
+    "dominant": false,
+    "colors": {
+      "primary": "#FF6B9C",
+      "secondary": "#FF6B9C"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcvis": {
+    "mod": "MagicBees",
+    "name": "Vis",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "arcanus saecula",
+    "dominant": false,
+    "colors": {
+      "primary": "#004C99",
+      "secondary": "#675ED1"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcvoid": {
+    "mod": "MagicBees",
+    "name": "Void",
+    "idealTemperature": "ICY",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.metallic",
+    "binomial": "obscurus",
+    "dominant": false,
+    "colors": {
+      "primary": "#180A29",
+      "secondary": "#4B2A74"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
   "magicbees:watery": {
     "mod": "MagicBees",
     "name": "Watery",
@@ -8899,6 +8852,54 @@
     "colors": {
       "primary": "#FFFDBA",
       "secondary": "#FFFDBA"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tewinsome": {
+    "mod": "MagicBees",
+    "name": "Winsome",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thermal",
+    "binomial": "cuniculus",
+    "dominant": false,
+    "colors": {
+      "primary": "#096B67",
+      "secondary": "#096B67"
+    },
+    "hasEffect": false,
+    "isSecret": false
+  },
+  "magicbees:tcwispy": {
+    "mod": "MagicBees",
+    "name": "Wispy",
+    "idealTemperature": "NORMAL",
+    "idealHumidity": "NORMAL",
+    "temperatureTolerance": "",
+    "humidityTolerance": "",
+    "speed": "",
+    "lifespan": "",
+    "fertility": "",
+    "neverSleeps": false,
+    "caveDwelling": false,
+    "tolerantFlyer": false,
+    "products": [],
+    "branch": "magicbees.thaumic",
+    "binomial": "umbrabilis",
+    "dominant": false,
+    "colors": {
+      "primary": "#9CB8D5",
+      "secondary": "#E15236"
     },
     "hasEffect": false,
     "isSecret": false
